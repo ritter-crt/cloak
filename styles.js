@@ -13,6 +13,6 @@ export default createGlobalStyle`
 
   body {
     margin: auto;
-    font-family: system-ui;
+    font-family:Arial, Helvetica, sans-serif
   }
 `;
