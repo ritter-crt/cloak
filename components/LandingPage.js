@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 import BackgroundImage from "../src/assets/sewer-with-mannequin.jpg";
+import { device } from "@/styles";
 
 export default function LandingPage() {
   return (
@@ -30,7 +31,7 @@ const StyledWrapper = styled.div`
 `;
 const StyledHeader = styled.h1`
   font-weight: 30;
-  font-size: 5rem;
+  font-size:60pt;
   text-transform: lowercase;
   letter-spacing: 0.5rem;
   position: absolute;
@@ -39,6 +40,11 @@ const StyledHeader = styled.h1`
   transform: translateX(-50%);
   color: rgba(255, 255, 255);
   z-index: 1;
+  @media ${device.mobileL} {
+        font-size:150pt;
+        letter-spacing: 0.2rem;
+        padding: 6%;
+      }
 `;
 const StyledText = styled.div`
   padding: 10%;
@@ -46,11 +52,17 @@ const StyledText = styled.div`
   letter-spacing: 0.05rem;
   line-height: 1.2rem;
   font-size: 11pt;
+  @media ${device.mobileL} {
+        font-size: 20pt;
+        letter-spacing: 0.2 rem;
+        line-height: 2rem;
+        padding: 6%;
+      }
 `;
 
 const StyledImage = styled(Image)`
   object-fit: cover;
-  width: 100% !important;
+  width: 100%;
   position: relative;
   height: unset;
 `;
