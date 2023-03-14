@@ -18,7 +18,7 @@ export default function LandingPage() {
       </StyledWrapper>
       <StyledText>
         {" "}
-        Create your own garment. Comfortable, functional, and suitable. <br />
+        Create your own garment. Comfortable, functional, <br /> and suitable. <br />
         Fashion that fits you.
       </StyledText>
     </>

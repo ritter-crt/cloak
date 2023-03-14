@@ -1,10 +1,11 @@
+import Link from "next/link";
 import styled from "styled-components";
 
 export default function Button() {
-  return <StyledLink>get started</StyledLink>;
+  return <StyledLink href="/home">get started</StyledLink>;
 }
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
   color: black;
   margin-top: 10px;
   align-items: flex-end;
@@ -14,6 +15,7 @@ const StyledLink = styled.a`
   background-color: black;
   border-radius: 40px;
   color: white;
+  text-decoration: none;
   &:active {
     background-color: white;
     color: black;
