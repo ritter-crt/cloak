@@ -1,6 +1,8 @@
-import styled from "styled-components";
-import Button from "./Button";
 import { device } from "@/styles";
+
+import styled from "styled-components";
+
+import Button from "./Button";
 
 export default function LoginForm() {
     
