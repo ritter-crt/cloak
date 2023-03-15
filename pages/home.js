@@ -1,11 +1,13 @@
 import Card from "@/components/Card";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
+import Searchbar from "@/components/Searchbar";
 
 
 export default function HomePage({items}) {
 return (
     <div>
+    <Searchbar></Searchbar>
       <Card items={items}></Card>
     </div>
   );
