@@ -12,8 +12,8 @@ export default function LandingPage() {
         <StyledImage
           src={BackgroundImage}
           placeholder="blur"
-          height={600}
-          width={500}
+          height={900}
+          width={700}
           alt="sewer with mannequin"
         ></StyledImage>
       </StyledWrapper>
@@ -42,7 +42,7 @@ text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   text-transform: lowercase;
   letter-spacing: 0.5rem;
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 50%;
   transform: translateX(-50%);
   color: rgba(255, 255, 255);
@@ -53,7 +53,7 @@ text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     font-size: 150pt;
     letter-spacing: 0.2rem;
     padding: 6%;
-    color:rgba(0, 0, 0, 0.5)
+    /* color:rgba(0, 0, 0, 0.5) */
   }
 `;
 

@@ -39,19 +39,20 @@ const EntryForm = styled.form`
   padding: 0rem 3rem 5rem 3rem;
 `;
 
-const StyledHeader = styled.h2`
+export const StyledHeader = styled.h2`
   margin-top: 10px;
   margin-bottom: 10px;
   letter-spacing: 0.05rem;
   line-height: 1.2rem;
   font-size: 14pt;
   @media ${device.mobileL} {
-    font-size: 25pt;
+    font-size: 2pt;
     letter-spacing: 0.2 rem;
     line-height: 2rem;
     padding: 0px;
   }
 `;
+
 
 const StyledParagraph = styled.p`
   letter-spacing: 0.05rem;
@@ -59,7 +60,7 @@ const StyledParagraph = styled.p`
   font-size: 11pt;
   text-transform: uppercase;
   @media ${device.mobileL} {
-    font-size: 20pt;
+    font-size:14pt;
     letter-spacing: 0.2 rem;
     line-height: 2rem;
     padding: 0px;
@@ -73,7 +74,7 @@ const StyledLabel = styled.label`
   font-size: 9pt;
   text-transform: uppercase;
   @media ${device.mobileL} {
-    font-size: 14pt;
+    font-size: 11pt;
     letter-spacing: 0.2 rem;
     line-height: 2rem;
     padding: 0px;

@@ -79,7 +79,7 @@ const StyledImageThree = styled.div`
   padding: 10%;
 `;
 
-const StyledText = styled.div`
+export const StyledText = styled.div`
   width: 40%;
   bottom: 44%;
   position: absolute;
@@ -96,3 +96,5 @@ const StyledText = styled.div`
     padding: 2px;
   }
 `;
+
+
