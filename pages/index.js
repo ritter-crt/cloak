@@ -1,8 +1,7 @@
-import Button from "@/components/Button";
 import ImageBoard from "@/components/Imageboard";
 import LandingPage from "@/components/LandingPage";
-import Login from "@/components/Login";
-// import LoginForm from "@/components/LoginForm";
+import Login from "@/components/GoogleLogin";
+
 
 export default function Start() {
   return (

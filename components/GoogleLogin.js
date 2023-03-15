@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut } from "next-auth/react";
 import styled from "styled-components";
 
-export default function Login() {
+export default function GoogleLogin() {
   const { data: session } = useSession();
   if (session) {
     return (
