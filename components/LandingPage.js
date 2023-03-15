@@ -1,8 +1,8 @@
 import Image from "next/image";
 import BackgroundImage from "../src/assets/sewer-with-mannequin.jpg";
 import { device } from "@/styles";
-import styled from 'styled-components'
-import { changeOpacity } from "./Animations";
+import styled from "styled-components";
+import { changeOpacity } from "./Animation";
 
 export default function LandingPage() {
   return (
@@ -33,7 +33,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledHeader = styled.h1`
-text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   animation-name: ${changeOpacity};
   animation-duration: 6s;
   animation-iteration-count: 1;
@@ -47,7 +47,6 @@ text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   transform: translateX(-50%);
   color: rgba(255, 255, 255);
   z-index: 1;
-
 
   @media ${device.mobileL} {
     font-size: 150pt;
@@ -80,4 +79,3 @@ const StyledImage = styled(Image)`
   position: relative;
   height: unset;
 `;
-

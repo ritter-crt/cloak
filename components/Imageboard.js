@@ -1,6 +1,6 @@
 import { device } from "@/styles";
 import styled from "styled-components";
-import { changeOpacity } from "./Animations";
+import { changeOpacity } from "./Animation";
 
 import Image from "next/image";
 
@@ -96,5 +96,3 @@ export const StyledText = styled.div`
     padding: 2px;
   }
 `;
-
-
