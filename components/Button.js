@@ -9,13 +9,14 @@ const StyledLink = styled(Link)`
   width: 50%;
   display: flex;
   flex-direction: row;
-  color: black;
-  margin: 10px;
+  color: white;
+  margin: 2px;
   align-items: flex-end;
-  /* justify-content: center; */
+  justify-content: center; 
+  margin-top:20px;
   margin-left: auto;
-  /* padding: 10px; */
-  /* background-color: black; */
+  padding: 10px; 
+  background-color: black; 
   border-radius: 40px;
   text-decoration: none;
   &:active {

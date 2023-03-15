@@ -18,6 +18,7 @@ export default function LoginForm() {
         name="email"
         autoComplete="off"
         aria-label="Enter text"
+        placeholder="this is not working (yet)"
       />
       <StyledLabel htmlFor="password" name="password" id="password">
         password
@@ -27,7 +28,7 @@ export default function LoginForm() {
         name="password"
         aria-label="Enter your name"
       />
-      <Button></Button>
+      <Button>get started</Button>
     </EntryForm>
   );
 }

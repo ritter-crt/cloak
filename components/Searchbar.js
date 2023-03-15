@@ -3,17 +3,14 @@ import styled from "styled-components";
 export default function Searchbar() {
   return (
     <>
-      <StyledBox class="box">
-        <form name="search">
+      <StyledBox>
           <StyledInput
             type="text"
-            className="input"
             name="txt"
             onmouseout="this.value = ''; this.blur();"
-            placeholder="  🔎 Search..."
+            placeholder="  Search..."
           ></StyledInput>
-        </form>
-        <StyledI className="fas fa-search"></StyledI>
+        <StyledI></StyledI>
       </StyledBox>
     </>
   );
@@ -24,21 +21,29 @@ const StyledBox = styled.div`
 `;
 
 const StyledInput = styled.input`
+  margin: 20px;
   padding: 2px;
-  width: 10%;
-  height: 50px;
+  width: 20%;
+  height: 40px;
   background: none;
-  border: 3px solid black;
-  border-radius: 25px;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
   box-sizing: border-box;
   color: #ffd52d;
   outline: none;
   transition: 0.5s;
   &:hover {
-    width: 350px;
-    background: rgb(245, 245, 245)
+    width: 100%;
+    border: 1px solid rgb(230, 230, 250);
     border-radius:10px;
+    box-shadow: rgb(230, 230, 250) 0.95px 0.95px 2.6px;
   }
+  /* &:focus {
+    width: 100%;
+    background: 1px rgb(245, 245, 245);
+    border: 1px solid yellow;
+    border-radius:10px;
+  } */
 `;
 
 const StyledI = styled.i`

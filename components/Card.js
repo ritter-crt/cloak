@@ -2,17 +2,26 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export default function Card({ items }) {
+  function capitalize(string) {
+    return string[0].toUpperCase() + string.slice(1);
+  }
   return (
     <>
-      <div>Hello there this will be changed soon!</div>
+      <div>This will be styled tomorrow, so far enjoy the searchbar</div>
       <CardWrapper>
-        {items.map((item) => (
-          <div key={item._id}>
-            <div>{item.price}</div>
-            <div>{item.difficulty}</div>
-            <div>{item.category}</div>
-            <Image src={item.image} height={500} width={500} alt={item.title} />
-          </div>
+        {items.slice(0, 4).map((item) => (
+          <StyledCard key={item._id}>
+            <div>{capitalize(item.title)}</div>
+            <div>{item.price}€</div>
+            <div>Difficulty: {item.difficulty}</div>
+            <div>{capitalize(item.category)}</div>
+            <StyledImage
+              src={item.image}
+              height={100}
+              width={100}
+              alt={item.title}
+            />
+          </StyledCard>
         ))}
       </CardWrapper>
     </>
@@ -20,7 +29,19 @@ export default function Card({ items }) {
 }
 
 const CardWrapper = styled.div`
+  gap: 1rem;
   display: flex;
-  flex-flow: row wrap;
-  gap: 10rem;
+  flex-direction: row;
+  flex-wrap:wrap;
+  justify-content: center;
+`;
+
+const StyledCard = styled.div`
+  height:40%;
+  width:40%;
+  margin:15px;
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
 `;

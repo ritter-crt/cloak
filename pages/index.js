@@ -1,6 +1,7 @@
 import ImageBoard from "@/components/Imageboard";
 import LandingPage from "@/components/LandingPage";
-// import Login from "@/components/GoogleLogin";
+import LoginForm from "@/components/LoginForm";
+import Login from "@/components/GoogleLogin";
 
 
 export default function Start() {
@@ -8,7 +9,8 @@ export default function Start() {
     <>
       <LandingPage />
       <ImageBoard />
-      {/* <Login></Login> */}
+      <Login></Login>
+      <LoginForm>get started</LoginForm>
     </>
   );
 }
