@@ -38,6 +38,11 @@ const EntryForm = styled.form`
   flex-direction: column;
   justify-content: center;
   padding: 0rem 3rem 5rem 3rem;
+  @media ${device.mobileL} {
+    width: 50%;
+    float:right;
+
+  }
 `;
 
 export const StyledHeader = styled.h2`
@@ -47,7 +52,7 @@ export const StyledHeader = styled.h2`
   line-height: 1.2rem;
   font-size: 14pt;
   @media ${device.mobileL} {
-    font-size: 2pt;
+    font-size: 15pt;
     letter-spacing: 0.2 rem;
     line-height: 2rem;
     padding: 0px;
@@ -61,7 +66,7 @@ const StyledParagraph = styled.p`
   font-size: 11pt;
   text-transform: uppercase;
   @media ${device.mobileL} {
-    font-size:14pt;
+    font-size:13pt;
     letter-spacing: 0.2 rem;
     line-height: 2rem;
     padding: 0px;
@@ -79,7 +84,8 @@ const StyledLabel = styled.label`
     letter-spacing: 0.2 rem;
     line-height: 2rem;
     padding: 0px;
-    padding-top: 4rem;
+    padding-top: 0px;
+    padding-bottom: 2px;
   }
 `;
 
@@ -89,6 +95,6 @@ const StyledInput = styled.input`
   padding: 5px 10px;
   outline: none;
   @media ${device.mobileL} {
-    padding-top: 2rem;
+    padding-top: 1px;
   }
 `;

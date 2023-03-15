@@ -19,7 +19,8 @@ const StyledLink = styled(Link)`
   background-color: black; 
   border-radius: 40px;
   text-decoration: none;
-  &:active {
+  transition-delay: 0.3s;
+  &:hover {
     background-color: white;
     color: black;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
