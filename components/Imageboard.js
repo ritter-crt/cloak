@@ -1,10 +1,12 @@
-import Image from "next/image";
+import { device } from "@/styles";
 import styled from "styled-components";
+import { changeOpacity } from "./Animations";
+
+import Image from "next/image";
+
 import HandWorking from "../src/assets/hand-working.jpg";
 import TailorWorking from "../src/assets/tailor-with-sewing-machine.jpg";
-// import Dressmaker from "../src/assets/male-dressmaker-with-computer.jpg";
 import Dressmaker from "../src/assets/pile-of-clothes.jpeg";
-import { device } from "@/styles";
 
 export default function ImageBoard() {
   return (
@@ -47,6 +49,9 @@ const ImageWrapper = styled.div`
   width: 100%;
   height: 38rem;
   position: relative;
+  animation-name: ${changeOpacity};
+  animation-duration: 6s;
+  animation-iteration-count: 1;
 `;
 
 const StyledImage = styled(Image)`
@@ -74,7 +79,7 @@ const StyledImageThree = styled.div`
   padding: 10%;
 `;
 
-const StyledText = styled.div`
+export const StyledText = styled.div`
   width: 40%;
   bottom: 44%;
   position: absolute;
@@ -91,3 +96,5 @@ const StyledText = styled.div`
     padding: 2px;
   }
 `;
+
+

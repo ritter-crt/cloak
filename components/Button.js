@@ -1,19 +1,23 @@
+import Link from "next/link";
 import styled from "styled-components";
 
-export default function Button() {
-  return <StyledLink>get started</StyledLink>;
+export default function Button({ children }) {
+  return <StyledLink href="/home">{children}</StyledLink>;
 }
 
-const StyledLink = styled.a`
+const StyledLink = styled(Link)`
+  width: 50%;
+  display: flex;
+  flex-direction: row;
   color: black;
-  margin-top: 10px;
+  margin: 10px;
   align-items: flex-end;
-  justify-content: center;
+  /* justify-content: center; */
   margin-left: auto;
-  padding: 10px;
-  background-color: black;
+  /* padding: 10px; */
+  /* background-color: black; */
   border-radius: 40px;
-  color: white;
+  text-decoration: none;
   &:active {
     background-color: white;
     color: black;

@@ -1,16 +1,15 @@
+import Button from "@/components/Button";
 import ImageBoard from "@/components/Imageboard";
 import LandingPage from "@/components/LandingPage";
-import LoginForm from "@/components/LoginForm";
+import Login from "@/components/Login";
+// import LoginForm from "@/components/LoginForm";
 
-import styled from "styled-components";
-
-
-export default function Home() {
+export default function Start() {
   return (
     <>
-      <LandingPage/>
-      <ImageBoard/>
-      <LoginForm/>
+      <LandingPage />
+      <ImageBoard />
+      <Login></Login>
     </>
   );
 }
