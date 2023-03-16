@@ -3,6 +3,7 @@ import { device } from "@/styles";
 import styled from "styled-components";
 
 import Button from "./Button";
+import GoogleLogin from "./GoogleLogin";
 
 export default function LoginForm() {
     
@@ -29,6 +30,7 @@ export default function LoginForm() {
         aria-label="Enter your name"
       />
       <Button>get started</Button>
+      <GoogleLogin></GoogleLogin>
     </EntryForm>
   );
 }
