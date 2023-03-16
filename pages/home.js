@@ -1,19 +1,13 @@
 import Card from "@/components/Card";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
-import Searchbar from "@/components/Searchbar";
-import { useState } from "react";
-import Navigation from "@/components/Navigation";
 
 export default function HomePage({ items }) {
-  const [search, setSearch] = useState("");
-  console.log(search);
 
   return (
     <>
-      {/* <Searchbar setSearch={setSearch} items={items}></Searchbar> */}
       <h1>Hello home</h1>
-      <Card items={items} search={search}></Card>
+      <Card items={items}></Card>
     </>
   );
 }
