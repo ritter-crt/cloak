@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function Card({ items }) {
+export default function Card({ items, search }) {
   // function capitalize(string) {
   //   return string[0].toUpperCase() + string.slice(1);
   // }
@@ -9,13 +9,17 @@ export default function Card({ items }) {
     <>
       <div>This will be styled tomorrow, so far enjoy the searchbar</div>
       <CardWrapper>
-        {items.slice(0, 4).map((item) => (
+        {items.filter((item) => {
+          return search.toLowerCase() === "" 
+          ? item
+          : item.title.toLowerCase().includes(search)
+        })
+        .map((item) => (
           <StyledCard key={item._id}>
             {/* <div>{capitalize(item.title)}</div> */}
             <div>{item.title}</div>
             <div>{item.price}€</div>
             <div>Difficulty: {item.difficulty}</div>
-            <div>{item.category}</div>
             <div>{item.category}</div>
             <StyledImage
               src={item.image}

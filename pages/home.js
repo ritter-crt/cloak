@@ -12,7 +12,7 @@ export default function HomePage({items}) {
 return (
     <div>
     <Searchbar setSearch={setSearch}></Searchbar>
-      <Card items={items}></Card>
+      <Card items={items} search={search}></Card>
     </div>
   );
 }
