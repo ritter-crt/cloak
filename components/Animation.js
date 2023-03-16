@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components'
+import { keyframes } from 'styled-components'
 
 export const changeOpacity = keyframes`
   0%   { opacity: 0.5; }

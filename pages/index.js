@@ -1,14 +1,14 @@
-import ImageBoard from "@/components/Imageboard";
+import ImageBoard from "@/components/Collage";
 import LandingPage from "@/components/LandingPage";
-// import Login from "@/components/GoogleLogin";
-
+import LoginForm from "@/components/LoginForm";
+import Login from "@/components/GoogleLogin";
 
 export default function Start() {
   return (
     <>
       <LandingPage />
       <ImageBoard />
-      {/* <Login></Login> */}
+      <LoginForm>get started</LoginForm>
     </>
   );
 }

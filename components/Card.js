@@ -1,18 +1,35 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function Card({ items }) {
+export default function Card({ items, search }) {
+  const keys = ["title, category, difficulty"];
+
+  const searchItems = (items) => {
+    return items.filter(
+      (item) =>
+        item.title.toLowerCase().includes(search) ||
+        item.difficulty.toLowerCase().includes(search) ||
+        item.category.toLowerCase().includes(search)
+    );
+  };
+
   return (
     <>
-      <div>Hello there this will be changed soon!</div>
       <CardWrapper>
-        {items.map((item) => (
-          <div key={item._id}>
-            <div>{item.price}</div>
-            <div>{item.difficulty}</div>
+        {searchItems(items).length === 0 ? <div>We are very sorry! No items found</div>
+        :searchItems(items).map((item) => (
+          <StyledCard key={item._id}>
+            <div>{item.title}</div>
+            <div>{item.price}€</div>
+            <div>Difficulty: {item.difficulty}</div>
             <div>{item.category}</div>
-            <Image src={item.image} height={500} width={500} alt={item.title} />
-          </div>
+            <StyledImage
+              src={item.image}
+              height={100}
+              width={100}
+              alt={item.title}
+            />
+          </StyledCard>
         ))}
       </CardWrapper>
     </>
@@ -20,7 +37,21 @@ export default function Card({ items }) {
 }
 
 const CardWrapper = styled.div`
+  gap: 1rem;
   display: flex;
-  flex-flow: row wrap;
-  gap: 10rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
+
+const StyledCard = styled.div`
+  height: 40%;
+  width: 40%;
+  margin: 15px;
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
+`;
+
+
