@@ -1,15 +1,16 @@
 import styled from "styled-components";
 
-export default function Searchbar() {
+export default function Searchbar({ setSearch }) {
   return (
     <>
       <StyledBox>
-          <StyledInput
-            type="text"
-            name="txt"
-            onmouseout="this.value = ''; this.blur();"
-            placeholder="  Search..."
-          ></StyledInput>
+        <StyledInput
+          onChange={(e) => setSearch(e.target.value)}
+          type="text"
+          name="txt"
+          onmouseout="this.value = ''; this.blur();"
+          placeholder="Search..."
+        ></StyledInput>
         <StyledI></StyledI>
       </StyledBox>
     </>
@@ -22,20 +23,19 @@ const StyledBox = styled.div`
 
 const StyledInput = styled.input`
   margin: 20px;
-  padding: 2px;
+  padding: 10px;
   width: 20%;
   height: 40px;
   background: none;
   border: 1px solid lightgrey;
   border-radius: 10px;
   box-sizing: border-box;
-  color: #ffd52d;
   outline: none;
   transition: 0.5s;
   &:hover {
     width: 100%;
     border: 1px solid rgb(230, 230, 250);
-    border-radius:10px;
+    border-radius: 10px;
     box-shadow: rgb(230, 230, 250) 0.95px 0.95px 2.6px;
   }
   /* &:focus {

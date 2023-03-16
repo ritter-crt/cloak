@@ -2,12 +2,16 @@ import Card from "@/components/Card";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
 import Searchbar from "@/components/Searchbar";
+import { useState } from "react";
 
 
 export default function HomePage({items}) {
+  const [search, setSearch] = useState("");
+  console.log(search)
+
 return (
     <div>
-    <Searchbar></Searchbar>
+    <Searchbar setSearch={setSearch}></Searchbar>
       <Card items={items}></Card>
     </div>
   );
