@@ -2,21 +2,23 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export default function Card({ items, search }) {
-  // function capitalize(string) {
-  //   return string[0].toUpperCase() + string.slice(1);
-  // }
+  const keys = ["title, category, difficulty"];
+
+  const searchItems = (items) => {
+    return items.filter(
+      (item) =>
+        item.title.toLowerCase().includes(search) ||
+        item.difficulty.toLowerCase().includes(search) ||
+        item.category.toLowerCase().includes(search)
+    );
+  };
+
   return (
     <>
-      <div>This will be styled tomorrow, so far enjoy the searchbar</div>
       <CardWrapper>
-        {items.filter((item) => {
-          return search.toLowerCase() === "" 
-          ? item
-          : item.title.toLowerCase().includes(search)
-        })
-        .map((item) => (
+        {searchItems(items).length === 0 ? <div>We are sorry! No items were found</div>
+        :items.map((item) => (
           <StyledCard key={item._id}>
-            {/* <div>{capitalize(item.title)}</div> */}
             <div>{item.title}</div>
             <div>{item.price}€</div>
             <div>Difficulty: {item.difficulty}</div>

@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import Card from "./Card";
 
-export default function Searchbar({ setSearch }) {
+export default function Searchbar({ setSearch, items, search }) {
   return (
     <>
       <StyledBox>
