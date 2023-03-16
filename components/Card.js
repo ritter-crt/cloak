@@ -16,8 +16,8 @@ export default function Card({ items, search }) {
   return (
     <>
       <CardWrapper>
-        {searchItems(items).length === 0 ? <div>We are sorry! No items were found</div>
-        :items.map((item) => (
+        {searchItems(items).length === 0 ? <div>We are very sorry! No items found</div>
+        :searchItems(items).map((item) => (
           <StyledCard key={item._id}>
             <div>{item.title}</div>
             <div>{item.price}€</div>
@@ -53,3 +53,5 @@ const StyledCard = styled.div`
 const StyledImage = styled(Image)`
   object-fit: cover;
 `;
+
+
