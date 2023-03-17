@@ -30,7 +30,6 @@ export default function LoginForm() {
         aria-label="Enter your name"
       />
       <Button>get started</Button>
-      <GoogleLogin></GoogleLogin>
     </EntryForm>
   );
 }
