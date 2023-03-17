@@ -1,43 +1,30 @@
 import Image from "next/image";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
-export default function Card({ items, search }) {
-  // const keys = ["title", "category", "difficulty"];
-
-  // // const searchItems = (items) => {
-  // //   return items.filter(
-  // //     (item) =>
-  // //       item.title.toLowerCase().includes(search) ||
-  // //       item.difficulty.toLowerCase().includes(search) ||
-  // //       item.category.toLowerCase().includes(search)
-  // //   );
-  // // };
-
-  // const searchItems = (items) => {
-  //   return items.filter((item) =>
-  //     keys.some((key) => item[key].toLowerCase().includes(search))
-  //   );
-  // };
+export default function Card({ items }) {
+  const router = useRouter();
+ 
 
   return (
     <>
       <CardWrapper>
-      <h3>some highlights picked for you</h3>
-        {items.slice(0,4).map((item) => (
-            <StyledCard key={item._id}>
-              <div>{item.title}</div>
-              <div>{item.price} €</div>
-              <div>Difficulty: {item.difficulty}</div>
-              <div>{item.category}</div>
-              <StyledImage
-                src={item.image}
-                height={100}
-                width={100}
-                alt={item.title}
-              />
-            </StyledCard>
-          ))
-        }
+        <h3></h3>
+        {items.slice(0, 4).map((item) => (
+          <StyledCard key={item._id}>
+            <div>{item.title}</div>
+            <div>{item.price} €</div>
+            <div>{item.difficulty}</div>
+            <div>{item.category}</div>
+            <StyledImage
+              onClick={()=> router.push(`/item-page/${item._id}`)}
+              src={item.image}
+              height={100}
+              width={100}
+              alt={item.title}
+            />
+          </StyledCard>
+        ))}
       </CardWrapper>
     </>
   );

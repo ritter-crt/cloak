@@ -16,6 +16,10 @@ export default function SearchPage({ items }) {
   );
 }
 
+// onSearch / onFilter
+// Itemlist
+// globalState
+
 export async function getServerSideProps() {
   await dbConnect();
 
