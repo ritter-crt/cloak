@@ -1,64 +1,41 @@
-import { CardWrapper, StyledCard, StyledImage } from "@/components/Card";
-import Item from "@/db/models/Item";
-import Searchbar from "@/components/Searchbar";
+import FilterFeat from "@/components/Filter";
+import Search from "@/components/Search";
 import dbConnect from "@/db/connect";
-import { useState } from "react";
+import Item from "@/db/models/Item";
+import styled from "styled-components";
 
-export default function Search({ items }) {
-  const [search, setSearch] = useState("");
-  const keys = ["title", "category", "difficulty"];
-
-  const searchItems = (items) => {
-    return items.filter((item) =>
-      keys.some((key) => item[key].toLowerCase().includes(search))
-    );
-  };
-  console.log(search);
-
+export default function SearchPage({ items }) {
   return (
     <>
       <h3>Not styled, but search is working</h3>
-      <Searchbar setSearch={setSearch} items={items}></Searchbar>
-      <CardWrapper>
-        {searchItems(items).length === 0 ? (
-          <div>We are very sorry! No items found</div>
-        ) : (
-          searchItems(items).map((item) => (
-            <StyledCard key={item._id}>
-              <div>{item.title}</div>
-              <div>{item.price} €</div>
-              <div>Difficulty: {item.difficulty}</div>
-              <div>{item.category}</div>
-              <StyledImage
-                src={item.image}
-                height={100}
-                width={100}
-                alt={item.title}
-              />
-            </StyledCard>
-          ))
-        )}
-      </CardWrapper>
+      <Search items={items}></Search>
+      {/* <SearchWrapper>
+      <FilterFeat></FilterFeat>
+      </SearchWrapper> */}
     </>
   );
 }
 
-
 export async function getServerSideProps() {
-    await dbConnect();
-  
-    try {
-      const items = await Item.find();
-      // console.log(items);
-      return {
-        props: {
-          items: JSON.parse(JSON.stringify(items)),
-        }, // will be passed to the page component as props
-      };
-    } catch (error) {
-      return {
-        notFound: true,
-      };
-    }
+  await dbConnect();
+
+  try {
+    const items = await Item.find();
+    // console.log(items);
+    return {
+      props: {
+        items: JSON.parse(JSON.stringify(items)),
+      }, // will be passed to the page component as props
+    };
+  } catch (error) {
+    return {
+      notFound: true,
+    };
   }
-  
+}
+
+// const SearchWrapper = styled.div`
+//   background-color: pink;
+//   bottom: 0;
+//   padding: 90px;
+// `;
