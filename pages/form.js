@@ -19,8 +19,8 @@ export default function Form() {
         <input id="category" name="category"></input>
         <label htmlFor="difficulty">price</label>
         <input id="price" name="description" type="number"></input>
-      </EntryForm>
         <button onClick={() => router.push("/home")}>add</button>
+      </EntryForm>
     </>
   );
 }
