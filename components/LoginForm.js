@@ -1,9 +1,7 @@
 import { device } from "@/styles";
-
 import styled from "styled-components";
-
 import Button from "./Button";
-import GoogleLogin from "./GoogleLogin";
+
 
 export default function LoginForm() {
     
