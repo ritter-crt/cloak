@@ -8,12 +8,8 @@ const itemSchema = new Schema({
   category: { type: String, required: true },
   description: { type: String, required: true },
   difficulty: { type: String, required: true },
-  price: { type: String, required: true },
+  price: { type: Number, required: true },
 });
-
-// connecting through mongoose to cards collection in the database.
-// is not case sensitive
-// this needs to            same name as in db = places -> Places
 
 const Item = mongoose.models.Items || mongoose.model("Items", itemSchema);
 export default Item;

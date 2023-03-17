@@ -1,15 +1,21 @@
 import styled from "styled-components";
 import Card from "./Card";
+import { useState } from "react";
 
-export default function Searchbar({ setSearch, items, search }) {
+export default function Searchbar({ onSearch, items }) {
+  const [searchedQuery, setSearchQuery] = useState("");
+
   return (
     <>
       <StyledBox>
         <StyledInput
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearchQuery(e.target.value);
+            onSearch(e.target.value);
+          }}
+          value={searchedQuery}
           type="text"
           name="txt"
-          onmouseout="this.value = ''; this.blur();"
           placeholder="Search..."
         ></StyledInput>
         <StyledI></StyledI>
