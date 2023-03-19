@@ -4,7 +4,7 @@ import useSWR from "swr";
 
 export default function Form() {
   const router = useRouter();
-  const items = useSWR ("/api/items");
+  const items = useSWR ("/api/items/create");
 
   async function handleSubmit(event){
     event.preventDefault();
@@ -52,7 +52,6 @@ export default function Form() {
           <option value="bottoms">bottoms</option>
           <option value="onesie">onesie</option>
           <option value="accessories">accessories</option>
-          <option value="kids">kids</option>
         </select>
 
         <label htmlFor="difficulty">difficulty</label>
@@ -61,6 +60,7 @@ export default function Form() {
           <option value="easy">easy</option>
           <option value="medium">medium</option>
           <option value="intermediate">intermediate</option>
+          <option value="intermediate">expert</option>
         </select>
 
         <label htmlFor="instructions">instructions</label>
@@ -68,8 +68,8 @@ export default function Form() {
 
         <label htmlFor="price">price</label>
         <input id="price" name="price" type="number"></input>
-        
-        <button onClick={() => router.push("/home")}>add</button>
+
+        <button onClick={() => router.push("/profile")}>add</button>
       </EntryForm>
     </>
   );

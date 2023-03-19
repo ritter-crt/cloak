@@ -2,7 +2,7 @@ import styled from "styled-components";
 import Card from "./Card";
 import { useState } from "react";
 
-export default function Searchbar({ onSearch, items }) {
+export default function Searchbar({ onSearch }) {
   const [searchedQuery, setSearchQuery] = useState("");
 
   return (
