@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 // export default function Item() {
 //   return <h1>Hi</h1>;
@@ -27,17 +28,21 @@ export default function PatternDetail() {
   [id]);
 
   if (itemDetail) {
-    const { title, pattern, image, category, description, difficulty } =
+    const { title, instructions, image, category, description, difficulty, price } =
       itemDetail;
 
     console.log("SPECIFIC: ", itemDetail);
 
     return (
       <Container>
-        <section className="patternDetails">
+        <section>
+        <Image src={image} width="200" height="200" alt={title}></Image>
           <h1>{title}</h1>
           <p> {category}</p>
           <p> {description}</p>
+          <p> {difficulty}</p>
+          <p> {instructions}</p>
+          <p> {price}</p>
         </section>
       </Container>
     );
@@ -54,5 +59,4 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   z-index: 2;
-  padding-top: 300px;
 `;
