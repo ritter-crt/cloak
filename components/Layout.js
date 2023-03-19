@@ -1,10 +1,9 @@
-import Navigation from "./Navigation";
-
+import Logo from "./Logo";
 
 export default function Layout({ children }) {
   return (
     <>
-      <Navigation />
+    <Logo></Logo>
       <main>{children}</main>
     </>
   );

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Card from "./Card";
+import Card from "./NewCard";
 import { useState } from "react";
 
 export default function Searchbar({ onSearch }) {
@@ -25,7 +25,7 @@ export default function Searchbar({ onSearch }) {
 }
 
 const StyledBox = styled.div`
-  position: relative;
+  margin-top:50px;
 `;
 
 const StyledInput = styled.input`
@@ -40,17 +40,11 @@ const StyledInput = styled.input`
   outline: none;
   transition: 0.5s;
   &:hover {
-    width: 100%;
+    width: 90%;
     border: 1px solid rgb(230, 230, 250);
     border-radius: 10px;
     box-shadow: rgb(230, 230, 250) 0.95px 0.95px 2.6px;
   }
-  /* &:focus {
-    width: 100%;
-    background: 1px rgb(245, 245, 245);
-    border: 1px solid yellow;
-    border-radius:10px;
-  } */
 `;
 
 const StyledI = styled.i`
@@ -58,7 +52,7 @@ const StyledI = styled.i`
   top: 50%;
   right: 15px;
   transform: translate(-50%, -50%);
-  font-size: 26px;
+  font-size: 11pt;
   color: #ffd52d;
   transition: 0.2s;
   &:hover {
