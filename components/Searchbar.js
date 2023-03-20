@@ -3,7 +3,7 @@ import Card from "./NewCard";
 import { useState } from "react";
 
 export default function Searchbar({ onSearch }) {
-  const [searchedQuery, setSearchQuery] = useState("");
+  const [searchedQuery, setSearchQuery] = useState([]);
 
   return (
     <>

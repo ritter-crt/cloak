@@ -56,15 +56,17 @@ export default function PatternDetailsPage() {
         <StyledDescription> {instructions}</StyledDescription>
         <StyledPrice> {price}€</StyledPrice>
         <Button>buy</Button>
-        <Button>back</Button>
-        <button
+        <Link>
+          <Button>back</Button>
+        </Link>
+        <Button
           onClick={() => {
             handleRemoveItem(id);
             router.push("/home");
           }}
         >
           remove
-        </button>
+        </Button>
       </Container>
     );
   }
