@@ -11,17 +11,25 @@ export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
   const router = useRouter();
   const { id } = router.query;
-  const { push } = useRouter();
 
   const { trigger, isMutating } = useSWRMutation(
     `/api/items/${id}`,
     updateCards
   );
 
-  async function updateCards(url, { arg }) {
-    const response = await fetch(url, {
+  function refreshPage() {
+    const fetchData = async () => {
+      const data = await fetch(`/api/items/${id}`);
+      const items = await data.json();
+      setItemDetail(items);
+    };
+    fetchData().catch(console.error);
+  }
+
+  async function updateCards(id, body) {
+    const response = await fetch(`/api/items/${id}`, {
       method: "PUT",
-      body: JSON.stringify(arg),
+      body: JSON.stringify(body),
       headers: {
         "Content-Type": "application/json",
       },
@@ -31,15 +39,9 @@ export default function PatternDetailsPage() {
     } else {
       console.error(`Error: ${response.status}`);
     }
+    refreshPage();
   }
 
-  async function handleEditCards(event) {
-    event.preventDefault();
-    const item = new FormData(event.target);
-    const itemData = Object.fromEntries(item);
-    await trigger(itemData);
-    push("/");
-  }
   async function handleDeleteCard() {
     const response = await fetch(`/api/items/${id}`, {
       method: "DELETE",
@@ -64,7 +66,7 @@ export default function PatternDetailsPage() {
     }
   }, [id]);
   if (itemDetail) {
-    const { title, instructions, image, description, difficulty, price} =
+    const { title, instructions, image, description, difficulty, price, _id} =
       itemDetail;
 
   if (isMutating) return <p>Submitting your changes</p>;
@@ -77,8 +79,8 @@ export default function PatternDetailsPage() {
       description={description}
       difficulty={difficulty}
       price={price}
-      id={id}
-      onSubmit={handleEditCards} onDeleteCard={handleDeleteCard}
+      id={_id}
+      onDeleteCard={handleDeleteCard} onUpdateCard={updateCards}
        />
     </>
   );
