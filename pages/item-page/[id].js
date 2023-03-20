@@ -5,11 +5,24 @@ import { StyledImage } from "@/components/styled";
 import Button from "@/components/Button";
 import Link from "next/link";
 
-export default function PatternDetail() {
+export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
+
   const router = useRouter();
   const { id } = router.query;
   console.log(id);
+
+  async function handleRemoveItem(id) {
+    const response = await fetch(`/api/items/${id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      await response.json();
+      console.log("routerID", id);
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
 
   useEffect(() => {
     if (id) {
@@ -24,20 +37,11 @@ export default function PatternDetail() {
       fetchSpecificItem();
     }
   }, [id]);
-
   if (itemDetail) {
-    const {
-      title,
-      instructions,
-      image,
-      category,
-      description,
-      difficulty,
-      price,
-    } = itemDetail;
+    const { title, instructions, image, description, difficulty, price, _id } =
+      itemDetail;
 
-    console.log("SPECIFIC: ", itemDetail);
-
+    // console.log("SPECIFIC: ", itemDetail);
     return (
       <Container>
         <StyledTitle>{title}</StyledTitle>
@@ -52,9 +56,15 @@ export default function PatternDetail() {
         <StyledDescription> {instructions}</StyledDescription>
         <StyledPrice> {price}€</StyledPrice>
         <Button>buy</Button>
-        <Link href="/home">
-          <Button>back</Button>
-        </Link>
+        <Button>back</Button>
+        <button
+          onClick={() => {
+            handleRemoveItem(id);
+            router.push("/home");
+          }}
+        >
+          remove
+        </button>
       </Container>
     );
   }
@@ -64,24 +74,20 @@ export default function PatternDetail() {
     </>
   );
 }
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin: 10%;
   justify-content: center;
 `;
-
 const StyledTitle = styled.p`
   text-transform: uppercase;
   font-size: 16pt;
   font-weight: 250;
 `;
-
 const StyledText = styled.p`
   font-size: 12pt;
 `;
-
 const StyledDescription = styled.p`
   line-height: 1.3rem;
   font-size: 10pt;
