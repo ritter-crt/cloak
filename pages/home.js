@@ -1,8 +1,8 @@
-import Card from "@/components/NewCard";
+import Card from "@/components/NewAdd";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
 import Navigation from "@/components/Navigation";
-import NewCard from "@/components/NewCard";
+import NewCard from "@/components/NewAdd";
 
 export default function Home({ items }) {
   return (

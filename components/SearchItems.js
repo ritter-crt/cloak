@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardWrapper, StyledCard, StyledImage } from "./NewCard";
+import { CardWrapper, StyledCard, StyledImage } from "./NewAdd";
 import Searchbar from "./Searchbar";
 import { useRouter } from "next/router";
 
@@ -43,4 +43,3 @@ export default function SearchItems({ items }) {
     </>
   );
 }
-

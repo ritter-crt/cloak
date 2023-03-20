@@ -3,14 +3,20 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { StyledImage } from "@/components/styled";
 import Button, { StyledButton } from "@/components/Button";
+import useSWRMutation from "swr/mutation";
 import Link from "next/link";
+import ItemDetail from "@/components/ItemDetail";
 
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
-
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
+  const { push } = useRouter();
+
+  const { trigger, isMutating } = useSWRMutation(
+    `/api/items/${id}`,
+    updateCards
+  );
 
   async function updateCards(url, { arg }) {
     const response = await fetch(url, {
@@ -26,15 +32,15 @@ export default function PatternDetailsPage() {
       console.error(`Error: ${response.status}`);
     }
   }
-  async function handleEditItem(event) {
+
+  async function handleEditCards(event) {
     event.preventDefault();
     const item = new FormData(event.target);
     const itemData = Object.fromEntries(item);
     await trigger(itemData);
     push("/");
   }
-
-  async function handleRemoveItem(id) {
+  async function handleDeleteCard() {
     const response = await fetch(`/api/items/${id}`, {
       method: "DELETE",
     });
@@ -48,10 +54,8 @@ export default function PatternDetailsPage() {
 
   useEffect(() => {
     if (id) {
-      console.log("Oi");
       const fetchSpecificItem = async () => {
         const response = await fetch(`/api/items/${id}`);
-
         const specificItem = await response.json();
         setItemDetail(specificItem);
         console.log(specificItem);
@@ -60,64 +64,23 @@ export default function PatternDetailsPage() {
     }
   }, [id]);
   if (itemDetail) {
-    const { title, instructions, image, description, difficulty, price, _id } =
+    const { title, instructions, image, description, difficulty, price} =
       itemDetail;
 
-    // console.log("SPECIFIC: ", itemDetail);
-    return (
-      <Container>
-      
-        <StyledTitle>{title}</StyledTitle>
-        <StyledImage
-          src={image}
-          width="300"
-          height="300"
-          alt={title}
-        ></StyledImage>
-        <StyledText> {description}</StyledText>
-        <StyledText> {difficulty}</StyledText>
-        <StyledDescription> {instructions}</StyledDescription>
-        <StyledPrice> {price}€</StyledPrice>
-        <StyledButton>buy</StyledButton>
-        <Link href ="/home">
-          <StyledButton>back</StyledButton>
-        </Link>
-        <StyledButton
-          onClick={() => {
-            handleRemoveItem(id);
-            router.push("/home");
-          }}
-        >
-          remove
-        </StyledButton>
-      </Container>
-    );
-  }
+  if (isMutating) return <p>Submitting your changes</p>;
   return (
     <>
-      <h1>Loading</h1>
+      <ItemDetail
+      image={image}
+      title={title}
+      instructions={instructions}
+      description={description}
+      difficulty={difficulty}
+      price={price}
+      id={id}
+      onSubmit={handleEditCards} onDeleteCard={handleDeleteCard}
+       />
     </>
   );
+  }
 }
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 10%;
-  justify-content: center;
-`;
-const StyledTitle = styled.p`
-  text-transform: uppercase;
-  font-size: 16pt;
-  font-weight: 250;
-`;
-const StyledText = styled.p`
-  font-size: 12pt;
-`;
-const StyledDescription = styled.p`
-  line-height: 1.3rem;
-  font-size: 10pt;
-`;
-const StyledPrice = styled.p`
-  padding: 10px;
-  align-items: flex-end;
-`;
