@@ -50,7 +50,7 @@ export default function Form() {
         <select name="category" id="category">
           <option value="tops">tops</option>
           <option value="bottoms">bottoms</option>
-          <option value="onesie">onesie</option>
+          <option value="onesies">onesies</option>
           <option value="accessories">accessories</option>
         </select>
 

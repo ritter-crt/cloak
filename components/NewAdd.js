@@ -50,7 +50,6 @@ export const CardWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap:10px;
 `;
 
 export const StyledCard = styled.div`
