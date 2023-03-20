@@ -19,19 +19,6 @@ const [itemDetail, setItemDetail] = useState();
     return <h1>Loading...</h1>;
   }
 
-  useEffect(() => {
-    if (id) {
-      console.log("Oi");
-      const fetchSpecificItem = async () => {
-        const response = await fetch(`/api/items/${id}`);
-
-        const specificItem = await response.json();
-        setItemDetail(specificItem);
-        console.log(specificItem);
-      };
-      fetchSpecificItem();
-    }
-  }, [id]);
 
   if (itemDetail) {
     const { title, instructions, image, description, difficulty, price } =

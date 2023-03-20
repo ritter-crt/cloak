@@ -13,6 +13,7 @@ export default function PatternDetailsPage() {
   console.log(id);
 
   async function handleRemoveItem(id) {
+    console.log(id);
     const response = await fetch(`/api/items/${id}`, {
       method: "DELETE",
     });
@@ -23,7 +24,6 @@ export default function PatternDetailsPage() {
       console.error(`Error: ${response.status}`);
     }
   }
-
 
   useEffect(() => {
     if (id) {
@@ -38,15 +38,8 @@ export default function PatternDetailsPage() {
   }, [id]);
 
   if (itemDetail) {
-    const {
-      title,
-      instructions,
-      image,
-      description,
-      difficulty,
-      price,
-      _id
-    } = itemDetail;
+    const { title, instructions, image, description, difficulty, price } =
+      itemDetail;
 
     // console.log("SPECIFIC: ", itemDetail);
 
@@ -64,8 +57,15 @@ export default function PatternDetailsPage() {
         <StyledDescription> {instructions}</StyledDescription>
         <StyledPrice> {price}€</StyledPrice>
         <Button>buy</Button>
-          <Button>back</Button>
-          <button onClick={() => handleRemoveItem(_id)}>remove</button>
+        <Button>back</Button>
+        <button
+          onClick={() => {
+            handleRemoveItem(id);
+            router.push("/home");
+          }}
+        >
+          remove
+        </button>
       </Container>
     );
   }
