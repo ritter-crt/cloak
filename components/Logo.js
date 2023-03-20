@@ -8,7 +8,7 @@ export default function Logo() {
   return (
     <LogoWrapper>
       <StyledLogo onClick={() => router.push("/")}>cloak</StyledLogo>
-      <StyledMenu src={Menu} width={20} height={20}></StyledMenu>
+      <StyledMenu src={Menu} width={20} height={20} alt="show menu"></StyledMenu>
     </LogoWrapper>
   );
 }

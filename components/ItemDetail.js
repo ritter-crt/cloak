@@ -9,6 +9,7 @@ export default function ItemDetail({
   title,
   instructions,
   image,
+  category,
   description,
   difficulty,
   price,
@@ -19,6 +20,12 @@ export default function ItemDetail({
   const router = useRouter();
 
   const [isEditing, setIsEditing] = useState(false);
+  const [inputField, setInputField] = useState();
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setInputField(value);
+  };
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -50,17 +57,26 @@ export default function ItemDetail({
           <input id="pattern" name="pattern"></input>
 
           <label htmlFor="title">title</label>
-          <input id="title" name="title" placeholder="e.g long trouses"></input>
+          <input
+            id="title"
+            name="title"
+            type="text"
+            defaultValue={title}
+            onChange={handleChange}
+          ></input>
 
-          <label htmlFor="description">description</label>
+          <label htmlFor="description"></label>
           <input
             id="description"
             name="description"
             placeholder="e.g occasion, season"
+            defaultValue={description}
+            onChange={handleChange}
           ></input>
 
           <label htmlFor="category">category</label>
-          <select name="category" id="category">
+          <select name="category" id="category" defaultValue={category}
+            onSelect={handleChange}>
             <option value="tops">tops</option>
             <option value="bottoms">bottoms</option>
             <option value="onesie">onesie</option>
@@ -68,12 +84,14 @@ export default function ItemDetail({
           </select>
 
           <label htmlFor="difficulty">difficulty</label>
-          <select name="difficulty" id="difficulty">
+          <select name="difficulty" id="difficulty" defaultValue={difficulty}
+            onSelect={handleChange}>
             <option value="beginner">beginner</option>
             <option value="easy">easy</option>
             <option value="medium">medium</option>
             <option value="intermediate">intermediate</option>
             <option value="expert">expert</option>
+          
           </select>
 
           <label htmlFor="instructions">instructions</label>
@@ -82,10 +100,13 @@ export default function ItemDetail({
             name="instructions"
             rows="5"
             placeholder="e.g preferred fabric, what you need"
+            defaultValue={instructions}
+            onChange={handleChange}
           ></textarea>
 
           <label htmlFor="price">price</label>
-          <input id="price" name="price" type="number"></input>
+          <input id="price" name="price" type="number" defaultValue={price}
+            onChange={handleChange}></input>
           <button>save changes</button>
         </form>
       )}
