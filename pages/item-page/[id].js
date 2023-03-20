@@ -30,13 +30,12 @@ export default function PatternDetail() {
       title,
       instructions,
       image,
-      category,
       description,
       difficulty,
       price,
     } = itemDetail;
 
-    console.log("SPECIFIC: ", itemDetail);
+    // console.log("SPECIFIC: ", itemDetail);
 
     return (
       <Container>
