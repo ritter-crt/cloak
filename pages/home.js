@@ -2,12 +2,12 @@ import Card from "@/components/NewAdd";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
 import Navigation from "@/components/Navigation";
-import NewCard from "@/components/NewAdd";
+import NewAdd from "@/components/NewAdd";
 
 export default function Home({ items }) {
   return (
     <>
-      <NewCard items={items}></NewCard>
+      <NewAdd items={items}></NewAdd>
       <Navigation></Navigation>
     </>
   );
