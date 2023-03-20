@@ -97,7 +97,7 @@ export default function ItemDetail({
             src={image}
             width="300"
             height="300"
-            alt={title}
+            alt={description}
           ></StyledImage>
           <StyledText> {description}</StyledText>
           <StyledText> {difficulty}</StyledText>

@@ -16,7 +16,7 @@ export default function NewAdd({ items }) {
               src={item.image}
               height="150"
               width="150"
-              alt={item.title}
+              alt={item.description}
             />
             <StyledTitle>{item.title}</StyledTitle>
             <TextWrapper>
