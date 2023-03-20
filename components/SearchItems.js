@@ -21,12 +21,12 @@ export default function SearchItems({ items }) {
       ></Searchbar>
       <CardWrapper>
         {filteredItems.length === 0 ? (
-          <div>No ie</div>
+          <div>No items found</div>
         ) : (
           filteredItems.map((item) => (
             <StyledCard key={item._id}>
               <div>{item.title}</div>
-              <div>{item.price}€</div>
+              <div>{item.price} €</div>
               <div>{item.difficulty}</div>
               <div>{item.category}</div>
               <StyledImage
@@ -38,8 +38,6 @@ export default function SearchItems({ items }) {
               />
             </StyledCard>
           ))
-        ) : (
-          <div> We are sorry! No items found!</div>
         )}
       </CardWrapper>
     </>
