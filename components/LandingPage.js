@@ -43,7 +43,7 @@ const StyledHeader = styled.h1`
   text-transform: lowercase;
   letter-spacing: 0.5rem;
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 50%;
   transform: translateX(-50%);
   color: rgba(255, 255, 255);
@@ -62,7 +62,7 @@ const StyledText = styled.div`
   width: 85%;
   letter-spacing: 0.05rem;
   line-height: 1.2rem;
-  font-size: 10pt;
+  font-size: 11pt;
   @media ${device.mobileL} {
     font-size: 18pt;
     letter-spacing: 0.2 rem;

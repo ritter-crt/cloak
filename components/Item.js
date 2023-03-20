@@ -1,34 +1,30 @@
-import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+import styled from "styled-components";
+
 import { StyledImage } from "@/components/styled";
 import Button from "@/components/Button";
 import Link from "next/link";
 
-export default function PatternDetailsPage() {
-  const [itemDetail, setItemDetail] = useState();
-
+export default function Item({ onDelete }) {
+const [itemDetail, setItemDetail] = useState();
   const router = useRouter();
   const { id } = router.query;
-  console.log(id);
 
-  async function handleRemoveItem(id) {
-    const response = await fetch(`/api/items/${id}`, {
-      method: "DELETE",
-    });
-    if (response.ok) {
-      await response.json();
-      console.log("routerID", id);
-    } else {
-      console.error(`Error: ${response.status}`);
-    }
+  const { data, isLoading } = useSWR(id ? `/api/items/${id}` : null);
+  if (!data) return;
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
   }
-
 
   useEffect(() => {
     if (id) {
+      console.log("Oi");
       const fetchSpecificItem = async () => {
         const response = await fetch(`/api/items/${id}`);
+
         const specificItem = await response.json();
         setItemDetail(specificItem);
         console.log(specificItem);
@@ -38,15 +34,8 @@ export default function PatternDetailsPage() {
   }, [id]);
 
   if (itemDetail) {
-    const {
-      title,
-      instructions,
-      image,
-      description,
-      difficulty,
-      price,
-      _id
-    } = itemDetail;
+    const { title, instructions, image, description, difficulty, price } =
+      itemDetail;
 
     // console.log("SPECIFIC: ", itemDetail);
 
@@ -57,15 +46,17 @@ export default function PatternDetailsPage() {
           src={image}
           width="300"
           height="300"
-          alt="some tile"
+          alt={title}
         ></StyledImage>
         <StyledText> {description}</StyledText>
         <StyledText> {difficulty}</StyledText>
         <StyledDescription> {instructions}</StyledDescription>
         <StyledPrice> {price}€</StyledPrice>
         <Button>buy</Button>
+        <Link href="/home">
           <Button>back</Button>
-          <button onClick={() => handleRemoveItem(_id)}>remove</button>
+        </Link>
+        <Button onRemoveItem={() => handleRemoveItem(_id)}>remove</Button>
       </Container>
     );
   }

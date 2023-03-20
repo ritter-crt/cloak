@@ -50,7 +50,6 @@ export const CardWrapper = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap:10px;
 `;
 
 export const StyledCard = styled.div`
@@ -61,8 +60,7 @@ export const StyledCard = styled.div`
 
 export const StyledImage = styled(Image)`
   object-fit: cover;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
 `;
 
 const StyledTitle = styled.p`
