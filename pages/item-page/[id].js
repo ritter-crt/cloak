@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { StyledImage } from "@/components/styled";
-import Button from "@/components/Button";
+import Button, { StyledButton } from "@/components/Button";
 import Link from "next/link";
 
 export default function PatternDetailsPage() {
@@ -11,6 +11,28 @@ export default function PatternDetailsPage() {
   const router = useRouter();
   const { id } = router.query;
   console.log(id);
+
+  async function updateCards(url, { arg }) {
+    const response = await fetch(url, {
+      method: "PUT",
+      body: JSON.stringify(arg),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      await response.json();
+    } else {
+      console.error(`Error: ${response.status}`);
+    }
+  }
+  async function handleEditItem(event) {
+    event.preventDefault();
+    const item = new FormData(event.target);
+    const itemData = Object.fromEntries(item);
+    await trigger(itemData);
+    push("/");
+  }
 
   async function handleRemoveItem(id) {
     const response = await fetch(`/api/items/${id}`, {
@@ -44,6 +66,7 @@ export default function PatternDetailsPage() {
     // console.log("SPECIFIC: ", itemDetail);
     return (
       <Container>
+      
         <StyledTitle>{title}</StyledTitle>
         <StyledImage
           src={image}
@@ -55,18 +78,18 @@ export default function PatternDetailsPage() {
         <StyledText> {difficulty}</StyledText>
         <StyledDescription> {instructions}</StyledDescription>
         <StyledPrice> {price}€</StyledPrice>
-        <Button>buy</Button>
-        <Link>
-          <Button>back</Button>
+        <StyledButton>buy</StyledButton>
+        <Link href ="/home">
+          <StyledButton>back</StyledButton>
         </Link>
-        <Button
+        <StyledButton
           onClick={() => {
             handleRemoveItem(id);
             router.push("/home");
           }}
         >
           remove
-        </Button>
+        </StyledButton>
       </Container>
     );
   }

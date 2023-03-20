@@ -1,8 +1,7 @@
 import { device } from "@/styles";
 import Link from "next/link";
 import styled from "styled-components";
-import Button from "./Button";
-
+import { StyledButton } from "./Button";
 
 export default function LoginForm() {
   return (
@@ -28,7 +27,7 @@ export default function LoginForm() {
         aria-label="Enter your name"
       />
       <Link href="/home">
-        <Button>get started</Button>
+        <StyledButton>get started</StyledButton>
       </Link>
     </EntryForm>
   );

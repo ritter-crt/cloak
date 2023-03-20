@@ -1,11 +1,8 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function Button({ children }) {
-  return <StyledButton>{children}</StyledButton>;
-}
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
   width: 50%;
   display: flex;
   flex-direction: row;
@@ -26,7 +23,3 @@ const StyledButton = styled.button`
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 `;
-
-export default function StyledLink({ children }) {
-  return <StyledButton>{children}</StyledButton>;
-}

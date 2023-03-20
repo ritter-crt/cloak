@@ -14,8 +14,8 @@ export default function NewCard({ items }) {
             <StyledImage
               onClick={() => router.push(`/item-page/${item._id}`)}
               src={item.image}
-              height={150}
-              width={150}
+              height="150"
+              width="150"
               alt={item.title}
             />
             <StyledTitle>{item.title}</StyledTitle>
