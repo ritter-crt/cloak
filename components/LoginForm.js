@@ -1,12 +1,10 @@
 import { device } from "@/styles";
+import Link from "next/link";
 import styled from "styled-components";
-import Button from "./Button";
-
+import { StyledButton } from "./Button";
 
 export default function LoginForm() {
-    
   return (
-
     <EntryForm>
       <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
       <StyledHeader>We invite you to join cloak.</StyledHeader>
@@ -28,7 +26,9 @@ export default function LoginForm() {
         name="password"
         aria-label="Enter your name"
       />
-      <Button>get started</Button>
+      <Link href="/home">
+        <StyledButton>get started</StyledButton>
+      </Link>
     </EntryForm>
   );
 }
@@ -39,32 +39,30 @@ const EntryForm = styled.form`
   padding: 2rem 3rem 5rem 3rem;
   @media ${device.mobileL} {
     width: 50%;
-    float:right;
-
+    float: right;
   }
 `;
 
 export const StyledHeader = styled.h2`
   font-size: 12pt;
-  margin-top:5px;
+  margin-top: 5px;
   @media ${device.mobileL} {
     font-size: 15pt;
   }
 `;
 
-
 const StyledParagraph = styled.p`
   font-size: 10pt;
   font-weight: 50;
   letter-spacing: 0.05rem;
-  margin:0px;
+  margin: 0px;
   text-transform: uppercase;
   @media ${device.mobileL} {
-    font-size:13pt;
+    font-size: 13pt;
   }
 `;
 const StyledLabel = styled.label`
-  margin-top:20px;
+  margin-top: 20px;
   padding-bottom: 10px;
   margin-top: 5px;
   font-size: 9pt;

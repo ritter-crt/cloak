@@ -1,24 +1,21 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function Button({ children }) {
-  return <StyledLink href="/home">{children}</StyledLink>;
-}
 
-const StyledLink = styled(Link)`
+export const StyledButton = styled.button`
   width: 50%;
   display: flex;
   flex-direction: row;
   color: white;
   margin: 2px;
   align-items: flex-end;
-  justify-content: center; 
-  margin-top:20px;
+  justify-content: center;
+  margin-top: 20px;
   margin-left: auto;
-  padding: 10px; 
-  background-color: black; 
+  padding: 10px;
+  background-color: black;
   border-radius: 40px;
-  text-decoration: none;
+  border: none;
   transition-delay: 0.3s;
   &:hover {
     background-color: white;

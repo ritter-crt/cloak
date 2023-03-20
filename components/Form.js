@@ -79,5 +79,5 @@ const EntryForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0rem 3rem 5rem 3rem;
+  padding: 10rem 3rem 5rem 3rem;
 `;

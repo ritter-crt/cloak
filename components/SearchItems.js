@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardWrapper, StyledCard, StyledImage } from "./NewCard";
+import { CardWrapper, StyledCard, StyledImage } from "./NewAdd";
 import Searchbar from "./Searchbar";
 import { useRouter } from "next/router";
 
@@ -20,11 +20,13 @@ export default function SearchItems({ items }) {
         }}
       ></Searchbar>
       <CardWrapper>
-        {filteredItems.length !== 0 ? (
+        {filteredItems.length === 0 ? (
+          <div>No items found</div>
+        ) : (
           filteredItems.map((item) => (
             <StyledCard key={item._id}>
               <div>{item.title}</div>
-              <div>{item.price}€</div>
+              <div>{item.price} €</div>
               <div>{item.difficulty}</div>
               <div>{item.category}</div>
               <StyledImage
@@ -36,28 +38,8 @@ export default function SearchItems({ items }) {
               />
             </StyledCard>
           ))
-        ) : (
-          <div> We are sorry! No items found!</div>
         )}
       </CardWrapper>
     </>
   );
-}
-
-export async function getServerSideProps() {
-  await dbConnect();
-
-  try {
-    const items = await Item.find();
-    // console.log(items);
-    return {
-      props: {
-        items: JSON.parse(JSON.stringify(items)),
-      }, // will be passed to the page component as props
-    };
-  } catch (error) {
-    return {
-      notFound: true,
-    };
-  }
 }

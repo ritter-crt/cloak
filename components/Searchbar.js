@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import Card from "./NewCard";
+import Card from "./NewAdd";
 import { useState } from "react";
 
 export default function Searchbar({ onSearch }) {
-  const [searchedQuery, setSearchQuery] = useState("");
+  const [searchedQuery, setSearchQuery] = useState([]);
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function Searchbar({ onSearch }) {
 }
 
 const StyledBox = styled.div`
-  margin-top:50px;
+  margin-top: 50px;
 `;
 
 const StyledInput = styled.input`
