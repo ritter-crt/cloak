@@ -1,6 +1,5 @@
-import { device } from "@/styles";
+import { device, changeOpacity} from "@/styles";
 import styled from "styled-components";
-import { changeOpacity } from "./Animation";
 
 import Image from "next/image";
 
@@ -14,7 +13,6 @@ export default function Collage() {
       <StyledText>
         CLOAK is a platform dedicated to exchange, sell and get sewing patterns.
       </StyledText>
-
       <ImageWrapperOne
         src={TailorWorking}
         placeholder="blur"
@@ -94,19 +92,17 @@ const ImageWrapperThree = styled(Image)`
 
 export const StyledText = styled.div`
   width: 40%;
-  bottom: 44%;
+  bottom: 46%;
   position: absolute;
   right: 3%;
   padding: 33px;
-  letter-spacing: 0.05rem;
   line-height: 1.2rem;
-  font-size: 11pt;
+  font-size: 10pt;
   color: black;
   @media ${device.mobileL} {
     width: 40%;
     bottom: 34%;
-    font-size: 20pt;
-    letter-spacing: 0.2 rem;
+    font-size: 18pt;
     line-height: 2rem;
     padding: 2px;
   }

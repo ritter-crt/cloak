@@ -6,8 +6,9 @@ import Button from "./Button";
 export default function LoginForm() {
     
   return (
+
     <EntryForm>
-      <StyledParagraph>calling all sewing lovers</StyledParagraph>
+      <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
       <StyledHeader>We invite you to join cloak.</StyledHeader>
       <StyledLabel htmlFor="email" name="email" id="email">
         email
@@ -35,8 +36,7 @@ export default function LoginForm() {
 const EntryForm = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 0rem 3rem 5rem 3rem;
+  padding: 2rem 3rem 5rem 3rem;
   @media ${device.mobileL} {
     width: 50%;
     float:right;
@@ -45,35 +45,26 @@ const EntryForm = styled.form`
 `;
 
 export const StyledHeader = styled.h2`
-  margin-top: 10px;
-  margin-bottom: 10px;
-  letter-spacing: 0.05rem;
-  line-height: 1.2rem;
-  font-size: 14pt;
+  font-size: 12pt;
+  margin-top:5px;
   @media ${device.mobileL} {
     font-size: 15pt;
-    letter-spacing: 0.2 rem;
-    line-height: 2rem;
-    padding: 0px;
   }
 `;
 
 
 const StyledParagraph = styled.p`
+  font-size: 10pt;
+  font-weight: 50;
   letter-spacing: 0.05rem;
-  line-height: 1.2rem;
-  font-size: 11pt;
+  margin:0px;
   text-transform: uppercase;
   @media ${device.mobileL} {
     font-size:13pt;
-    letter-spacing: 0.2 rem;
-    line-height: 2rem;
-    padding: 0px;
-    padding-top: 4rem;
   }
 `;
 const StyledLabel = styled.label`
-  padding-top: 8px;
+  margin-top:20px;
   padding-bottom: 10px;
   margin-top: 5px;
   font-size: 9pt;

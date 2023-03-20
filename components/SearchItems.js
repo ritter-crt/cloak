@@ -1,25 +1,27 @@
 import { useState } from "react";
-import { CardWrapper, StyledCard, StyledImage } from "./Card";
+import { CardWrapper, StyledCard, StyledImage } from "./NewCard";
 import Searchbar from "./Searchbar";
 import { useRouter } from "next/router";
 
-export default function Search({ items }) {
-  const [filteredItems, setFilteredItems]= useState([])
+export default function SearchItems({ items }) {
+  const [filteredItems, setFilteredItems] = useState([]);
   const keys = ["title", "category", "difficulty"];
   const router = useRouter();
   return (
     <>
-      <Searchbar items={items} onSearch={(value) => 
-      {
-        setFilteredItems(items.filter((item) =>
-      keys.some((key) => item[key].toLowerCase().includes(value))
-    ))
-      }
-
-      }></Searchbar>
+      <Searchbar
+        items={items}
+        onSearch={(value) => {
+          setFilteredItems(
+            items.filter((item) =>
+              keys.some((key) => item[key].toLowerCase().includes(value))
+            )
+          );
+        }}
+      ></Searchbar>
       <CardWrapper>
         {filteredItems.length === 0 ? (
-          <div>We are very sorry! No items found</div>
+          <div></div>
         ) : (
           filteredItems.map((item) => (
             <StyledCard key={item._id}>
@@ -28,7 +30,7 @@ export default function Search({ items }) {
               <div>{item.difficulty}</div>
               <div>{item.category}</div>
               <StyledImage
-              onClick={()=> router.push(`/item-page/${item._id}`)}
+                onClick={() => router.push(`/item-page/${item._id}`)}
                 src={item.image}
                 height={100}
                 width={100}

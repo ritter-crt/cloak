@@ -1,13 +1,14 @@
-import Card from "@/components/Card";
+import Card from "@/components/NewCard";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
+import Navigation from "@/components/Navigation";
+import NewCard from "@/components/NewCard";
 
-export default function HomePage({ items }) {
-
+export default function Home({ items }) {
   return (
     <>
-      <h1>Hello home</h1>
-      <Card items={items}></Card>
+      <NewCard items={items}></NewCard>
+      <Navigation></Navigation>
     </>
   );
 }

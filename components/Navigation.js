@@ -1,14 +1,30 @@
-import Link from "next/link";
+import HomeFilled  from "@/src/assets/icons/home_filled.png";
+import ProfileFilled from "@/src/assets/icons/profile_filled.png";
+import AddFilled from "@/src/assets/icons/add_filled.png";
+import SearchFilled from "@/src/assets/icons/search.png";
 import styled from "styled-components";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Navigation() {
   return (
     <>
       <NavWrapper>
-      <StyledLink href="/home">home</StyledLink>
-      <StyledLink href="/search">search</StyledLink>
-      <StyledLink href="/form">add</StyledLink>
-      <StyledLink href="/profile">profile</StyledLink>
+        <StyledLink href="/home">
+          <Image src={HomeFilled} width="30" height="30" alt="home" />
+        </StyledLink>
+
+        <StyledLink href="/search">
+          <Image src={SearchFilled} width="30" height="30" alt="search" />
+        </StyledLink>
+
+        <StyledLink href="/add">
+          <Image src={AddFilled} width="30" height="30" alt="add pattern" />
+        </StyledLink>
+
+        <StyledLink href="/profile">
+          <Image src={ProfileFilled} width="30" height="30" alt="home" />
+        </StyledLink>
       </NavWrapper>
     </>
   );
@@ -21,18 +37,12 @@ const NavWrapper = styled.nav`
   align-items: baseline;
   position: fixed;
   background-color: white;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
   width: 100%;
-  text-decoration: none;
+  box-shadow: 0px -5px 5px -6px rgba(0,0,0,0.29)
+
 `;
 
-
 const StyledLink = styled(Link)`
-  list-style-type: none;
-  text-decoration: none;
-  text-transform: lowercase;
-  color: black;
-  padding:1rem;
+  padding: 1rem;
+  opacity: 50%;
 `;

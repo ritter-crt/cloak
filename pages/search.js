@@ -1,24 +1,20 @@
-import FilterFeat from "@/components/Filter";
-import Search from "@/components/Search";
 import dbConnect from "@/db/connect";
 import Item from "@/db/models/Item";
 import styled from "styled-components";
 
-export default function SearchPage({ items }) {
+import SearchItems from "@/components/SearchItems";
+import Navigation from "@/components/Navigation";
+import Filter from "@/components/Filter";
+
+export default function Search({ items }) {
   return (
     <>
-      <h3>Not styled, but search is working</h3>
-      <Search items={items}></Search>
-      {/* <SearchWrapper>
-      <FilterFeat></FilterFeat>
-      </SearchWrapper> */}
+      <SearchItems items={items}></SearchItems>
+      <Filter></Filter>
+      <Navigation/>
     </>
   );
 }
-
-// onSearch / onFilter
-// Itemlist
-// globalState
 
 export async function getServerSideProps() {
   await dbConnect();
@@ -37,9 +33,3 @@ export async function getServerSideProps() {
     };
   }
 }
-
-// const SearchWrapper = styled.div`
-//   background-color: pink;
-//   bottom: 0;
-//   padding: 90px;
-// `;

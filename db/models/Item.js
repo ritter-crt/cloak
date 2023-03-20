@@ -2,12 +2,13 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const itemSchema = new Schema({
-  title: { type: String, required: true },
-  pattern: { type: String, required: true },
   image: { type: String, required: true },
+  title: { type: String, required: true },
   category: { type: String, required: true },
   description: { type: String, required: true },
   difficulty: { type: String, required: true },
+  pattern: { type: String, required: true },
+  instructions: { type: String, required: true },
   price: { type: Number, required: true },
 });
 
