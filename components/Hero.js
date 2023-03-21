@@ -21,7 +21,7 @@ export default function Hero() {
         {" "}
         Create your own garment. Comfortable, functional, <br /> and suitable.{" "}
         <br />
-        Fashion that fits you.
+        Fashion that fits you
       </StyledText>
     </>
   );
