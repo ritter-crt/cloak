@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Card from "./NewAdd";
+import Card from "./ItemList";
 import { useState } from "react";
 
 export default function Searchbar({ onSearch }) {
