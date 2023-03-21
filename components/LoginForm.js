@@ -1,34 +1,53 @@
-import { device } from "@/styles";
-import Link from "next/link";
-import styled from "styled-components";
-import { StyledButton } from "./Button";
+import { device } from '@/styles';
+import Link from 'next/link';
+import styled from 'styled-components';
+import { StyledButton } from './Button';
+import Login from './Login';
+
 
 export default function LoginForm() {
   return (
     <EntryForm>
       <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
       <StyledHeader>We invite you to join cloak.</StyledHeader>
-      <StyledLabel htmlFor="email" name="email" id="email">
+      <StyledLabel htmlFor='name' 
+      name='name' 
+      id='name'>
+        name
+      </StyledLabel>
+      <StyledInput
+        type='name'
+        name='name'
+        autoComplete='off'
+        aria-label='Enter text'
+        placeholder='choose a username'
+      />
+      <StyledLabel htmlFor='email' name='email' id='email'>
         email
       </StyledLabel>
       <StyledInput
-        type="email"
-        name="email"
-        autoComplete="off"
-        aria-label="Enter text"
-        placeholder="this is not working (yet)"
+        type='email'
+        name='email'
+        autoComplete='off'
+        aria-label='Enter your email'
+        placeholder='jane@doe.com'
       />
-      <StyledLabel htmlFor="password" name="password" id="password">
+      <StyledLabel htmlFor='password' name='password' id='password'>
         password
       </StyledLabel>
       <StyledInput
-        type="password"
-        name="password"
-        aria-label="Enter your name"
+        type='password'
+        name='password'
+        aria-label='Enter your password'
+        placeholder='*********'
       />
-      <Link href="/home">
-        <StyledButton>get started</StyledButton>
+      <Link href='/home'>
+        <Login>sign up</Login>
       </Link>
+
+      <StyledLabel>Already Signed Up?</StyledLabel>
+      <StyledButton>login</StyledButton>
+    
     </EntryForm>
   );
 }

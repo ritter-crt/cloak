@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import GlobalStyle from "../styles";
 
 import { SWRConfig } from "swr";
-
+import { SessionProvider } from "next-auth/react";
 
 const fetcher = (url) => fetch(url).then((r) => r.json());
 
@@ -15,9 +15,23 @@ export default function App({
       <Layout>
         <GlobalStyle />
         <SWRConfig value={{ fetcher }}>
-          <Component {...pageProps} />
+          <SessionProvider session={pageProps.session}> 
+            <Component {...pageProps} />
+          </SessionProvider>
         </SWRConfig>
       </Layout>
     </>
   );
 }
+
+// const { data: session } = useSession()
+// if(session) {
+//   return <>
+//     Signed in as {session.user.email} <br/>
+//     <button onClick={() => signOut()}>Sign out</button>
+//   </>
+// }
+// return <>
+//   Not signed in <br/>
+//   <button onClick={() => signIn()}>Sign in</button>
+// </>
