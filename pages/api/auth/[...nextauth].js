@@ -1,4 +1,3 @@
-import NextAuth from "next-auth";
 import CredentialProvider from "next-auth/provides/credentials"
 import GoogleProvider from "next-auth/providers/google";
 
@@ -7,7 +6,7 @@ import User from "@/db/models/User";
 
 import { verifyPassword } from "@/db/models/utils";
 
-export default NextAuth = {
+export const authOptions = {
   session: {
     jwt: true,
   },
@@ -50,4 +49,5 @@ export default NextAuth = {
   secret: process.env.JWT_SECRET,
 };
 
+export default NextAuth(authOptions)
 
