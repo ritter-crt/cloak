@@ -1,3 +1,4 @@
+import { refreshPage } from "@/utils";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import useSWR from "swr";
@@ -6,14 +7,22 @@ export default function Form() {
   const router = useRouter();
   const items = useSWR("/api/items/create");
 
+function refreshPage() {
+    const fetchData = async () => {
+      const data = await fetch("/api/items");
+      const items = await data.json();
+      setItemDetail(items);
+    };
+    fetchData().catch(console.error);
+  }
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newItem = Object.fromEntries(formData);
     newItem.createdAt = new Date().getTime();
     // console.log("newItem_____", newItem);
-
-    const response = await fetch("/api/items/create", {
+    const response = await fetch("/api/items", {
       method: "POST",
       body: JSON.stringify(newItem),
       headers: {
@@ -28,6 +37,7 @@ export default function Form() {
     } else {
       console.error(`Error: ${response.status}`);
     }
+    refreshPage()
   }
 
   return (

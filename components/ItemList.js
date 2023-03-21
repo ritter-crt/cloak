@@ -9,7 +9,7 @@ export default function ItemList({ items }) {
     <ContentWrapper>
       <StyledHeader>newly added</StyledHeader>
       <CardWrapper>
-        {items.sort((a,b )=> a.createdAt - b.createdAt).slice(0,10).map((item) => (
+        {items.sort((a,b )=> b.createdAt - a.createdAt).slice(0,10).map((item) => (
           <StyledCard key={item._id}>
             <StyledImage
               onClick={() => router.push(`/item-page/${item._id}`)}
