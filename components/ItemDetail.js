@@ -20,7 +20,7 @@ export default function ItemDetail({
   const router = useRouter();
 
   const [isEditing, setIsEditing] = useState(false);
-  const [inputField, setInputField] = useState();
+  const [, setInputField] = useState();
 
   const handleChange = (event) => {
     const value = event.target.value;
