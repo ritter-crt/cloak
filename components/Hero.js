@@ -4,7 +4,7 @@ import { changeOpacity, device } from "@/styles";
 import styled from "styled-components";
 
 
-export default function LandingPage() {
+export default function Hero() {
   return (
     <>
       <StyledWrapper>
@@ -21,7 +21,7 @@ export default function LandingPage() {
         {" "}
         Create your own garment. Comfortable, functional, <br /> and suitable.{" "}
         <br />
-        Fashion that fits you.
+        Fashion that fits you
       </StyledText>
     </>
   );

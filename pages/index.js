@@ -1,11 +1,11 @@
 import ImageBoard from "@/components/Collage";
-import LandingPage from "@/components/LandingPage";
+import Hero from "@/components/Hero";
 import LoginForm from "@/components/LoginForm";
 
 export default function Start() {
   return (
     <>
-      <LandingPage />
+      <Hero />
       <ImageBoard />
       <LoginForm>get started</LoginForm>
     </>

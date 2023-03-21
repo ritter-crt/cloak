@@ -2,14 +2,14 @@ import Image from "next/image";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-export default function NewAdd({ items }) {
+export default function ItemList({ items }) {
   const router = useRouter();
 
   return (
     <ContentWrapper>
       <StyledHeader>newly added</StyledHeader>
       <CardWrapper>
-        {items.sort((a,b )=> a.createdAt - b.createdAt).slice(0,10).map((item) => (
+        {items.sort((a,b )=> b.createdAt - a.createdAt).slice(0,10).map((item) => (
           <StyledCard key={item._id}>
             <StyledImage
               onClick={() => router.push(`/item-page/${item._id}`)}

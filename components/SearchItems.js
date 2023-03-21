@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardWrapper, StyledCard, StyledImage } from "./NewAdd";
+import { CardWrapper, StyledCard, StyledImage } from "./ItemList";
 import Searchbar from "./Searchbar";
 import { useRouter } from "next/router";
 

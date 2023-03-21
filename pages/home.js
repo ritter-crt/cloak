@@ -1,13 +1,13 @@
-import Card from "@/components/NewAdd";
+import Card from "@/components/ItemList";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
 import Navigation from "@/components/Navigation";
-import NewAdd from "@/components/NewAdd";
+import ItemList from "@/components/ItemList";
 
 export default function Home({ items }) {
   return (
     <>
-      <NewAdd items={items}></NewAdd>
+      <ItemList items={items}></ItemList>
       <Navigation></Navigation>
     </>
   );
