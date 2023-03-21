@@ -15,9 +15,7 @@ export default async function handler(request, response) {
       console.log(request.body)
       const itemData = request.body;
       const item = new Item(itemData);
-
-      console.log(itemData)
-      console.log("Hello Server!!!!!!")
+      // console.log(itemData)
 
       await item.save();
 

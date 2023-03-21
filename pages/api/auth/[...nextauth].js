@@ -1,16 +1,19 @@
+import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+
 import dbConnect from "@/db/connect";
 import User from "@/db/models/User";
-import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import GoogleProvider from "next-auth/providers/google";
+
+import { verifyPassword } from "@/db/models/utils";
 
 export const NextAuthOptions = {
   session: {
-    strategy: "jwt",
+    jwt: true,
   },
 
   providers: [
-    CredentialsProvider({
+    Credentials({
       type: "credentials",
       credentials: {
         name: { label: "name", type: "text" },
@@ -32,7 +35,7 @@ export const NextAuthOptions = {
         );
 
         if (!isValid) {
-          throw new Error("Incorrect password");
+          throw new Error('Could not log you in!');
         }
 
         return { name: user.name, email: user.email };
