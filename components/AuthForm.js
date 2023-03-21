@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 
 async function createUser(name, email, password) {

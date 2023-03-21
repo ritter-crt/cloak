@@ -22,7 +22,7 @@ function refreshPage() {
     const newItem = Object.fromEntries(formData);
     newItem.createdAt = new Date().getTime();
     // console.log("newItem_____", newItem);
-    const response = await fetch("/api/items", {
+    const response = await fetch("/api/items/create", {
       method: "POST",
       body: JSON.stringify(newItem),
       headers: {
