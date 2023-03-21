@@ -4,14 +4,14 @@ import useSWR from "swr";
 
 export default function Form() {
   const router = useRouter();
-  const items = useSWR ("/api/items/create");
+  const items = useSWR("/api/items/create");
 
-  async function handleSubmit(event){
+  async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
-
     const newItem = Object.fromEntries(formData);
-    console.log("newItem_____", newItem);
+    newItem.createdAt = new Date().getTime();
+    // console.log("newItem_____", newItem);
 
     const response = await fetch("/api/items/create", {
       method: "POST",
@@ -24,7 +24,6 @@ export default function Form() {
     if (response.ok) {
       await response.json();
       items.mutate();
-
       event.target.reset();
     } else {
       console.error(`Error: ${response.status}`);
@@ -44,13 +43,17 @@ export default function Form() {
         <input id="title" name="title" placeholder="e.g long trouses"></input>
 
         <label htmlFor="description">description</label>
-        <input id="description" name="description" placeholder="e.g occasion, season"></input>
+        <input
+          id="description"
+          name="description"
+          placeholder="e.g occasion, season"
+        ></input>
 
         <label htmlFor="category">category</label>
         <select name="category" id="category">
           <option value="tops">tops</option>
           <option value="bottoms">bottoms</option>
-          <option value="onesie">onesie</option>
+          <option value="onesies">onesies</option>
           <option value="accessories">accessories</option>
         </select>
 
@@ -64,12 +67,17 @@ export default function Form() {
         </select>
 
         <label htmlFor="instructions">instructions</label>
-        <textarea id="instructions" name="instructions" rows="5" placeholder="e.g preferred fabric, what you need"></textarea>
+        <textarea
+          id="instructions"
+          name="instructions"
+          rows="5"
+          placeholder="e.g preferred fabric, what you need"
+        ></textarea>
 
         <label htmlFor="price">price</label>
         <input id="price" name="price" type="number"></input>
 
-        <button onClick={() => router.push("/profile")}>add</button>
+        <button onClick={() => router.push("/home")}>add</button>
       </EntryForm>
     </>
   );

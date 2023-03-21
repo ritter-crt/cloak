@@ -10,6 +10,7 @@ const itemSchema = new Schema({
   pattern: { type: String, required: true },
   instructions: { type: String, required: true },
   price: { type: Number, required: true },
+  createdAt: { type: String, required: true },
 });
 
 const Item = mongoose.models.Items || mongoose.model("Items", itemSchema);

@@ -11,19 +11,19 @@ export default function Navigation() {
     <>
       <NavWrapper>
         <StyledLink href="/home">
-          <Image src={HomeFilled} width="30" height="30" alt="home" />
+          <Image src={HomeFilled} width="25" height="25" alt="home" />
         </StyledLink>
 
         <StyledLink href="/search">
-          <Image src={SearchFilled} width="30" height="30" alt="search" />
+          <Image src={SearchFilled} width="25" height="25" alt="search" />
         </StyledLink>
 
         <StyledLink href="/add">
-          <Image src={AddFilled} width="30" height="30" alt="add pattern" />
+          <Image src={AddFilled} width="25" height="25" alt="add pattern" />
         </StyledLink>
 
         <StyledLink href="/profile">
-          <Image src={ProfileFilled} width="30" height="30" alt="home" />
+          <Image src={ProfileFilled} width="25" height="25" alt="home" />
         </StyledLink>
       </NavWrapper>
     </>
@@ -43,6 +43,6 @@ const NavWrapper = styled.nav`
 `;
 
 const StyledLink = styled(Link)`
-  padding: 1rem;
+  padding: 10px;
   opacity: 50%;
 `;

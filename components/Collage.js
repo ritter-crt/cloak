@@ -97,7 +97,7 @@ export const StyledText = styled.div`
   right: 3%;
   padding: 33px;
   line-height: 1.2rem;
-  font-size: 10pt;
+  font-size: 11pt;
   color: black;
   @media ${device.mobileL} {
     width: 40%;

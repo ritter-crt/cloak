@@ -21,7 +21,7 @@ export default function SearchItems({ items }) {
       ></Searchbar>
       <CardWrapper>
         {filteredItems.length === 0 ? (
-          <div>No ie</div>
+          <div>No items found</div>
         ) : (
           filteredItems.map((item) => (
             <StyledCard key={item._id}>
