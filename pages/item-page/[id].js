@@ -1,11 +1,8 @@
-import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { StyledImage } from "@/components/styled";
-import Button, { StyledButton } from "@/components/Button";
 import useSWRMutation from "swr/mutation";
-import Link from "next/link";
-import ItemDetail from "@/components/ItemDetail";
+
+import Item from "@/components/Item";
 
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
@@ -72,7 +69,7 @@ export default function PatternDetailsPage() {
   if (isMutating) return <p>Submitting your changes</p>;
   return (
     <>
-      <ItemDetail
+      <Item
       image={image}
       title={title}
       instructions={instructions}

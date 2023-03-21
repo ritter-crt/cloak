@@ -8,7 +8,7 @@ import Login from './Login';
 export default function LoginForm() {
   return (
     <EntryForm>
-      <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
+      {/* <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
       <StyledHeader>We invite you to join cloak.</StyledHeader>
       <StyledLabel htmlFor='name' 
       name='name' 
@@ -40,7 +40,7 @@ export default function LoginForm() {
         name='password'
         aria-label='Enter your password'
         placeholder='*********'
-      />
+      /> */}
       <Link href='/home'>
         <Login>sign up</Login>
       </Link>

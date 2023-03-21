@@ -4,7 +4,7 @@ import { changeOpacity, device } from "@/styles";
 import styled from "styled-components";
 
 
-export default function LandingPage() {
+export default function Hero() {
   return (
     <>
       <StyledWrapper>

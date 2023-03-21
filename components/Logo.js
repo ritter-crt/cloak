@@ -7,8 +7,8 @@ export default function Logo() {
   const router = useRouter();
   return (
     <LogoWrapper>
-      {/* <StyledLogo onClick={() => router.push("/")}>cloak</StyledLogo>
-      <StyledMenu src={Menu} width={20} height={20} alt ="show menu"></StyledMenu> */}
+      <StyledLogo onClick={() => router.push("/")}>cloak</StyledLogo>
+      <StyledMenu src={Menu} width={20} height={20} alt ="show menu"></StyledMenu>
     </LogoWrapper>
   );
 }

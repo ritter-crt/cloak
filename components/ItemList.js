@@ -2,7 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import { useRouter } from "next/router";
 
-export default function NewAdd({ items }) {
+export default function ItemList({ items }) {
   const router = useRouter();
 
   return (
