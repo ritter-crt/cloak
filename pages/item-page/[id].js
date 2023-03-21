@@ -66,7 +66,7 @@ export default function PatternDetailsPage() {
     }
   }, [id]);
   if (itemDetail) {
-    const { title, instructions, image, description, difficulty, price, _id} =
+    const { title, instructions, image, category, description, difficulty, price, _id} =
       itemDetail;
 
   if (isMutating) return <p>Submitting your changes</p>;
@@ -79,6 +79,7 @@ export default function PatternDetailsPage() {
       description={description}
       difficulty={difficulty}
       price={price}
+      category={category}
       id={_id}
       onDeleteCard={handleDeleteCard} onUpdateCard={updateCards}
        />
