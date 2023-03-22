@@ -13,9 +13,6 @@ export default function Home({ items }) {
   );
 }
 
-// getServerSideProps need to be on the same level as component!!! Outside of the function and inside the component
-// use fetch is not needed in this case
-
 export async function getServerSideProps() {
   await dbConnect();
 

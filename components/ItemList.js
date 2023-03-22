@@ -13,7 +13,7 @@ export default function ItemList({ items }) {
           <StyledCard key={item._id}>
             <StyledImage
               onClick={() => router.push(`/item-page/${item._id}`)}
-              src={item.image}
+              src={item.images}
               height="150"
               width="150"
               alt={item.description}

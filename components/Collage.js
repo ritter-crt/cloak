@@ -29,13 +29,13 @@ export default function Collage() {
         alt="working Hand"
       ></ImageWrapperTwo>
 
-      <ImageWrapperThree
+      {/* <ImageWrapperThree
         src={Dressmaker}
         placeholder="blur"
         height="250"
         width="320"
         alt="working Hand"
-      ></ImageWrapperThree>
+      ></ImageWrapperThree> */}
     </CollageWrapper>
   );
 }

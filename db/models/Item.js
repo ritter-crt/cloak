@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const itemSchema = new Schema({
-  image: { type: String, required: true },
+  images: Array,
   title: { type: String, required: true },
   category: { type: String, required: true },
   description: { type: String, required: true },

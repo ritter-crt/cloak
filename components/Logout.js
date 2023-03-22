@@ -10,15 +10,19 @@ export default function Logout() {
     return (
       <>
         <p>Welcome, {session.user.name}</p>
-        <Link href="/">
-          <StyledButton onClick={() => {signOut(); router.push("/home")}}>Sign out</StyledButton>
 
+        <Link
+          href="/"
+          onClick={(e) => {
+            e.preventDefault()
+            signOut();
+          }}
+        >
+          Sign out
         </Link>
       </>
     );
   } else {
-    return (
-     null
-    );
+    return null;
   }
 }
