@@ -1,3 +1,4 @@
+import { refreshPage } from "@/utils";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
@@ -21,32 +22,16 @@ export default function Form() {
     fetchData().catch(console.error);
   }
 
-  function handleImageChange(e) {
+  function handleImageChange(changeEvent) {
+    const reader = new FileReader();
 
-    // const reader = new FileReader();
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
 
-
-    // 🚨 This only works for one file
-
-    // reader.onload = function (onLoadEvent) {
-    //   setImageSrc(onLoadEvent.target.result);
-    //   setUploadData(undefined);
-    // };
-
-    // reader.readAsDataURL(changeEvent.target.files[0]);
-    // console.log(changeEvent.target.files);
-
-    // console.log(e.target.files)
-    for (const file of e.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        setImageSrc((imgs) => [...imgs, reader.result]);
-      };
-      reader.onerror = () => {
-        console.log(reader.error);
-      };
-    }
+    reader.readAsDataURL(changeEvent.target.files[0]);
+    console.log(changeEvent.target.files);
   }
 
   async function handleImageSubmit(event) {
@@ -57,6 +42,7 @@ export default function Form() {
     const formData = new FormData();
 
     const imageArray =[];
+
     for (let i = 0; i < fileInput.length; i++) {
       let file = fileInput[i];
       formData.append("file", file);
@@ -73,7 +59,6 @@ export default function Form() {
       setUploadData(data);
       imageArray.push(data.secure_url)
     }
-    console.log(imageArray)
     setImageSrc(imageArray);
   }
 
@@ -111,6 +96,9 @@ export default function Form() {
         onImageSubmit={handleImageSubmit}
       ></ImageUpload>
       <EntryForm onSubmit={handleSubmit}>
+        {/* <label htmlFor="image">upload image</label>
+        <input id="image" name="image"></input> */}
+
         <label htmlFor="pattern">upload pdf</label>
         <input id="pattern" name="pattern"></input>
 
@@ -152,8 +140,8 @@ export default function Form() {
         <label htmlFor="price">price</label>
         <input id="price" name="price" type="number"></input>
 
-        <button onClick={() => router.push("/home")}>add</button>
-  
+        {/* <button onClick={() => router.push("/home")}>add</button> */}
+        <button>add</button>
       </EntryForm>
     </>
   );
