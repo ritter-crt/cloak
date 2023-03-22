@@ -6,18 +6,21 @@ import { useRouter } from "next/router";
 export default function SearchItems({ items }) {
   const [filteredItems, setFilteredItems] = useState([]);
   const keys = ["title", "category", "difficulty"];
+
   const router = useRouter();
   return (
     <>
       <Searchbar
         items={items}
-        onSearch={(value) => {
+        onSearch={(value) => 
+        {
           setFilteredItems(
             items.filter((item) =>
               keys.some((key) => item[key].toLowerCase().includes(value))
             )
           );
-        }}
+        }
+        } 
       ></Searchbar>
       <CardWrapper>
         {filteredItems.length === 0 ? (

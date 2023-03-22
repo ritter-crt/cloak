@@ -1,7 +1,13 @@
-import Head from 'next/head'
+import Head from "next/head";
+import Image from "next/image";
 
-export default function ImageUpload({ uploadData, imageSrc, onImageChange, onImageSubmit}) {
-    console.log(imageSrc)
+export default function ImageUpload({
+  uploadData,
+  imageSrc,
+  onImageChange,
+  onImageSubmit,
+}) {
+  console.log("______________________________________________________________________", imageSrc);
 
   return (
     <div>
@@ -12,20 +18,16 @@ export default function ImageUpload({ uploadData, imageSrc, onImageChange, onIma
       </Head>
 
       <main>
-        <h1>
-          Image Uploader
-        </h1>
+        <h1>Image Uploader</h1>
 
-        <p>
-          Upload your image to Cloudinary!
-        </p>
+        <p>Upload your image to Cloudinary!</p>
 
         <form method="post" onChange={onImageChange} onSubmit={onImageSubmit}>
-          <p>
-            <input type="file" name="file" multiple />
-          </p>
+          <label htmlFor="images">
+            <input id="images" name="images" type="file"  multiple />
+          </label>
           {/* {imageSrc.map((link) => ( */}
-          <img src={imageSrc} width="500px" height="auto" />
+            <img src={imageSrc} width="500" height="auto" />
           {/* ))} */}
           {imageSrc && !uploadData && (
             <p>
@@ -33,11 +35,9 @@ export default function ImageUpload({ uploadData, imageSrc, onImageChange, onIma
             </p>
           )}
 
-          {uploadData && (
-            <p>uploaded</p>
-          )}
+          {uploadData && <p>uploaded</p>}
         </form>
       </main>
     </div>
-  )
+  );
 }

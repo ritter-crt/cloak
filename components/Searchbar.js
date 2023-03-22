@@ -42,7 +42,6 @@ const StyledInput = styled.input`
   &:hover {
     width: 90%;
     border: 1px solid rgb(230, 230, 250);
-    border-radius: 10px;
     box-shadow: rgb(230, 230, 250) 0.95px 0.95px 2.6px;
   }
 `;
