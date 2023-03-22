@@ -1,9 +1,8 @@
-import { device } from '@/styles';
-import Link from 'next/link';
-import styled from 'styled-components';
-import { StyledButton } from './Button';
-import Login from './Login';
-
+import { device } from "@/styles";
+import Link from "next/link";
+import styled from "styled-components";
+import { StyledButton } from "./Button";
+import Login from "./Logout";
 
 export default function LoginForm() {
   return (
@@ -41,13 +40,12 @@ export default function LoginForm() {
         aria-label='Enter your password'
         placeholder='*********'
       /> */}
-      <Link href='/home'>
+      <Link href="/home">
         <Login>sign up</Login>
       </Link>
 
       <StyledLabel>Already Signed Up?</StyledLabel>
       <StyledButton>login</StyledButton>
-    
     </EntryForm>
   );
 }

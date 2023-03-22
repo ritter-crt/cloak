@@ -1,19 +1,65 @@
 import { refreshPage } from "@/utils";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import styled from "styled-components";
 import useSWR from "swr";
+import ImageUpload from "./ImageUpload";
 
 export default function Form() {
+  const [imageSrc, setImageSrc] = useState();
+  const [uploadData, setUploadData] = useState();
+
+  // console.log("HELLOOOOOOOOOOOOO", imageSrc)
+
   const router = useRouter();
   const items = useSWR("/api/items/create");
 
-function refreshPage() {
+  function refreshPage() {
     const fetchData = async () => {
       const data = await fetch("/api/items");
       const items = await data.json();
-      setItemDetail(items);
     };
     fetchData().catch(console.error);
+  }
+
+  function handleImageChange(changeEvent) {
+    const reader = new FileReader();
+
+    reader.onload = function (onLoadEvent) {
+      setImageSrc(onLoadEvent.target.result);
+      setUploadData(undefined);
+    };
+
+    reader.readAsDataURL(changeEvent.target.files[0]);
+    console.log(changeEvent.target.files)
+  }
+
+  async function handleImageSubmit(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const fileInput = Array.from(form.elements).find(
+      ({ name }) => name === "file"
+    );
+
+    const formData = new FormData();
+
+    for (const file of fileInput.files) {
+      formData.append("file", file);
+    }
+
+    formData.append("upload_preset", "zez0acdp");
+
+    const data = await fetch(
+      "https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload",
+      {
+        method: "POST",
+        body: formData,
+      }
+    ).then((r) => r.json());
+    console.log(data.secure_url);
+    setImageSrc(data.secure_url);
+    setUploadData(data);
   }
 
   async function handleSubmit(event) {
@@ -21,7 +67,8 @@ function refreshPage() {
     const formData = new FormData(event.target);
     const newItem = Object.fromEntries(formData);
     newItem.createdAt = new Date().getTime();
-    // console.log("newItem_____", newItem);
+    newItem.image = imageSrc;
+    console.log("newItem______________________________________", newItem);
     const response = await fetch("/api/items/create", {
       method: "POST",
       body: JSON.stringify(newItem),
@@ -37,14 +84,22 @@ function refreshPage() {
     } else {
       console.error(`Error: ${response.status}`);
     }
-    refreshPage()
+    refreshPage();
   }
 
   return (
     <>
+      <ImageUpload
+        setUploadData={setUploadData}
+        uploadData={uploadData}
+        setImageSrc={setImageSrc}
+        imageSrc={imageSrc}
+        onImageChange={handleImageChange}
+        onImageSubmit={handleImageSubmit}
+      ></ImageUpload>
       <EntryForm onSubmit={handleSubmit}>
-        <label htmlFor="image">upload image</label>
-        <input id="image" name="image"></input>
+        {/* <label htmlFor="image">upload image</label>
+        <input id="image" name="image"></input> */}
 
         <label htmlFor="pattern">upload pdf</label>
         <input id="pattern" name="pattern"></input>
