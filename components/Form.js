@@ -6,7 +6,7 @@ import useSWR from "swr";
 import ImageUpload from "./ImageUpload";
 
 export default function Form() {
-  const [imageSrc, setImageSrc] = useState();
+  const [imageSrc, setImageSrc] = useState([]);
   const [uploadData, setUploadData] = useState();
 
   // console.log("HELLOOOOOOOOOOOOO", imageSrc)
@@ -31,35 +31,35 @@ export default function Form() {
     };
 
     reader.readAsDataURL(changeEvent.target.files[0]);
-    console.log(changeEvent.target.files)
+    console.log(changeEvent.target.files);
   }
 
   async function handleImageSubmit(event) {
     event.preventDefault();
 
-    const form = event.currentTarget;
-    const fileInput = Array.from(form.elements).find(
-      ({ name }) => name === "file"
-    );
+    const fileInput = document.querySelector("[type=file]").files;
 
     const formData = new FormData();
 
-    for (const file of fileInput.files) {
+    const imageArray =[];
+
+    for (let i = 0; i < fileInput.length; i++) {
+      let file = fileInput[i];
       formData.append("file", file);
+      formData.append("upload_preset", "zez0acdp");
+
+      const data = await fetch(
+        "https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      ).then((r) => r.json());
+      
+      setUploadData(data);
+      imageArray.push(data.secure_url)
     }
-
-    formData.append("upload_preset", "zez0acdp");
-
-    const data = await fetch(
-      "https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload",
-      {
-        method: "POST",
-        body: formData,
-      }
-    ).then((r) => r.json());
-    console.log(data.secure_url);
-    setImageSrc(data.secure_url);
-    setUploadData(data);
+    setImageSrc(imageArray);
   }
 
   async function handleSubmit(event) {
@@ -67,7 +67,7 @@ export default function Form() {
     const formData = new FormData(event.target);
     const newItem = Object.fromEntries(formData);
     newItem.createdAt = new Date().getTime();
-    newItem.image = imageSrc;
+    newItem.images = imageSrc;
     console.log("newItem______________________________________", newItem);
     const response = await fetch("/api/items/create", {
       method: "POST",
@@ -90,9 +90,7 @@ export default function Form() {
   return (
     <>
       <ImageUpload
-        setUploadData={setUploadData}
         uploadData={uploadData}
-        setImageSrc={setImageSrc}
         imageSrc={imageSrc}
         onImageChange={handleImageChange}
         onImageSubmit={handleImageSubmit}
@@ -142,7 +140,8 @@ export default function Form() {
         <label htmlFor="price">price</label>
         <input id="price" name="price" type="number"></input>
 
-        <button onClick={() => router.push("/home")}>add</button>
+        {/* <button onClick={() => router.push("/home")}>add</button> */}
+        <button>add</button>
       </EntryForm>
     </>
   );
