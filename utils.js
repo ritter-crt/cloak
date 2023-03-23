@@ -1,8 +1,4 @@
-export function refreshPage() {
-    const fetchData = async () => {
-      const data = await fetch(`/api/items/${id}`);
-      const items = await data.json();
-      setItemDetail(items);
-    };
-    fetchData().catch(console.error);
-  }
+import { v4 as uuid } from 'uuid';
+
+const unique_id = uuid();
+export const small_id = unique_id.slice(0,8)

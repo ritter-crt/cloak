@@ -4,6 +4,7 @@ import { useState } from "react";
 import { StyledImage } from "@/components/styled";
 import { StyledButton } from "@/components/Button";
 import Link from "next/link";
+import { small_id } from "@/utils";
 
 export default function Item({
   title,
@@ -16,8 +17,8 @@ export default function Item({
   id,
   onDeleteCard,
   onUpdateCard,
-  onRefreshPage
 }) {
+  console.log(images);
   const router = useRouter();
 
   const [isEditing, setIsEditing] = useState(false);
@@ -127,9 +128,9 @@ export default function Item({
       {!isEditing && (
         <>
           <StyledTitle>{title}</StyledTitle>
-          {images.map((image) => (
+          {images.map((image, small_id) => (
             <StyledImage
-              key={(id)}
+              key={small_id}
               src={image}
               width="300"
               height="300"

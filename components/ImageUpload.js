@@ -1,38 +1,24 @@
-import Head from 'next/head'
+import Image from 'next/image'
 
-export default function ImageUpload({ uploadData, imageSrc, onImageChange, onImageSubmit}) {
+export default function ImageUpload({ uploadData, imageSrc, onImageChange, onImageSubmit, title}) {
     console.log(imageSrc)
 
   return (
     <div>
-      <Head>
-        <title>Image Uploader</title>
-        <meta name="description" content="Upload your image to Cloudinary!" />
+      <h1>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+      </h1>
       <main>
-        <h1>
-          Image Uploader
-        </h1>
-
-        <p>
-          Upload your image to Cloudinary!
-        </p>
-
         <form method="post" onChange={onImageChange} onSubmit={onImageSubmit}>
-          <p>
             <input type="file" name="file" multiple />
-          </p>
-          {imageSrc.map((imageSrc) => (
-          <img src={imageSrc} width="500px" height="auto" />
+          {imageSrc.map((image, small_id) => (
+          <Image src={image} key={small_id} width="500" height="500" alt="an image is being displayed here" />
           ))}
           {imageSrc && !uploadData && (
             <p>
               <button>Upload Files</button>
             </p>
           )}
-
           {uploadData && (
             <p>uploaded</p>
           )}

@@ -1,4 +1,3 @@
-import { refreshPage } from "@/utils";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
