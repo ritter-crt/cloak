@@ -24,9 +24,9 @@ export default function ImageUpload({ uploadData, imageSrc, onImageChange, onIma
           <p>
             <input type="file" name="file" multiple />
           </p>
-          {/* {imageSrc.map((link) => ( */}
+          {imageSrc.map((imageSrc) => (
           <img src={imageSrc} width="500px" height="auto" />
-          {/* ))} */}
+          ))}
           {imageSrc && !uploadData && (
             <p>
               <button>Upload Files</button>

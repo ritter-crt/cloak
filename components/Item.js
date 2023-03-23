@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { StyledImage } from "@/components/styled";
-import Button, { StyledButton } from "@/components/Button";
+import { StyledButton } from "@/components/Button";
 import Link from "next/link";
 
 export default function Item({
   title,
   instructions,
-  image,
+  images,
   category,
   description,
   difficulty,
@@ -16,6 +16,7 @@ export default function Item({
   id,
   onDeleteCard,
   onUpdateCard,
+  onRefreshPage
 }) {
   const router = useRouter();
 
@@ -75,8 +76,12 @@ export default function Item({
           ></input>
 
           <label htmlFor="category">category</label>
-          <select name="category" id="category" defaultValue={category}
-            onSelect={handleChange}>
+          <select
+            name="category"
+            id="category"
+            defaultValue={category}
+            onSelect={handleChange}
+          >
             <option value="tops">tops</option>
             <option value="bottoms">bottoms</option>
             <option value="onesie">onesie</option>
@@ -84,14 +89,17 @@ export default function Item({
           </select>
 
           <label htmlFor="difficulty">difficulty</label>
-          <select name="difficulty" id="difficulty" defaultValue={difficulty}
-            onSelect={handleChange}>
+          <select
+            name="difficulty"
+            id="difficulty"
+            defaultValue={difficulty}
+            onSelect={handleChange}
+          >
             <option value="beginner">beginner</option>
             <option value="easy">easy</option>
             <option value="medium">medium</option>
             <option value="intermediate">intermediate</option>
             <option value="expert">expert</option>
-          
           </select>
 
           <label htmlFor="instructions">instructions</label>
@@ -105,8 +113,13 @@ export default function Item({
           ></textarea>
 
           <label htmlFor="price">price</label>
-          <input id="price" name="price" type="number" defaultValue={price}
-            onChange={handleChange}></input>
+          <input
+            id="price"
+            name="price"
+            type="number"
+            defaultValue={price}
+            onChange={handleChange}
+          ></input>
           <button>save changes</button>
         </form>
       )}
@@ -114,12 +127,15 @@ export default function Item({
       {!isEditing && (
         <>
           <StyledTitle>{title}</StyledTitle>
-          <StyledImage
-            src={image}
-            width="300"
-            height="300"
-            alt={description}
-          ></StyledImage>
+          {images.map((image) => (
+            <StyledImage
+              key={(id)}
+              src={image}
+              width="300"
+              height="300"
+              alt={description}
+            />
+          ))}
           <StyledText> {description}</StyledText>
           <StyledText> {difficulty}</StyledText>
           <StyledDescription> {instructions}</StyledDescription>
