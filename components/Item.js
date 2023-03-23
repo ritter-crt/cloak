@@ -128,7 +128,7 @@ export default function Item({
       {!isEditing && (
         <>
           <StyledTitle>{title}</StyledTitle>
-          {images.map((image, small_id) => (
+          {/* {images.map((image, small_id) => (
             <StyledImage
               key={small_id}
               src={image}
@@ -136,7 +136,7 @@ export default function Item({
               height="300"
               alt={description}
             />
-          ))}
+          ))} */}
           <StyledText> {description}</StyledText>
           <StyledText> {difficulty}</StyledText>
           <StyledDescription> {instructions}</StyledDescription>
