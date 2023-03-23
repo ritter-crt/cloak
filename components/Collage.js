@@ -1,4 +1,4 @@
-import { device, changeOpacity} from "@/styles";
+import { device, changeOpacity } from "@/styles";
 import styled from "styled-components";
 
 import Image from "next/image";

@@ -4,6 +4,10 @@ import styled from "styled-components";
 import useSWR from "swr";
 import ImageUpload from "./ImageUpload";
 
+import { device } from "@/styles";
+import { StyledInput, StyledLabel } from "./styled";
+import { StyledButton } from "./Button";
+
 export default function Form() {
   const [imageSrc, setImageSrc] = useState([]);
   const [uploadData, setUploadData] = useState();
@@ -23,7 +27,6 @@ export default function Form() {
         console.log(reader.error);
       };
     }
-
   }
 
   async function handleImageSubmit(event) {
@@ -31,7 +34,7 @@ export default function Form() {
     const fileInput = document.querySelector("[type=file]").files;
     const formData = new FormData();
 
-    const imageArray =[];
+    const imageArray = [];
     for (let i = 0; i < fileInput.length; i++) {
       let file = fileInput[i];
       formData.append("file", file);
@@ -44,11 +47,11 @@ export default function Form() {
           body: formData,
         }
       ).then((r) => r.json());
-      
+
       setUploadData(data);
-      imageArray.push(data.secure_url)
+      imageArray.push(data.secure_url);
     }
-    console.log(imageArray)
+    console.log(imageArray);
     setImageSrc(imageArray);
   }
 
@@ -78,56 +81,61 @@ export default function Form() {
 
   return (
     <>
-      <ImageUpload
-        uploadData={uploadData}
-        imageSrc={imageSrc}
-        onImageChange={handleImageChange}
-        onImageSubmit={handleImageSubmit}
-      ></ImageUpload>
+      <UploadWrapper>
+        <ImageUpload
+          uploadData={uploadData}
+          imageSrc={imageSrc}
+          onImageChange={handleImageChange}
+          onImageSubmit={handleImageSubmit}
+        ></ImageUpload>
+      </UploadWrapper>
       <EntryForm onSubmit={handleSubmit}>
-        <label htmlFor="pattern">upload pdf</label>
-        <input id="pattern" name="pattern"></input>
+        <StyledLabel htmlFor="pattern">upload pdf</StyledLabel>
+        <StyledInput id="pattern" name="pattern"></StyledInput>
 
-        <label htmlFor="title">title</label>
-        <input id="title" name="title" placeholder="e.g long trouses"></input>
+        <StyledLabel htmlFor="title">title</StyledLabel>
+        <StyledInput
+          id="title"
+          name="title"
+          placeholder="e.g long trouses"
+        ></StyledInput>
 
-        <label htmlFor="description">description</label>
-        <input
+        <StyledLabel htmlFor="description">description</StyledLabel>
+        <StyledInput
           id="description"
           name="description"
           placeholder="e.g occasion, season"
-        ></input>
+        ></StyledInput>
 
-        <label htmlFor="category">category</label>
-        <select name="category" id="category">
+        <StyledLabel htmlFor="category">category</StyledLabel>
+        <StyledSelect name="category" id="category">
           <option value="tops">tops</option>
           <option value="bottoms">bottoms</option>
           <option value="onesies">onesies</option>
           <option value="accessories">accessories</option>
-        </select>
+        </StyledSelect>
 
-        <label htmlFor="difficulty">difficulty</label>
-        <select name="difficulty" id="difficulty">
+        <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
+        <StyledSelect name="difficulty" id="difficulty">
           <option value="beginner">beginner</option>
           <option value="easy">easy</option>
           <option value="medium">medium</option>
           <option value="intermediate">intermediate</option>
           <option value="intermediate">expert</option>
-        </select>
+        </StyledSelect>
 
-        <label htmlFor="instructions">instructions</label>
-        <textarea
+        <StyledLabel htmlFor="instructions">instructions</StyledLabel>
+        <StyledTextarea
           id="instructions"
           name="instructions"
-          rows="5"
+          rows="10"
           placeholder="e.g preferred fabric, what you need"
-        ></textarea>
+        ></StyledTextarea>
 
-        <label htmlFor="price">price</label>
-        <input id="price" name="price" type="number"></input>
+        <StyledLabel htmlFor="price">price</StyledLabel>
+        <StyledInput id="price" name="price" type="number"></StyledInput>
 
-        <button onClick={() => router.push("/home")}
-          >add</button>
+        <StyledButton onClick={() => router.push("/home")}>add</StyledButton>
       </EntryForm>
     </>
   );
@@ -138,4 +146,22 @@ const EntryForm = styled.form`
   flex-direction: column;
   justify-content: center;
   padding: 10rem 3rem 5rem 3rem;
+`;
+
+const UploadWrapper = styled.div`
+  display: flex;
+  padding: 10%;
+  justify-content: flex-start;
+`;
+
+const StyledTextarea = styled.textarea`
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 5px 10px;
+`;
+
+const StyledSelect = styled.select`
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 5px 10px;
 `;

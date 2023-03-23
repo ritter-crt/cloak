@@ -13,13 +13,10 @@ import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 import { small_id } from "@/utils";
 
-
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
   const router = useRouter();
   const { id } = router.query;
-
-
 
   async function updateCards(id, body) {
     const response = await fetch(`/api/items/${id}`, {
@@ -104,9 +101,3 @@ export default function PatternDetailsPage() {
     );
   }
 }
-
-const Container = styled.div`
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
-`;

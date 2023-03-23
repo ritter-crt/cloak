@@ -1,11 +1,9 @@
 import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { StyledImage } from "@/components/styled";
-import { StyledButton } from "@/components/Button";
 import Link from "next/link";
 import { small_id } from "@/utils";
-
+import { StyledButton } from "@/components/Button";
 export default function Item({
   title,
   instructions,
@@ -20,19 +18,15 @@ export default function Item({
 }) {
   console.log(images);
   const router = useRouter();
-
   const [isEditing, setIsEditing] = useState(false);
   const [, setInputField] = useState();
-
   const handleChange = (event) => {
     const value = event.target.value;
     setInputField(value);
   };
-
   function handleSubmit(event) {
     event.preventDefault();
     const formElements = event.target.elements;
-
     const updatedCard = {
       image: formElements.image.value,
       title: formElements.title.value,
@@ -47,17 +41,14 @@ export default function Item({
     setIsEditing(false);
     console.log(updatedCard);
   }
-
   return (
     <Container>
       {isEditing && (
         <form onSubmit={handleSubmit}>
           <label htmlFor="image">upload image</label>
           <input id="image" name="image"></input>
-
           <label htmlFor="pattern">upload pdf</label>
           <input id="pattern" name="pattern"></input>
-
           <label htmlFor="title">title</label>
           <input
             id="title"
@@ -66,7 +57,6 @@ export default function Item({
             defaultValue={title}
             onChange={handleChange}
           ></input>
-
           <label htmlFor="description"></label>
           <input
             id="description"
@@ -75,7 +65,6 @@ export default function Item({
             defaultValue={description}
             onChange={handleChange}
           ></input>
-
           <label htmlFor="category">category</label>
           <select
             name="category"
@@ -88,7 +77,6 @@ export default function Item({
             <option value="onesie">onesie</option>
             <option value="accessories">accessories</option>
           </select>
-
           <label htmlFor="difficulty">difficulty</label>
           <select
             name="difficulty"
@@ -102,7 +90,6 @@ export default function Item({
             <option value="intermediate">intermediate</option>
             <option value="expert">expert</option>
           </select>
-
           <label htmlFor="instructions">instructions</label>
           <textarea
             id="instructions"
@@ -112,7 +99,6 @@ export default function Item({
             defaultValue={instructions}
             onChange={handleChange}
           ></textarea>
-
           <label htmlFor="price">price</label>
           <input
             id="price"
@@ -124,19 +110,9 @@ export default function Item({
           <button>save changes</button>
         </form>
       )}
-
       {!isEditing && (
         <>
           <StyledTitle>{title}</StyledTitle>
-          {/* {images.map((image, small_id) => (
-            <StyledImage
-              key={small_id}
-              src={image}
-              width="300"
-              height="300"
-              alt={description}
-            />
-          ))} */}
           <StyledText> {description}</StyledText>
           <StyledText> {difficulty}</StyledText>
           <StyledDescription> {instructions}</StyledDescription>
@@ -159,7 +135,6 @@ export default function Item({
     </Container>
   );
 }
-
 const Container = styled.div`
   display: flex;
   flex-direction: column;
