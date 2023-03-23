@@ -15,7 +15,6 @@ export default function Home({ items }) {
 
 export async function getServerSideProps() {
   await dbConnect();
-
   try {
     const items = await Item.find();
     // console.log(items);
