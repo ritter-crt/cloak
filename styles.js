@@ -1,8 +1,10 @@
 import { createGlobalStyle } from "styled-components";
-import { keyframes } from 'styled-components'
+import { keyframes } from "styled-components";
 
 export default createGlobalStyle`
 :root {
+  --first-color: black;
+  --second-color: rgba(0,123,255,1);
 
   }
   
@@ -14,7 +16,8 @@ export default createGlobalStyle`
 
   body {
     margin: auto;
-    font-family: sans-serif
+    font-family: sans-serif;
+    background-color:  whitesmoke;
   }
 `;
 
@@ -23,10 +26,9 @@ export const changeOpacity = keyframes`
   100% { opacity: 1; }
 `;
 
-
 export const getBigger = keyframes`
   60% {font-size: 40pt;}
-`
+`;
 
 const size = {
   mobileS: "320px",

@@ -3,7 +3,6 @@ import BackgroundImage from "../src/assets/sewer-with-mannequin.jpg";
 import { changeOpacity, device } from "@/styles";
 import styled from "styled-components";
 
-
 export default function Hero() {
   return (
     <>
@@ -34,7 +33,7 @@ const StyledWrapper = styled.div`
 
 const StyledHeader = styled.h1`
   text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
- font-family: 'Golos Text', sans-serif;
+  font-family: "Golos Text", sans-serif;
   animation-name: ${changeOpacity};
   animation-duration: 6s;
   animation-iteration-count: 1;

@@ -5,7 +5,12 @@ import useSWR from "swr";
 import ImageUpload from "./ImageUpload";
 
 import { device } from "@/styles";
-import { StyledInput, StyledLabel } from "./styled";
+import {
+  HeaderWrapper,
+  StyledHeader,
+  StyledInput,
+  StyledLabel,
+} from "./styled";
 import { StyledButton } from "./Button";
 
 export default function Form() {
@@ -81,6 +86,9 @@ export default function Form() {
 
   return (
     <>
+      <HeaderWrapper>
+        <StyledHeader>Upload</StyledHeader>
+      </HeaderWrapper>
       <UploadWrapper>
         <ImageUpload
           uploadData={uploadData}
@@ -112,6 +120,8 @@ export default function Form() {
           <option value="tops">tops</option>
           <option value="bottoms">bottoms</option>
           <option value="onesies">onesies</option>
+          <option value="accessories">dresses</option>
+          <option value="accessories">jackets & coats</option>
           <option value="accessories">accessories</option>
         </StyledSelect>
 
@@ -135,7 +145,9 @@ export default function Form() {
         <StyledLabel htmlFor="price">price</StyledLabel>
         <StyledInput id="price" name="price" type="number"></StyledInput>
 
-        <StyledButton onClick={() => router.push("/home")}>add</StyledButton>
+        <StyledButton onClick={() => router.push("/home")}>
+          upload sewing pattern
+        </StyledButton>
       </EntryForm>
     </>
   );
@@ -145,7 +157,11 @@ const EntryForm = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 10rem 3rem 5rem 3rem;
+  padding: 10%;
+  margin: 10% 10% 20% 10%;
+  border-radius: 20px;
+  box-shadow: var(--first-color) 0px 1px 3px;
+  /* box-shadow: 0 3px 25.5px 4.5px rgba(0, 0, 0, 0.06); */
 `;
 
 const UploadWrapper = styled.div`
@@ -155,13 +171,15 @@ const UploadWrapper = styled.div`
 `;
 
 const StyledTextarea = styled.textarea`
-  border: 3px solid black;
+  border: 1.5px solid black;
   border-radius: 10px;
   padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.05);
 `;
 
 const StyledSelect = styled.select`
-  border: 3px solid black;
+  border: 1.5px solid black;
   border-radius: 10px;
   padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.05);
 `;

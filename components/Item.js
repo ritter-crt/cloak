@@ -4,6 +4,16 @@ import { useState } from "react";
 import Link from "next/link";
 import { small_id } from "@/utils";
 import { StyledButton } from "@/components/Button";
+
+import Slider, { Slide } from "@/components/Slider";
+
+import "swiper/css";
+import "swiper/css/autoplay";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
+
+import { HeaderWrapper, StyledHeader } from "./styled";
 export default function Item({
   title,
   instructions,
@@ -112,7 +122,20 @@ export default function Item({
       )}
       {!isEditing && (
         <>
-          <StyledTitle>{title}</StyledTitle>
+          <HeaderWrapper>
+            <StyledTitel>{title}</StyledTitel>
+          </HeaderWrapper>
+          <Slider
+            settings={{
+              navigation: true,
+            }}
+          >
+            {images.map((image) => (
+              <Slide key={small_id}>
+                <img src={image} alt={image} />
+              </Slide>
+            ))}
+          </Slider>
           <StyledText> {description}</StyledText>
           <StyledText> {difficulty}</StyledText>
           <StyledDescription> {instructions}</StyledDescription>
@@ -148,6 +171,8 @@ const StyledTitle = styled.p`
 `;
 const StyledText = styled.p`
   font-size: 12pt;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 100;
 `;
 const StyledDescription = styled.p`
   line-height: 1.3rem;
@@ -156,4 +181,13 @@ const StyledDescription = styled.p`
 const StyledPrice = styled.p`
   padding: 10px;
   align-items: flex-end;
+`;
+
+const StyledTitel = styled.p`
+  font-size: 16pt;
+  font-family: "Bodoni Moda", serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 20px;
 `;
