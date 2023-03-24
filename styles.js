@@ -20,7 +20,7 @@ export default createGlobalStyle`
   body {
     margin: auto;
     font-family: sans-serif;
-    background-color:  whitesmoke;
+    background-color: #FDFBF8;
   }
 `;
 

@@ -5,6 +5,9 @@ import Navigation from "@/components/Navigation";
 import ItemList from "@/components/ItemList";
 import styled from "styled-components";
 import { HeaderWrapper, StyledHeader } from "@/components/styled";
+import Searchbar from "@/components/Searchbar";
+import SearchItems from "@/components/SearchItems";
+import NewSearch from "@/components/NewSeach";
 
 export default function Home({ items }) {
   return (
@@ -12,6 +15,8 @@ export default function Home({ items }) {
       <HeaderWrapper>
         <StyledHeader>newly added</StyledHeader>
       </HeaderWrapper>
+      {/* <SearchItems items={items}></SearchItems> */}
+      <NewSearch items={items}></NewSearch>
       <ItemList items={items}></ItemList>
       <Navigation></Navigation>
     </>
