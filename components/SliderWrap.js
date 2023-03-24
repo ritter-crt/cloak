@@ -13,7 +13,7 @@ export const SliderWrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #fff;
+    background: whitesmoke;
     img {
       max-width: 100%;
       height: 400px;

@@ -13,7 +13,15 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-import { HeaderWrapper, StyledHeader } from "./styled";
+import { HeaderWrapper } from "./styled";
+import {
+  EntryForm,
+  StyledInput,
+  StyledLabel,
+  StyledSelect,
+  StyledTextarea,
+} from "./StyledForm";
+
 export default function Item({
   title,
   instructions,
@@ -54,29 +62,25 @@ export default function Item({
   return (
     <Container>
       {isEditing && (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="image">upload image</label>
-          <input id="image" name="image"></input>
-          <label htmlFor="pattern">upload pdf</label>
-          <input id="pattern" name="pattern"></input>
-          <label htmlFor="title">title</label>
-          <input
+        <EntryForm onSubmit={handleSubmit}>
+          <StyledLabel htmlFor="title">title</StyledLabel>
+          <StyledInput
             id="title"
             name="title"
             type="text"
             defaultValue={title}
             onChange={handleChange}
-          ></input>
-          <label htmlFor="description"></label>
-          <input
+          ></StyledInput>
+          <StyledLabel htmlFor="description"></StyledLabel>
+          <StyledInput
             id="description"
             name="description"
             placeholder="e.g occasion, season"
             defaultValue={description}
             onChange={handleChange}
-          ></input>
-          <label htmlFor="category">category</label>
-          <select
+          ></StyledInput>
+          <StyledLabel htmlFor="category">category</StyledLabel>
+          <StyledSelect
             name="category"
             id="category"
             defaultValue={category}
@@ -86,9 +90,9 @@ export default function Item({
             <option value="bottoms">bottoms</option>
             <option value="onesie">onesie</option>
             <option value="accessories">accessories</option>
-          </select>
-          <label htmlFor="difficulty">difficulty</label>
-          <select
+          </StyledSelect>
+          <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
+          <StyledSelect
             name="difficulty"
             id="difficulty"
             defaultValue={difficulty}
@@ -99,32 +103,34 @@ export default function Item({
             <option value="medium">medium</option>
             <option value="intermediate">intermediate</option>
             <option value="expert">expert</option>
-          </select>
-          <label htmlFor="instructions">instructions</label>
-          <textarea
+          </StyledSelect>
+          <StyledLabel htmlFor="instructions">instructions</StyledLabel>
+          <StyledTextarea
             id="instructions"
             name="instructions"
             rows="5"
             placeholder="e.g preferred fabric, what you need"
             defaultValue={instructions}
             onChange={handleChange}
-          ></textarea>
-          <label htmlFor="price">price</label>
-          <input
+          ></StyledTextarea>
+          <StyledLabel htmlFor="price">price</StyledLabel>
+          <StyledInput
             id="price"
             name="price"
             type="number"
             defaultValue={price}
             onChange={handleChange}
-          ></input>
-          <button>save changes</button>
-        </form>
+          ></StyledInput>
+          <StyledButton>save changes</StyledButton>
+        </EntryForm>
       )}
       {!isEditing && (
         <>
           <HeaderWrapper>
             <StyledTitel>{title}</StyledTitel>
+            <StyledText>{description}</StyledText>
           </HeaderWrapper>
+          <StyledLevel> {difficulty}</StyledLevel>
           <Slider
             settings={{
               navigation: true,
@@ -136,10 +142,8 @@ export default function Item({
               </Slide>
             ))}
           </Slider>
-          <StyledText>{description}</StyledText>
-          <StyledText> {difficulty}</StyledText>
           <StyledDescription> {instructions}</StyledDescription>
-          <StyledPrice> {price}€</StyledPrice>
+          <StyledPrice>{price}€</StyledPrice>
           <StyledButton>buy</StyledButton>
           <Link href="/home">
             <StyledButton>back</StyledButton>
@@ -164,15 +168,17 @@ const Container = styled.div`
   margin: 10%;
   justify-content: center;
 `;
-const StyledTitle = styled.p`
-  text-transform: uppercase;
-  font-size: 16pt;
-  font-weight: 250;
-`;
+
 const StyledText = styled.p`
   font-size: 12pt;
   font-family: "Bodoni Moda", serif;
   font-weight: 100;
+`;
+
+const StyledLevel = styled.p`
+  font-size: 10pt;
+  font-weight: 100;
+  text-align: right;
 `;
 const StyledDescription = styled.p`
   line-height: 1.3rem;

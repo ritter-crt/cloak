@@ -60,12 +60,6 @@ export default function DocumentUpload({ patternSrc, setPatternSrc }) {
               <button>Upload Files</button>
             </p>
           )}
-
-          {uploadDocData && (
-            <code>
-              <pre>{JSON.stringify(uploadDocData, null, 2)}</pre>
-            </code>
-          )}
         </form>
       </main>
     </div>

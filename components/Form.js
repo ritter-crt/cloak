@@ -1,69 +1,30 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import styled from "styled-components";
 import useSWR from "swr";
-import ImageUpload from "./ImageUpload";
 
 import { device } from "@/styles";
+import styled from "styled-components";
+import { HeaderWrapper, StyledHeader } from "./styled";
+
 import {
-  HeaderWrapper,
-  StyledHeader,
+  EntryForm,
   StyledInput,
   StyledLabel,
-} from "./styled";
+  StyledSelect,
+  StyledTextarea,
+} from "./StyledForm";
+
+import ImageUpload from "./ImageUpload";
+
 import { StyledButton } from "./Button";
 import DocumentUpload from "./DocumentUpload";
 
 export default function Form({}) {
   const [imageSrc, setImageSrc] = useState([]);
-  const [uploadData, setUploadData] = useState();
-
   const [patternSrc, setPatternSrc] = useState();
-  const [uploadDocData, setUploadDocData] = useState();
-
-  // console.log("HELLOOOOOOOOOOOOO", imageSrc)
 
   const router = useRouter();
   const items = useSWR("/api/items/create");
-
-  function handleImageChange(event) {
-    for (const file of event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        setImageSrc((imgs) => [...imgs, reader.result]);
-      };
-      reader.onerror = () => {
-        console.log(reader.error);
-      };
-    }
-  }
-
-  async function handleImageSubmit(event) {
-    event.preventDefault();
-    const fileInput = document.querySelector("[type=file]").files;
-    const formData = new FormData();
-
-    const imageArray = [];
-    for (let i = 0; i < fileInput.length; i++) {
-      let file = fileInput[i];
-      formData.append("file", file);
-      formData.append("upload_preset", "zez0acdp");
-
-      const data = await fetch(
-        "https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      ).then((r) => r.json());
-
-      setUploadData(data);
-      imageArray.push(data.secure_url);
-    }
-    console.log(imageArray);
-    setImageSrc(imageArray);
-  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -73,6 +34,7 @@ export default function Form({}) {
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
     // console.log("newItem______________________________________", newItem);
+
     const response = await fetch("/api/items/create", {
       method: "POST",
       body: JSON.stringify(newItem),
@@ -97,10 +59,8 @@ export default function Form({}) {
       </HeaderWrapper>
       <UploadWrapper>
         <ImageUpload
-          uploadData={uploadData}
           imageSrc={imageSrc}
-          onImageChange={handleImageChange}
-          onImageSubmit={handleImageSubmit}
+          setImageSrc={setImageSrc}
         ></ImageUpload>
         <DocumentUpload
           patternSrc={patternSrc}
@@ -141,52 +101,36 @@ export default function Form({}) {
           <option value="intermediate">expert</option>
         </StyledSelect>
 
-        <StyledLabel htmlFor="instructions">instructions</StyledLabel>
+        <StyledLabel htmlFor="instructions">
+          please provide some instructions
+        </StyledLabel>
         <StyledTextarea
           id="instructions"
           name="instructions"
-          rows="10"
+          rows="5"
           placeholder="e.g preferred fabric, what you need"
         ></StyledTextarea>
 
         <StyledLabel htmlFor="price">price</StyledLabel>
-        <StyledInput id="price" name="price" type="number"></StyledInput>
+        <StyledInput
+          id="price"
+          name="price"
+          type="number"
+          defaultValue="€"
+          min="1"
+          max="99"
+        ></StyledInput>
 
         <StyledButton onClick={() => router.push("/home")}>
-          upload sewing pattern
+          upload your pattern
         </StyledButton>
       </EntryForm>
     </>
   );
 }
 
-const EntryForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10%;
-  margin: 10% 10% 20% 10%;
-  border-radius: 20px;
-  box-shadow: var(--first-color) 0px 1px 3px;
-  /* box-shadow: 0 3px 25.5px 4.5px rgba(0, 0, 0, 0.06); */
-`;
-
 const UploadWrapper = styled.div`
   display: flex;
   padding: 10%;
   justify-content: flex-start;
-`;
-
-const StyledTextarea = styled.textarea`
-  border: 1.5px solid black;
-  border-radius: 10px;
-  padding: 5px 10px;
-  background-color: rgba(0, 0, 0, 0.05);
-`;
-
-const StyledSelect = styled.select`
-  border: 1.5px solid black;
-  border-radius: 10px;
-  padding: 5px 10px;
-  background-color: rgba(0, 0, 0, 0.05);
 `;

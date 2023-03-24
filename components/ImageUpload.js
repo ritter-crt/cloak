@@ -1,12 +1,54 @@
 import Image from "next/image";
+import { useState } from "react";
 
 export default function ImageUpload({
-  uploadData,
+  // uploadData,
   imageSrc,
-  onImageChange,
-  onImageSubmit,
+  setImageSrc,
+  // onImageChange,
+  // onImageSubmit,
 }) {
   console.log(imageSrc);
+  const [uploadData, setUploadData] = useState();
+
+  function handleImageChange(event) {
+    for (const file of event.target.files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        setImageSrc((imgs) => [...imgs, reader.result]);
+      };
+      reader.onerror = () => {
+        console.log(reader.error);
+      };
+    }
+  }
+
+  async function handleImageSubmit(event) {
+    event.preventDefault();
+    const fileInput = document.querySelector("[type=file]").files;
+    const formData = new FormData();
+
+    const imageArray = [];
+    for (let i = 0; i < fileInput.length; i++) {
+      let file = fileInput[i];
+      formData.append("file", file);
+      formData.append("upload_preset", "zez0acdp");
+
+      const data = await fetch(
+        "https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload",
+        {
+          method: "POST",
+          body: formData,
+        }
+      ).then((r) => r.json());
+
+      setUploadData(data);
+      imageArray.push(data.secure_url);
+    }
+    console.log(imageArray);
+    setImageSrc(imageArray);
+  }
 
   return (
     <div>
@@ -14,7 +56,11 @@ export default function ImageUpload({
         <link rel="icon" href="/favicon.ico" />
       </h1>
       <main>
-        <form method="post" onChange={onImageChange} onSubmit={onImageSubmit}>
+        <form
+          method="post"
+          onChange={handleImageChange}
+          onSubmit={handleImageSubmit}
+        >
           <input type="file" name="file" multiple />
           {imageSrc.map((image, small_id) => (
             <Image
