@@ -1,7 +1,12 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-export default function ImageUpload({ uploadData, imageSrc, onImageChange, onImageSubmit, title}) {
-    console.log(imageSrc)
+export default function ImageUpload({
+  uploadData,
+  imageSrc,
+  onImageChange,
+  onImageSubmit,
+}) {
+  console.log(imageSrc);
 
   return (
     <div>
@@ -10,20 +15,24 @@ export default function ImageUpload({ uploadData, imageSrc, onImageChange, onIma
       </h1>
       <main>
         <form method="post" onChange={onImageChange} onSubmit={onImageSubmit}>
-            <input type="file" name="file" multiple />
+          <input type="file" name="file" multiple />
           {imageSrc.map((image, small_id) => (
-          <Image src={image} key={small_id} width="500" height="500" alt="an image is being displayed here" />
+            <Image
+              src={image}
+              key={small_id}
+              width="500"
+              height="500"
+              alt="some image"
+            />
           ))}
           {imageSrc && !uploadData && (
             <p>
-              <button>Upload Files</button>
+              <button>upload your images</button>
             </p>
           )}
-          {uploadData && (
-            <p>uploaded</p>
-          )}
+          {uploadData && <p>uploaded</p>}
         </form>
       </main>
     </div>
-  )
+  );
 }

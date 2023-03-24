@@ -12,10 +12,15 @@ import {
   StyledLabel,
 } from "./styled";
 import { StyledButton } from "./Button";
+import DocumentUpload from "./DocumentUpload";
 
-export default function Form() {
+export default function Form({}) {
   const [imageSrc, setImageSrc] = useState([]);
   const [uploadData, setUploadData] = useState();
+
+  const [patternSrc, setPatternSrc] = useState();
+  const [uploadDocData, setUploadDocData] = useState();
+
   // console.log("HELLOOOOOOOOOOOOO", imageSrc)
 
   const router = useRouter();
@@ -66,6 +71,7 @@ export default function Form() {
     const newItem = Object.fromEntries(formData);
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
+    newItem.pattern = patternSrc;
     // console.log("newItem______________________________________", newItem);
     const response = await fetch("/api/items/create", {
       method: "POST",
@@ -96,11 +102,12 @@ export default function Form() {
           onImageChange={handleImageChange}
           onImageSubmit={handleImageSubmit}
         ></ImageUpload>
+        <DocumentUpload
+          patternSrc={patternSrc}
+          setPatternSrc={setPatternSrc}
+        ></DocumentUpload>
       </UploadWrapper>
       <EntryForm onSubmit={handleSubmit}>
-        <StyledLabel htmlFor="pattern">upload pdf</StyledLabel>
-        <StyledInput id="pattern" name="pattern"></StyledInput>
-
         <StyledLabel htmlFor="title">title</StyledLabel>
         <StyledInput
           id="title"

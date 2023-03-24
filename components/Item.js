@@ -136,7 +136,7 @@ export default function Item({
               </Slide>
             ))}
           </Slider>
-          <StyledText> {description}</StyledText>
+          <StyledText>{description}</StyledText>
           <StyledText> {difficulty}</StyledText>
           <StyledDescription> {instructions}</StyledDescription>
           <StyledPrice> {price}€</StyledPrice>
