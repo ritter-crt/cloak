@@ -10,7 +10,7 @@ export const EntryForm = styled.form`
   padding: 10%;
   margin: 10% 10% 20% 10%;
   border-radius: 20px;
-  box-shadow: var(--first-color) 0px 1px 3px;
+  box-shadow: black 0px 1px 3px;
 `;
 
 export const StyledLabel = styled.label`
@@ -56,4 +56,9 @@ export const StyledTextarea = styled.textarea`
   padding: 5px 10px;
   background-color: rgba(0, 0, 0, 0.05);
   font-family: inherit;
+`;
+
+export const StyledPrice = styled.p`
+  padding: 10px;
+  align-items: flex-end;
 `;

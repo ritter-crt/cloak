@@ -3,7 +3,10 @@ import { keyframes } from "styled-components";
 
 export default createGlobalStyle`
 :root {
-  --first-color: black;
+
+  --first-color:rgb(40,116,252);
+  ${"" /* --first-color: #bbf726; */}
+  ${"" /* --first-color: #db6589; */}
   --second-color: rgba(0,123,255,1);
 
   }
