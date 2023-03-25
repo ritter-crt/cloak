@@ -1,4 +1,13 @@
 import { useState } from "react";
+import { StyledTitle } from "./styled";
+import {
+  CardWrapper,
+  ContentWrapper,
+  StyledCard,
+  StyledImage,
+  StyledText,
+  TextWrapper,
+} from "./StyledCard";
 
 const categoryArray = [
   "tops",
@@ -42,60 +51,50 @@ const pricesArray = [
 ];
 
 export default function FilterItem({ items }) {
-  const [error, setError] = useState(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [filteredItems, setFilteredItems] = useState([]);
-
-  //     set search query to empty string
   const [query, setQuery] = useState("");
   const [filterParam, setFilterParam] = useState(["All"]);
-  //     set search parameters
-  //     we only what to search countries by category, name and price
+  const [searchParam] = useState(["category", "difficulty", "price", "title"]);
 
-  const [searchParam] = useState(["category", "difficulty", "price"]);
-  function search(items) {
-    return items.filter((item) => {
-      /* 
-//             in here we check if our region is equal to our c state
-// if it's equal to then only return the items that match
-// if not return All the countries
-        */
-      if (item.region == filterParam) {
+  const filteredItems =
+    //______________________To start with empty page set initial state to empty array
+    // query.length > 0
+    //   ?
+    items.filter((item) => {
+      if (item.difficulty === filterParam || item.category === filterParam) {
         return searchParam.some((newItem) => {
           return (
-            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+            item[newItem]
+              .toString()
+              .toLowerCase()
+              .indexOf(query.toLowerCase()) > -1
           );
         });
       } else if (filterParam == "All") {
         return searchParam.some((newItem) => {
           return (
-            item[newItem].toString().toLowerCase().indexOf(q.toLowerCase()) > -1
+            item[newItem]
+              .toString()
+              .toLowerCase()
+              .indexOf(query.toLowerCase()) > -1
           );
         });
       }
     });
-  }
+  // like so___________________________
+  // : [];
 
   return (
     <>
-      <div className="search-wrapper">
-        <label htmlFor="search-form">
-          <input
-            type="search"
-            name="search-form"
-            id="search-form"
-            className="search-input"
-            placeholder="Search for..."
-            value={query}
-            /*
-                                // set the value of our useState q
-                                //  anytime the user types in the search box
-                                */
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <span className="sr-only">Search countries here</span>
-        </label>
-      </div>
+      <label htmlFor="search-form">
+        <input
+          type="search"
+          placeholder="Search for..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <span className="sr-only">Search for sewing patterns here</span>
+      </label>
+
       <div>
         <h2>categories</h2>
         <form>
@@ -123,7 +122,7 @@ export default function FilterItem({ items }) {
                 </option>
               ))}
           </select>
-          <h2>Prices</h2>
+          {/* <h2>Prices</h2>
           <select className="w-full" value="price">
             <option value="all">all</option>
             {pricesArray &&
@@ -132,181 +131,34 @@ export default function FilterItem({ items }) {
                   {price.name}
                 </option>
               ))}
-          </select>
+          </select> */}
         </form>
       </div>
-      <div className="wrapper">
-        <ul className="card-grid">
-          {search(items).map((item) => (
-            <>
-              <div key={item._id}>{item.title}</div>
-              <div key={item.category}>{item.category}</div>
-              <div key={item.difficulty}>{item.difficulty}</div>
-            </>
-          ))}
-        </ul>
-      </div>
+
+      <ContentWrapper>
+        <CardWrapper>
+          {filteredItems.length <= 1 ? (
+            <div>No items found</div>
+          ) : (
+            filteredItems.map((item) => (
+              <StyledCard key={item._id}>
+                <StyledImage
+                  onClick={() => router.push(`/item-page/${item._id}`)}
+                  src={item.images[0]}
+                  height="150"
+                  width="150"
+                  alt={item.description}
+                />
+                <StyledTitle>{item.title}</StyledTitle>
+                <TextWrapper>
+                  <StyledText>{item.difficulty}</StyledText>
+                  <StyledText>{item.price} €</StyledText>
+                </TextWrapper>
+              </StyledCard>
+            ))
+          )}
+        </CardWrapper>
+      </ContentWrapper>
     </>
   );
 }
-
-// // import { useState, useEffect } from "https://cdn.skypack.dev/react";
-
-// // function App() {
-// //     const [error, setError] = useState(null);
-// //     const [isLoaded, setIsLoaded] = useState(false);
-// //     const [items, setItems] = useState([]);
-// //     //     set search query to empty string
-// //     const [q, setQ] = useState("");
-// //     //     set search parameters
-// //     //     we only what to search countries by capital and name
-// //     //     this list can be longer if you want
-// //     //     you can search countries even by their population
-// //     // just add it to this array
-// //     const [searchParam] = useState(["capital", "name"]);
-// //     //     add a default value to be used by our select element
-// //     const [filterParam, setFilterParam] = useState(["All"]);
-
-// //     // Note: the empty deps array [] means
-// //     // this useEffect will run once
-// //     // similar to componentDidMount()
-// //     useEffect(() => {
-// //         fetch("https://restcountries.eu/rest/v2/all")
-// //             .then((res) => res.json())
-// //             .then(
-// //                 (result) => {
-// //                     setIsLoaded(true);
-// //                     setItems(result);
-// //                 },
-
-// //                 // Note: it's important to handle errors here
-// //                 // instead of a catch() block so that we don't swallow
-// //                 // exceptions from actual bugs in components.
-// //                 (error) => {
-// //                     setIsLoaded(true);
-// //                     setError(error);
-// //                 }
-// //             );
-// //     }, []);
-
-//     /* here we create a function
-// //     we filter the items
-// // use array property .some() to return an item even if other requirements didn't match
-//     */
-//     function search(items) {
-//         return items.filter((item) => {
-//             /*
-// //             in here we check if our region is equal to our c state
-// // if it's equal to then only return the items that match
-// // if not return All the countries
-//             */
-//             if (item.region == filterParam) {
-//                 return searchParam.some((newItem) => {
-//                     return (
-//                         item[newItem]
-//                             .toString()
-//                             .toLowerCase()
-//                             .indexOf(q.toLowerCase()) > -1
-//                     );
-//                 });
-//             } else if (filterParam == "All") {
-//                 return searchParam.some((newItem) => {
-//                     return (
-//                         item[newItem]
-//                             .toString()
-//                             .toLowerCase()
-//                             .indexOf(q.toLowerCase()) > -1
-//                     );
-//                 });
-//             }
-//         });
-//     }
-
-//     if (error) {
-//         return (
-//             <p>
-//                 {error.message}, if you get this error, the free API I used
-//                 might have stopped working, but I created a simple example that
-//                 demonstrate how this works,{" "}
-//                 <a href="https://codepen.io/Spruce_khalifa/pen/mdXEVKq">
-//                     {" "}
-//                     check it out{" "}
-//                 </a>{" "}
-//             </p>
-//         );
-//     } else if (!isLoaded) {
-//         return <>loading...</>;
-//     } else {
-//         return (
-//             <div className="wrapper">
-//                 <div className="search-wrapper">
-//                     <label htmlFor="search-form">
-//                         <input
-//                             type="search"
-//                             name="search-form"
-//                             id="search-form"
-//                             className="search-input"
-//                             placeholder="Search for..."
-//                             value={q}
-//                             /*
-//                             // set the value of our useState e
-//                             //  anytime the user types in the search box
-//                             */
-//                             onChange={(e) => setQ(e.target.value)}
-//                         />
-//                         <span className="sr-only">Search countries here</span>
-//                     </label>
-
-//                     <div className="select">
-//                         <select
-//                             /*
-// //                         here we create a basic select input
-// //                     we set the value to the selected value
-// //                     and update the setC() state every time onChange is called
-//                     */
-//                             onChange={(e) => {
-//                                 setFilterParam(e.target.value);
-//                             }}
-//                             className="custom-select"
-//                             aria-label="Filter Countries By Countries"
-//                         >
-//                             <option value="All">Filter By Region</option>
-//                             <option value="Africa">Africa</option>
-//                             <option value="Americas">America</option>
-//                             <option value="Asia">Asia</option>
-//                             <option value="Europe">Europe</option>
-//                             <option value="Oceania">Oceania</option>
-//                         </select>
-//                         <span className="focus"></span>
-//                     </div>
-//                 </div>
-//                 <ul className="card-grid">
-//                     {search(items).map((item) => (
-//                         <li>
-//                             <article className="card" key={item.id}>
-//                                 <div className="card-image">
-//                                     <img src={item.flag} alt={item.name} />
-//                                 </div>
-//                                 <div className="card-content">
-//                                     <h2 className="card-name">{item.name}</h2>
-//                                     <ol className="card-list">
-//                                         <li>
-//                                             population:{" "}
-//                                             <span>{item.population}</span>
-//                                         </li>
-//                                         <li>
-//                                             Region: <span>{item.region}</span>
-//                                         </li>
-//                                         <li>
-//                                             Capital: <span>{item.capital}</span>
-//                                         </li>
-//                                     </ol>
-//                                 </div>
-//                             </article>
-//                         </li>
-//                     ))}
-//                 </ul>
-//             </div>
-//         );
-//     }
-// }
