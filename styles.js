@@ -8,6 +8,7 @@ export default createGlobalStyle`
   ${"" /* --first-color: #bbf726; */}
   ${"" /* --first-color: #db6589; */}
   --second-color: rgba(0,123,255,1);
+  --background-color: rgba(253, 251, 248, 1)
 
   }
   

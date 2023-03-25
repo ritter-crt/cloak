@@ -11,7 +11,6 @@ export default function Filter() {
     setFormInfo({
       difficulty,
       category,
-      price,
     });
 
     const response = await fetch("/api/items");

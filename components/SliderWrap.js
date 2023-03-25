@@ -13,7 +13,7 @@ export const SliderWrap = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background: whitesmoke;
+    background: var(--background-color);
     img {
       max-width: 100%;
       height: 400px;
@@ -40,7 +40,7 @@ export const SliderWrap = styled.div`
           border-radius: 50%;
           background-color: #ffffff;
           box-shadow: 0 3px 25.5px 4.5px var(--first-color 0.06);
-          &:active {
+          &:hover {
             color: #212121;
             background-color: var(--first-color);
           }
@@ -100,7 +100,7 @@ export const SliderWrap = styled.div`
           box-shadow: none;
           transition: all 0.4s ease 0s;
           transform: scale(0.8);
-          &:hover,
+          &-hover,
           &:active {
             background-color: var(--first-color);
             border-color: var(--first-color);

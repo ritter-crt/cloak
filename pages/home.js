@@ -1,4 +1,3 @@
-import Card from "@/components/ItemList";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
 import Navigation from "@/components/Navigation";
@@ -16,7 +15,7 @@ export default function Home({ items }) {
         <StyledHeader>newly added</StyledHeader>
       </HeaderWrapper>
       {/* <SearchItems items={items}></SearchItems> */}
-      <NewSearch items={items}></NewSearch>
+      {/* <NewSearch></NewSearch> */}
       <ItemList items={items}></ItemList>
       <Navigation></Navigation>
     </>
