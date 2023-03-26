@@ -4,22 +4,10 @@ import Item from "@/components/Item";
 import styled from "styled-components";
 import Image from "next/image";
 
-import Slider, { Slide } from "@/components/Slider";
-
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
-import { small_id } from "@/utils";
-
-
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
   const router = useRouter();
   const { id } = router.query;
-
-
 
   async function updateCards(id, body) {
     const response = await fetch(`/api/items/${id}`, {
@@ -71,23 +59,8 @@ export default function PatternDetailsPage() {
       _id,
     } = itemDetail;
 
-    // if (isMutating) return <p>Submitting your changes</p>;
     return (
       <>
-        {/* <Container>
-          <ImageSlider images={images}></ImageSlider>
-        </Container> */}
-        <Slider
-          settings={{
-            navigation: true,
-          }}
-        >
-          {images.map((image) => (
-            <Slide key={small_id}>
-              <img src={image} alt={image} />
-            </Slide>
-          ))}
-        </Slider>
         <Item
           images={images}
           title={title}
@@ -104,9 +77,3 @@ export default function PatternDetailsPage() {
     );
   }
 }
-
-const Container = styled.div`
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
-`;

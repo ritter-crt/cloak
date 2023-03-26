@@ -1,56 +1,29 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import styled from "styled-components";
 import useSWR from "swr";
+
+import styled from "styled-components";
+import { HeaderWrapper, StyledHeader } from "./styled";
+
+import {
+  EntryForm,
+  StyledInput,
+  StyledLabel,
+  StyledSelect,
+  StyledTextarea,
+} from "./StyledForm";
+
 import ImageUpload from "./ImageUpload";
 
-export default function Form() {
+import { StyledButton } from "./Button";
+import DocumentUpload from "./DocumentUpload";
+
+export default function Form({}) {
   const [imageSrc, setImageSrc] = useState([]);
-  const [uploadData, setUploadData] = useState();
-  // console.log("HELLOOOOOOOOOOOOO", imageSrc)
+  const [patternSrc, setPatternSrc] = useState();
 
   const router = useRouter();
   const items = useSWR("/api/items/create");
-
-  function handleImageChange(event) {
-    for (const file of event.target.files) {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        setImageSrc((imgs) => [...imgs, reader.result]);
-      };
-      reader.onerror = () => {
-        console.log(reader.error);
-      };
-    }
-
-  }
-
-  async function handleImageSubmit(event) {
-    event.preventDefault();
-    const fileInput = document.querySelector("[type=file]").files;
-    const formData = new FormData();
-
-    const imageArray =[];
-    for (let i = 0; i < fileInput.length; i++) {
-      let file = fileInput[i];
-      formData.append("file", file);
-      formData.append("upload_preset", "zez0acdp");
-
-      const data = await fetch(
-        "https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload",
-        {
-          method: "POST",
-          body: formData,
-        }
-      ).then((r) => r.json());
-      
-      setUploadData(data);
-      imageArray.push(data.secure_url)
-    }
-    console.log(imageArray)
-    setImageSrc(imageArray);
-  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -58,7 +31,9 @@ export default function Form() {
     const newItem = Object.fromEntries(formData);
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
+    newItem.pattern = patternSrc;
     // console.log("newItem______________________________________", newItem);
+
     const response = await fetch("/api/items/create", {
       method: "POST",
       body: JSON.stringify(newItem),
@@ -78,64 +53,83 @@ export default function Form() {
 
   return (
     <>
-      <ImageUpload
-        uploadData={uploadData}
-        imageSrc={imageSrc}
-        onImageChange={handleImageChange}
-        onImageSubmit={handleImageSubmit}
-      ></ImageUpload>
+      <HeaderWrapper>
+        <StyledHeader>Upload</StyledHeader>
+      </HeaderWrapper>
+      <UploadWrapper>
+        <ImageUpload
+          imageSrc={imageSrc}
+          setImageSrc={setImageSrc}
+        ></ImageUpload>
+        <DocumentUpload
+          patternSrc={patternSrc}
+          setPatternSrc={setPatternSrc}
+        ></DocumentUpload>
+      </UploadWrapper>
       <EntryForm onSubmit={handleSubmit}>
-        <label htmlFor="pattern">upload pdf</label>
-        <input id="pattern" name="pattern"></input>
+        <StyledLabel htmlFor="title">title</StyledLabel>
+        <StyledInput
+          id="title"
+          name="title"
+          placeholder="e.g long trouses"
+        ></StyledInput>
 
-        <label htmlFor="title">title</label>
-        <input id="title" name="title" placeholder="e.g long trouses"></input>
-
-        <label htmlFor="description">description</label>
-        <input
+        <StyledLabel htmlFor="description">description</StyledLabel>
+        <StyledInput
           id="description"
           name="description"
           placeholder="e.g occasion, season"
-        ></input>
+        ></StyledInput>
 
-        <label htmlFor="category">category</label>
-        <select name="category" id="category">
+        <StyledLabel htmlFor="category">category</StyledLabel>
+        <StyledSelect name="category" id="category">
           <option value="tops">tops</option>
           <option value="bottoms">bottoms</option>
           <option value="onesies">onesies</option>
+          <option value="accessories">dresses</option>
+          <option value="accessories">jackets & coats</option>
           <option value="accessories">accessories</option>
-        </select>
+        </StyledSelect>
 
-        <label htmlFor="difficulty">difficulty</label>
-        <select name="difficulty" id="difficulty">
+        <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
+        <StyledSelect name="difficulty" id="difficulty">
           <option value="beginner">beginner</option>
           <option value="easy">easy</option>
           <option value="medium">medium</option>
           <option value="intermediate">intermediate</option>
           <option value="intermediate">expert</option>
-        </select>
+        </StyledSelect>
 
-        <label htmlFor="instructions">instructions</label>
-        <textarea
+        <StyledLabel htmlFor="instructions">
+          please provide some instructions
+        </StyledLabel>
+        <StyledTextarea
           id="instructions"
           name="instructions"
           rows="5"
           placeholder="e.g preferred fabric, what you need"
-        ></textarea>
+        ></StyledTextarea>
 
-        <label htmlFor="price">price</label>
-        <input id="price" name="price" type="number"></input>
+        <StyledLabel htmlFor="price">price</StyledLabel>
+        <StyledInput
+          id="price"
+          name="price"
+          type="number"
+          defaultValue="€"
+          min="1"
+          max="99"
+        ></StyledInput>
 
-        <button onClick={() => router.push("/home")}
-          >add</button>
+        <StyledButton onClick={() => router.push("/home")}>
+          upload your pattern
+        </StyledButton>
       </EntryForm>
     </>
   );
 }
 
-const EntryForm = styled.form`
+const UploadWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10rem 3rem 5rem 3rem;
+  padding: 10%;
+  justify-content: flex-start;
 `;

@@ -1,12 +1,18 @@
-import Card from "@/components/ItemList";
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
+
 import Navigation from "@/components/Navigation";
 import ItemList from "@/components/ItemList";
+import { HeaderWrapper, StyledHeader } from "@/components/styled";
 
 export default function Home({ items }) {
   return (
     <>
+      <HeaderWrapper>
+        <StyledHeader>newly added</StyledHeader>
+      </HeaderWrapper>
+      {/* <SearchItems items={items}></SearchItems> */}
+      {/* <NewSearch></NewSearch> */}
       <ItemList items={items}></ItemList>
       <Navigation></Navigation>
     </>

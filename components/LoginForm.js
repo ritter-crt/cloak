@@ -3,43 +3,42 @@ import Link from "next/link";
 import styled from "styled-components";
 import { StyledButton } from "./Button";
 import Login from "./Logout";
+import { StyledLabel } from "./styled";
 
 export default function LoginForm() {
   return (
     <EntryForm>
-      {/* <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
+      <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
       <StyledHeader>We invite you to join cloak.</StyledHeader>
-      <StyledLabel htmlFor='name' 
-      name='name' 
-      id='name'>
+      <StyledLabel htmlFor="name" name="name" id="name">
         name
       </StyledLabel>
       <StyledInput
-        type='name'
-        name='name'
-        autoComplete='off'
-        aria-label='Enter text'
-        placeholder='choose a username'
+        type="name"
+        name="name"
+        autoComplete="off"
+        aria-label="Enter text"
+        placeholder="choose a username"
       />
-      <StyledLabel htmlFor='email' name='email' id='email'>
+      <StyledLabel htmlFor="email" name="email" id="email">
         email
       </StyledLabel>
       <StyledInput
-        type='email'
-        name='email'
-        autoComplete='off'
-        aria-label='Enter your email'
-        placeholder='jane@doe.com'
+        type="email"
+        name="email"
+        autoComplete="off"
+        aria-label="Enter your email"
+        placeholder="jane@doe.com"
       />
-      <StyledLabel htmlFor='password' name='password' id='password'>
+      <StyledLabel htmlFor="password" name="password" id="password">
         password
       </StyledLabel>
       <StyledInput
-        type='password'
-        name='password'
-        aria-label='Enter your password'
-        placeholder='*********'
-      /> */}
+        type="password"
+        name="password"
+        aria-label="Enter your password"
+        placeholder="*********"
+      />
       <Link href="/home">
         <Login>sign up</Login>
       </Link>
@@ -76,21 +75,6 @@ const StyledParagraph = styled.p`
   text-transform: uppercase;
   @media ${device.mobileL} {
     font-size: 13pt;
-  }
-`;
-const StyledLabel = styled.label`
-  margin-top: 20px;
-  padding-bottom: 10px;
-  margin-top: 5px;
-  font-size: 9pt;
-  text-transform: uppercase;
-  @media ${device.mobileL} {
-    font-size: 11pt;
-    letter-spacing: 0.2 rem;
-    line-height: 2rem;
-    padding: 0px;
-    padding-top: 0px;
-    padding-bottom: 2px;
   }
 `;
 

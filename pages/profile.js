@@ -1,10 +1,13 @@
 import Login from "@/components/Logout";
 import Navigation from "@/components/Navigation";
+import { HeaderWrapper, StyledHeader } from "@/components/styled";
 
 export default function Profile() {
   return (
     <>
-      <h1>Hello profile!</h1>
+      <HeaderWrapper>
+        <StyledHeader>Profile</StyledHeader>
+      </HeaderWrapper>
       <Login></Login>
       <Navigation />
     </>

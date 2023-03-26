@@ -1,6 +1,6 @@
-import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-import { StyledButton } from "./Button";
+
+import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export default function Logout() {
@@ -14,7 +14,7 @@ export default function Logout() {
         <Link
           href="/"
           onClick={(e) => {
-            e.preventDefault()
+            e.preventDefault();
             signOut();
           }}
         >
