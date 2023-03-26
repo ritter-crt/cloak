@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
 
-import { device } from "@/styles";
 import styled from "styled-components";
 import { HeaderWrapper, StyledHeader } from "./styled";
 

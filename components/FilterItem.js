@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-import { StyledHeader, StyledTitle } from "./styled";
+import { StyledTitle } from "./styled";
 import {
   CardWrapper,
   ContentWrapper,

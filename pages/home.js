@@ -1,12 +1,9 @@
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
+
 import Navigation from "@/components/Navigation";
 import ItemList from "@/components/ItemList";
-import styled from "styled-components";
 import { HeaderWrapper, StyledHeader } from "@/components/styled";
-import Searchbar from "@/components/Searchbar";
-import SearchItems from "@/components/SearchItems";
-import NewSearch from "@/components/NewSeach";
 
 export default function Home({ items }) {
   return (
