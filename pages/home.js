@@ -3,18 +3,20 @@ import dbConnect from "@/db/connect";
 
 import Navigation from "@/components/Navigation";
 import ItemList from "@/components/ItemList";
-import { HeaderWrapper, StyledHeader } from "@/components/styled";
+import {
+  ContentWrapper,
+  HeaderWrapper,
+  StyledHeader,
+} from "@/components/styled";
+import styled from "styled-components";
 
 export default function Home({ items }) {
   return (
     <>
-      <HeaderWrapper>
+      <ContentWrapper>
         <StyledHeader>newly added</StyledHeader>
-      </HeaderWrapper>
-      {/* <SearchItems items={items}></SearchItems> */}
-      {/* <NewSearch></NewSearch> */}
-      <ItemList items={items}></ItemList>
-      <Navigation></Navigation>
+        <ItemList items={items}></ItemList>
+      </ContentWrapper>
     </>
   );
 }

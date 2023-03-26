@@ -1,6 +1,10 @@
 import dbConnect from "@/db/connect";
 import Item from "@/db/models/Item";
-import { HeaderWrapper, StyledHeader } from "@/components/styled";
+import {
+  ContentWrapper,
+  HeaderWrapper,
+  StyledHeader,
+} from "@/components/styled";
 
 import Navigation from "@/components/Navigation";
 import FilterItem from "@/components/FilterItem";
@@ -8,11 +12,10 @@ import FilterItem from "@/components/FilterItem";
 export default function Search({ items }) {
   return (
     <>
-      <HeaderWrapper>
+      <ContentWrapper>
         <StyledHeader>Search</StyledHeader>
-      </HeaderWrapper>
-      <FilterItem items={items}></FilterItem>
-      <Navigation />
+        <FilterItem items={items}></FilterItem>
+      </ContentWrapper>
     </>
   );
 }

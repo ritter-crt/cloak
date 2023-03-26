@@ -88,45 +88,44 @@ export default function FilterItem({ items }) {
 
   return (
     <>
-      <ContentWrapper>
-        <StyledBox>
-          <StyledInput
-            type="search"
-            placeholder="Search for..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-          <StyledI></StyledI>
-        </StyledBox>
+      <StyledBox>
+        <StyledInput
+          type="search"
+          placeholder="Search for..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <StyledI></StyledI>
+      </StyledBox>
 
-        <div>
-          <h1>categories</h1>
-          <form>
-            <StyledSelect
-              value="category"
-              onChange={(e) => {
-                setFilterParam(e.target.value);
-              }}
-            >
-              <option value="all">all</option>
-              {categoryArray &&
-                categoryArray.map((category) => (
-                  <option key={category} value={category}>
-                    {category}
-                  </option>
-                ))}
-            </StyledSelect>
-            <h2>difficulty level</h2>
-            <StyledSelect className="w-full" value="difficulty">
-              <option value="all">all</option>
-              {difficultyArray &&
-                difficultyArray.map((difficulty) => (
-                  <option key={difficulty} value={difficulty}>
-                    {difficulty}
-                  </option>
-                ))}
-            </StyledSelect>
-            {/* <h2>Prices</h2>
+      <div>
+        <h1>categories</h1>
+        <form>
+          <StyledSelect
+            value="category"
+            onChange={(e) => {
+              setFilterParam(e.target.value);
+            }}
+          >
+            <option value="all">all</option>
+            {categoryArray &&
+              categoryArray.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
+          </StyledSelect>
+          <h2>difficulty level</h2>
+          <StyledSelect className="w-full" value="difficulty">
+            <option value="all">all</option>
+            {difficultyArray &&
+              difficultyArray.map((difficulty) => (
+                <option key={difficulty} value={difficulty}>
+                  {difficulty}
+                </option>
+              ))}
+          </StyledSelect>
+          {/* <h2>Prices</h2>
           <select className="w-full" value="price">
             <option value="all">all</option>
             {pricesArray &&
@@ -136,32 +135,31 @@ export default function FilterItem({ items }) {
                 </option>
               ))}
           </select> */}
-          </form>
-        </div>
+        </form>
+      </div>
 
-        <CardWrapper>
-          {filteredItems.length <= 1 ? (
-            <div>No items found</div>
-          ) : (
-            filteredItems.map((item) => (
-              <StyledCard key={item._id}>
-                <StyledImage
-                  onClick={() => router.push(`/item-page/${item._id}`)}
-                  src={item.images[0]}
-                  height="150"
-                  width="150"
-                  alt={item.description}
-                />
-                <StyledTitle>{item.title}</StyledTitle>
-                <TextWrapper>
-                  <StyledText>{item.difficulty}</StyledText>
-                  <StyledText>{item.price} €</StyledText>
-                </TextWrapper>
-              </StyledCard>
-            ))
-          )}
-        </CardWrapper>
-      </ContentWrapper>
+      <CardWrapper>
+        {filteredItems.length <= 1 ? (
+          <div>No items found</div>
+        ) : (
+          filteredItems.map((item) => (
+            <StyledCard key={item._id}>
+              <StyledImage
+                onClick={() => router.push(`/item-page/${item._id}`)}
+                src={item.images[0]}
+                height="150"
+                width="150"
+                alt={item.description}
+              />
+              <StyledTitle>{item.title}</StyledTitle>
+              <TextWrapper>
+                <StyledText>{item.difficulty}</StyledText>
+                <StyledText>{item.price} €</StyledText>
+              </TextWrapper>
+            </StyledCard>
+          ))
+        )}
+      </CardWrapper>
     </>
   );
 }

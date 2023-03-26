@@ -6,38 +6,29 @@ export default function ItemList({ items }) {
   const router = useRouter();
 
   return (
-    <ContentWrapper>
-      <CardWrapper>
-        {items
-          .sort((a, b) => b.createdAt - a.createdAt)
-          .slice(0, 10)
-          .map((item) => (
-            <StyledCard key={item._id}>
-              <StyledImage
-                onClick={() => router.push(`/item-page/${item._id}`)}
-                src={item.images[0]}
-                height="150"
-                width="150"
-                alt={item.description}
-              />
-              <StyledTitle>{item.title}</StyledTitle>
-              <TextWrapper>
-                <StyledText>{item.difficulty}</StyledText>
-                <StyledText>{item.price} €</StyledText>
-              </TextWrapper>
-            </StyledCard>
-          ))}
-      </CardWrapper>
-    </ContentWrapper>
+    <CardWrapper>
+      {items
+        .sort((a, b) => b.createdAt - a.createdAt)
+        .slice(0, 10)
+        .map((item) => (
+          <StyledCard key={item._id}>
+            <StyledImage
+              onClick={() => router.push(`/item-page/${item._id}`)}
+              src={item.images[0]}
+              height="150"
+              width="150"
+              alt={item.description}
+            />
+            <StyledTitle>{item.title}</StyledTitle>
+            <TextWrapper>
+              <StyledText>{item.difficulty}</StyledText>
+              <StyledText>{item.price} €</StyledText>
+            </TextWrapper>
+          </StyledCard>
+        ))}
+    </CardWrapper>
   );
 }
-
-const ContentWrapper = styled.div`
-  margin-top: 80px;
-  padding-left: 9%;
-  padding-right: 9%;
-  margin-bottom: 20%;
-`;
 
 export const CardWrapper = styled.div`
   display: flex;
