@@ -7,7 +7,7 @@ export default function Footer() {
   return (
     <Wrapper>
       <ScrollContainer>
-        <ScrollText>fashion + exchange + sell + buy</ScrollText>
+        <ScrollText>fashion + exchange + sell + design </ScrollText>
       </ScrollContainer>
       <Container>
         <Contact>
@@ -49,7 +49,7 @@ const ScrollText = styled.div`
   font-family: "Golos Text", sans-serif;
   margin-top: 20px;
   color: white;
-  font-size: 12pt;
+  font-size: 11pt;
   text-transform: uppercase;
   letter-spacing: 0.2rem;
   text-align: right;

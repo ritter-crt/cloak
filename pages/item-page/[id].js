@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import Item from "@/components/Item";
 import styled from "styled-components";
 import Image from "next/image";
+import { small_id } from "@/utils";
 
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
@@ -62,6 +63,7 @@ export default function PatternDetailsPage() {
     return (
       <>
         <Item
+          key={_id}
           images={images}
           title={title}
           instructions={instructions}

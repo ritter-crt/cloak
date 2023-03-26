@@ -4,6 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { small_id } from "@/utils";
 import { StyledButton } from "@/components/Button";
+import {
+  RiDeleteBinLine,
+  RiPencilLine,
+  RiCheckboxCircleLine,
+} from "react-icons/ri";
 
 import Slider, { Slide } from "@/components/Slider";
 
@@ -122,6 +127,9 @@ export default function Item({
               onChange={handleChange}
             ></StyledInput>
             <StyledButton>save changes</StyledButton>
+            <Link href="/home">
+              <StyledButton>cancel</StyledButton>
+            </Link>
           </EntryForm>
         )}
         {!isEditing && (
@@ -137,9 +145,9 @@ export default function Item({
                 navigation: true,
               }}
             >
-              {images.map((image) => (
+              {images.map((image, small_id) => (
                 <Slide key={small_id}>
-                  <img src={image} alt={image} />
+                  <img key={small_id} src={image} alt={image} />
                 </Slide>
               ))}
             </Slider>
@@ -151,7 +159,7 @@ export default function Item({
                 <StyledButton>back</StyledButton>
               </Link>
 
-              <StyledButton
+              <DeleteButton
                 onClick={() => {
                   if (
                     window.confirm("Are you sure you wish to delete this item?")
@@ -160,23 +168,22 @@ export default function Item({
                   router.push("/home");
                 }}
               >
-                delete
-                {/* <StyledSvg
-                xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                stroke-width="2"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                />
-              </StyledSvg> */}
-              </StyledButton>
+                <StyledSvg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="30"
+                  height="30"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                  />
+                </StyledSvg>
+              </DeleteButton>
 
               {/* <StyledButton
               onClick={() => {
@@ -243,41 +250,28 @@ const StyledTitel = styled.p`
   margin-bottom: 20px;
 `;
 
-// const DeleteButton = styled.button`
-//   position: relative;
-//   width: 50px;
-//   height: 50px;
-//   border-radius: 25px;
-//   border: 2px solid var(--first-color);
-//   background-color: whitesmoke;
-//   cursor: pointer;
-//   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-//   overflow: hidden;
-//   transition: 0.3s;
+const DeleteButton = styled.button`
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--background-color);
+  cursor: pointer;
+  overflow: hidden;
+  transition: 0.3s;
 
-//   &:hover {
-//     background-color: var(--first-color);
-//     transform: scale(1.2);
-//     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-//     transition: 0.3s;
-//   }
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: 0.3s;
+  }
+`;
 
-//   &:focus StyledSvg {
-//     opacity: 0;
-//     transition: 0.3s;
-//   }
-// `;
-
-// const StyledSvg = styled.svg`
-//   color: var(--first-color);
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   transition: 0.3s;
-//   &:hover {
-//     color: whitesmoke;
-//     width: 30px;
-//     height: 30px;
-//   }
-// `;
+const StyledSvg = styled.svg`
+  color: var(--first-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+`;

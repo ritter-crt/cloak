@@ -6,6 +6,7 @@ import SwiperCore, {
   Autoplay,
 } from "swiper";
 import { SliderWrap } from "./SliderWrap";
+import { small_id } from "@/utils";
 
 SwiperCore.use([Navigation, Pagination, EffectFade, Autoplay]);
 
@@ -20,6 +21,7 @@ const Slider = ({ children, settings }) => {
 
   return (
     <SliderWrap
+      key={small_id}
       dots={sliderOptions?.pagination}
       arrows={sliderOptions?.navigation}
     >
