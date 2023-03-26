@@ -2,12 +2,16 @@ import Image from "next/image";
 import BackgroundImage from "../src/assets/sewer-with-mannequin.jpg";
 import { changeOpacity, device } from "@/styles";
 import styled from "styled-components";
+import { StyledButton } from "./Button";
+import Link from "next/link";
+import LoginForm from "./LoginForm";
 
 export default function Hero() {
   return (
     <>
       <StyledWrapper>
         <StyledHeader>cloak</StyledHeader>
+        <GetStarted href="/home">join us</GetStarted>
         <StyledImage
           src={BackgroundImage}
           placeholder="blur"
@@ -17,9 +21,8 @@ export default function Hero() {
         ></StyledImage>
       </StyledWrapper>
       <StyledText>
-        {" "}
-        Create your own garment. Comfortable, functional, <br /> and suitable.{" "}
-        <br />
+        Create your own garment. <br />
+        Comfortable, functional, and suitable. <br />
         Fashion that fits you
       </StyledText>
     </>
@@ -56,12 +59,36 @@ const StyledHeader = styled.h1`
   }
 `;
 
+const GetStarted = styled(Link)`
+  position: absolute;
+  top: 15px;
+  right: 5%;
+  z-index: 2;
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin: 2px;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 5px;
+  background-color: black;
+  border-radius: 40px;
+  border: none;
+  transition-delay: 0.3s;
+  font-size: 10pt;
+  &:hover {
+    background-color: white;
+    color: black;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+`;
 const StyledText = styled.div`
   padding: 10%;
   width: 85%;
   letter-spacing: 0.05rem;
   line-height: 1.2rem;
-  font-size: 11pt;
+  font-size: 10pt;
   @media ${device.mobileL} {
     font-size: 18pt;
     letter-spacing: 0.2 rem;

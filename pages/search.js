@@ -8,10 +8,12 @@ import {
 
 import Navigation from "@/components/Navigation";
 import FilterItem from "@/components/FilterItem";
+import NavBar from "@/components/NavBar";
 
 export default function Search({ items }) {
   return (
     <>
+      <NavBar></NavBar>
       <ContentWrapper>
         <StyledHeader>Search</StyledHeader>
         <FilterItem items={items}></FilterItem>

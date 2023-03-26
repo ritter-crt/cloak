@@ -13,7 +13,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
-import { HeaderWrapper } from "./styled";
 import {
   EntryForm,
   StyledInput,
@@ -60,107 +59,109 @@ export default function Item({
     console.log(updatedCard);
   }
   return (
-    <Container>
-      {isEditing && (
-        <EntryForm onSubmit={handleSubmit}>
-          <StyledLabel htmlFor="title">title</StyledLabel>
-          <StyledInput
-            id="title"
-            name="title"
-            type="text"
-            defaultValue={title}
-            onChange={handleChange}
-          ></StyledInput>
-          <StyledLabel htmlFor="description"></StyledLabel>
-          <StyledInput
-            id="description"
-            name="description"
-            placeholder="e.g occasion, season"
-            defaultValue={description}
-            onChange={handleChange}
-          ></StyledInput>
-          <StyledLabel htmlFor="category">category</StyledLabel>
-          <StyledSelect
-            name="category"
-            id="category"
-            defaultValue={category}
-            onSelect={handleChange}
-          >
-            <option value="tops">tops</option>
-            <option value="bottoms">bottoms</option>
-            <option value="onesie">onesie</option>
-            <option value="accessories">accessories</option>
-          </StyledSelect>
-          <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
-          <StyledSelect
-            name="difficulty"
-            id="difficulty"
-            defaultValue={difficulty}
-            onSelect={handleChange}
-          >
-            <option value="beginner">beginner</option>
-            <option value="easy">easy</option>
-            <option value="medium">medium</option>
-            <option value="intermediate">intermediate</option>
-            <option value="expert">expert</option>
-          </StyledSelect>
-          <StyledLabel htmlFor="instructions">instructions</StyledLabel>
-          <StyledTextarea
-            id="instructions"
-            name="instructions"
-            rows="5"
-            placeholder="e.g preferred fabric, what you need"
-            defaultValue={instructions}
-            onChange={handleChange}
-          ></StyledTextarea>
-          <StyledLabel htmlFor="price">price</StyledLabel>
-          <StyledInput
-            id="price"
-            name="price"
-            type="number"
-            defaultValue={price}
-            onChange={handleChange}
-          ></StyledInput>
-          <StyledButton>save changes</StyledButton>
-        </EntryForm>
-      )}
-      {!isEditing && (
-        <>
-          <HeaderWrapper>
-            <StyledTitel>{title}</StyledTitel>
-            <StyledText>{description}</StyledText>
-          </HeaderWrapper>
-          <StyledLevel>{difficulty}</StyledLevel>
-          <Slider
-            settings={{
-              navigation: true,
-            }}
-          >
-            {images.map((image) => (
-              <Slide key={small_id}>
-                <img src={image} alt={image} />
-              </Slide>
-            ))}
-          </Slider>
-          <StyledDescription> {instructions}</StyledDescription>
-          <StyledPrice>{price}€</StyledPrice>
-          <div>
-            <StyledButton>buy</StyledButton>
-            <Link href="/home">
-              <StyledButton>back</StyledButton>
-            </Link>
+    <ItemWrapper>
+      <Container>
+        {isEditing && (
+          <EntryForm onSubmit={handleSubmit}>
+            <StyledLabel htmlFor="title">title</StyledLabel>
+            <StyledInput
+              id="title"
+              name="title"
+              type="text"
+              defaultValue={title}
+              onChange={handleChange}
+            ></StyledInput>
+            <StyledLabel htmlFor="description"></StyledLabel>
+            <StyledInput
+              id="description"
+              name="description"
+              placeholder="e.g occasion, season"
+              defaultValue={description}
+              onChange={handleChange}
+            ></StyledInput>
+            <StyledLabel htmlFor="category">category</StyledLabel>
+            <StyledSelect
+              name="category"
+              id="category"
+              defaultValue={category}
+              onSelect={handleChange}
+            >
+              <option value="tops">tops</option>
+              <option value="bottoms">bottoms</option>
+              <option value="onesie">onesie</option>
+              <option value="accessories">accessories</option>
+            </StyledSelect>
+            <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
+            <StyledSelect
+              name="difficulty"
+              id="difficulty"
+              defaultValue={difficulty}
+              onSelect={handleChange}
+            >
+              <option value="beginner">beginner</option>
+              <option value="easy">easy</option>
+              <option value="medium">medium</option>
+              <option value="intermediate">intermediate</option>
+              <option value="expert">expert</option>
+            </StyledSelect>
+            <StyledLabel htmlFor="instructions">instructions</StyledLabel>
+            <StyledTextarea
+              id="instructions"
+              name="instructions"
+              rows="5"
+              placeholder="e.g preferred fabric, what you need"
+              defaultValue={instructions}
+              onChange={handleChange}
+            ></StyledTextarea>
+            <StyledLabel htmlFor="price">price</StyledLabel>
+            <StyledInput
+              id="price"
+              name="price"
+              type="number"
+              defaultValue={price}
+              onChange={handleChange}
+            ></StyledInput>
+            <StyledButton>save changes</StyledButton>
+          </EntryForm>
+        )}
+        {!isEditing && (
+          <>
+            <HeaderWrapper>
+              <StyledTitel>{title}</StyledTitel>
+              <StyledText>{description}</StyledText>
+            </HeaderWrapper>
 
-            <StyledButton
-              onClick={() => {
-                if (
-                  window.confirm("Are you sure you wish to delete this item?")
-                );
-                onDeleteCard(id);
-                router.push("/home");
+            <StyledLevel>{difficulty}</StyledLevel>
+            <Slider
+              settings={{
+                navigation: true,
               }}
             >
-              delete
-              {/* <StyledSvg
+              {images.map((image) => (
+                <Slide key={small_id}>
+                  <img src={image} alt={image} />
+                </Slide>
+              ))}
+            </Slider>
+            <StyledDescription> {instructions}</StyledDescription>
+            <StyledPrice>{price}€</StyledPrice>
+            <div>
+              <StyledButton>buy</StyledButton>
+              <Link href="/home">
+                <StyledButton>back</StyledButton>
+              </Link>
+
+              <StyledButton
+                onClick={() => {
+                  if (
+                    window.confirm("Are you sure you wish to delete this item?")
+                  );
+                  onDeleteCard(id);
+                  router.push("/home");
+                }}
+              >
+                delete
+                {/* <StyledSvg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
                 height="30"
@@ -175,9 +176,9 @@ export default function Item({
                   d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                 />
               </StyledSvg> */}
-            </StyledButton>
+              </StyledButton>
 
-            {/* <StyledButton
+              {/* <StyledButton
               onClick={() => {
                 onDeleteCard(id);
                 router.push("/home");
@@ -185,18 +186,31 @@ export default function Item({
             >
               remove
             </StyledButton> */}
-            <StyledButton onClick={() => setIsEditing(true)}>edit</StyledButton>
-          </div>
-        </>
-      )}
-    </Container>
+              <StyledButton onClick={() => setIsEditing(true)}>
+                edit
+              </StyledButton>
+            </div>
+          </>
+        )}
+      </Container>
+    </ItemWrapper>
   );
 }
+
+const ItemWrapper = styled.div`
+  margin-top: 50px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 20%;
+`;
+const HeaderWrapper = styled.div`
+  width: 100%;
+  border-bottom: solid 0.1px;
+`;
 const Container = styled.div`
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  margin: 10%;
-  justify-content: center;
+  justify-content: center; */
 `;
 
 const StyledText = styled.p`

@@ -9,8 +9,8 @@ export default function LoginForm() {
   return (
     <EntryForm>
       <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
-      <StyledHeader>We invite you to join cloak.</StyledHeader>
-      <StyledLabel htmlFor="name" name="name" id="name">
+      <StyledHeader>We invite you to join.</StyledHeader>
+      {/* <StyledLabel htmlFor="name" name="name" id="name">
         name
       </StyledLabel>
       <StyledInput
@@ -41,18 +41,19 @@ export default function LoginForm() {
       />
       <Link href="/home">
         <Login>sign up</Login>
-      </Link>
+      </Link> */}
 
-      <StyledLabel>Already Signed Up?</StyledLabel>
-      <StyledButton>login</StyledButton>
+      {/* <StyledLabel>Already Signed Up?</StyledLabel>
+      <StyledButton>login</StyledButton> */}
     </EntryForm>
   );
 }
 
 const EntryForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  padding: 2rem 3rem 5rem 3rem;
+  position: absolute;
+  top: 15px;
+  right: 5%;
+  z-index: 2;
   @media ${device.mobileL} {
     width: 50%;
     float: right;

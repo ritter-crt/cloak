@@ -1,37 +1,48 @@
+import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
 import Burger from "./Burger";
-
+import HomeFilled from "@/src/assets/icons/home_filled.png";
+import ProfileFilled from "@/src/assets/icons/profile_filled.png";
+import AddFilled from "@/src/assets/icons/add_filled.png";
+import SearchFilled from "@/src/assets/icons/search.png";
 export default function RightNav({ open }) {
   return (
     <>
       <NavMenu open={open}>
-        {/* <NavContainer> */}
         <li>
-          <NavLink href="/home">Home</NavLink>
+          <NavLink href="/home">
+            {/* <Image src={HomeFilled} width="25" height="25" alt="home"></Image> */}
+            Home
+          </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink href="/add">Add</NavLink>
+          <NavLink href="/add">
+            {/* <Image
+              src={AddFilled}
+              width="25"
+              height="25"
+              alt="add pattern"
+            ></Image> */}
+            Add
+          </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink href="/search">Search</NavLink>
+          <NavLink href="/search">
+            {/* <Image src={SearchFilled} width="25" height="25" alt="search" /> */}
+            Search
+          </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink href="/profile">Profile</NavLink>
+          <NavLink href="/profile">
+            {/* <Image src={ProfileFilled} width="25" height="25" alt="home" /> */}
+            Profile
+          </NavLink>
         </li>
-        {/* </NavContainer> */}
       </NavMenu>
     </>
   );
 }
-
-// const NavContainer = styled.nav`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 100%;
-//   height: 80px;
-// `;
 
 const NavMenu = styled.ul`
   display: flex;
@@ -53,10 +64,6 @@ const NavMenu = styled.ul`
     width: 30%;
     /* padding-top: 3.5rem; */
     transition: transform 0.3 ease-in-out;
-
-    li {
-      color: black;
-    }
   }
 `;
 
@@ -64,9 +71,11 @@ const NavLink = styled(Link)`
   color: black;
   text-decoration: none;
   height: 100%;
-  font-family: "Golos Text", sans-serif;
-  text-transform: lowercase;
+  text-transform: uppercase;
   font-weight: 100;
+  font-size: 9pt;
+  letter-spacing: 2pt;
+  padding: 10px;
 
   &:hover {
     color: var(--first-color);
