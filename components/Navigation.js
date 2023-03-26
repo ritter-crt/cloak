@@ -1,4 +1,4 @@
-import HomeFilled  from "@/src/assets/icons/home_filled.png";
+import HomeFilled from "@/src/assets/icons/home_filled.png";
 import ProfileFilled from "@/src/assets/icons/profile_filled.png";
 import AddFilled from "@/src/assets/icons/add_filled.png";
 import SearchFilled from "@/src/assets/icons/search.png";
@@ -38,8 +38,7 @@ const NavWrapper = styled.nav`
   position: fixed;
   background-color: white;
   width: 100%;
-  box-shadow: 0px -5px 5px -6px rgba(0,0,0,0.29)
-
+  box-shadow: 0px -5px 5px -6px rgba(0, 0, 0, 0.29);
 `;
 
 const StyledLink = styled(Link)`

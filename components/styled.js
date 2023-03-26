@@ -7,6 +7,13 @@ export const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
+export const ContentWrapper = styled.div`
+  margin-top: 200px;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 20%;
+`;
+
 export const StyledTitle = styled.p`
   text-transform: uppercase;
   font-size: 9pt;
@@ -30,17 +37,19 @@ export const StyledInput = styled.input`
 `;
 
 export const StyledHeader = styled.h1`
-  margin-left: 10%;
-  margin-right: 10%;
+  position: absolute;
+  top: 15%;
   font-size: 20pt;
   font-family: "Bodoni Moda", serif;
   font-weight: 100;
   text-transform: uppercase;
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 `;
 
 export const HeaderWrapper = styled.div`
   width: 100%;
-  border-bottom: solid 0.1px;
+  position: absolute;
+  top: 15%;
+  /* border-bottom: solid 0.1px; */
 `;

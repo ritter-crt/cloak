@@ -8,7 +8,7 @@ export const EntryForm = styled.form`
   flex-direction: column;
   justify-content: center;
   padding: 10%;
-  margin: 10% 10% 20% 10%;
+
   border-radius: 20px;
   box-shadow: black 0px 1px 3px;
 `;

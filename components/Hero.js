@@ -1,9 +1,7 @@
 import Image from "next/image";
-
+import BackgroundImage from "../src/assets/sewer-with-mannequin.jpg";
 import { changeOpacity, device } from "@/styles";
 import styled from "styled-components";
-
-import BackgroundImage from "../src/assets/sewer-with-mannequin.jpg";
 
 export default function Hero() {
   return (

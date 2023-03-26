@@ -53,18 +53,15 @@ export default function Form({}) {
 
   return (
     <>
-      <HeaderWrapper>
-        <StyledHeader>Upload</StyledHeader>
-      </HeaderWrapper>
       <UploadWrapper>
         <ImageUpload
           imageSrc={imageSrc}
           setImageSrc={setImageSrc}
         ></ImageUpload>
-        <DocumentUpload
+        {/* <DocumentUpload
           patternSrc={patternSrc}
           setPatternSrc={setPatternSrc}
-        ></DocumentUpload>
+        ></DocumentUpload> */}
       </UploadWrapper>
       <EntryForm onSubmit={handleSubmit}>
         <StyledLabel htmlFor="title">title</StyledLabel>
@@ -130,6 +127,5 @@ export default function Form({}) {
 
 const UploadWrapper = styled.div`
   display: flex;
-  padding: 10%;
   justify-content: flex-start;
 `;

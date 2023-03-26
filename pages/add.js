@@ -1,13 +1,13 @@
 import Form from "@/components/Form";
-import ImageUpload from "@/components/ImageUpload";
-import Navigation from "@/components/Navigation";
-
+import { ContentWrapper, StyledHeader } from "@/components/styled";
 
 export default function Add() {
   return (
     <>
-      <Form/>
-      <Navigation/>
+      <ContentWrapper>
+        <StyledHeader>Upload</StyledHeader>
+        <Form />
+      </ContentWrapper>
     </>
   );
 }

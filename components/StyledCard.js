@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-export const ContentWrapper = styled.div`
-  margin-top: 80px;
-  padding-left: 9%;
-  padding-right: 9%;
-  margin-bottom: 20%;
-`;
+// export const ContentWrapper = styled.div`
+//   margin-top: 80px;
+//   padding-left: 9%;
+//   padding-right: 9%;
+//   margin-bottom: 20%;
+// `;
 
 export const CardWrapper = styled.div`
   display: flex;
