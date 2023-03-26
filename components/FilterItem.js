@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { StyledTitle } from "./styled";
+import styled from "styled-components";
+
+import { StyledHeader, StyledTitle } from "./styled";
 import {
   CardWrapper,
   ContentWrapper,
@@ -8,6 +10,7 @@ import {
   StyledText,
   TextWrapper,
 } from "./StyledCard";
+import { StyledSelect } from "./StyledForm";
 
 const categoryArray = [
   "tops",
@@ -85,44 +88,45 @@ export default function FilterItem({ items }) {
 
   return (
     <>
-      <label htmlFor="search-form">
-        <input
-          type="search"
-          placeholder="Search for..."
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
-        <span className="sr-only">Search for sewing patterns here</span>
-      </label>
+      <ContentWrapper>
+        <StyledBox>
+          <StyledInput
+            type="search"
+            placeholder="Search for..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <StyledI></StyledI>
+        </StyledBox>
 
-      <div>
-        <h2>categories</h2>
-        <form>
-          <select
-            value="category"
-            onChange={(e) => {
-              setFilterParam(e.target.value);
-            }}
-          >
-            <option value="all">all</option>
-            {categoryArray &&
-              categoryArray.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-          </select>
-          <h2>difficulty level</h2>
-          <select className="w-full" value="difficulty">
-            <option value="all">all</option>
-            {difficultyArray &&
-              difficultyArray.map((difficulty) => (
-                <option key={difficulty} value={difficulty}>
-                  {difficulty}
-                </option>
-              ))}
-          </select>
-          {/* <h2>Prices</h2>
+        <div>
+          <h1>categories</h1>
+          <form>
+            <StyledSelect
+              value="category"
+              onChange={(e) => {
+                setFilterParam(e.target.value);
+              }}
+            >
+              <option value="all">all</option>
+              {categoryArray &&
+                categoryArray.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
+            </StyledSelect>
+            <h2>difficulty level</h2>
+            <StyledSelect className="w-full" value="difficulty">
+              <option value="all">all</option>
+              {difficultyArray &&
+                difficultyArray.map((difficulty) => (
+                  <option key={difficulty} value={difficulty}>
+                    {difficulty}
+                  </option>
+                ))}
+            </StyledSelect>
+            {/* <h2>Prices</h2>
           <select className="w-full" value="price">
             <option value="all">all</option>
             {pricesArray &&
@@ -132,10 +136,9 @@ export default function FilterItem({ items }) {
                 </option>
               ))}
           </select> */}
-        </form>
-      </div>
+          </form>
+        </div>
 
-      <ContentWrapper>
         <CardWrapper>
           {filteredItems.length <= 1 ? (
             <div>No items found</div>
@@ -162,3 +165,39 @@ export default function FilterItem({ items }) {
     </>
   );
 }
+
+const StyledBox = styled.div`
+  margin-top: 50px;
+`;
+
+const StyledInput = styled.input`
+  margin: 20px;
+  padding: 10px;
+  width: 20%;
+  height: 40px;
+  background: none;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
+  box-sizing: border-box;
+  outline: none;
+  transition: 0.5s;
+  &:hover {
+    width: 90%;
+    border: 1px solid var(--first-color);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+`;
+
+const StyledI = styled.i`
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translate(-50%, -50%);
+  font-size: 11pt;
+  color: #ffd52d;
+  transition: 0.2s;
+  &:hover {
+    opacity: 0;
+    z-index: -1;
+  }
+`;
