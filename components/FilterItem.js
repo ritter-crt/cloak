@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
 
@@ -54,16 +55,28 @@ const pricesArray = [
 ];
 
 export default function FilterItem({ items }) {
+  const router = useRouter();
+
   const [query, setQuery] = useState("");
   const [filterParam, setFilterParam] = useState(["All"]);
-  const [searchParam] = useState(["category", "difficulty", "price", "title"]);
+  const [searchParam] = useState([
+    "category",
+    "difficulty",
+    "title",
+    "description",
+  ]);
 
   const filteredItems =
     //______________________To start with empty page set initial state to empty array
     // query.length > 0
     //   ?
     items.filter((item) => {
-      if (item.difficulty === filterParam || item.category === filterParam) {
+      if (
+        item.difficulty === filterParam ||
+        item.category === filterParam ||
+        item.title === filterParam ||
+        item.description === filterParam
+      ) {
         return searchParam.some((newItem) => {
           return (
             item[newItem]
@@ -139,7 +152,7 @@ export default function FilterItem({ items }) {
       </div>
 
       <CardWrapper>
-        {filteredItems.length <= 1 ? (
+        {filteredItems.length <= 0 ? (
           <div>No items found</div>
         ) : (
           filteredItems.map((item) => (

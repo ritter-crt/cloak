@@ -9,10 +9,12 @@ import {
   StyledHeader,
 } from "@/components/styled";
 import styled from "styled-components";
+import NavBar from "@/components/NavBar";
 
 export default function Home({ items }) {
   return (
     <>
+      <NavBar></NavBar>
       <ContentWrapper>
         <StyledHeader>newly added</StyledHeader>
         <ItemList items={items}></ItemList>

@@ -5,38 +5,50 @@ import Image from "next/image";
 
 import HandWorking from "../src/assets/hand-working.jpg";
 import TailorWorking from "../src/assets/tailor-with-sewing-machine.jpg";
-import Dressmaker from "../src/assets/pile-of-clothes.jpeg";
+import Dressmaker from "../src/assets/male-dressmaker-with-computer.jpg";
+import SewingMachine from "../src/assets/sewing_machine.avif";
+import LoginForm from "./LoginForm";
 
 export default function Collage() {
   return (
-    <CollageWrapper>
-      <StyledText>
-        CLOAK is a platform dedicated to exchange, sell and get sewing patterns.
-      </StyledText>
-      <ImageWrapperOne
-        src={TailorWorking}
-        placeholder="blur"
-        height="300"
-        width="200"
-        alt="working Hand"
-      ></ImageWrapperOne>
+    <>
+      <CollageWrapper>
+        <StyledText>
+          CLOAK is a platform dedicated to exchange, sell and get sewing
+          patterns.
+        </StyledText>
+        <ImageWrapperOne
+          src={TailorWorking}
+          placeholder="blur"
+          height="300"
+          width="200"
+          alt="working Hand"
+        ></ImageWrapperOne>
 
-      <ImageWrapperTwo
-        src={HandWorking}
-        placeholder="blur"
-        height="100"
-        width="150"
-        alt="working Hand"
-      ></ImageWrapperTwo>
+        <ImageWrapperTwo
+          src={HandWorking}
+          placeholder="blur"
+          height="100"
+          width="150"
+          alt="working Hand"
+        ></ImageWrapperTwo>
 
-      {/* <ImageWrapperThree
-        src={Dressmaker}
+        <ImageWrapperThree
+          src={Dressmaker}
+          placeholder="blur"
+          height="250"
+          width="320"
+          alt="working Hand"
+        ></ImageWrapperThree>
+      </CollageWrapper>
+      <ImageWrapperFour
+        src={SewingMachine}
         placeholder="blur"
         height="250"
-        width="320"
+        width="420"
         alt="working Hand"
-      ></ImageWrapperThree> */}
-    </CollageWrapper>
+      ></ImageWrapperFour>
+    </>
   );
 }
 
@@ -48,7 +60,7 @@ const CollageWrapper = styled.div`
   animation-duration: 6s;
   animation-iteration-count: 1;
   @media ${device.mobileL} {
-    height: 700px;
+    height: 1300px;
   }
 `;
 
@@ -82,11 +94,20 @@ const ImageWrapperThree = styled(Image)`
   left: 10%;
   object-fit: cover;
   @media ${device.mobileL} {
-    margin-top: 50px;
-    top: 100%;
+    bottom: 10%;
+    left: 10%;
     margin-top: 20px;
-    height: 500px;
-    width: 640px;
+    height: 100px;
+    width: 440px;
+  }
+`;
+
+const ImageWrapperFour = styled(Image)`
+  display: inline-block;
+  width: 100%;
+  object-fit: cover;
+  @media ${device.mobileL} {
+    height: 300px;
   }
 `;
 
@@ -97,7 +118,7 @@ export const StyledText = styled.div`
   right: 3%;
   padding: 33px;
   line-height: 1.2rem;
-  font-size: 11pt;
+  font-size: 10pt;
   color: black;
   @media ${device.mobileL} {
     width: 40%;

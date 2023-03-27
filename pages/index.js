@@ -9,9 +9,10 @@ export default function Start() {
     <>
       <Hero />
       <Collage />
-      <Link href="/home">
+
+      {/* <Link href="/home">
         <StyledButton>get started</StyledButton>
-      </Link>
+      </Link> */}
     </>
   );
 }
