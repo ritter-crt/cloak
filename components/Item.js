@@ -8,6 +8,8 @@ import {
   RiDeleteBinLine,
   RiPencilLine,
   RiCheckboxCircleLine,
+  BiArrowBack,
+  FaCcPaypal,
 } from "react-icons/ri";
 
 import Slider, { Slide } from "@/components/Slider";
