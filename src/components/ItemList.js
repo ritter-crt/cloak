@@ -52,11 +52,15 @@ const StyledTitle = styled.p`
   font-weight: 250;
   margin-top: 6px;
   margin-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 
 const TextWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
 `;
 const StyledText = styled.p`
   font-size: 10pt;

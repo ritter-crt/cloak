@@ -8,10 +8,14 @@ export const StyledImage = styled(Image)`
 `;
 
 export const ContentWrapper = styled.div`
-  margin-top: 200px;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-top: 180px;
+  margin-left: 7%;
+  margin-right: 7%;
   margin-bottom: 20%;
+  @media ${device.mobileL} {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
 `;
 
 export const StyledTitle = styled.p`
@@ -38,13 +42,13 @@ export const StyledInput = styled.input`
 
 export const StyledHeader = styled.h1`
   position: absolute;
-  top: 15%;
+  top: 10%;
   font-size: 20pt;
   font-family: "Bodoni Moda", serif;
   font-weight: 100;
   text-transform: uppercase;
   text-align: left;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 `;
 
 export const HeaderWrapper = styled.div`

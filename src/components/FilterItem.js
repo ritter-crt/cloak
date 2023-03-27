@@ -1,3 +1,4 @@
+import { categoryArray, difficultyArray } from "@/utils";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
@@ -10,48 +11,6 @@ import {
   StyledText,
   TextWrapper,
 } from "./StyledCard";
-import { StyledSelect } from "./StyledForm";
-
-const categoryArray = [
-  "tops",
-  "bottom",
-  "onsies",
-  "dresses",
-  "jackets",
-  "coats",
-  "accessories",
-];
-
-const difficultyArray = [
-  "beginner",
-  "easy",
-  "intermediate",
-  "medium",
-  "expert",
-];
-
-const pricesArray = [
-  {
-    name: "free",
-    value: "0",
-  },
-  {
-    name: "1-10€",
-    value: "1-10",
-  },
-  {
-    name: "10-20€",
-    value: "10-20",
-  },
-  {
-    name: "20-50€",
-    value: "20-50",
-  },
-  {
-    name: "50-99€",
-    value: "50-99",
-  },
-];
 
 export default function FilterItem({ items }) {
   const router = useRouter();
@@ -110,25 +69,27 @@ export default function FilterItem({ items }) {
         <StyledI></StyledI>
       </StyledBox>
 
-      <div>
-        <h1>categories</h1>
-        <form>
-          <StyledSelect
-            value="category"
+      <FilterWrapper>
+        <DropdownWrapper>
+          <p>sort by category</p>
+          <Select
+            defaultValue="category"
             onChange={(e) => {
               setFilterParam(e.target.value);
             }}
           >
-            <option value="all">all</option>
+            <option defaultValue="all">all</option>
             {categoryArray &&
               categoryArray.map((category) => (
                 <option key={category} value={category}>
                   {category}
                 </option>
               ))}
-          </StyledSelect>
-          <h2>difficulty level</h2>
-          <StyledSelect className="w-full" value="difficulty">
+          </Select>
+        </DropdownWrapper>
+        <DropdownWrapper>
+          <p>sort by difficulty level</p>
+          <Select className="w-full" defaultValue="difficulty">
             <option value="all">all</option>
             {difficultyArray &&
               difficultyArray.map((difficulty) => (
@@ -136,19 +97,9 @@ export default function FilterItem({ items }) {
                   {difficulty}
                 </option>
               ))}
-          </StyledSelect>
-          {/* <h2>Prices</h2>
-          <select className="w-full" value="price">
-            <option value="all">all</option>
-            {pricesArray &&
-              pricesArray.map((price) => (
-                <option key={price.value} value={price.value}>
-                  {price.name}
-                </option>
-              ))}
-          </select> */}
-        </form>
-      </div>
+          </Select>
+        </DropdownWrapper>
+      </FilterWrapper>
 
       <CardWrapper>
         {filteredItems.length <= 0 ? (
@@ -176,32 +127,38 @@ export default function FilterItem({ items }) {
   );
 }
 
-const StyledBox = styled.div`
-  margin-top: 50px;
+const FilterWrapper = styled.div`
+  display: flex;
+  padding-bottom: 10%;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
+const DropdownWrapper = styled.div`
+  width: 100%;
+`;
+const StyledBox = styled.div``;
+
 const StyledInput = styled.input`
-  margin: 20px;
-  padding: 10px;
-  width: 20%;
+  width: 50%;
+  padding: 8px;
+  background-color: #ffd52d;
   height: 40px;
   background: none;
-  border: 1px solid lightgrey;
+  border: 2px solid black;
   border-radius: 10px;
   box-sizing: border-box;
   outline: none;
   transition: 0.5s;
   &:hover {
-    width: 90%;
-    border: 1px solid var(--first-color);
+    width: 100%;
+    border: 2px solid var(--first-color);
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
 `;
 
 const StyledI = styled.i`
   position: absolute;
-  top: 50%;
-  right: 15px;
   transform: translate(-50%, -50%);
   font-size: 11pt;
   color: #ffd52d;
@@ -210,4 +167,12 @@ const StyledI = styled.i`
     opacity: 0;
     z-index: -1;
   }
+`;
+
+const Select = styled.select`
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid black;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.05);
 `;

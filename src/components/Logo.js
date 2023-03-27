@@ -24,7 +24,9 @@ const LogoWrapper = styled.div`
   opacity: 70%;
 `;
 const StyledLogo = styled.p`
+  text-decoration: none;
   color: black;
+  cursor: pointer;
   z-index: 1;
 `;
 const StyledMenu = styled(Image)`

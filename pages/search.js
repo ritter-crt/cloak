@@ -1,14 +1,9 @@
 import dbConnect from "@/db/connect";
 import Item from "@/db/models/Item";
-import {
-  ContentWrapper,
-  HeaderWrapper,
-  StyledHeader,
-} from "@/components/styled";
+import { ContentWrapper, StyledHeader } from "@/src/components/styled";
 
-import Navigation from "@/components/Navigation";
-import FilterItem from "@/components/FilterItem";
-import NavBar from "@/components/NavBar";
+import FilterItem from "@/src/components/FilterItem";
+import NavBar from "@/src/components/NavBar";
 
 export default function Search({ items }) {
   return (
