@@ -1,10 +1,9 @@
 import Image from "next/image";
-import BackgroundImage from "../src/assets/sewer-with-mannequin.jpg";
+import BackgroundImage from "../assets/sewer-with-mannequin.jpg";
 import { changeOpacity, device } from "@/styles";
 import styled from "styled-components";
-import { StyledButton } from "./Button";
+
 import Link from "next/link";
-import LoginForm from "./LoginForm";
 
 export default function Hero() {
   return (
@@ -14,7 +13,6 @@ export default function Hero() {
         <GetStarted href="/login">join us</GetStarted>
         <StyledImage
           src={BackgroundImage}
-          placeholder="blur"
           height={900}
           width={700}
           alt="sewer with mannequin"

@@ -5,16 +5,20 @@ import RightNav from "./RightNavBar";
 export default function Burger() {
   const [open, setOpen] = useState(false);
   return (
-    <div>
+    <Wrapper>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
         <div />
         <div />
         <div />
       </StyledBurger>
       <RightNav open={open} />
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  width: 40%;
+`;
 
 const StyledBurger = styled.div`
   width: 20px;
@@ -35,7 +39,7 @@ const StyledBurger = styled.div`
   div {
     width: 2rem;
     height: 0.1rem;
-    background-color: ${({ open }) => (open ? "#ccc" : "#333")};
+    background-color: ${({ open }) => (open ? "#2874fc" : "black")};
     border-radius: 10px;
     transform-origin: 0.5px;
     transition: all 0.3s linear;

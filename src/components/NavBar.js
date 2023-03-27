@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Burger from "./Burger";
-import RightNav from "./RightNavBar";
 
 export default function NavBar() {
   return (
@@ -42,11 +41,12 @@ const Nav = styled.nav`
 `;
 
 const NavLogo = styled(Link)`
+  width: fit-content;
   text-decoration: none;
   font-family: "Golos Text", sans-serif;
-  color: black;
   cursor: pointer;
   text-decoration: none;
+  color: black;
   flex-grow: 1;
   z-index: 20;
 `;

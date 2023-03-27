@@ -1,15 +1,8 @@
 import Item from "@/db/models/Item";
 import dbConnect from "@/db/connect";
-
-import Navigation from "@/components/Navigation";
-import ItemList from "@/components/ItemList";
-import {
-  ContentWrapper,
-  HeaderWrapper,
-  StyledHeader,
-} from "@/components/styled";
-import styled from "styled-components";
-import NavBar from "@/components/NavBar";
+import ItemList from "@/src/components/ItemList";
+import { ContentWrapper, StyledHeader } from "@/src/components/styled";
+import NavBar from "@/src/components/NavBar";
 
 export default function Home({ items }) {
   return (

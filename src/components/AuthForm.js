@@ -2,10 +2,7 @@ import { useState, useRef } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { StyledLabel } from "./StyledForm";
-import { StyledButton } from "./Button";
 
-import { device } from "@/styles";
-import Link from "next/link";
 import styled from "styled-components";
 
 async function createUser(name, email, password) {

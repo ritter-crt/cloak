@@ -16,6 +16,7 @@ import ImageUpload from "./ImageUpload";
 
 import { StyledButton } from "./Button";
 import DocumentUpload from "./DocumentUpload";
+import { categoryArray, difficultyArray } from "@/utils";
 
 export default function Form({}) {
   const [imageSrc, setImageSrc] = useState([]);
@@ -74,21 +75,23 @@ export default function Form({}) {
 
         <StyledLabel htmlFor="category">category</StyledLabel>
         <StyledSelect name="category" id="category">
-          <option value="tops">tops</option>
-          <option value="bottoms">bottoms</option>
-          <option value="onesies">onesies</option>
-          <option value="accessories">dresses</option>
-          <option value="accessories">jackets & coats</option>
-          <option value="accessories">accessories</option>
+          <option defaultValue="all">all</option>
+          {categoryArray &&
+            categoryArray.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
         </StyledSelect>
 
         <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
         <StyledSelect name="difficulty" id="difficulty">
-          <option value="beginner">beginner</option>
-          <option value="easy">easy</option>
-          <option value="medium">medium</option>
-          <option value="intermediate">intermediate</option>
-          <option value="intermediate">expert</option>
+          {difficultyArray &&
+            difficultyArray.map((difficulty) => (
+              <option key={difficulty} value={difficulty}>
+                {difficulty}
+              </option>
+            ))}
         </StyledSelect>
 
         <StyledLabel htmlFor="instructions">

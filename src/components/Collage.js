@@ -3,11 +3,10 @@ import styled from "styled-components";
 
 import Image from "next/image";
 
-import HandWorking from "../src/assets/hand-working.jpg";
-import TailorWorking from "../src/assets/tailor-with-sewing-machine.jpg";
-import Dressmaker from "../src/assets/male-dressmaker-with-computer.jpg";
-import SewingMachine from "../src/assets/sewing_machine.avif";
-import LoginForm from "./LoginForm";
+import HandWorking from "../assets/hand-working.jpg";
+import TailorWorking from "../assets/tailor-with-sewing-machine.jpg";
+import Dressmaker from "../assets/male-dressmaker-with-computer.jpg";
+import SewingMachine from "../assets/sewing_machine.avif";
 
 export default function Collage() {
   return (
@@ -18,7 +17,7 @@ export default function Collage() {
           patterns.
         </StyledText>
         <ImageWrapperOne
-          src={TailorWorking}
+          src={HandWorking}
           placeholder="blur"
           height="300"
           width="200"
@@ -26,7 +25,7 @@ export default function Collage() {
         ></ImageWrapperOne>
 
         <ImageWrapperTwo
-          src={HandWorking}
+          src={TailorWorking}
           placeholder="blur"
           height="100"
           width="150"

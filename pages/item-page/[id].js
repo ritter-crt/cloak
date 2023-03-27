@@ -1,9 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Item from "@/components/Item";
-import styled from "styled-components";
-import Image from "next/image";
-import { small_id } from "@/utils";
+import Item from "@/src/components/Item";
 
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();

@@ -1,6 +1,4 @@
 import { device } from "@/styles";
-
-import Image from "next/image";
 import styled from "styled-components";
 
 export const EntryForm = styled.form`
@@ -9,7 +7,7 @@ export const EntryForm = styled.form`
   justify-content: center;
   padding: 10%;
   border-radius: 20px;
-  box-shadow: black 0px 1px 3px;
+  border: 2px solid black;
 `;
 
 export const StyledLabel = styled.label`
@@ -37,6 +35,9 @@ export const StyledInput = styled.input`
   outline: none;
   margin: 10px 0px;
   background-color: rgba(0, 0, 0, 0.05);
+  &:hover {
+    border: 2px solid var(--first-color);
+  }
   @media ${device.mobileL} {
     padding-top: 1px;
   }
@@ -47,6 +48,10 @@ export const StyledSelect = styled.select`
   border-radius: 10px;
   padding: 5px 10px;
   background-color: rgba(0, 0, 0, 0.05);
+  outline: none;
+  &:hover {
+    border: 2px solid var(--first-color);
+  }
 `;
 
 export const StyledTextarea = styled.textarea`
@@ -55,6 +60,10 @@ export const StyledTextarea = styled.textarea`
   padding: 5px 10px;
   background-color: rgba(0, 0, 0, 0.05);
   font-family: inherit;
+  outline: none;
+  &:hover {
+    border: 2px solid var(--first-color);
+  }
 `;
 
 export const StyledPrice = styled.p`

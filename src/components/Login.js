@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 import { useSession, signIn, signOut } from "next-auth/react";
 import { StyledButton } from "./Button";
 

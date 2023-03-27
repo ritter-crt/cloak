@@ -2,13 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function ImageUpload({
-  // uploadData,
-  imageSrc,
-  setImageSrc,
-  // onImageChange,
-  // onImageSubmit,
-}) {
+export default function ImageUpload({ imageSrc, setImageSrc }) {
   console.log(imageSrc);
   const [uploadData, setUploadData] = useState();
 
@@ -65,13 +59,14 @@ export default function ImageUpload({
           >
             <Input multiple />
             {imageSrc.map((image, small_id) => (
-              <Image
-                src={image}
-                key={small_id}
-                width="500"
-                height="500"
-                alt="some image"
-              />
+              <ImageWrapper key={small_id}>
+                <StyledImage
+                  src={image}
+                  width="150"
+                  height="150"
+                  alt="some image"
+                />
+              </ImageWrapper>
             ))}
             {imageSrc && !uploadData && (
               <p>
@@ -122,4 +117,16 @@ const StyledButton = styled.button`
 const UploadWrapper = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 6px;
+  width: 60%;
+`;
+
+const StyledImage = styled(Image)`
+  object-fit: cover;
 `;

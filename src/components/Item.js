@@ -2,17 +2,16 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
-import { StyledButton } from "@/components/Button";
+import { StyledButton } from "@/src/components/Button";
 
 import {
   RiDeleteBin7Line,
   RiEditBoxLine,
-  RiCheckboxLine,
   RiArrowGoBackFill,
 } from "react-icons/ri";
 import { MdOutlineCancelPresentation } from "react-icons/md";
 
-import Slider, { Slide } from "@/components/Slider";
+import Slider, { Slide } from "@/src/components/Slider";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -26,6 +25,8 @@ import {
   StyledSelect,
   StyledTextarea,
 } from "./StyledForm";
+
+import { categoryArray, difficultyArray } from "@/utils";
 
 export default function Item({
   title,
@@ -96,10 +97,12 @@ export default function Item({
             defaultValue={category}
             onSelect={handleChange}
           >
-            <option value="tops">tops</option>
-            <option value="bottoms">bottoms</option>
-            <option value="onesie">onesie</option>
-            <option value="accessories">accessories</option>
+            {categoryArray &&
+              categoryArray.map((category) => (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              ))}
           </StyledSelect>
           <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
           <StyledSelect
@@ -108,11 +111,12 @@ export default function Item({
             defaultValue={difficulty}
             onSelect={handleChange}
           >
-            <option value="beginner">beginner</option>
-            <option value="easy">easy</option>
-            <option value="medium">medium</option>
-            <option value="intermediate">intermediate</option>
-            <option value="expert">expert</option>
+            {difficultyArray &&
+              difficultyArray.map((difficulty) => (
+                <option key={difficulty} value={difficulty}>
+                  {difficulty}
+                </option>
+              ))}
           </StyledSelect>
           <StyledLabel htmlFor="instructions">instructions</StyledLabel>
           <StyledTextarea
@@ -131,8 +135,6 @@ export default function Item({
             defaultValue={price}
             onChange={handleChange}
           ></StyledInput>
-
-          {/* <SaveButton></SaveButton> */}
           <StyledButton onClick={() => router.push("/home")}>
             safe changes
           </StyledButton>
@@ -194,11 +196,7 @@ const HeaderWrapper = styled.div`
   width: 100%;
   border-bottom: solid 0.1px;
 `;
-const Container = styled.div`
-  /* display: flex;
-  flex-direction: column;
-  justify-content: center; */
-`;
+
 const StyledText = styled.p`
   font-size: 12pt;
   font-family: "Bodoni Moda", serif;
@@ -215,6 +213,7 @@ const StyledDescription = styled.p`
   padding: 20px;
 `;
 const StyledPrice = styled.p`
+  padding: 5%;
   align-items: flex-end;
 `;
 const StyledTitel = styled.p`
@@ -255,15 +254,7 @@ const EditIcon = styled(RiEditBoxLine)`
     color: var(--first-color);
   }
 `;
-const SaveButton = styled(RiCheckboxLine)`
-  width: 30px;
-  height: 30px;
-  color: black;
-  margin: 10px;
-  &:hover {
-    color: var(--first-color);
-  }
-`;
+
 const CancelButton = styled(MdOutlineCancelPresentation)`
   width: 30px;
   height: 30px;

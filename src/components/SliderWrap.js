@@ -4,7 +4,7 @@ export const SliderWrap = styled.div`
   position: relative;
   .swiper {
     width: 100%;
-
+    height: fit-content;
     margin-left: auto;
     margin-right: auto;
   }
@@ -16,7 +16,7 @@ export const SliderWrap = styled.div`
     background: var(--background-color);
     img {
       max-width: 100%;
-      height: 400px;
+      height: fit-content;
     }
   }
   ${({ arrows }) =>
