@@ -46,6 +46,7 @@ const NavLogo = styled(Link)`
   font-family: "Golos Text", sans-serif;
   cursor: pointer;
   text-decoration: none;
+  color: black;
   flex-grow: 1;
   z-index: 20;
 `;

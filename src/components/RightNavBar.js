@@ -38,7 +38,8 @@ const NavMenu = styled.ul`
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 5%;
     right: 0;
-    margin: 3px;
+    margin: 5px;
+    padding: 10px;
     height: fit-content;
     width: fit-content;
     transition: transform 0.3 ease-in-out;
