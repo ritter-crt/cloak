@@ -13,8 +13,8 @@ export const ContentWrapper = styled.div`
   margin-right: 7%;
   margin-bottom: 20%;
   @media ${device.mobileL} {
-    margin-left: 15%;
-    margin-right: 15%;
+    margin-left: 10%;
+    margin-right: 10%;
   }
 `;
 
