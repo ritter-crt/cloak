@@ -11,7 +11,7 @@ export default function Hero() {
     <>
       <StyledWrapper>
         <StyledHeader>cloak</StyledHeader>
-        <GetStarted href="/home">join us</GetStarted>
+        <GetStarted href="/login">join us</GetStarted>
         <StyledImage
           src={BackgroundImage}
           placeholder="blur"
@@ -35,7 +35,6 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledHeader = styled.h1`
-  text-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   font-family: "Golos Text", sans-serif;
   animation-name: ${changeOpacity};
   animation-duration: 6s;
@@ -60,27 +59,30 @@ const StyledHeader = styled.h1`
 `;
 
 const GetStarted = styled(Link)`
-  position: absolute;
-  top: 15px;
-  right: 5%;
-  z-index: 2;
-  width: 100px;
-  display: flex;
-  flex-direction: row;
+  background-color: black;
   color: white;
+  text-decoration: none;
+  position: absolute;
+  top: 10px;
+  right: 2%;
+  z-index: 2;
+  width: 90px;
   margin: 2px;
   align-items: flex-end;
-  justify-content: center;
-  padding: 5px;
-  background-color: black;
+  text-align: center;
+  padding: 8px;
   border-radius: 40px;
   border: none;
   transition-delay: 0.3s;
-  font-size: 10pt;
+  font-size: 8pt;
   &:hover {
     background-color: white;
     color: black;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  @media ${device.mobileL} {
+    font-size: 12pt;
+    width: 100px;
   }
 `;
 const StyledText = styled.div`

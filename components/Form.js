@@ -6,7 +6,6 @@ import styled from "styled-components";
 import { HeaderWrapper, StyledHeader } from "./styled";
 
 import {
-  EntryForm,
   StyledInput,
   StyledLabel,
   StyledSelect,
@@ -52,17 +51,12 @@ export default function Form({}) {
   }
 
   return (
-    <>
-      <UploadWrapper>
-        <ImageUpload
-          imageSrc={imageSrc}
-          setImageSrc={setImageSrc}
-        ></ImageUpload>
-        {/* <DocumentUpload
-          patternSrc={patternSrc}
-          setPatternSrc={setPatternSrc}
-        ></DocumentUpload> */}
-      </UploadWrapper>
+    <Wrapper>
+      <ImageUpload imageSrc={imageSrc} setImageSrc={setImageSrc}></ImageUpload>
+      <DocumentUpload
+        patternSrc={patternSrc}
+        setPatternSrc={setPatternSrc}
+      ></DocumentUpload>
       <EntryForm onSubmit={handleSubmit}>
         <StyledLabel htmlFor="title">title</StyledLabel>
         <StyledInput
@@ -117,15 +111,53 @@ export default function Form({}) {
           max="99"
         ></StyledInput>
 
-        <StyledButton onClick={() => router.push("/home")}>
+        <UploadButton onClick={() => router.push("/home")}>
           upload your pattern
-        </StyledButton>
+        </UploadButton>
       </EntryForm>
-    </>
+    </Wrapper>
   );
 }
 
 const UploadWrapper = styled.div`
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10%;
+  border-radius: 20px;
+  box-shadow: black 0px 1px 3px;
+`;
+
+const EntryForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const UploadButton = styled.button`
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  margin: 2px;
+  align-items: flex-end;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: auto;
+  padding: 10px;
+  background-color: black;
+  border-radius: 40px;
+  border: none;
+  transition-delay: 0.3s;
+  font-size: 10pt;
+  &:hover {
+    background-color: white;
+    color: black;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
 `;
