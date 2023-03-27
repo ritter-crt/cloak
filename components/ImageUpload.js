@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+import styled from "styled-components";
 
 export default function ImageUpload({
   // uploadData,
@@ -56,29 +57,69 @@ export default function ImageUpload({
         <link rel="icon" href="/favicon.ico" />
       </h1>
       <main>
-        <form
-          method="post"
-          onChange={handleImageChange}
-          onSubmit={handleImageSubmit}
-        >
-          <input type="file" name="file" multiple />
-          {imageSrc.map((image, small_id) => (
-            <Image
-              src={image}
-              key={small_id}
-              width="500"
-              height="500"
-              alt="some image"
-            />
-          ))}
-          {imageSrc && !uploadData && (
-            <p>
-              <button>upload your images</button>
-            </p>
-          )}
-          {uploadData && <p>uploaded</p>}
-        </form>
+        <UploadWrapper>
+          <form
+            method="post"
+            onChange={handleImageChange}
+            onSubmit={handleImageSubmit}
+          >
+            <Input multiple />
+            {imageSrc.map((image, small_id) => (
+              <Image
+                src={image}
+                key={small_id}
+                width="500"
+                height="500"
+                alt="some image"
+              />
+            ))}
+            {imageSrc && !uploadData && (
+              <p>
+                <StyledButton>upload your images</StyledButton>
+              </p>
+            )}
+            {uploadData && <p>uploaded</p>}
+          </form>
+        </UploadWrapper>
       </main>
     </div>
   );
 }
+
+const Input = styled.input.attrs({
+  type: "file",
+})`
+  border: none;
+  border-bottom: 2px solid black;
+  border-start-end-radius: 4px;
+  border-start-start-radius: 4px;
+  padding: 10px 10px;
+  outline: none;
+  margin: 10px 0px;
+  background-color: rgba(0, 0, 0, 0.05);
+  width: 100%;
+`;
+
+const StyledButton = styled.button`
+  width: 150px;
+  color: black;
+  margin: 2px;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: auto;
+  padding: 10px;
+  border-radius: 40px;
+  border: none;
+  transition-delay: 0.3s;
+  font-size: 10pt;
+  &:hover {
+    background-color: white;
+    color: black;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+`;
+
+const UploadWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;

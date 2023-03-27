@@ -57,13 +57,13 @@ const ScrollText = styled.div`
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
   @media ${device.mobileL} {
-    font-size: 24pt;
+    font-size: 22pt;
     letter-spacing: 1.5rem;
   }
 
-  -moz-animation: my-animation 12s linear infinite;
-  -webkit-animation: my-animation 12s linear infinite;
-  animation: my-animation 12s linear infinite;
+  -moz-animation: my-animation 80s linear infinite;
+  -webkit-animation: my-animation 80s linear infinite;
+  animation: my-animation 80s linear infinite;
 
   @-webkit-keyframes my-animation {
     from {

@@ -97,8 +97,8 @@ const ImageWrapperThree = styled(Image)`
     bottom: 10%;
     left: 10%;
     margin-top: 20px;
-    height: 100px;
-    width: 440px;
+    height: 500px;
+    width: 640px;
   }
 `;
 
@@ -107,7 +107,7 @@ const ImageWrapperFour = styled(Image)`
   width: 100%;
   object-fit: cover;
   @media ${device.mobileL} {
-    height: 300px;
+    height: 800px;
   }
 `;
 

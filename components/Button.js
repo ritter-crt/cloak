@@ -1,3 +1,4 @@
+import { device } from "@/styles";
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
@@ -15,9 +16,15 @@ export const StyledButton = styled.button`
   border-radius: 40px;
   border: none;
   transition-delay: 0.3s;
+  font-size: 10pt;
   &:hover {
     background-color: white;
     color: black;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+
+  @media ${device.mobileL} {
+    font-size: 11pt;
+    padding: 13px;
   }
 `;
