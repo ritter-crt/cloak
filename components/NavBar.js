@@ -42,9 +42,9 @@ const Nav = styled.nav`
 `;
 
 const NavLogo = styled(Link)`
+  width: fit-content;
   text-decoration: none;
   font-family: "Golos Text", sans-serif;
-  color: black;
   cursor: pointer;
   text-decoration: none;
   flex-grow: 1;

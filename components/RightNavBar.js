@@ -11,33 +11,16 @@ export default function RightNav({ open }) {
     <>
       <NavMenu open={open}>
         <li>
-          <NavLink href="/home">
-            {/* <Image src={HomeFilled} width="25" height="25" alt="home"></Image> */}
-            Home
-          </NavLink>
+          <NavLink href="/home">Home</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink href="/add">
-            {/* <Image
-              src={AddFilled}
-              width="25"
-              height="25"
-              alt="add pattern"
-            ></Image> */}
-            Add
-          </NavLink>
+          <NavLink href="/add">Add</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink href="/search">
-            {/* <Image src={SearchFilled} width="25" height="25" alt="search" /> */}
-            Search
-          </NavLink>
+          <NavLink href="/search">Search</NavLink>
         </li>
         <li className="nav-item">
-          <NavLink href="/profile">
-            {/* <Image src={ProfileFilled} width="25" height="25" alt="home" /> */}
-            Profile
-          </NavLink>
+          <NavLink href="/profile">Profile</NavLink>
         </li>
       </NavMenu>
     </>
@@ -60,9 +43,9 @@ const NavMenu = styled.ul`
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 5%;
     right: 0;
-    height: 30vh;
-    width: 30%;
-    /* padding-top: 3.5rem; */
+    margin: 3px;
+    height: fit-content;
+    width: fit-content;
     transition: transform 0.3 ease-in-out;
   }
 `;
