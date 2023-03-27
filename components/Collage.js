@@ -41,6 +41,7 @@ export default function Collage() {
           alt="working Hand"
         ></ImageWrapperThree>
       </CollageWrapper>
+
       <ImageWrapperFour
         src={SewingMachine}
         placeholder="blur"

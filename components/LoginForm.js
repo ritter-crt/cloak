@@ -2,7 +2,7 @@ import { device } from "@/styles";
 import Link from "next/link";
 import styled from "styled-components";
 import { StyledButton } from "./Button";
-import Login from "./Logout";
+import Login from "./Login";
 import { StyledLabel } from "./styled";
 
 export default function LoginForm() {
@@ -10,7 +10,7 @@ export default function LoginForm() {
     <EntryForm>
       <StyledParagraph>Calling all Sewing Lovers</StyledParagraph>
       <StyledHeader>We invite you to join.</StyledHeader>
-      {/* <StyledLabel htmlFor="name" name="name" id="name">
+      <StyledLabel htmlFor="name" name="name" id="name">
         name
       </StyledLabel>
       <StyledInput
@@ -41,10 +41,10 @@ export default function LoginForm() {
       />
       <Link href="/home">
         <Login>sign up</Login>
-      </Link> */}
+      </Link>
 
-      {/* <StyledLabel>Already Signed Up?</StyledLabel>
-      <StyledButton>login</StyledButton> */}
+      <StyledLabel>Already Signed Up?</StyledLabel>
+      <StyledButton>login</StyledButton>
     </EntryForm>
   );
 }

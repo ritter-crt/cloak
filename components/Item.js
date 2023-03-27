@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
-import { small_id } from "@/utils";
 import { StyledButton } from "@/components/Button";
+
 import {
   RiDeleteBin7Line,
   RiEditBoxLine,
@@ -11,7 +11,9 @@ import {
   RiArrowGoBackFill,
 } from "react-icons/ri";
 import { MdOutlineCancelPresentation } from "react-icons/md";
+
 import Slider, { Slide } from "@/components/Slider";
+
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/navigation";

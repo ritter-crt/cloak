@@ -1,6 +1,12 @@
 import { useState, useRef } from "react";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
+import { StyledLabel } from "./StyledForm";
+import { StyledButton } from "./Button";
+
+import { device } from "@/styles";
+import Link from "next/link";
+import styled from "styled-components";
 
 async function createUser(name, email, password) {
   const response = await fetch("api/auth/register", {
@@ -62,33 +68,86 @@ export default function AuthForm() {
   }
 
   return (
-    <section>
-      <h1>{isLogin ? "Login" : "Sign Up"}</h1>
-      <form onSubmit={submitHandler}>
-        <div>
-          <label htmlFor="name">Your name</label>
-          <input type="name" id="name" required ref={nameInputRef} />
-        </div>
-        <div>
-          <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" required ref={emailInputRef} />
-        </div>
-        <div>
-          <label htmlFor="password">Your Password</label>
-          <input
-            type="password"
-            id="password"
-            required
-            ref={passwordInputRef}
-          />
-        </div>
-        <div>
-          <button>{isLogin ? "Login" : "Create Account"}</button>
-          <button type="button" onClick={switchAuthModeHandler}>
+    <Wrapper>
+      <StyledHeader>{isLogin ? "Login" : "Sign Up"}</StyledHeader>
+      <EntryForm onSubmit={submitHandler}>
+        <StyledLabel htmlFor="name" name="name" id="name">
+          Your name
+        </StyledLabel>
+        <StyledInput
+          type="name"
+          name="name"
+          autoComplete="off"
+          aria-label="Enter text"
+          placeholder="your name"
+          required
+          ref={nameInputRef}
+        />
+        <StyledLabel htmlFor="email" name="email" id="email">
+          Your Email
+        </StyledLabel>
+        <StyledInput type="email" id="email" required ref={emailInputRef} />
+        <StyledLabel htmlFor="password" name="password" id="password">
+          Your Password
+        </StyledLabel>
+        <StyledInput
+          type="password"
+          name="password"
+          aria-label="Enter your password"
+          placeholder="*********"
+          required
+          ref={passwordInputRef}
+        />
+        <ButtonWrapper>
+          <Button>{isLogin ? "Login" : "Create Account"}</Button>
+          <Button type="button" onClick={switchAuthModeHandler}>
             {isLogin ? "Create new account" : "Login with existing account"}
-          </button>
-        </div>
-      </form>
-    </section>
+          </Button>
+        </ButtonWrapper>
+      </EntryForm>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  margin: 10%;
+  border-radius: 20px;
+  border: 1px solid black;
+`;
+
+const EntryForm = styled.form`
+  padding: 10%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledHeader = styled.h2`
+  font-size: 14pt;
+  padding-top: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 100;
+`;
+
+const StyledInput = styled.input`
+  border: none;
+  border-bottom: 3px solid black;
+  padding: 5px 10px;
+  outline: none;
+`;
+
+const Button = styled.button`
+  border: none;
+  background: none;
+  color: var(--first-color);
+  &:hover {
+    color: black;
+    font-size: 12pt;
+  }
+`;
+
+const ButtonWrapper = styled.div`
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+`;
