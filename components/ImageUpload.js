@@ -2,13 +2,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
 
-export default function ImageUpload({
-  // uploadData,
-  imageSrc,
-  setImageSrc,
-  // onImageChange,
-  // onImageSubmit,
-}) {
+export default function ImageUpload({ imageSrc, setImageSrc }) {
   console.log(imageSrc);
   const [uploadData, setUploadData] = useState();
 

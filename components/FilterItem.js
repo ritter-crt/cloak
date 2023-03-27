@@ -5,7 +5,6 @@ import styled from "styled-components";
 import { StyledTitle } from "./styled";
 import {
   CardWrapper,
-  ContentWrapper,
   StyledCard,
   StyledImage,
   StyledText,

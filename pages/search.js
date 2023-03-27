@@ -27,7 +27,6 @@ export async function getServerSideProps() {
 
   try {
     const items = await Item.find();
-    // console.log(items);
     return {
       props: {
         items: JSON.parse(JSON.stringify(items)),

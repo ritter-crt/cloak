@@ -1,7 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
 import Burger from "./Burger";
-import RightNav from "./RightNavBar";
 
 export default function NavBar() {
   return (

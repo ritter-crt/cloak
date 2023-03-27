@@ -15,7 +15,7 @@ export const StyledButton = styled.button`
   background-color: black;
   border-radius: 40px;
   border: none;
-  transition-delay: 0.3s;
+  transition-delay: 0.1s;
   font-size: 10pt;
   &:hover {
     background-color: white;

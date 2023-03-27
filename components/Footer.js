@@ -1,7 +1,5 @@
 import { device } from "@/styles";
 import styled from "styled-components";
-import { keyframes } from "styled-components";
-import { useRouter } from "next/router";
 
 export default function Footer() {
   return (

@@ -7,7 +7,6 @@ import HandWorking from "../src/assets/hand-working.jpg";
 import TailorWorking from "../src/assets/tailor-with-sewing-machine.jpg";
 import Dressmaker from "../src/assets/male-dressmaker-with-computer.jpg";
 import SewingMachine from "../src/assets/sewing_machine.avif";
-import LoginForm from "./LoginForm";
 
 export default function Collage() {
   return (

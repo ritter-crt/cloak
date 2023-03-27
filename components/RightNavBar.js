@@ -1,11 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import Burger from "./Burger";
-import HomeFilled from "@/src/assets/icons/home_filled.png";
-import ProfileFilled from "@/src/assets/icons/profile_filled.png";
-import AddFilled from "@/src/assets/icons/add_filled.png";
-import SearchFilled from "@/src/assets/icons/search.png";
+
 export default function RightNav({ open }) {
   return (
     <>

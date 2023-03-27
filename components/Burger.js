@@ -5,16 +5,20 @@ import RightNav from "./RightNavBar";
 export default function Burger() {
   const [open, setOpen] = useState(false);
   return (
-    <div>
+    <Wrapper>
       <StyledBurger open={open} onClick={() => setOpen(!open)}>
         <div />
         <div />
         <div />
       </StyledBurger>
       <RightNav open={open} />
-    </div>
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  width: 40%;
+`;
 
 const StyledBurger = styled.div`
   width: 20px;

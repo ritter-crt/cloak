@@ -1,6 +1,4 @@
 import { device } from "@/styles";
-
-import Image from "next/image";
 import styled from "styled-components";
 
 export const EntryForm = styled.form`
