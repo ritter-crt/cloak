@@ -11,9 +11,9 @@ import {
   StyledTextarea,
 } from "./StyledForm";
 
-import ImageUpload from "./ImageUpload";
+import ImageUpload from "./UploadImage";
 
-import DocumentUpload from "./DocumentUpload";
+import DocumentUpload from "./UploadPattern";
 import { categoryArray, difficultyArray } from "@/utils";
 
 export default function Form({}) {
@@ -27,10 +27,12 @@ export default function Form({}) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newItem = Object.fromEntries(formData);
+    console.log(newItem);
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
-    // console.log("newItem______________________________________", newItem);
+    // console.log("newPattern______________________________________", newPattern);
+    // console.log(patternSrc);
 
     const response = await fetch("/api/items/create", {
       method: "POST",

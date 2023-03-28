@@ -10,7 +10,7 @@ export default function Hero() {
     <>
       <StyledWrapper>
         <StyledHeader>cloak</StyledHeader>
-        <GetStarted href="/login">join us</GetStarted>
+        <GetStarted href="/login">login</GetStarted>
         <StyledImage
           src={BackgroundImage}
           height={900}
@@ -71,7 +71,7 @@ const GetStarted = styled(Link)`
   padding: 8px;
   border-radius: 40px;
   border: none;
-  transition-delay: 0.3s;
+  transition-delay: 0.1s;
   font-size: 8pt;
   &:hover {
     background-color: white;

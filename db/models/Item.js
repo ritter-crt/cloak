@@ -10,9 +10,9 @@ const itemSchema = new Schema({
   instructions: String,
   price: Number,
   createdAt: String,
-  // pattern: String,
-  pattern: { type: Schema.Types.ObjectId, ref: "Pattern" },
+  pattern: String,
+  // pattern: { type: Schema.Types.ObjectId, ref: "Pattern" },
 });
 
-const Item = mongoose.models.Item || mongoose.model("Item", itemSchema);
+const Item = mongoose.models.Items || mongoose.model("Items", itemSchema);
 export default Item;

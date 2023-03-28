@@ -52,13 +52,13 @@ export default function Item({
     event.preventDefault();
     const formElements = event.target.elements;
     const updatedCard = {
-      image: formElements.image.value,
+      // image: formElements.image.value,
+      // pattern: formElements.pattern.value,
       title: formElements.title.value,
       category: formElements.category.value,
       description: formElements.description.value,
       difficulty: formElements.difficulty.value,
       instructions: formElements.instructions.value,
-      pattern: formElements.pattern.value,
       price: formElements.price.value,
     };
     onUpdateCard(id, updatedCard);
@@ -69,11 +69,11 @@ export default function Item({
     <ItemWrapper>
       {isEditing && (
         <EntryForm onSubmit={handleSubmit}>
-          <StyledLabel htmlFor="image">upload image</StyledLabel>
+          {/* <StyledLabel htmlFor="image">upload image</StyledLabel>
           <StyledInput id="image" name="image"></StyledInput>
 
           <StyledLabel htmlFor="pattern">upload pdf</StyledLabel>
-          <StyledInput id="pattern" name="pattern"></StyledInput>
+          <StyledInput id="pattern" name="pattern"></StyledInput> */}
           <StyledLabel htmlFor="title">title</StyledLabel>
           <StyledInput
             id="title"
