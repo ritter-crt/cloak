@@ -16,7 +16,6 @@ export default function Footer() {
           <li>About</li>
           <li>News</li>
           <li>Contact</li>
-          <li>Terms of Service</li>
         </Ul>
       </Container>
       <Copyright>
@@ -47,15 +46,15 @@ const ScrollText = styled.div`
   font-family: "Golos Text", sans-serif;
   margin-top: 20px;
   color: white;
-  font-size: 11pt;
+  font-size: 12pt;
   text-transform: uppercase;
-  letter-spacing: 0.2rem;
+  letter-spacing: 0.12rem;
   text-align: right;
   -moz-transform: translateX(-100%);
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
   @media ${device.mobileL} {
-    font-size: 22pt;
+    font-size: 20pt;
     letter-spacing: 1.5rem;
   }
 
@@ -119,9 +118,9 @@ const Contact = styled.div``;
 
 const SayHi = styled.div`
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   text-transform: uppercase;
-  letter-spacing: 0.3rem;
+  letter-spacing: 0.15rem;
   font-size: 10pt;
   font-weight: 400;
   @media ${device.mobileL} {

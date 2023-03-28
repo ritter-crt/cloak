@@ -27,6 +27,8 @@ import {
 } from "./StyledForm";
 
 import { categoryArray, difficultyArray } from "@/utils";
+import ConfirmDelete from "./Modal";
+import Modal from "./Modal";
 
 export default function Item({
   title,
@@ -40,8 +42,10 @@ export default function Item({
   onDeleteCard,
   onUpdateCard,
 }) {
-  console.log(images);
+  // console.log(images);
   const router = useRouter();
+  const [openModal, setOpenModal] = useState(false);
+
   const [isEditing, setIsEditing] = useState(false);
   const [, setInputField] = useState();
   const handleChange = (event) => {
@@ -65,6 +69,13 @@ export default function Item({
     setIsEditing(false);
     console.log(updatedCard);
   }
+
+  // const getImageAttachment = async (id) => {
+  //   return await cloudinary.url(id, {
+  //     flags: "attachment:imgname",
+  //   });
+  // };
+
   return (
     <ItemWrapper>
       {isEditing && (
@@ -171,16 +182,21 @@ export default function Item({
           <IconWrapper>
             <DeleteIcon
               onClick={() => {
-                if (
-                  window.confirm("Are you sure you wish to delete this item?")
-                );
-                onDeleteCard(id);
-                router.push("/home");
+                setOpenModal(true);
               }}
             ></DeleteIcon>
             <EditIcon onClick={() => setIsEditing(true)}>edit</EditIcon>
           </IconWrapper>
-          <StyledButton>buy</StyledButton>
+          {openModal && (
+            <Modal
+              closeModal={setOpenModal}
+              onDeleteCard={onDeleteCard}
+              id={id}
+            />
+          )}
+
+          <StyledButton>download pattern</StyledButton>
+          {/* <a href={getImageAttachment}>buy</a> */}
         </>
       )}
     </ItemWrapper>
