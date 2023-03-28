@@ -17,7 +17,7 @@ export default function Collage() {
           patterns.
         </StyledText>
         <ImageWrapperOne
-          src={HandWorking}
+          src={TailorWorking}
           placeholder="blur"
           height="300"
           width="200"
@@ -25,7 +25,7 @@ export default function Collage() {
         ></ImageWrapperOne>
 
         <ImageWrapperTwo
-          src={TailorWorking}
+          src={HandWorking}
           placeholder="blur"
           height="100"
           width="150"

@@ -78,7 +78,7 @@ export default function FilterItem({ items }) {
               setFilterParam(e.target.value);
             }}
           >
-            <option defaultValue="all">all</option>
+            <option defaultValue="category">select a category</option>
             {categoryArray &&
               categoryArray.map((category) => (
                 <option key={category} value={category}>
@@ -90,7 +90,7 @@ export default function FilterItem({ items }) {
         <DropdownWrapper>
           <p>sort by difficulty level</p>
           <Select className="w-full" defaultValue="difficulty">
-            <option value="all">all</option>
+            <option value="difficulty">select a difficulty level</option>
             {difficultyArray &&
               difficultyArray.map((difficulty) => (
                 <option key={difficulty} value={difficulty}>
@@ -145,7 +145,7 @@ const StyledInput = styled.input`
   background-color: #ffd52d;
   height: 40px;
   background: none;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
   box-sizing: border-box;
   outline: none;

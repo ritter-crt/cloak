@@ -3,7 +3,6 @@ import { useState } from "react";
 import useSWR from "swr";
 
 import styled from "styled-components";
-import { HeaderWrapper, StyledHeader } from "./styled";
 
 import {
   StyledInput,
@@ -14,7 +13,6 @@ import {
 
 import ImageUpload from "./ImageUpload";
 
-import { StyledButton } from "./Button";
 import DocumentUpload from "./DocumentUpload";
 import { categoryArray, difficultyArray } from "@/utils";
 
@@ -75,7 +73,7 @@ export default function Form({}) {
 
         <StyledLabel htmlFor="category">category</StyledLabel>
         <StyledSelect name="category" id="category">
-          <option defaultValue="all">all</option>
+          <option defaultValue="category">select a category</option>
           {categoryArray &&
             categoryArray.map((category) => (
               <option key={category} value={category}>
@@ -84,7 +82,9 @@ export default function Form({}) {
             ))}
         </StyledSelect>
 
-        <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
+        <StyledLabel htmlFor="difficulty">
+          select a difficulty level
+        </StyledLabel>
         <StyledSelect name="difficulty" id="difficulty">
           {difficultyArray &&
             difficultyArray.map((difficulty) => (
@@ -121,11 +121,6 @@ export default function Form({}) {
     </Wrapper>
   );
 }
-
-const UploadWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 const Wrapper = styled.div`
   display: flex;

@@ -5,14 +5,11 @@ export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "POST") {
-
     try {
-      console.log(request.body)
+      console.log(request.body);
       const itemData = request.body;
       const item = new Item(itemData);
-
-      console.log(itemData)
-
+      // console.log(itemData)
       await item.save();
 
       response.status(201).json({ status: "Item created" });

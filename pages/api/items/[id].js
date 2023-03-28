@@ -7,12 +7,13 @@ export default async function handler(request, response) {
   if (request.method === "GET") {
     try {
       const item = await Item.findById(id);
-      // console.log("ITEMS: ", item);
+      console.log("ITEMS_ID: ", item);
       return response.status(200).json(item);
     } catch (error) {
       return response.status(404).json("Error", error);
     }
   }
+
   if (request.method === "DELETE") {
     const item = await Item.findByIdAndDelete(id);
     // console.log(id);
