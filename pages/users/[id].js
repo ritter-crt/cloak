@@ -3,6 +3,14 @@ import { StyledButton } from "@/src/components/Button";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
+import {
+  StyledImage,
+  StyledText,
+  StyledTitle,
+  TextWrapper,
+} from "@/src/components/StyledCard";
+import styled from "styled-components";
+import { StyledLabel } from "@/src/components/StyledForm";
 
 export default function User() {
   const { data: session, status } = useSession();
@@ -46,8 +54,29 @@ export default function User() {
   if (session) {
     return (
       <>
-        <p>Welcome, {session.user.name}</p>
-        <div></div>
+        <StyledLabel>Welcome, {session.user.name}.</StyledLabel>
+        <PatternText>My patterns</PatternText>
+        <ScrollingWrapper>
+          {items
+            .sort((a, b) => b.createdAt - a.createdAt)
+            .map((item) => (
+              <Card key={item._id}>
+                <StyledImage
+                  onClick={() => router.push(`/item-page/${item._id}`)}
+                  src={item.images[0]}
+                  height="150"
+                  width="150"
+                  alt={item.description}
+                />
+                <StyledTitle>{item.title}</StyledTitle>
+                <TextWrapper>
+                  <StyledText>{item.difficulty}</StyledText>
+                  <StyledText>{item.price} €</StyledText>
+                </TextWrapper>
+              </Card>
+            ))}
+        </ScrollingWrapper>
+
         <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
       </>
     );
@@ -60,3 +89,23 @@ export default function User() {
     );
   }
 }
+
+const ScrollingWrapper = styled.div`
+  margin-bottom: 20%;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+`;
+const Card = styled.div`
+  display: inline-block;
+  margin: 20px;
+`;
+
+const PatternText = styled.p`
+  margin-top: 10%;
+  margin-bottom: 10%;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 9pt;
+  letter-spacing: 2pt;
+`;

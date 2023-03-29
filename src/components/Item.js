@@ -145,18 +145,16 @@ export default function Item({
           ></StyledInput>
           <StyledButton
             onClick={() => {
-              router.push("/home");
+              router.back();
             }}
           >
             safe changes
           </StyledButton>
-          <Link href="/home">
-            <CancelButton
-              onClick={() => {
-                router.push("/home");
-              }}
-            ></CancelButton>
-          </Link>
+          <CancelButton
+            onClick={() => {
+              router.back();
+            }}
+          ></CancelButton>
         </EntryForm>
       )}
       {!isEditing && (
@@ -164,9 +162,11 @@ export default function Item({
           <HeaderWrapper>
             <ButtonWrapper>
               <StyledTitel>{title}</StyledTitel>
-              <Link href="/home">
-                <BackIcon></BackIcon>
-              </Link>
+              <BackIcon
+                onClick={() => {
+                  router.back();
+                }}
+              ></BackIcon>
             </ButtonWrapper>
             <StyledText>{description}</StyledText>
           </HeaderWrapper>

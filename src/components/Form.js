@@ -23,6 +23,12 @@ export default function Form({}) {
   const [imageSrc, setImageSrc] = useState([]);
   const [patternSrc, setPatternSrc] = useState();
 
+  const [requiredInput, SetRequiredInput] = useState({
+    title: "",
+    description: "",
+    instruction: "",
+  });
+
   const [inputText, setInputText] = useState("");
   const [characterLimit] = useState(300);
   const handleChange = (event) => {
@@ -39,7 +45,7 @@ export default function Form({}) {
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
-    // newItem.user = session.user.name;
+    newItem.user = session.user.name;
     newItem.userId = session.user.id;
 
     const response = await fetch("/api/items/create", {

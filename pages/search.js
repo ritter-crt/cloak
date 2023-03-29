@@ -11,7 +11,7 @@ export default function Search({ items }) {
     <>
       <NavBar></NavBar>
       <ContentWrapper>
-        <StyledHeader>Search</StyledHeader>
+        <StyledHeader>Get Inspired</StyledHeader>
         <FilterItem items={items}></FilterItem>
       </ContentWrapper>
     </>

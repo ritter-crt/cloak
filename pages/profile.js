@@ -1,6 +1,5 @@
-import Login from "@/src/components/Login";
 import NavBar from "@/src/components/NavBar";
-import { ContentWrapper, StyledHeader } from "@/src/components/styled";
+import { device } from "@/styles";
 import { getSession } from "next-auth/react";
 import styled from "styled-components";
 import User from "./users/[id]";
@@ -10,10 +9,7 @@ export default function Profile() {
     <>
       <NavBar></NavBar>
       <ContentWrapper>
-        <StyledDiv></StyledDiv>
-        <StyledHeader>Profile</StyledHeader>
         <User></User>
-        {/* <Login></Login> */}
       </ContentWrapper>
     </>
   );
@@ -34,6 +30,13 @@ export async function getServerSideProps(context) {
   };
 }
 
-const StyledDiv = styled.div`
-  height: 500px;
+const ContentWrapper = styled.div`
+  margin-top: 100px;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-bottom: 20%;
+  @media ${device.mobileL} {
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 `;
