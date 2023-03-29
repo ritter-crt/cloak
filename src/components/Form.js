@@ -15,10 +15,19 @@ import ImageUpload from "./UploadImage";
 
 import DocumentUpload from "./UploadPattern";
 import { categoryArray, difficultyArray } from "@/utils";
+import { useSession } from "next-auth/react";
 
 export default function Form({}) {
+  const { data: session } = useSession();
+
   const [imageSrc, setImageSrc] = useState([]);
   const [patternSrc, setPatternSrc] = useState();
+  const [inputText, setInputText] = useState("");
+  const [characterLimit] = useState(300);
+
+  const handleChange = (event) => {
+    setInputText(event.target.value);
+  };
 
   const router = useRouter();
   const items = useSWR("/api/items/create");
@@ -27,7 +36,7 @@ export default function Form({}) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newItem = Object.fromEntries(formData);
-    console.log(newItem);
+    // console.log(newItem);
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
@@ -64,15 +73,15 @@ export default function Form({}) {
           id="title"
           name="title"
           placeholder="e.g long trouses"
+          maxLength="30"
         ></StyledInput>
-
         <StyledLabel htmlFor="description">description</StyledLabel>
         <StyledInput
           id="description"
           name="description"
           placeholder="e.g occasion, season"
+          maxLength="30"
         ></StyledInput>
-
         <StyledLabel htmlFor="category">category</StyledLabel>
         <StyledSelect name="category" id="category">
           <option defaultValue="category">select a category</option>
@@ -99,13 +108,19 @@ export default function Form({}) {
         <StyledLabel htmlFor="instructions">
           please provide some instructions
         </StyledLabel>
+
         <StyledTextarea
           id="instructions"
           name="instructions"
           rows="5"
-          placeholder="e.g preferred fabric, what you need"
+          maxLength="300"
+          value={inputText}
+          onChange={handleChange}
+          isInvalid={inputText.length > characterLimit}
         ></StyledTextarea>
-
+        <p>
+          {inputText.length}/{characterLimit}
+        </p>
         <StyledLabel htmlFor="price">price</StyledLabel>
         <StyledInput
           id="price"

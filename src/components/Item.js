@@ -27,12 +27,12 @@ import {
 } from "./StyledForm";
 
 import { categoryArray, difficultyArray } from "@/utils";
-import ConfirmDelete from "./Modal";
 import Modal from "./Modal";
 
 export default function Item({
   title,
   instructions,
+  pattern,
   images,
   category,
   description,
@@ -194,9 +194,11 @@ export default function Item({
               id={id}
             />
           )}
-
-          <StyledButton>download pattern</StyledButton>
-          {/* <a href={getImageAttachment}>buy</a> */}
+          <StyledButton>
+            <a target="_blank" href={pattern}>
+              Download
+            </a>
+          </StyledButton>
         </>
       )}
     </ItemWrapper>

@@ -15,9 +15,11 @@ export default function Login() {
       <>
         <p>See you soon!</p>
         <StyledButton
-          onClick={() => {
-            signIn();
-          }}
+          onClick={() =>
+            signOut({
+              callbackUrl: `${window.location.origin}`,
+            })
+          }
         >
           Login
         </StyledButton>

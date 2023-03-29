@@ -48,6 +48,7 @@ export default function PatternDetailsPage() {
   if (itemDetail) {
     const {
       title,
+      pattern,
       instructions,
       images,
       category,
@@ -62,6 +63,7 @@ export default function PatternDetailsPage() {
         <Item
           key={_id}
           images={images}
+          pattern={pattern}
           title={title}
           instructions={instructions}
           description={description}

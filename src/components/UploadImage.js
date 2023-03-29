@@ -3,7 +3,7 @@ import { useState } from "react";
 import styled from "styled-components";
 
 export default function UploadImage({ imageSrc, setImageSrc }) {
-  console.log(imageSrc);
+  // console.log(imageSrc);
   const [uploadData, setUploadData] = useState();
 
   function handleImageChange(event) {
