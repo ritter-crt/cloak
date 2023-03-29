@@ -22,9 +22,9 @@ export default function Form({}) {
 
   const [imageSrc, setImageSrc] = useState([]);
   const [patternSrc, setPatternSrc] = useState();
+
   const [inputText, setInputText] = useState("");
   const [characterLimit] = useState(300);
-
   const handleChange = (event) => {
     setInputText(event.target.value);
   };
@@ -36,12 +36,9 @@ export default function Form({}) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const newItem = Object.fromEntries(formData);
-    // console.log(newItem);
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
-    // console.log("newPattern______________________________________", newPattern);
-    // console.log(patternSrc);
 
     const response = await fetch("/api/items/create", {
       method: "POST",
@@ -74,6 +71,7 @@ export default function Form({}) {
           name="title"
           placeholder="e.g long trouses"
           maxLength="30"
+          required
         ></StyledInput>
         <StyledLabel htmlFor="description">description</StyledLabel>
         <StyledInput
@@ -81,10 +79,10 @@ export default function Form({}) {
           name="description"
           placeholder="e.g occasion, season"
           maxLength="30"
+          required
         ></StyledInput>
-        <StyledLabel htmlFor="category">category</StyledLabel>
+        <StyledLabel htmlFor="category">select a category</StyledLabel>
         <StyledSelect name="category" id="category">
-          <option defaultValue="category">select a category</option>
           {categoryArray &&
             categoryArray.map((category) => (
               <option key={category} value={category}>
@@ -117,6 +115,7 @@ export default function Form({}) {
           value={inputText}
           onChange={handleChange}
           isInvalid={inputText.length > characterLimit}
+          required
         ></StyledTextarea>
         <p>
           {inputText.length}/{characterLimit}

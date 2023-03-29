@@ -41,6 +41,9 @@ export default function Item({
   id,
   onDeleteCard,
   onUpdateCard,
+  userId,
+  user,
+  session,
 }) {
   // console.log(images);
   const router = useRouter();
@@ -69,12 +72,6 @@ export default function Item({
     setIsEditing(false);
     console.log(updatedCard);
   }
-
-  // const getImageAttachment = async (id) => {
-  //   return await cloudinary.url(id, {
-  //     flags: "attachment:imgname",
-  //   });
-  // };
 
   return (
     <ItemWrapper>
@@ -146,11 +143,19 @@ export default function Item({
             defaultValue={price}
             onChange={handleChange}
           ></StyledInput>
-          <StyledButton onClick={() => router.push("/home")}>
+          <StyledButton
+            onClick={() => {
+              router.push("/home");
+            }}
+          >
             safe changes
           </StyledButton>
           <Link href="/home">
-            <CancelButton></CancelButton>
+            <CancelButton
+              onClick={() => {
+                router.push("/home");
+              }}
+            ></CancelButton>
           </Link>
         </EntryForm>
       )}
@@ -179,14 +184,16 @@ export default function Item({
           </Slider>
           <StyledDescription> {instructions}</StyledDescription>
           <StyledPrice>{price}€</StyledPrice>
-          <IconWrapper>
-            <DeleteIcon
-              onClick={() => {
-                setOpenModal(true);
-              }}
-            ></DeleteIcon>
-            <EditIcon onClick={() => setIsEditing(true)}>edit</EditIcon>
-          </IconWrapper>
+          {session?.user.id === userId ? (
+            <IconWrapper>
+              <DeleteIcon
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              ></DeleteIcon>
+              <EditIcon onClick={() => setIsEditing(true)}>edit</EditIcon>
+            </IconWrapper>
+          ) : null}
           {openModal && (
             <Modal
               closeModal={setOpenModal}

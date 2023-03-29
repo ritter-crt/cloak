@@ -1,11 +1,14 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Item from "@/src/components/Item";
+import { useSession } from "next-auth/react";
 
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
   const router = useRouter();
   const { id } = router.query;
+
+  const { data: session, status } = useSession();
 
   async function updateCards(id, body) {
     const response = await fetch(`/api/items/${id}`, {
@@ -47,6 +50,8 @@ export default function PatternDetailsPage() {
   }, [id]);
   if (itemDetail) {
     const {
+      user,
+      userId,
       title,
       pattern,
       instructions,
@@ -73,6 +78,9 @@ export default function PatternDetailsPage() {
           id={_id}
           onDeleteCard={handleDeleteCard}
           onUpdateCard={updateCards}
+          userId={userId}
+          user={user}
+          session={session}
         />
       </>
     );
