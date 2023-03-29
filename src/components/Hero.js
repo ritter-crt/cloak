@@ -10,7 +10,7 @@ export default function Hero() {
     <>
       <StyledWrapper>
         <StyledHeader>cloak</StyledHeader>
-        <GetStarted href="/login">login</GetStarted>
+        <GetStarted href="/login">come in</GetStarted>
         <StyledImage
           src={BackgroundImage}
           height={900}

@@ -11,6 +11,7 @@ import {
 } from "@/src/components/StyledCard";
 import styled from "styled-components";
 import { StyledLabel } from "@/src/components/StyledForm";
+import Link from "next/link";
 
 export default function User() {
   const { data: session, status } = useSession();
@@ -84,7 +85,9 @@ export default function User() {
     return (
       <>
         <p>See you soon!</p>
-        <StyledButton>Login</StyledButton>
+        <Link href="/">
+          <StyledButton>Login</StyledButton>
+        </Link>
       </>
     );
   }
