@@ -43,22 +43,11 @@ export default function User() {
     getUser();
   }, [id]);
 
-  // if (status === "authenticated" && user) {
   if (session) {
     return (
       <>
         <p>Welcome, {session.user.name}</p>
-        <div>
-          <h4>your patterns</h4>
-          <ul>
-            {items.map((item) => (
-              <li key={item._id}>
-                <p>{item.title}</p>
-              </li>
-            ))}
-            <br></br>
-          </ul>
-        </div>
+        <div></div>
         <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
       </>
     );

@@ -17,7 +17,7 @@ export default function Modal({ closeModal, onDeleteCard, id }) {
         </Title>
         <Body>
           <ModalButton onClick={() => closeModal(false)}>
-            no <NoIcon />
+            no, take me back <NoIcon />
           </ModalButton>
           <ModalButton
             onClick={() => {
@@ -41,7 +41,7 @@ const ModalContainer = styled.div`
   box-shadow: rgba(0, 0, 0.35, 0.2) 0px 5px 10px;
   display: flex;
   flex-direction: column;
-  padding: 25px;
+  padding: 15px;
 `;
 
 const Body = styled.div`
@@ -50,7 +50,6 @@ const Body = styled.div`
   justify-content: space-around;
 `;
 const Title = styled.div`
-  font-weight: 100;
   text-align: center;
   margin-top: 10px;
 `;
@@ -63,22 +62,22 @@ const ModalButton = styled.button`
   align-items: center;
   border: none;
   background-color: var(--background-color);
-  font-size: 11pt;
+  font-size: 10pt;
   &:hover {
     color: var(--first-color);
   }
 `;
 
 const YesIcon = styled(TfiCheck)`
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   color: black;
   margin: 10px;
 `;
 
 const NoIcon = styled(TfiClose)`
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
   color: black;
   margin: 10px;
 `;

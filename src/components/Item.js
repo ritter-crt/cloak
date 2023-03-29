@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
-import { StyledButton } from "@/src/components/Button";
+import { StyledButton, StyledLink } from "@/src/components/Button";
 
 import {
   RiDeleteBin7Line,
@@ -202,9 +202,9 @@ export default function Item({
             />
           )}
           <StyledButton>
-            <a target="_blank" href={pattern}>
+            <StyledLink target="_blank" href={pattern}>
               Download
-            </a>
+            </StyledLink>
           </StyledButton>
         </>
       )}

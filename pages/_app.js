@@ -15,7 +15,7 @@ export default function App({
       <Layout>
         <GlobalStyle />
         <SWRConfig value={{ fetcher }}>
-          <SessionProvider session={pageProps.session}>
+          <SessionProvider session={session}>
             <Component {...pageProps} />
           </SessionProvider>
         </SWRConfig>

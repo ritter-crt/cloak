@@ -39,6 +39,8 @@ export default function Form({}) {
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
+    // newItem.user = session.user.name;
+    newItem.userId = session.user.id;
 
     const response = await fetch("/api/items/create", {
       method: "POST",

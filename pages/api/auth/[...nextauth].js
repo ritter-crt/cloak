@@ -43,6 +43,26 @@ export const authOptions = {
     // ...add more providers here_____________________________
   ],
   secret: process.env.JWT_SECRET,
+  callbacks: {
+    // additional information from the user document MongoDB returns
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = {
+          _id: user._id,
+          name: user.name,
+          email: user.email,
+        };
+      }
+      return token;
+    },
+    // If we want to access our extra user info from sessions we have to pass it the token here to get them in sync:
+    session: async ({ session, token }) => {
+      if (token) {
+        session.user = token.user;
+      }
+      return session;
+    },
+  },
 };
 
 export default NextAuth(authOptions);

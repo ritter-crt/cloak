@@ -14,7 +14,7 @@ import {
 
 export default function FilterItem({ items }) {
   const router = useRouter();
-
+  const [selected, setSelected] = useState("");
   const [query, setQuery] = useState("");
   const [filterParam, setFilterParam] = useState(["All"]);
   const [searchParam] = useState([
@@ -29,27 +29,22 @@ export default function FilterItem({ items }) {
     // query.length > 0
     //   ?
     items.filter((item) => {
-      if (
-        item.difficulty === filterParam ||
-        item.category === filterParam ||
-        item.title === filterParam ||
-        item.description === filterParam
-      ) {
+      if (item.difficulty === filterParam || item.category === filterParam) {
         return searchParam.some((newItem) => {
           return (
             item[newItem]
-              .toString()
+              // .toString()
               .toLowerCase()
-              .indexOf(query.toLowerCase()) > -1
+            // .indexOf(query.toLowerCase()) > -1
           );
         });
       } else if (filterParam == "All") {
         return searchParam.some((newItem) => {
           return (
             item[newItem]
-              .toString()
+              // .toString()
               .toLowerCase()
-              .indexOf(query.toLowerCase()) > -1
+            // .indexOf(query.toLowerCase()) > -1
           );
         });
       }
@@ -78,7 +73,7 @@ export default function FilterItem({ items }) {
               setFilterParam(e.target.value);
             }}
           >
-            <option defaultValue="category">select a category</option>
+            <option defaultValue="all">Filter by category</option>
             {categoryArray &&
               categoryArray.map((category) => (
                 <option key={category} value={category}>
@@ -89,8 +84,13 @@ export default function FilterItem({ items }) {
         </DropdownWrapper>
         <DropdownWrapper>
           <p>sort by difficulty level</p>
-          <Select className="w-full" defaultValue="difficulty">
-            <option value="difficulty">select a difficulty level</option>
+          <Select
+            defaultValue="difficulty"
+            onChange={(e) => {
+              setFilterParam(e.target.value);
+            }}
+          >
+            <option value="all">Filter by difficulty</option>
             {difficultyArray &&
               difficultyArray.map((difficulty) => (
                 <option key={difficulty} value={difficulty}>
