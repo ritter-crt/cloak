@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
 import styled from "styled-components";
 
@@ -23,6 +23,10 @@ export default function Form({}) {
   const [imageSrc, setImageSrc] = useState([]);
   const [patternSrc, setPatternSrc] = useState();
 
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [loading, setLoading] = useState(false);
+
   const [inputText, setInputText] = useState("");
   const [characterLimit] = useState(300);
   const handleChange = (event) => {
@@ -31,13 +35,6 @@ export default function Form({}) {
 
   const router = useRouter();
   const items = useSWR("/api/items/create");
-  // console.log("items in Form.js", items);
-
-  // const users = useSWR("/api/users");
-  // console.log("users in Form.js", users);
-  // // const specificUser = users.findIndex(
-  // //   (user) => user.name === session.user.name
-  // // );
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -50,7 +47,6 @@ export default function Form({}) {
     newItem.userId = session.user.email;
 
     console.log(newItem);
-    // return;
 
     const response = await fetch("/api/items/create", {
       method: "POST",
@@ -69,6 +65,13 @@ export default function Form({}) {
       console.error(`Error: ${response.status}`);
     }
   }
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+  // }, []);
 
   return (
     <Wrapper>
@@ -142,7 +145,6 @@ export default function Form({}) {
           min="1"
           max="99"
         ></StyledInput>
-
         <UploadButton>upload your pattern</UploadButton>
       </EntryForm>
     </Wrapper>

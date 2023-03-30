@@ -179,7 +179,7 @@ export default function Item({
           </Slider>
           <StyledDescription> {instructions}</StyledDescription>
           <StyledPrice>{price}€</StyledPrice>
-          {session?.user.id === userId ? (
+          {session?.user.email === userId ? (
             <IconWrapper>
               <DeleteIcon
                 onClick={() => {
