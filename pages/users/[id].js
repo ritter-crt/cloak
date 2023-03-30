@@ -46,7 +46,7 @@ export default function User() {
     return (
       <>
         <StyledLabel>Welcome, {session.user.name}.</StyledLabel>
-        <PatternText>My patterns</PatternText>
+        <Text>My patterns</Text>
         <ScrollingWrapper>
           {filteredItems
             .sort((a, b) => b.createdAt - a.createdAt)
@@ -94,7 +94,7 @@ const Card = styled.div`
   margin: 20px;
 `;
 
-const PatternText = styled.p`
+const Text = styled.p`
   margin-top: 10%;
   margin-bottom: 10%;
   text-transform: uppercase;

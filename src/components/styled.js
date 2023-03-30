@@ -39,10 +39,17 @@ export const StyledInput = styled.input`
     padding-top: 1px;
   }
 `;
-
+export const Text = styled.p`
+  margin-top: 10%;
+  margin-bottom: 5%;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 9pt;
+  letter-spacing: 2pt;
+`;
 export const StyledHeader = styled.h1`
   position: absolute;
-  top: 10%;
+  top: 15%;
   font-size: 18pt;
   font-family: "Bodoni Moda", serif;
   font-weight: 100;

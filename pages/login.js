@@ -6,17 +6,8 @@ import AuthForm from "@/src/components/AuthForm";
 import styled, { keyframes } from "styled-components";
 
 export default function Auth() {
-  // const [show, setShow] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
-
-  // const helloHandeler = () => {
-  //   setIsLoading(true);
-  //   setTimeout(() => {
-  //     setIsLoading(false);
-  //     setShow(!show);
-  //   }, 2000);
-  // };
 
   useEffect(() => {
     getSession().then((session) => {
@@ -30,13 +21,14 @@ export default function Auth() {
 
   if (isLoading) {
     return (
-      <div> Loading...</div>
-      //   <LoadingWrapper>
-      //     <h3>Loading</h3>
-      //     <Dot delay="0s" />
-      //     <Dot delay="0.1s" />
-      //     <Dot delay="0.2s" />
-      //   </LoadingWrapper>
+      <>
+        {/* <LoadingWrapper> */}
+        <h3>Loading</h3>
+        {/* <Dot delay="0s" />
+          <Dot delay="0.1s" />
+          <Dot delay="0.2s" />
+        </LoadingWrapper> */}
+      </>
     );
   }
 
@@ -57,7 +49,7 @@ export default function Auth() {
 //   height: 0.75rem;
 //   margin: 0 0.25rem;
 //   /*Animation*/
-//   animation: ${BounceAnimation} 0.5s linear infinite;
+//   animation: ${BounceAnimatio} 0.5s linear infinite;
 //   animation-delay: ${(props) => props.delay};
 // `;
 

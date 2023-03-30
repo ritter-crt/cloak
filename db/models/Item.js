@@ -11,7 +11,7 @@ const itemSchema = new Schema({
   price: { type: Number },
   createdAt: { type: String },
   pattern: { type: String },
-  userId: { type: Schema.Types.ObjectId, ref: "User" },
+  userId: { type: String },
 });
 
 const Item = mongoose.models.Items || mongoose.model("Items", itemSchema);

@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { StyledTitle } from "./styled";
+import { StyledTitle, Text } from "./styled";
 import {
   CardWrapper,
   StyledCard,
@@ -71,7 +71,7 @@ export default function FilterItem({ items }) {
 
       <FilterWrapper>
         <DropdownWrapper>
-          <p>sort by category</p>
+          <Text>sort by category</Text>
           <Select
             defaultValue="category"
             onChange={(e) => {
@@ -88,7 +88,7 @@ export default function FilterItem({ items }) {
           </Select>
         </DropdownWrapper>
         <DropdownWrapper>
-          <p>sort by difficulty level</p>
+          <Text>sort by difficulty level</Text>
           <Select
             defaultValue="difficulty"
             onChange={(e) => {

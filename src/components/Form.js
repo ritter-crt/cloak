@@ -38,6 +38,12 @@ export default function Form({}) {
   const router = useRouter();
   const items = useSWR("/api/items/create");
 
+  const users = useSWR("/api/users");
+  console.log("users in form.js", users);
+  // const specificUser = users.findIndex(
+  //   (user) => user.name === session.user.name
+  // );
+
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -45,8 +51,8 @@ export default function Form({}) {
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
-    newItem.user = session.user.name;
-    newItem.userId = session.user.id;
+    newItem.userId = specificUser._id;
+    console.log(session);
 
     const response = await fetch("/api/items/create", {
       method: "POST",
