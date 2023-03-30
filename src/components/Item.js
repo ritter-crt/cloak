@@ -70,7 +70,8 @@ export default function Item({
     };
     onUpdateCard(id, updatedCard);
     setIsEditing(false);
-    console.log(updatedCard);
+    router.push("/home");
+    // console.log(updatedCard);
   }
 
   return (
@@ -143,13 +144,7 @@ export default function Item({
             defaultValue={price}
             onChange={handleChange}
           ></StyledInput>
-          <StyledButton
-            onClick={() => {
-              router.back();
-            }}
-          >
-            safe changes
-          </StyledButton>
+          <StyledButton>safe changes</StyledButton>
           <CancelButton
             onClick={() => {
               router.back();

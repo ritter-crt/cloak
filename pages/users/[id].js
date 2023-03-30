@@ -15,41 +15,31 @@ import Link from "next/link";
 
 export default function User() {
   const { data: session, status } = useSession();
-  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
   const [user, setUser] = useState();
   const router = useRouter();
   const { id } = router.query;
 
   useEffect(() => {
-    async function getItems() {
-      try {
-        const itemsData = await fetch("/api/items");
-        const items = await itemsData.json();
+    const fetchUser = async () => {
+      const response = await fetch(`/api/users/${id}`);
+      const user = await response.json();
+      setUser(user);
+    };
 
-        const filteredItems = items.filter((item) => {
-          if (id === item.userId) {
-            return item;
-          }
-        });
-        setItems(filteredItems);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getItems();
-  }, [id]);
+    const fetchUserItems = async () => {
+      const response = await fetch("/api/items");
+      const items = await response.json();
 
-  useEffect(() => {
-    async function getUser() {
-      try {
-        const usersData = await fetch(`/api/users/${id}`);
-        const user = await usersData.json();
-        setUser(user);
-      } catch (error) {
-        console.log(error);
-      }
-    }
-    getUser();
+      const filteredItems = items.filter((item) => {
+        if (id === item.userId) {
+          return item;
+        }
+      });
+      setFilteredItems(filteredItems);
+    };
+    fetchUser();
+    fetchUserItems();
   }, [id]);
 
   if (session) {
@@ -58,7 +48,7 @@ export default function User() {
         <StyledLabel>Welcome, {session.user.name}.</StyledLabel>
         <PatternText>My patterns</PatternText>
         <ScrollingWrapper>
-          {items
+          {filteredItems
             .sort((a, b) => b.createdAt - a.createdAt)
             .map((item) => (
               <Card key={item._id}>

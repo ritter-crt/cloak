@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Item from "@/src/components/Item";
 import { useSession } from "next-auth/react";
+// import useSWRMutation from "swr/mutation";
 
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
@@ -24,6 +25,14 @@ export default function PatternDetailsPage() {
       console.error(`Error: ${response.status}`);
     }
   }
+
+  // async function handleEditCards(event) {
+  //   event.preventDefault();
+  //   const item = new FormData(event.target);
+  //   const itemData = Object.fromEntries(item);
+  //   await trigger(itemData);
+  //   push("/home");
+  // }
 
   async function handleDeleteCard() {
     const response = await fetch(`/api/items/${id}`, {
@@ -78,6 +87,7 @@ export default function PatternDetailsPage() {
           id={_id}
           onDeleteCard={handleDeleteCard}
           onUpdateCard={updateCards}
+          // onSubmit={handleEditCards}
           userId={userId}
           user={user}
           session={session}

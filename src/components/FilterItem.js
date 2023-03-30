@@ -33,18 +33,23 @@ export default function FilterItem({ items }) {
         return searchParam.some((newItem) => {
           return (
             item[newItem]
-              // .toString()
+              .toString()
               .toLowerCase()
-            // .indexOf(query.toLowerCase()) > -1
+              .indexOf(query.toLowerCase()) > -1
           );
         });
+        // } else if (
+        //   item.category === searchParam.category &&
+        //   item.difficulty === searchParam.difficulty
+        // ) {
+        //   return item.toString().toLowerCase().indexOf(query.toLowerCase()) > -1;
       } else if (filterParam == "All") {
         return searchParam.some((newItem) => {
           return (
             item[newItem]
-              // .toString()
+              .toString()
               .toLowerCase()
-            // .indexOf(query.toLowerCase()) > -1
+              .indexOf(query.toLowerCase()) > -1
           );
         });
       }
@@ -73,7 +78,7 @@ export default function FilterItem({ items }) {
               setFilterParam(e.target.value);
             }}
           >
-            <option defaultValue="all">Filter by category</option>
+            <option defaultValue="All">all</option>
             {categoryArray &&
               categoryArray.map((category) => (
                 <option key={category} value={category}>
@@ -90,7 +95,7 @@ export default function FilterItem({ items }) {
               setFilterParam(e.target.value);
             }}
           >
-            <option value="all">Filter by difficulty</option>
+            <option value="All">all</option>
             {difficultyArray &&
               difficultyArray.map((difficulty) => (
                 <option key={difficulty} value={difficulty}>
