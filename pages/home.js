@@ -7,6 +7,7 @@ import Item from "@/db/models/Item";
 export default function Home({ items }) {
   return (
     <>
+      <title>Newly Added</title>
       <NavBar></NavBar>
       <ContentWrapper>
         <StyledHeader>newly added</StyledHeader>

@@ -9,6 +9,7 @@ import Item from "@/db/models/Item";
 export default function Search({ items }) {
   return (
     <>
+      <title>Search</title>
       <NavBar></NavBar>
       <ContentWrapper>
         <StyledHeader>Get Inspired</StyledHeader>

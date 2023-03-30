@@ -1,10 +1,13 @@
 import Image from "next/image";
 import { useState } from "react";
 import styled from "styled-components";
+import { ThreeDots, Triangle } from "react-loader-spinner";
+import { Text } from "./styled";
 
 export default function UploadImage({ imageSrc, setImageSrc }) {
   // console.log(imageSrc);
   const [uploadData, setUploadData] = useState();
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
 
   function handleImageChange(event) {
     for (const file of event.target.files) {
@@ -68,12 +71,13 @@ export default function UploadImage({ imageSrc, setImageSrc }) {
                 />
               </ImageWrapper>
             ))}
-            {imageSrc && !uploadData && (
+
+            {imageSrc.length > 0 && !uploadData && (
               <p>
                 <StyledButton>upload your images</StyledButton>
               </p>
             )}
-            {uploadData && <p>uploaded</p>}
+            {uploadData && <Text>uploaded</Text>}
           </form>
         </UploadWrapper>
       </main>

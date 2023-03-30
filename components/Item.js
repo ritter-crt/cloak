@@ -83,7 +83,7 @@ export default function Item({
 
           <StyledLabel htmlFor="pattern">upload pdf</StyledLabel>
           <StyledInput id="pattern" name="pattern"></StyledInput> */}
-          <StyledLabel htmlFor="title">title</StyledLabel>
+          <StyledLabel htmlFor="title"> edit title</StyledLabel>
           <StyledInput
             id="title"
             name="title"
@@ -91,7 +91,7 @@ export default function Item({
             defaultValue={title}
             onChange={handleChange}
           ></StyledInput>
-          <StyledLabel htmlFor="description"></StyledLabel>
+          <StyledLabel htmlFor="description"> edit description</StyledLabel>
           <StyledInput
             id="description"
             name="description"
@@ -99,7 +99,7 @@ export default function Item({
             defaultValue={description}
             onChange={handleChange}
           ></StyledInput>
-          <StyledLabel htmlFor="category">category</StyledLabel>
+          <StyledLabel htmlFor="category">edit category</StyledLabel>
           <StyledSelect
             name="category"
             id="category"
@@ -113,7 +113,7 @@ export default function Item({
                 </option>
               ))}
           </StyledSelect>
-          <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
+          <StyledLabel htmlFor="difficulty">Edit difficulty level</StyledLabel>
           <StyledSelect
             name="difficulty"
             id="difficulty"
@@ -127,7 +127,7 @@ export default function Item({
                 </option>
               ))}
           </StyledSelect>
-          <StyledLabel htmlFor="instructions">instructions</StyledLabel>
+          <StyledLabel htmlFor="instructions">Edit Instructions</StyledLabel>
           <StyledTextarea
             id="instructions"
             name="instructions"
@@ -136,7 +136,7 @@ export default function Item({
             defaultValue={instructions}
             onChange={handleChange}
           ></StyledTextarea>
-          <StyledLabel htmlFor="price">price</StyledLabel>
+          <StyledLabel htmlFor="price">edit price</StyledLabel>
           <StyledInput
             id="price"
             name="price"
@@ -186,7 +186,7 @@ export default function Item({
                   setOpenModal(true);
                 }}
               ></DeleteIcon>
-              <EditIcon onClick={() => setIsEditing(true)}>edit</EditIcon>
+              <EditIcon onClick={() => setIsEditing(true)}></EditIcon>
             </IconWrapper>
           ) : null}
           {openModal && (

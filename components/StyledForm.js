@@ -8,14 +8,15 @@ export const EntryForm = styled.form`
   padding: 10%;
   border-radius: 20px;
   border: 2px solid black;
+  box-shadow: black 0px 1px 3px;
 `;
 
 export const StyledLabel = styled.label`
   margin-top: 20px;
-  padding-bottom: 0px;
+  padding-bottom: 10px;
   font-family: "Bodoni Moda", serif;
-
   text-transform: uppercase;
+  font-size: 10pt;
   @media ${device.mobileL} {
     font-size: 11pt;
     letter-spacing: 0.2 rem;
@@ -33,7 +34,7 @@ export const StyledInput = styled.input`
   border-start-start-radius: 4px;
   padding: 10px 10px;
   outline: none;
-  margin: 10px 0px;
+
   background-color: rgba(0, 0, 0, 0.05);
   &:hover {
     border: 2px solid var(--first-color);

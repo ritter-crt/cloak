@@ -3,6 +3,8 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { StyledLabel } from "./StyledForm";
 
+import { ThreeDots, Triangle } from "react-loader-spinner";
+
 import styled from "styled-components";
 
 async function createUser(name, email, password) {
@@ -27,6 +29,7 @@ export default function AuthForm() {
   const passwordInputRef = useRef();
 
   const [isLogin, setIsLogin] = useState(true);
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
   const router = useRouter();
 
   function switchAuthModeHandler() {
@@ -48,7 +51,10 @@ export default function AuthForm() {
       });
 
       if (!result.error) {
-        router.replace("/home");
+        setTimeout(() => {
+          router.replace("/home");
+          setIsButtonLoading(false);
+        }, 2000);
       } else {
         try {
           const result = await createUser(
@@ -95,11 +101,18 @@ export default function AuthForm() {
           required
           ref={passwordInputRef}
         />
+
         <ButtonWrapper>
-          <Button>{isLogin ? "Login" : "Create Account"}</Button>
-          <Button type="button" onClick={switchAuthModeHandler}>
-            {isLogin ? "Create new account" : "Login with existing account"}
-          </Button>
+          {!isButtonLoading ? (
+            <>
+              <Button>{isLogin ? "Login" : "Create Account"}</Button>
+              <Button type="button" onClick={switchAuthModeHandler}>
+                {isLogin ? "Create new account" : "Login with existing account"}
+              </Button>
+            </>
+          ) : (
+            <ThreeDots height="50" width="50" color="#2874FC" visible={true} />
+          )}
         </ButtonWrapper>
       </EntryForm>
     </Wrapper>

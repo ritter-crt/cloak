@@ -1,4 +1,4 @@
-import { StyledButton } from "@/components/Button";
+import { StyledButton, StyledLink } from "@/components/Button";
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ import styled from "styled-components";
 import { StyledLabel } from "@/components/StyledForm";
 import Link from "next/link";
 import useSWR from "swr";
+import { StyledHeader } from "@/components/styled";
 
 export default function User() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -58,10 +59,10 @@ export default function User() {
   } else {
     return (
       <>
-        <p>See you soon!</p>
-        <Link href="/">
+        <ByeText>See you back soon!</ByeText>
+        <StyledLink href="/login">
           <StyledButton>Login</StyledButton>
-        </Link>
+        </StyledLink>
       </>
     );
   }
@@ -83,7 +84,7 @@ export async function getServerSideProps(context) {
 }
 
 const ScrollingWrapper = styled.div`
-  margin-bottom: 20%;
+  margin-bottom: 40%;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
@@ -99,5 +100,14 @@ const Text = styled.p`
   text-transform: uppercase;
   font-weight: 100;
   font-size: 9pt;
+  letter-spacing: 2pt;
+`;
+
+const ByeText = styled.p`
+  margin-top: 10%;
+  margin-bottom: 50%;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 13pt;
   letter-spacing: 2pt;
 `;
