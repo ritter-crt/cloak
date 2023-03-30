@@ -1,9 +1,9 @@
 import dbConnect from "@/db/connect";
 
-import { ContentWrapper, StyledHeader } from "@/src/components/styled";
+import { ContentWrapper, StyledHeader } from "@/components/styled";
 
-import FilterItem from "@/src/components/FilterItem";
-import NavBar from "@/src/components/NavBar";
+import FilterItem from "@/components/FilterItem";
+import NavBar from "@/components/NavBar";
 import Item from "@/db/models/Item";
 
 export default function Search({ items }) {

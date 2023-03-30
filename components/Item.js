@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
-import { StyledButton, StyledLink } from "@/src/components/Button";
+import { StyledButton, StyledLink } from "@/components/Button";
 
 import {
   RiDeleteBin7Line,
@@ -11,7 +11,7 @@ import {
 } from "react-icons/ri";
 import { MdOutlineCancelPresentation } from "react-icons/md";
 
-import Slider, { Slide } from "@/src/components/Slider";
+import Slider, { Slide } from "@/components/Slider";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -179,7 +179,7 @@ export default function Item({
           </Slider>
           <StyledDescription> {instructions}</StyledDescription>
           <StyledPrice>{price}€</StyledPrice>
-          {session?.user.id === userId ? (
+          {session?.user.email === userId ? (
             <IconWrapper>
               <DeleteIcon
                 onClick={() => {

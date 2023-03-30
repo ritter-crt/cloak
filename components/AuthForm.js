@@ -6,7 +6,7 @@ import { StyledLabel } from "./StyledForm";
 import styled from "styled-components";
 
 async function createUser(name, email, password) {
-  const response = await fetch("api/auth/register", {
+  const response = await fetch("api/auth/signin", {
     method: "POST",
     body: JSON.stringify({ name, email, password }),
     headers: {

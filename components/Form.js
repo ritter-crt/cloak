@@ -1,7 +1,6 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useSWR from "swr";
-
 import styled from "styled-components";
 
 import {
@@ -16,6 +15,7 @@ import ImageUpload from "./UploadImage";
 import DocumentUpload from "./UploadPattern";
 import { categoryArray, difficultyArray } from "@/utils";
 import { useSession } from "next-auth/react";
+import { Text } from "./styled";
 
 export default function Form({}) {
   const { data: session } = useSession();
@@ -23,11 +23,9 @@ export default function Form({}) {
   const [imageSrc, setImageSrc] = useState([]);
   const [patternSrc, setPatternSrc] = useState();
 
-  const [requiredInput, SetRequiredInput] = useState({
-    title: "",
-    description: "",
-    instruction: "",
-  });
+  const [isLoading, setIsLoading] = useState(true);
+
+  const [loading, setLoading] = useState(false);
 
   const [inputText, setInputText] = useState("");
   const [characterLimit] = useState(300);
@@ -45,8 +43,10 @@ export default function Form({}) {
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
-    newItem.user = session.user.name;
-    newItem.userId = session.user.id;
+
+    newItem.userId = session.user.email;
+
+    console.log(newItem);
 
     const response = await fetch("/api/items/create", {
       method: "POST",
@@ -60,10 +60,18 @@ export default function Form({}) {
       await response.json();
       items.mutate();
       event.target.reset();
+      router.push("/home");
     } else {
       console.error(`Error: ${response.status}`);
     }
   }
+
+  // useEffect(() => {
+  //   setLoading(true);
+  //   setTimeout(() => {
+  //     setLoading(false);
+  //   }, 2000);
+  // }, []);
 
   return (
     <Wrapper>
@@ -125,9 +133,9 @@ export default function Form({}) {
           isInvalid={inputText.length > characterLimit}
           required
         ></StyledTextarea>
-        <p>
+        <Text>
           {inputText.length}/{characterLimit}
-        </p>
+        </Text>
         <StyledLabel htmlFor="price">price</StyledLabel>
         <StyledInput
           id="price"
@@ -137,10 +145,7 @@ export default function Form({}) {
           min="1"
           max="99"
         ></StyledInput>
-
-        <UploadButton onClick={() => router.push("/home")}>
-          upload your pattern
-        </UploadButton>
+        <UploadButton>upload your pattern</UploadButton>
       </EntryForm>
     </Wrapper>
   );

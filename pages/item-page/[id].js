@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Item from "@/src/components/Item";
+import Item from "@/components/Item";
 import { useSession } from "next-auth/react";
 // import useSWRMutation from "swr/mutation";
 

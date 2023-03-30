@@ -1,4 +1,4 @@
-import NavBar from "@/src/components/NavBar";
+import NavBar from "@/components/NavBar";
 import { device } from "@/styles";
 import { getSession } from "next-auth/react";
 import styled from "styled-components";

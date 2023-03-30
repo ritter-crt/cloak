@@ -1,5 +1,5 @@
 import Image from "next/image";
-import BackgroundImage from "../assets/sewer-with-mannequin.jpg";
+import BackgroundImage from "@/src/assets/sewer-with-mannequin.jpg";
 // import TailorWorking from "../assets/tailor-with-sewing-machine.jpg";
 import { changeOpacity, device } from "@/styles";
 import styled from "styled-components";
@@ -85,8 +85,8 @@ const GetStarted = styled(Link)`
   }
 `;
 const StyledText = styled.div`
-  padding: 10%;
-  width: 85%;
+  padding: 10% 10% 5%;
+  width: 100%;
   letter-spacing: 0.05rem;
   line-height: 1.2rem;
   font-size: 10pt;
