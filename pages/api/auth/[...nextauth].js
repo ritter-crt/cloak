@@ -37,7 +37,7 @@ export const authOptions = {
           throw new Error("Could not log you in!");
         }
 
-        return { name: user.name, email: user.email };
+        return { name: user.name, email: user.email, userId: user._id };
       },
     }),
     // ...add more providers here_____________________________

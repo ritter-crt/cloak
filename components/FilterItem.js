@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import styled from "styled-components";
 
-import { StyledTitle, Text } from "./styled";
+import { StyledHeader, StyledTitle, Text } from "./styled";
 import {
   CardWrapper,
   StyledCard,
@@ -108,7 +108,7 @@ export default function FilterItem({ items }) {
 
       <CardWrapper>
         {filteredItems.length <= 0 ? (
-          <div>No items found</div>
+          <TextNoItem>No items found</TextNoItem>
         ) : (
           filteredItems.map((item) => (
             <StyledCard key={item._id}>
@@ -180,4 +180,13 @@ const Select = styled.select`
   border-bottom: 2px solid black;
   padding: 5px 10px;
   background-color: rgba(0, 0, 0, 0.05);
+`;
+
+const TextNoItem = styled.div`
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-transform: uppercase;
+  font-weight: 100;
+  font-size: 12pt;
+  letter-spacing: 2pt;
 `;

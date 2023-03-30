@@ -1,4 +1,4 @@
-import { StyledButton } from "@/src/components/Button";
+import { StyledButton } from "@/components/Button";
 
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -8,9 +8,9 @@ import {
   StyledText,
   StyledTitle,
   TextWrapper,
-} from "@/src/components/StyledCard";
+} from "@/components/StyledCard";
 import styled from "styled-components";
-import { StyledLabel } from "@/src/components/StyledForm";
+import { StyledLabel } from "@/components/StyledForm";
 import Link from "next/link";
 
 export default function User() {
