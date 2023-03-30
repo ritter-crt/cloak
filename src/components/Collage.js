@@ -7,17 +7,26 @@ import HandWorking from "../assets/hand-working.jpg";
 import TailorWorking from "../assets/tailor-with-sewing-machine.jpg";
 import Dressmaker from "../assets/male-dressmaker-with-computer.jpg";
 import SewingMachine from "../assets/sewing_machine.avif";
+import Fabric from "../assets/fabrics.jpg";
+import PileOfClothes from "../assets/pile-of-clothes.jpeg";
 
 export default function Collage() {
   return (
     <>
+      {/* <ImageWrapperFive
+        src={PileOfClothes}
+        placeholder="blur"
+        height="250"
+        width="420"
+        alt="working Hand"
+      ></ImageWrapperFive> */}
       <CollageWrapper>
         <StyledText>
           CLOAK is a platform dedicated to exchange, sell and get sewing
           patterns.
         </StyledText>
         <ImageWrapperOne
-          src={HandWorking}
+          src={TailorWorking}
           placeholder="blur"
           height="300"
           width="200"
@@ -25,7 +34,7 @@ export default function Collage() {
         ></ImageWrapperOne>
 
         <ImageWrapperTwo
-          src={TailorWorking}
+          src={HandWorking}
           placeholder="blur"
           height="100"
           width="150"
@@ -33,21 +42,20 @@ export default function Collage() {
         ></ImageWrapperTwo>
 
         <ImageWrapperThree
-          src={Dressmaker}
+          src={PileOfClothes}
           placeholder="blur"
           height="250"
           width="320"
           alt="working Hand"
         ></ImageWrapperThree>
       </CollageWrapper>
-
-      <ImageWrapperFour
-        src={SewingMachine}
+      {/* <ImageWrapperFour
+        src={PileOfClothes}
         placeholder="blur"
         height="250"
         width="420"
         alt="working Hand"
-      ></ImageWrapperFour>
+      ></ImageWrapperFour> */}
     </>
   );
 }
@@ -92,6 +100,7 @@ const ImageWrapperThree = styled(Image)`
   position: absolute;
   top: 55%;
   left: 10%;
+  padding-right: 6%;
   object-fit: cover;
   @media ${device.mobileL} {
     bottom: 10%;
@@ -110,7 +119,15 @@ const ImageWrapperFour = styled(Image)`
     height: 800px;
   }
 `;
-
+const ImageWrapperFive = styled(Image)`
+  display: inline-block;
+  width: 100%;
+  object-fit: cover;
+  padding: 0% 10% 10% 10%;
+  @media ${device.mobileL} {
+    height: 800px;
+  }
+`;
 export const StyledText = styled.div`
   width: 40%;
   bottom: 46%;

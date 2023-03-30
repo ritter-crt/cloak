@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import Link from "next/link";
-import { StyledButton } from "@/src/components/Button";
+import { StyledButton, StyledLink } from "@/src/components/Button";
 
 import {
   RiDeleteBin7Line,
@@ -27,10 +27,12 @@ import {
 } from "./StyledForm";
 
 import { categoryArray, difficultyArray } from "@/utils";
+import Modal from "./Modal";
 
 export default function Item({
   title,
   instructions,
+  pattern,
   images,
   category,
   description,
@@ -39,9 +41,14 @@ export default function Item({
   id,
   onDeleteCard,
   onUpdateCard,
+  userId,
+  user,
+  session,
 }) {
-  console.log(images);
+  // console.log(images);
   const router = useRouter();
+  const [openModal, setOpenModal] = useState(false);
+
   const [isEditing, setIsEditing] = useState(false);
   const [, setInputField] = useState();
   const handleChange = (event) => {
@@ -52,28 +59,30 @@ export default function Item({
     event.preventDefault();
     const formElements = event.target.elements;
     const updatedCard = {
-      image: formElements.image.value,
+      // image: formElements.image.value,
+      // pattern: formElements.pattern.value,
       title: formElements.title.value,
       category: formElements.category.value,
       description: formElements.description.value,
       difficulty: formElements.difficulty.value,
       instructions: formElements.instructions.value,
-      pattern: formElements.pattern.value,
       price: formElements.price.value,
     };
     onUpdateCard(id, updatedCard);
     setIsEditing(false);
-    console.log(updatedCard);
+    router.push("/home");
+    // console.log(updatedCard);
   }
+
   return (
     <ItemWrapper>
       {isEditing && (
         <EntryForm onSubmit={handleSubmit}>
-          <StyledLabel htmlFor="image">upload image</StyledLabel>
+          {/* <StyledLabel htmlFor="image">upload image</StyledLabel>
           <StyledInput id="image" name="image"></StyledInput>
 
           <StyledLabel htmlFor="pattern">upload pdf</StyledLabel>
-          <StyledInput id="pattern" name="pattern"></StyledInput>
+          <StyledInput id="pattern" name="pattern"></StyledInput> */}
           <StyledLabel htmlFor="title">title</StyledLabel>
           <StyledInput
             id="title"
@@ -135,12 +144,12 @@ export default function Item({
             defaultValue={price}
             onChange={handleChange}
           ></StyledInput>
-          <StyledButton onClick={() => router.push("/home")}>
-            safe changes
-          </StyledButton>
-          <Link href="/home">
-            <CancelButton></CancelButton>
-          </Link>
+          <StyledButton>safe changes</StyledButton>
+          <CancelButton
+            onClick={() => {
+              router.back();
+            }}
+          ></CancelButton>
         </EntryForm>
       )}
       {!isEditing && (
@@ -148,9 +157,11 @@ export default function Item({
           <HeaderWrapper>
             <ButtonWrapper>
               <StyledTitel>{title}</StyledTitel>
-              <Link href="/home">
-                <BackIcon></BackIcon>
-              </Link>
+              <BackIcon
+                onClick={() => {
+                  router.back();
+                }}
+              ></BackIcon>
             </ButtonWrapper>
             <StyledText>{description}</StyledText>
           </HeaderWrapper>
@@ -168,19 +179,28 @@ export default function Item({
           </Slider>
           <StyledDescription> {instructions}</StyledDescription>
           <StyledPrice>{price}€</StyledPrice>
-          <IconWrapper>
-            <DeleteIcon
-              onClick={() => {
-                if (
-                  window.confirm("Are you sure you wish to delete this item?")
-                );
-                onDeleteCard(id);
-                router.push("/home");
-              }}
-            ></DeleteIcon>
-            <EditIcon onClick={() => setIsEditing(true)}>edit</EditIcon>
-          </IconWrapper>
-          <StyledButton>buy</StyledButton>
+          {session?.user.id === userId ? (
+            <IconWrapper>
+              <DeleteIcon
+                onClick={() => {
+                  setOpenModal(true);
+                }}
+              ></DeleteIcon>
+              <EditIcon onClick={() => setIsEditing(true)}>edit</EditIcon>
+            </IconWrapper>
+          ) : null}
+          {openModal && (
+            <Modal
+              closeModal={setOpenModal}
+              onDeleteCard={onDeleteCard}
+              id={id}
+            />
+          )}
+          <StyledButton>
+            <StyledLink target="_blank" href={pattern}>
+              Download
+            </StyledLink>
+          </StyledButton>
         </>
       )}
     </ItemWrapper>

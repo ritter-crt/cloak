@@ -14,7 +14,7 @@ import {
 
 export default function FilterItem({ items }) {
   const router = useRouter();
-
+  const [selected, setSelected] = useState("");
   const [query, setQuery] = useState("");
   const [filterParam, setFilterParam] = useState(["All"]);
   const [searchParam] = useState([
@@ -29,12 +29,7 @@ export default function FilterItem({ items }) {
     // query.length > 0
     //   ?
     items.filter((item) => {
-      if (
-        item.difficulty === filterParam ||
-        item.category === filterParam ||
-        item.title === filterParam ||
-        item.description === filterParam
-      ) {
+      if (item.difficulty === filterParam || item.category === filterParam) {
         return searchParam.some((newItem) => {
           return (
             item[newItem]
@@ -43,6 +38,11 @@ export default function FilterItem({ items }) {
               .indexOf(query.toLowerCase()) > -1
           );
         });
+        // } else if (
+        //   item.category === searchParam.category &&
+        //   item.difficulty === searchParam.difficulty
+        // ) {
+        //   return item.toString().toLowerCase().indexOf(query.toLowerCase()) > -1;
       } else if (filterParam == "All") {
         return searchParam.some((newItem) => {
           return (
@@ -78,7 +78,7 @@ export default function FilterItem({ items }) {
               setFilterParam(e.target.value);
             }}
           >
-            <option defaultValue="all">all</option>
+            <option defaultValue="All">all</option>
             {categoryArray &&
               categoryArray.map((category) => (
                 <option key={category} value={category}>
@@ -89,8 +89,13 @@ export default function FilterItem({ items }) {
         </DropdownWrapper>
         <DropdownWrapper>
           <p>sort by difficulty level</p>
-          <Select className="w-full" defaultValue="difficulty">
-            <option value="all">all</option>
+          <Select
+            defaultValue="difficulty"
+            onChange={(e) => {
+              setFilterParam(e.target.value);
+            }}
+          >
+            <option value="All">all</option>
             {difficultyArray &&
               difficultyArray.map((difficulty) => (
                 <option key={difficulty} value={difficulty}>
@@ -145,7 +150,7 @@ const StyledInput = styled.input`
   background-color: #ffd52d;
   height: 40px;
   background: none;
-  border: 2px solid black;
+  border: 1px solid black;
   border-radius: 10px;
   box-sizing: border-box;
   outline: none;

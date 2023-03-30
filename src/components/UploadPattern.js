@@ -67,9 +67,7 @@ export default function DocumentUpload({ patternSrc, setPatternSrc }) {
   );
 }
 
-const Input = styled.input.attrs({
-  type: "file",
-})`
+const Input = styled.input`
   border: none;
   border-bottom: 2px solid black;
   border-start-end-radius: 4px;

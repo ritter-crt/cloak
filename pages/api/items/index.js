@@ -8,5 +8,4 @@ export default async function handler(request, response) {
     const items = await Item.find();
     response.status(200).json(items);
   }
-
 }

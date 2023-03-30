@@ -43,12 +43,12 @@ export const StyledInput = styled.input`
 export const StyledHeader = styled.h1`
   position: absolute;
   top: 10%;
-  font-size: 20pt;
+  font-size: 18pt;
   font-family: "Bodoni Moda", serif;
   font-weight: 100;
   text-transform: uppercase;
   text-align: left;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 `;
 
 export const HeaderWrapper = styled.div`

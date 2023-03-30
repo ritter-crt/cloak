@@ -1,4 +1,5 @@
 import { device } from "@/styles";
+import Link from "next/link";
 import styled from "styled-components";
 
 export const StyledButton = styled.button`
@@ -27,4 +28,9 @@ export const StyledButton = styled.button`
     font-size: 11pt;
     padding: 13px;
   }
+`;
+
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: white;
 `;

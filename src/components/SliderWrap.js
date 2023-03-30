@@ -16,7 +16,6 @@ export const SliderWrap = styled.div`
     background: var(--background-color);
     img {
       max-width: 100%;
-      height: fit-content;
     }
   }
   ${({ arrows }) =>

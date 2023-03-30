@@ -1,5 +1,6 @@
 import Image from "next/image";
 import BackgroundImage from "../assets/sewer-with-mannequin.jpg";
+// import TailorWorking from "../assets/tailor-with-sewing-machine.jpg";
 import { changeOpacity, device } from "@/styles";
 import styled from "styled-components";
 
@@ -10,7 +11,7 @@ export default function Hero() {
     <>
       <StyledWrapper>
         <StyledHeader>cloak</StyledHeader>
-        <GetStarted href="/login">join us</GetStarted>
+        <GetStarted href="/login">come in</GetStarted>
         <StyledImage
           src={BackgroundImage}
           height={900}
@@ -71,7 +72,7 @@ const GetStarted = styled(Link)`
   padding: 8px;
   border-radius: 40px;
   border: none;
-  transition-delay: 0.3s;
+  transition-delay: 0.1s;
   font-size: 8pt;
   &:hover {
     background-color: white;
