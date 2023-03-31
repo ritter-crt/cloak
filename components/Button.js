@@ -18,7 +18,7 @@ export const StyledButton = styled.button`
   border: none;
   transition-delay: 0.1s;
   font-size: 10pt;
-  &:hover {
+  &:active {
     background-color: white;
     color: black;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
