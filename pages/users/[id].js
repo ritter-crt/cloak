@@ -56,8 +56,7 @@ export default function User() {
         <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
       </>
     );
-  }
-  if (!session && !itemList) {
+  } else {
     return (
       <>
         <ByeText>See you back soon!</ByeText>
