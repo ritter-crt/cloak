@@ -27,7 +27,16 @@ export default function User() {
 
   const router = useRouter();
 
-  if (session && itemList) {
+  if (!session && !itemList) {
+    return (
+      <>
+        <ByeText>See you back soon!</ByeText>
+        <StyledLink href="/login">
+          <StyledButton>Login</StyledButton>
+        </StyledLink>
+      </>
+    );
+  } else {
     return (
       <>
         <StyledLabel>Welcome, {session.user.name}.</StyledLabel>
@@ -54,15 +63,6 @@ export default function User() {
         </ScrollingWrapper>
 
         <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <ByeText>See you back soon!</ByeText>
-        <StyledLink href="/login">
-          <StyledButton>Login</StyledButton>
-        </StyledLink>
       </>
     );
   }
