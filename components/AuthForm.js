@@ -150,7 +150,7 @@ const Button = styled.button`
   border: none;
   background: none;
   color: var(--first-color);
-  &:hover {
+  &:active {
     color: black;
     font-size: 12pt;
   }
