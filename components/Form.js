@@ -59,7 +59,7 @@ export default function Form({}) {
       items.mutate();
       event.target.reset();
       setTimeout(() => {
-        router.push("/home");
+        router.push("/profile");
         setIsButtonLoading(false);
       }, 2000);
     } else {
