@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import useSWR from "swr";
 import styled from "styled-components";
-import { ThreeDots, Triangle } from "react-loader-spinner";
+import { ThreeDots, Triangle, Oval } from "react-loader-spinner";
 
 import {
   StyledInput,
@@ -143,7 +143,13 @@ export default function Form({}) {
           {!isButtonLoading ? (
             <UploadButton>upload your pattern</UploadButton>
           ) : (
-            <ThreeDots height="50" width="50" color="#2874FC" visible={true} />
+            <Oval
+              height="50"
+              width="50"
+              color="#2874FC"
+              secondaryColor="#a9c7fd"
+              visible={true}
+            />
           )}
         </TriangleContainer>
       </EntryForm>

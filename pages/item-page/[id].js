@@ -49,7 +49,7 @@ export default function PatternDetailsPage() {
         const response = await fetch(`/api/items/${id}`);
         const specificItem = await response.json();
         setItemDetail(specificItem);
-        console.log(specificItem);
+        console.log(specificItem.title);
       };
       fetchSpecificItem();
     }
@@ -71,6 +71,7 @@ export default function PatternDetailsPage() {
 
     return (
       <>
+        <title>{title}</title>
         <Item
           key={_id}
           images={images}

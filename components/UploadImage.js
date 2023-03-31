@@ -124,8 +124,6 @@ const UploadWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
   justify-content: space-around;
   padding: 6px;
   width: 60%;
