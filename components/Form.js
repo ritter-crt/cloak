@@ -44,7 +44,6 @@ export default function Form({}) {
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
     newItem.userId = session.user.email;
-
     // console.log(newItem);
 
     const response = await fetch("/api/items/create", {
@@ -82,7 +81,7 @@ export default function Form({}) {
           name="title"
           placeholder="e.g long trouses"
           maxLength="25"
-          required
+          // required
         ></StyledInput>
         <StyledLabel htmlFor="description">description</StyledLabel>
         <StyledInput
@@ -90,7 +89,7 @@ export default function Form({}) {
           name="description"
           placeholder="e.g occasion, season"
           maxLength="50"
-          required
+          // required
         ></StyledInput>
         <StyledLabel htmlFor="category">select a category</StyledLabel>
         <StyledSelect name="category" id="category">
@@ -126,7 +125,7 @@ export default function Form({}) {
           value={inputText}
           onChange={handleChange}
           isInvalid={inputText.length > characterLimit}
-          required
+          // required
         ></StyledTextarea>
         <Text>
           {inputText.length}/{characterLimit}

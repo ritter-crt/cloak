@@ -42,7 +42,6 @@ export default function Item({
   onDeleteCard,
   onUpdateCard,
   userId,
-  user,
   session,
 }) {
   // console.log(images);
@@ -59,8 +58,6 @@ export default function Item({
     event.preventDefault();
     const formElements = event.target.elements;
     const updatedCard = {
-      // image: formElements.image.value,
-      // pattern: formElements.pattern.value,
       title: formElements.title.value,
       category: formElements.category.value,
       description: formElements.description.value,
@@ -71,18 +68,12 @@ export default function Item({
     onUpdateCard(id, updatedCard);
     setIsEditing(false);
     router.push("/home");
-    // console.log(updatedCard);
   }
 
   return (
     <ItemWrapper>
       {isEditing && (
         <EntryForm onSubmit={handleSubmit}>
-          {/* <StyledLabel htmlFor="image">upload image</StyledLabel>
-          <StyledInput id="image" name="image"></StyledInput>
-
-          <StyledLabel htmlFor="pattern">upload pdf</StyledLabel>
-          <StyledInput id="pattern" name="pattern"></StyledInput> */}
           <StyledLabel htmlFor="title"> edit title</StyledLabel>
           <StyledInput
             id="title"
@@ -196,11 +187,13 @@ export default function Item({
               id={id}
             />
           )}
-          <StyledButton>
-            <StyledLink target="_blank" href={pattern}>
-              Download
-            </StyledLink>
-          </StyledButton>
+          {pattern ? (
+            <StyledButton>
+              <StyledLink target="_blank" href={pattern}>
+                Download
+              </StyledLink>
+            </StyledButton>
+          ) : null}
         </>
       )}
     </ItemWrapper>

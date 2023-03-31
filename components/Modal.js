@@ -1,12 +1,13 @@
 import { device } from "@/styles";
 import { useRouter } from "next/router";
 import styled from "styled-components";
+import { useState } from "react";
 
 import { TfiClose, TfiCheck } from "react-icons/tfi";
 
-export default function Modal({ closeModal, onDeleteCard, id }) {
-  //change value based on ButtonClick
+import { ThreeDots, Triangle } from "react-loader-spinner";
 
+export default function Modal({ closeModal, onDeleteCard, id }) {
   const router = useRouter();
 
   return (
@@ -16,17 +17,18 @@ export default function Modal({ closeModal, onDeleteCard, id }) {
           Are you sure you want to delete this entry?
         </Title>
         <Body>
-          <ModalButton onClick={() => closeModal(false)}>
-            no, take me back <NoIcon />
-          </ModalButton>
-          <ModalButton
-            onClick={() => {
-              onDeleteCard(id);
-              router.push("/home");
-            }}
-          >
-            yes, please <YesIcon />
-          </ModalButton>
+          <>
+            <ModalButton onClick={() => closeModal(false)}>
+              no, take me back <NoIcon />
+            </ModalButton>
+            <ModalButton
+              onClick={() => {
+                onDeleteCard(id);
+              }}
+            >
+              yes, please <YesIcon />
+            </ModalButton>
+          </>
         </Body>
       </ModalContainer>
     </>

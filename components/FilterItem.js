@@ -14,7 +14,6 @@ import {
 
 export default function FilterItem({ items }) {
   const router = useRouter();
-  const [selected, setSelected] = useState("");
   const [query, setQuery] = useState("");
   const [filterParam, setFilterParam] = useState(["All"]);
   const [searchParam] = useState([
@@ -38,11 +37,6 @@ export default function FilterItem({ items }) {
               .indexOf(query.toLowerCase()) > -1
           );
         });
-        // } else if (
-        //   item.category === searchParam.category &&
-        //   item.difficulty === searchParam.difficulty
-        // ) {
-        //   return item.toString().toLowerCase().indexOf(query.toLowerCase()) > -1;
       } else if (filterParam == "All") {
         return searchParam.some((newItem) => {
           return (
