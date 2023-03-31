@@ -11,7 +11,7 @@ export default function Hero() {
     <>
       <StyledWrapper>
         <StyledHeader>cloak</StyledHeader>
-        <GetStarted href="/login">come in</GetStarted>
+        <GetStarted href="/login">get started</GetStarted>
         <StyledImage
           src={BackgroundImage}
           height={900}
@@ -65,11 +65,11 @@ const GetStarted = styled(Link)`
   top: 10px;
   right: 2%;
   z-index: 2;
-  width: 90px;
+  width: fit-content;
   margin: 2px;
   align-items: flex-end;
   text-align: center;
-  padding: 8px;
+  padding: 5px 10px 5px 10px;
   border-radius: 40px;
   border: none;
   transition-delay: 0.1s;

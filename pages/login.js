@@ -2,6 +2,9 @@ import { useRouter } from "next/router";
 import { getSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import AuthForm from "@/components/AuthForm";
+import { ThreeDots, Triangle } from "react-loader-spinner";
+import styled from "styled-components";
+import { Text } from "@/components/styled";
 
 export default function Auth() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,12 +23,13 @@ export default function Auth() {
   if (isLoading) {
     return (
       <>
-        {/* <LoadingWrapper> */}
-        <h3>Loading</h3>
-        {/* <Dot delay="0s" />
-          <Dot delay="0.1s" />
-          <Dot delay="0.2s" />
-        </LoadingWrapper> */}
+        <title>Your Profile</title>
+        <LoadingWrapper>
+          <Text>Loading</Text>
+          <ThreeDots color="#2874FC" visible={true}>
+            Loading
+          </ThreeDots>
+        </LoadingWrapper>
       </>
     );
   }
@@ -33,34 +37,10 @@ export default function Auth() {
   return <AuthForm />;
 }
 
-// export const LoadingWrapper = styled.div`
-//   display: flex;
-//   align-items: flex-end;
-//   justify-content: center;
-//   padding: 20px 10px 50px 10px;
-// `;
-
-// export const Dot = styled.div`
-//   background-color: black;
-//   border-radius: 50%;
-//   width: 0.75rem;
-//   height: 0.75rem;
-//   margin: 0 0.25rem;
-//   /*Animation*/
-//   animation: ${BounceAnimatio} 0.5s linear infinite;
-//   animation-delay: ${(props) => props.delay};
-// `;
-
-// export const BounceAnimation = keyframes`
-//   0% {
-//     margin-bottom: 0;
-//   }
-
-//   50% {
-//     margin-bottom: 1rem;
-//   }
-
-//   100% {
-//     margin-bottom: 10rem;
-//   }
-// `;
+export const LoadingWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+`;

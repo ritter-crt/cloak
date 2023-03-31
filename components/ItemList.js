@@ -48,6 +48,7 @@ export const StyledImage = styled(Image)`
 
 const StyledTitle = styled.p`
   text-transform: uppercase;
+  height: 12%;
   font-size: 9pt;
   font-weight: 250;
   margin-top: 6px;

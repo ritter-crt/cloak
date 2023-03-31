@@ -8,7 +8,7 @@ export const StyledImage = styled(Image)`
 `;
 
 export const ContentWrapper = styled.div`
-  margin-top: 180px;
+  margin-top: 44%;
   margin-left: 7%;
   margin-right: 7%;
   margin-bottom: 20%;
@@ -46,16 +46,17 @@ export const Text = styled.p`
   font-weight: 100;
   font-size: 9pt;
   letter-spacing: 2pt;
+  flex-wrap: wrap;
 `;
 export const StyledHeader = styled.h1`
   position: absolute;
-  top: 15%;
+  top: 11%;
   font-size: 18pt;
   font-family: "Bodoni Moda", serif;
   font-weight: 100;
   text-transform: uppercase;
   text-align: left;
-  margin-bottom: 15px;
+  margin-bottom: 0%;
 `;
 
 export const HeaderWrapper = styled.div`

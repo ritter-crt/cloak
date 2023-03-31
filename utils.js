@@ -5,7 +5,10 @@ export const small_id = unique_id.slice(0, 8);
 
 export const categoryArray = [
   "tops",
-  "bottoms",
+  "shirts",
+  "skirts",
+  "trouses",
+  "shorts",
   "onsies",
   "dresses",
   "jackets",
@@ -16,7 +19,7 @@ export const categoryArray = [
 export const difficultyArray = [
   "beginner",
   "easy",
-  "intermediate",
   "medium",
+  "intermediate",
   "expert",
 ];

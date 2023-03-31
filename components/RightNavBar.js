@@ -34,11 +34,12 @@ const NavMenu = styled.ul`
     /* display: none; */
     flex-flow: column nowrap;
     background-color: var(--background-color);
+    opacity: 70%;
     position: fixed;
     transform: ${({ open }) => (open ? "translateX(0)" : "translateX(100%)")};
     top: 5%;
     right: 0;
-    margin: 5px;
+    margin: 5px 0px;
     padding: 10px;
     height: fit-content;
     width: fit-content;

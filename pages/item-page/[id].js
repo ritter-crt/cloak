@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();
+
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
   const router = useRouter();
   const { id } = router.query;
 
@@ -25,22 +27,17 @@ export default function PatternDetailsPage() {
       console.error(`Error: ${response.status}`);
     }
   }
-
-  // async function handleEditCards(event) {
-  //   event.preventDefault();
-  //   const item = new FormData(event.target);
-  //   const itemData = Object.fromEntries(item);
-  //   await trigger(itemData);
-  //   push("/home");
-  // }
-
   async function handleDeleteCard() {
     const response = await fetch(`/api/items/${id}`, {
       method: "DELETE",
     });
     if (response.ok) {
       await response.json();
-      console.log("routerID", id);
+      // console.log("routerID", id);
+      setTimeout(() => {
+        router.push("/profile");
+        setIsButtonLoading(false);
+      }, 1000);
     } else {
       console.error(`Error: ${response.status}`);
     }
@@ -52,7 +49,7 @@ export default function PatternDetailsPage() {
         const response = await fetch(`/api/items/${id}`);
         const specificItem = await response.json();
         setItemDetail(specificItem);
-        console.log(specificItem);
+        console.log(specificItem.title);
       };
       fetchSpecificItem();
     }
@@ -74,6 +71,7 @@ export default function PatternDetailsPage() {
 
     return (
       <>
+        <title>{title}</title>
         <Item
           key={_id}
           images={images}
@@ -87,7 +85,6 @@ export default function PatternDetailsPage() {
           id={_id}
           onDeleteCard={handleDeleteCard}
           onUpdateCard={updateCards}
-          // onSubmit={handleEditCards}
           userId={userId}
           user={user}
           session={session}

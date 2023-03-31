@@ -1,7 +1,8 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useSWR from "swr";
 import styled from "styled-components";
+import { ThreeDots, Triangle, Oval } from "react-loader-spinner";
 
 import {
   StyledInput,
@@ -23,9 +24,7 @@ export default function Form({}) {
   const [imageSrc, setImageSrc] = useState([]);
   const [patternSrc, setPatternSrc] = useState();
 
-  const [isLoading, setIsLoading] = useState(true);
-
-  const [loading, setLoading] = useState(false);
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
 
   const [inputText, setInputText] = useState("");
   const [characterLimit] = useState(300);
@@ -38,15 +37,14 @@ export default function Form({}) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    setIsButtonLoading(true);
     const formData = new FormData(event.target);
     const newItem = Object.fromEntries(formData);
     newItem.createdAt = new Date().getTime();
     newItem.images = imageSrc;
     newItem.pattern = patternSrc;
-
     newItem.userId = session.user.email;
-
-    console.log(newItem);
+    // console.log(newItem);
 
     const response = await fetch("/api/items/create", {
       method: "POST",
@@ -60,18 +58,14 @@ export default function Form({}) {
       await response.json();
       items.mutate();
       event.target.reset();
-      router.push("/home");
+      setTimeout(() => {
+        router.push("/profile");
+        setIsButtonLoading(false);
+      }, 2000);
     } else {
       console.error(`Error: ${response.status}`);
     }
   }
-
-  // useEffect(() => {
-  //   setLoading(true);
-  //   setTimeout(() => {
-  //     setLoading(false);
-  //   }, 2000);
-  // }, []);
 
   return (
     <Wrapper>
@@ -86,16 +80,16 @@ export default function Form({}) {
           id="title"
           name="title"
           placeholder="e.g long trouses"
-          maxLength="30"
-          required
+          maxLength="25"
+          // required
         ></StyledInput>
         <StyledLabel htmlFor="description">description</StyledLabel>
         <StyledInput
           id="description"
           name="description"
           placeholder="e.g occasion, season"
-          maxLength="30"
-          required
+          maxLength="50"
+          // required
         ></StyledInput>
         <StyledLabel htmlFor="category">select a category</StyledLabel>
         <StyledSelect name="category" id="category">
@@ -120,7 +114,7 @@ export default function Form({}) {
         </StyledSelect>
 
         <StyledLabel htmlFor="instructions">
-          please provide some instructions
+          provide some instructions
         </StyledLabel>
 
         <StyledTextarea
@@ -131,7 +125,7 @@ export default function Form({}) {
           value={inputText}
           onChange={handleChange}
           isInvalid={inputText.length > characterLimit}
-          required
+          // required
         ></StyledTextarea>
         <Text>
           {inputText.length}/{characterLimit}
@@ -145,7 +139,19 @@ export default function Form({}) {
           min="1"
           max="99"
         ></StyledInput>
-        <UploadButton>upload your pattern</UploadButton>
+        <TriangleContainer>
+          {!isButtonLoading ? (
+            <UploadButton>upload your pattern</UploadButton>
+          ) : (
+            <Oval
+              height="50"
+              width="50"
+              color="#2874FC"
+              secondaryColor="#a9c7fd"
+              visible={true}
+            />
+          )}
+        </TriangleContainer>
       </EntryForm>
     </Wrapper>
   );
@@ -187,4 +193,9 @@ const UploadButton = styled.button`
     color: black;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   }
+`;
+
+const TriangleContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;

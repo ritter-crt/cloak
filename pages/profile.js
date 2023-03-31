@@ -7,6 +7,7 @@ import User from "./users/[id]";
 export default function Profile() {
   return (
     <>
+      <title>your profile</title>
       <NavBar></NavBar>
       <ContentWrapper>
         <User></User>
@@ -14,22 +15,6 @@ export default function Profile() {
     </>
   );
 }
-
-// export async function getServerSideProps(context) {
-//   const session = await getSession({ req: context.req });
-//   if (!session) {
-//     return {
-//       redirect: {
-//         destination: "/",
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return {
-//     props: { session },
-//   };
-// }
-
 const ContentWrapper = styled.div`
   margin-top: 100px;
   margin-left: 7%;

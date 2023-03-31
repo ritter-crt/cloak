@@ -42,7 +42,6 @@ export default function Item({
   onDeleteCard,
   onUpdateCard,
   userId,
-  user,
   session,
 }) {
   // console.log(images);
@@ -59,8 +58,6 @@ export default function Item({
     event.preventDefault();
     const formElements = event.target.elements;
     const updatedCard = {
-      // image: formElements.image.value,
-      // pattern: formElements.pattern.value,
       title: formElements.title.value,
       category: formElements.category.value,
       description: formElements.description.value,
@@ -71,19 +68,13 @@ export default function Item({
     onUpdateCard(id, updatedCard);
     setIsEditing(false);
     router.push("/home");
-    // console.log(updatedCard);
   }
 
   return (
     <ItemWrapper>
       {isEditing && (
         <EntryForm onSubmit={handleSubmit}>
-          {/* <StyledLabel htmlFor="image">upload image</StyledLabel>
-          <StyledInput id="image" name="image"></StyledInput>
-
-          <StyledLabel htmlFor="pattern">upload pdf</StyledLabel>
-          <StyledInput id="pattern" name="pattern"></StyledInput> */}
-          <StyledLabel htmlFor="title">title</StyledLabel>
+          <StyledLabel htmlFor="title"> edit title</StyledLabel>
           <StyledInput
             id="title"
             name="title"
@@ -91,7 +82,7 @@ export default function Item({
             defaultValue={title}
             onChange={handleChange}
           ></StyledInput>
-          <StyledLabel htmlFor="description"></StyledLabel>
+          <StyledLabel htmlFor="description"> edit description</StyledLabel>
           <StyledInput
             id="description"
             name="description"
@@ -99,7 +90,7 @@ export default function Item({
             defaultValue={description}
             onChange={handleChange}
           ></StyledInput>
-          <StyledLabel htmlFor="category">category</StyledLabel>
+          <StyledLabel htmlFor="category">edit category</StyledLabel>
           <StyledSelect
             name="category"
             id="category"
@@ -113,7 +104,7 @@ export default function Item({
                 </option>
               ))}
           </StyledSelect>
-          <StyledLabel htmlFor="difficulty">difficulty</StyledLabel>
+          <StyledLabel htmlFor="difficulty">Edit difficulty level</StyledLabel>
           <StyledSelect
             name="difficulty"
             id="difficulty"
@@ -127,7 +118,7 @@ export default function Item({
                 </option>
               ))}
           </StyledSelect>
-          <StyledLabel htmlFor="instructions">instructions</StyledLabel>
+          <StyledLabel htmlFor="instructions">Edit Instructions</StyledLabel>
           <StyledTextarea
             id="instructions"
             name="instructions"
@@ -136,7 +127,7 @@ export default function Item({
             defaultValue={instructions}
             onChange={handleChange}
           ></StyledTextarea>
-          <StyledLabel htmlFor="price">price</StyledLabel>
+          <StyledLabel htmlFor="price">edit price</StyledLabel>
           <StyledInput
             id="price"
             name="price"
@@ -186,7 +177,7 @@ export default function Item({
                   setOpenModal(true);
                 }}
               ></DeleteIcon>
-              <EditIcon onClick={() => setIsEditing(true)}>edit</EditIcon>
+              <EditIcon onClick={() => setIsEditing(true)}></EditIcon>
             </IconWrapper>
           ) : null}
           {openModal && (
@@ -196,11 +187,13 @@ export default function Item({
               id={id}
             />
           )}
-          <StyledButton>
-            <StyledLink target="_blank" href={pattern}>
-              Download
-            </StyledLink>
-          </StyledButton>
+          {pattern ? (
+            <StyledButton>
+              <StyledLink target="_blank" href={pattern}>
+                Download
+              </StyledLink>
+            </StyledButton>
+          ) : null}
         </>
       )}
     </ItemWrapper>

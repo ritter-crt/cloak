@@ -5,9 +5,10 @@ import { ContentWrapper, StyledHeader } from "@/components/styled";
 export default function Add() {
   return (
     <>
+      <title>upload your sewing pattern</title>
       <NavBar></NavBar>
       <ContentWrapper>
-        <StyledHeader>Upload</StyledHeader>
+        <StyledHeader>upload</StyledHeader>
         <Form />
       </ContentWrapper>
     </>

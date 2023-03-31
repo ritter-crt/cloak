@@ -8,7 +8,7 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     const items = await Item.find({ userId: id });
-    console.log("items____________", items);
+    // console.log("items____________", items);
     return response.status(200).json(items);
   }
 }

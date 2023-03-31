@@ -45,7 +45,7 @@ export default function DocumentUpload({ patternSrc, setPatternSrc }) {
 
   return (
     <div>
-      <title>Document Uploader</title>
+      <title>Add Sewing Patterns</title>
       <main>
         <form
           method="post"
