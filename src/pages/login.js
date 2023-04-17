@@ -1,10 +1,10 @@
-import { useRouter } from "next/router";
-import { getSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import AuthForm from "@/components/AuthForm";
-import { ThreeDots, Triangle } from "react-loader-spinner";
-import styled from "styled-components";
-import { Text } from "@/components/styled";
+import { useRouter } from 'next/router';
+import { getSession } from 'next-auth/react';
+import { useEffect, useState } from 'react';
+import AuthForm from '@/src/components/AuthForm';
+import { ThreeDots, Triangle } from 'react-loader-spinner';
+import styled from 'styled-components';
+import { Text } from '@/src/components/styled';
 
 export default function Auth() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,7 @@ export default function Auth() {
   useEffect(() => {
     getSession().then((session) => {
       if (session) {
-        router.replace("/home");
+        router.replace('/home');
       } else {
         setIsLoading(false);
       }

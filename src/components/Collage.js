@@ -1,15 +1,15 @@
-import { device, changeOpacity } from "@/styles";
-import styled from "styled-components";
+import { device, changeOpacity } from '@/src/styles';
+import styled from 'styled-components';
 
-import Image from "next/image";
+import Image from 'next/image';
 
-import HandWorking from "@/src/assets/hand-working.jpg";
-import TailorWorking from "@/src/assets/tailor-with-sewing-machine.jpg";
-import Dressmaker from "@/src/assets/male-dressmaker-with-computer.jpg";
-import SewingMachine from "@/src/assets/sewing_machine.avif";
-import Fabric from "@/src/assets/fabrics.jpg";
-import PileOfClothes from "@/src/assets/pile-of-clothes.jpeg";
-import { StyledHeader, StyledImage } from "./styled";
+import HandWorking from '@/src/assets/hand-working.jpg';
+import TailorWorking from '@/src/assets/tailor-with-sewing-machine.jpg';
+import Dressmaker from '@/src/assets/male-dressmaker-with-computer.jpg';
+import SewingMachine from '@/src/assets/sewing_machine.avif';
+import Fabric from '@/src/assets/fabrics.jpg';
+import PileOfClothes from '@/src/assets/pile-of-clothes.jpeg';
+import { StyledHeader, StyledImage } from './styled';
 
 export default function Collage() {
   return (

@@ -1,10 +1,9 @@
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
+import NextAuth from 'next-auth';
+import Credentials from 'next-auth/providers/credentials';
 
-import dbConnect from "@/db/connect";
-import User from "@/db/models/User";
-
-import { verifyPassword } from "@/db/models/utils";
+import { verifyPassword } from '@/db/models/utils';
+import User from '@/db/models/User';
+import dbConnect from '@/db/connect';
 
 export const authOptions = {
   session: {
@@ -13,11 +12,11 @@ export const authOptions = {
 
   providers: [
     Credentials({
-      name: "credentials",
+      name: 'credentials',
       credentials: {
-        name: { label: "name", type: "text" },
-        email: { label: "email", type: "email" },
-        password: { label: "Password", type: "password" },
+        name: { label: 'name', type: 'text' },
+        email: { label: 'email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
       },
 
       async authorize(credentials) {
@@ -25,7 +24,7 @@ export const authOptions = {
         const user = await User.findOne({ email: credentials.email });
 
         if (!user) {
-          throw new Error("No user found!");
+          throw new Error('No user found!');
         }
 
         const isValid = await verifyPassword(
@@ -34,7 +33,7 @@ export const authOptions = {
         );
 
         if (!isValid) {
-          throw new Error("Could not log you in!");
+          throw new Error('Could not log you in!');
         }
 
         return { name: user.name, email: user.email, userId: user._id };

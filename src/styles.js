@@ -1,16 +1,16 @@
-import { createGlobalStyle } from "styled-components";
-import { keyframes } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
+import { keyframes } from 'styled-components';
 
-export default createGlobalStyle`
-:root {
+export const GlobalStyle = createGlobalStyle`
+${
+  '' /* :root {
 
   --first-color:rgb(40,116,252);
-  ${"" /* --first-color: #bbf726; */}
-  ${"" /* --first-color: #db6589; */}
   --second-color: rgba(0,123,255,1);
   --background-color: rgba(253, 251, 248, 1)
 
-  }
+  } */
+}
   
   *,
   *::before,
@@ -35,13 +35,13 @@ export const getBigger = keyframes`
 `;
 
 const size = {
-  mobileS: "320px",
-  mobileM: "375px",
-  mobileL: "425px",
-  tablet: "768px",
-  laptop: "1024px",
-  laptopL: "1440px",
-  desktop: "2560px",
+  mobileS: '320px',
+  mobileM: '375px',
+  mobileL: '425px',
+  tablet: '768px',
+  laptop: '1024px',
+  laptopL: '1440px',
+  desktop: '2560px',
 };
 
 export const device = {

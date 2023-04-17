@@ -1,10 +1,11 @@
-import Image from "next/image";
-import BackgroundImage from "@/src/assets/sewer-with-mannequin.jpg";
+import Image from 'next/image';
+import BackgroundImage from '@/src/assets/sewer-with-mannequin.jpg';
 // import TailorWorking from "../assets/tailor-with-sewing-machine.jpg";
-import { changeOpacity, device } from "@/styles";
-import styled from "styled-components";
+// import { changeOpacity, device } from '@/src/styles';
+import styled from 'styled-components';
 
-import Link from "next/link";
+import Link from 'next/link';
+import { changeOpacity, device } from '../styles';
 
 export default function Hero() {
   return (
@@ -34,7 +35,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledHeader = styled.h1`
-  font-family: "Golos Text", sans-serif;
+  font-family: 'Golos Text', sans-serif;
   animation-name: ${changeOpacity};
   animation-duration: 6s;
   animation-iteration-count: 1;

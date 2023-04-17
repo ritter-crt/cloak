@@ -1,6 +1,6 @@
-import { device } from "@/styles";
-import Link from "next/link";
-import styled from "styled-components";
+import { device } from '@/src/styles';
+import Link from 'next/link';
+import styled from 'styled-components';
 
 export const StyledButton = styled.button`
   width: 50%;

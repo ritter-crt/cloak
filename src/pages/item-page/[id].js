@@ -1,7 +1,8 @@
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import Item from "@/components/Item";
-import { useSession } from "next-auth/react";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+// import Item from '@/src/components/Item';
+import { useSession } from 'next-auth/react';
+import Item from '@/src/components/Item';
 // import useSWRMutation from "swr/mutation";
 
 export default function PatternDetailsPage() {
@@ -15,10 +16,10 @@ export default function PatternDetailsPage() {
 
   async function updateCards(id, body) {
     const response = await fetch(`/api/items/${id}`, {
-      method: "PUT",
+      method: 'PUT',
       body: JSON.stringify(body),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
     if (response.ok) {
@@ -29,13 +30,13 @@ export default function PatternDetailsPage() {
   }
   async function handleDeleteCard() {
     const response = await fetch(`/api/items/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     });
     if (response.ok) {
       await response.json();
       // console.log("routerID", id);
       setTimeout(() => {
-        router.push("/profile");
+        router.push('/profile');
         setIsButtonLoading(false);
       }, 1000);
     } else {

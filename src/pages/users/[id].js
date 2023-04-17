@@ -1,19 +1,19 @@
-import { StyledButton, StyledLink } from "@/components/Button";
+import { StyledButton, StyledLink } from '@/src/components/Button';
 
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { useSession, signIn, signOut, getSession } from "next-auth/react";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { useSession, signIn, signOut, getSession } from 'next-auth/react';
 import {
   StyledImage,
   StyledText,
   StyledTitle,
   TextWrapper,
-} from "@/components/StyledCard";
-import styled from "styled-components";
-import { StyledLabel } from "@/components/StyledForm";
-import Link from "next/link";
-import useSWR from "swr";
-import { StyledHeader } from "@/components/styled";
+} from '@/src/components/StyledCard';
+import styled from 'styled-components';
+import { StyledLabel } from '@/src/components/StyledForm';
+import Link from 'next/link';
+import useSWR from 'swr';
+import { StyledHeader } from '@/src/components/styled';
 
 export default function User() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -73,7 +73,7 @@ export async function getServerSideProps(context) {
   if (!session) {
     return {
       redirect: {
-        destination: "/login",
+        destination: '/login',
         permanent: false,
       },
     };

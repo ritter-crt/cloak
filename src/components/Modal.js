@@ -1,11 +1,11 @@
-import { device } from "@/styles";
-import { useRouter } from "next/router";
-import styled from "styled-components";
-import { useState } from "react";
+import { device } from '@/src/styles';
+import { useRouter } from 'next/router';
+import styled from 'styled-components';
+import { useState } from 'react';
 
-import { TfiClose, TfiCheck } from "react-icons/tfi";
+import { TfiClose, TfiCheck } from 'react-icons/tfi';
 
-import { ThreeDots, Triangle } from "react-loader-spinner";
+import { ThreeDots, Triangle } from 'react-loader-spinner';
 
 export default function Modal({ closeModal, onDeleteCard, id }) {
   const router = useRouter();

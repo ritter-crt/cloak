@@ -1,12 +1,12 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, {
   Navigation,
   Pagination,
   EffectFade,
   Autoplay,
-} from "swiper";
-import { SliderWrap } from "./SliderWrap";
-import { small_id } from "@/utils";
+} from 'swiper';
+import { SliderWrap } from './SliderWrap';
+import { small_id } from '../utils';
 
 SwiperCore.use([Navigation, Pagination, EffectFade, Autoplay]);
 

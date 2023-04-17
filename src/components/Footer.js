@@ -1,5 +1,5 @@
-import { device } from "@/styles";
-import styled from "styled-components";
+import { device } from '@/src/styles';
+import styled from 'styled-components';
 
 export default function Footer() {
   return (
@@ -43,7 +43,7 @@ const ScrollContainer = styled.div`
 `;
 
 const ScrollText = styled.div`
-  font-family: "Golos Text", sans-serif;
+  font-family: 'Golos Text', sans-serif;
   margin-top: 20px;
   color: white;
   font-size: 12pt;

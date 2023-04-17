@@ -1,33 +1,33 @@
-import styled from "styled-components";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import Link from "next/link";
-import { StyledButton, StyledLink } from "@/components/Button";
+import styled from 'styled-components';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import Link from 'next/link';
+import { StyledButton, StyledLink } from '@/src/components/Button';
 
 import {
   RiDeleteBin7Line,
   RiEditBoxLine,
   RiArrowGoBackFill,
-} from "react-icons/ri";
-import { MdOutlineCancelPresentation } from "react-icons/md";
+} from 'react-icons/ri';
+import { MdOutlineCancelPresentation } from 'react-icons/md';
 
-import Slider, { Slide } from "@/components/Slider";
+import Slider, { Slide } from '@/src/components/Slider';
 
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import {
   EntryForm,
   StyledInput,
   StyledLabel,
   StyledSelect,
   StyledTextarea,
-} from "./StyledForm";
+} from './StyledForm';
 
-import { categoryArray, difficultyArray } from "@/utils";
-import Modal from "./Modal";
+import Modal from './Modal';
+import { categoryArray, difficultyArray } from '../utils';
 
 export default function Item({
   title,
@@ -67,7 +67,7 @@ export default function Item({
     };
     onUpdateCard(id, updatedCard);
     setIsEditing(false);
-    router.push("/home");
+    router.push('/home');
   }
 
   return (
@@ -212,7 +212,7 @@ const HeaderWrapper = styled.div`
 
 const StyledText = styled.p`
   font-size: 12pt;
-  font-family: "Bodoni Moda", serif;
+  font-family: 'Bodoni Moda', serif;
   font-weight: 100;
 `;
 const StyledLevel = styled.p`
@@ -231,7 +231,7 @@ const StyledPrice = styled.p`
 `;
 const StyledTitel = styled.p`
   font-size: 16pt;
-  font-family: "Bodoni Moda", serif;
+  font-family: 'Bodoni Moda', serif;
   font-weight: 100;
   text-transform: uppercase;
   text-align: left;

@@ -1,7 +1,7 @@
-import { device } from "@/styles";
+import { device } from '@/src/styles';
 
-import Image from "next/image";
-import styled from "styled-components";
+import Image from 'next/image';
+import styled from 'styled-components';
 
 export const StyledImage = styled(Image)`
   object-fit: cover;
@@ -52,7 +52,7 @@ export const StyledHeader = styled.h1`
   position: absolute;
   top: 11%;
   font-size: 18pt;
-  font-family: "Bodoni Moda", serif;
+  font-family: 'Bodoni Moda', serif;
   font-weight: 100;
   text-transform: uppercase;
   text-align: left;

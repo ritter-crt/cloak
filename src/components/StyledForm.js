@@ -1,5 +1,5 @@
-import { device } from "@/styles";
-import styled from "styled-components";
+import { device } from '@/src/styles';
+import styled from 'styled-components';
 
 export const EntryForm = styled.form`
   display: flex;
@@ -14,7 +14,7 @@ export const EntryForm = styled.form`
 export const StyledLabel = styled.label`
   margin-top: 20px;
   padding-bottom: 10px;
-  font-family: "Bodoni Moda", serif;
+  font-family: 'Bodoni Moda', serif;
   text-transform: uppercase;
   font-size: 10pt;
   @media ${device.mobileL} {
