@@ -1,26 +1,26 @@
-import { categoryArray, difficultyArray } from "@/utils";
-import { useRouter } from "next/router";
-import { useState } from "react";
-import styled from "styled-components";
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import styled from 'styled-components';
 
-import { StyledHeader, StyledTitle, Text } from "./styled";
+import { StyledHeader, StyledTitle, Text } from './styled';
 import {
   CardWrapper,
   StyledCard,
   StyledImage,
   StyledText,
   TextWrapper,
-} from "./StyledCard";
+} from './StyledCard';
+import { categoryArray, difficultyArray } from '../utils';
 
 export default function FilterItem({ items }) {
   const router = useRouter();
-  const [query, setQuery] = useState("");
-  const [filterParam, setFilterParam] = useState(["All"]);
+  const [query, setQuery] = useState('');
+  const [filterParam, setFilterParam] = useState(['All']);
   const [searchParam] = useState([
-    "category",
-    "difficulty",
-    "title",
-    "description",
+    'category',
+    'difficulty',
+    'title',
+    'description',
   ]);
 
   const filteredItems =
@@ -37,7 +37,7 @@ export default function FilterItem({ items }) {
               .indexOf(query.toLowerCase()) > -1
           );
         });
-      } else if (filterParam == "All") {
+      } else if (filterParam == 'All') {
         return searchParam.some((newItem) => {
           return (
             item[newItem]

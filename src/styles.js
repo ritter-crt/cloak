@@ -2,15 +2,13 @@ import { createGlobalStyle } from 'styled-components';
 import { keyframes } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
-${
-  '' /* :root {
+:root {
 
   --first-color:rgb(40,116,252);
   --second-color: rgba(0,123,255,1);
   --background-color: rgba(253, 251, 248, 1)
 
-  } */
-}
+  }
   
   *,
   *::before,

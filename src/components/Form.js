@@ -1,22 +1,22 @@
-import { useRouter } from "next/router";
-import { useState } from "react";
-import useSWR from "swr";
-import styled from "styled-components";
-import { ThreeDots, Triangle, Oval } from "react-loader-spinner";
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+import useSWR from 'swr';
+import styled from 'styled-components';
+import { ThreeDots, Triangle, Oval } from 'react-loader-spinner';
 
 import {
   StyledInput,
   StyledLabel,
   StyledSelect,
   StyledTextarea,
-} from "./StyledForm";
+} from './StyledForm';
 
-import ImageUpload from "./UploadImage";
+import ImageUpload from './UploadImage';
 
-import DocumentUpload from "./UploadPattern";
-import { categoryArray, difficultyArray } from "@/utils";
-import { useSession } from "next-auth/react";
-import { Text } from "./styled";
+import DocumentUpload from './UploadPattern';
+import { categoryArray, difficultyArray } from '../utils';
+import { useSession } from 'next-auth/react';
+import { Text } from './styled';
 
 export default function Form({}) {
   const { data: session } = useSession();
@@ -26,14 +26,14 @@ export default function Form({}) {
 
   const [isButtonLoading, setIsButtonLoading] = useState(false);
 
-  const [inputText, setInputText] = useState("");
+  const [inputText, setInputText] = useState('');
   const [characterLimit] = useState(300);
   const handleChange = (event) => {
     setInputText(event.target.value);
   };
 
   const router = useRouter();
-  const items = useSWR("/api/items/create");
+  const items = useSWR('/api/items/create');
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -46,11 +46,11 @@ export default function Form({}) {
     newItem.userId = session.user.email;
     // console.log(newItem);
 
-    const response = await fetch("/api/items/create", {
-      method: "POST",
+    const response = await fetch('/api/items/create', {
+      method: 'POST',
       body: JSON.stringify(newItem),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     });
 
@@ -59,7 +59,7 @@ export default function Form({}) {
       items.mutate();
       event.target.reset();
       setTimeout(() => {
-        router.push("/home");
+        router.push('/home');
         setIsButtonLoading(false);
       }, 2000);
     } else {
