@@ -1,4 +1,4 @@
-import { StyledButton, StyledLink } from '@/src/components/Button';
+import { Button, StyledLink } from '@/src/components/Button.styles';
 
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -53,7 +53,9 @@ export default function User() {
             ))}
         </ScrollingWrapper>
 
-        <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
+        <Button float onClick={() => signOut()}>
+          Sign out
+        </Button>
       </>
     );
   } else {
@@ -61,7 +63,7 @@ export default function User() {
       <>
         <ByeText>See you back soon!</ByeText>
         <StyledLink href="/login">
-          <StyledButton>Login</StyledButton>
+          <Button float>Login</Button>
         </StyledLink>
       </>
     );

@@ -19,7 +19,7 @@ const ContentWrapper = styled.div`
   margin-top: 100px;
   margin-left: 7%;
   margin-right: 7%;
-  margin-bottom: 20%;
+  margin-bottom: 100%;
   @media ${device.mobileL} {
     margin-left: 10%;
     margin-right: 10%;

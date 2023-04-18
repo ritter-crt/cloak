@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { StyledHeader, StyledTitle, Text } from './styled';
+import { StyledHeader, StyledTitle } from './styled';
 import {
   CardWrapper,
   StyledCard,
@@ -11,6 +11,7 @@ import {
   TextWrapper,
 } from './StyledCard';
 import { categoryArray, difficultyArray } from '../utils';
+import { Text } from './Text.styles';
 
 export default function FilterItem({ items }) {
   const router = useRouter();
@@ -65,7 +66,7 @@ export default function FilterItem({ items }) {
 
       <FilterWrapper>
         <DropdownWrapper>
-          <Text>sort by category</Text>
+          <Text letterSpacing="2pt">sort by category</Text>
           <Select
             defaultValue="category"
             onChange={(e) => {
@@ -82,7 +83,7 @@ export default function FilterItem({ items }) {
           </Select>
         </DropdownWrapper>
         <DropdownWrapper>
-          <Text>sort by difficulty level</Text>
+          <Text letterSpacing="2pt">sort by difficulty level</Text>
           <Select
             defaultValue="difficulty"
             onChange={(e) => {

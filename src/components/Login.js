@@ -1,7 +1,7 @@
-import { useSession, signIn, signOut, getSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { StyledButton } from "./Button";
+import { useSession, signIn, signOut, getSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { StyledButton } from './Button.styles';
 
 export default function Login() {
   const { data: session } = useSession();
@@ -11,7 +11,7 @@ export default function Login() {
   useEffect(() => {
     getSession().then((session) => {
       if (session) {
-        router.push("/");
+        router.push('/');
       } else {
         setIsLoading(false);
       }

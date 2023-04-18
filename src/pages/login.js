@@ -23,7 +23,7 @@ export default function Auth() {
   if (isLoading) {
     return (
       <>
-        <title>Your Profile</title>
+        <title>Login</title>
         <LoadingWrapper>
           <Text>Loading</Text>
           <ThreeDots color="#2874FC" visible={true}>

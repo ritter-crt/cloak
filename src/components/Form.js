@@ -5,11 +5,13 @@ import styled from 'styled-components';
 import { ThreeDots, Triangle, Oval } from 'react-loader-spinner';
 
 import {
+  Wrapper,
+  StyledForm,
   StyledInput,
   StyledLabel,
   StyledSelect,
   StyledTextarea,
-} from './StyledForm';
+} from './Form.styles';
 
 import ImageUpload from './UploadImage';
 
@@ -17,6 +19,7 @@ import DocumentUpload from './UploadPattern';
 import { categoryArray, difficultyArray } from '../utils';
 import { useSession } from 'next-auth/react';
 import { Text } from './styled';
+import { Button } from './Button.styles';
 
 export default function Form({}) {
   const { data: session } = useSession();
@@ -74,7 +77,7 @@ export default function Form({}) {
         patternSrc={patternSrc}
         setPatternSrc={setPatternSrc}
       ></DocumentUpload>
-      <EntryForm onSubmit={handleSubmit}>
+      <StyledForm onSubmit={handleSubmit}>
         <StyledLabel htmlFor="title">title</StyledLabel>
         <StyledInput
           id="title"
@@ -141,7 +144,7 @@ export default function Form({}) {
         ></StyledInput>
         <TriangleContainer>
           {!isButtonLoading ? (
-            <UploadButton>upload your pattern</UploadButton>
+            <Button width>upload your pattern</Button>
           ) : (
             <Oval
               height="50"
@@ -152,28 +155,14 @@ export default function Form({}) {
             />
           )}
         </TriangleContainer>
-      </EntryForm>
+      </StyledForm>
     </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 10%;
-  border-radius: 20px;
-  box-shadow: black 0px 1px 3px;
-`;
-
-const EntryForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
 const UploadButton = styled.button`
   width: fit-content;
+  //_____________________
   display: flex;
   flex-direction: row;
   color: white;
