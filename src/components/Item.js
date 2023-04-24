@@ -24,7 +24,7 @@ import {
   StyledSelect,
   StyledTextarea,
 } from './StyledForm';
-import { Button, StyledLink } from '@/src/components/Button.styles';
+import { Button, StyledLink } from '@/src/components/common/Button.styles';
 
 import Modal from './Modal';
 

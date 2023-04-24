@@ -7,9 +7,9 @@ import { useRouter } from 'next/router';
 import { StyledLabel } from './StyledForm';
 
 import styled from 'styled-components';
-import { StyledForm, StyledInput, Wrapper } from './Form.styles';
-import { ContentWrapper } from './Text.styles';
-import { ButtonWrapper, LoginButton } from './Button.styles';
+import { StyledForm, StyledInput, Wrapper } from './common/Form.styles';
+import { ContentWrapper } from './common/Text.styles';
+import { ButtonWrapper, LoginButton } from './common/Button.styles';
 
 async function createUser(name, email, password) {
   const response = await fetch('api/auth/signin', {

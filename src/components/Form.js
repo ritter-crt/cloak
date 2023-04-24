@@ -11,7 +11,7 @@ import {
   StyledLabel,
   StyledSelect,
   StyledTextarea,
-} from './Form.styles';
+} from './common/Form.styles';
 
 import ImageUpload from './UploadImage';
 
@@ -19,7 +19,7 @@ import DocumentUpload from './UploadPattern';
 import { categoryArray, difficultyArray } from '../utils';
 import { useSession } from 'next-auth/react';
 import { Text } from './styled';
-import { Button } from './Button.styles';
+import { Button } from './common/Button.styles';
 
 export default function Form({}) {
   const { data: session } = useSession();

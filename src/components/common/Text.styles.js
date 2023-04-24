@@ -1,13 +1,6 @@
 import { device } from '@/src/styles';
 import styled from 'styled-components';
 
-export const ContentWrapper = styled.div`
-  margin: ${(props) => (props.margin ? '20% 7% 20% 7%' : '44% 7% 20% 7%')};
-  @media ${device.mobileL} {
-    margin: 15% 7% 20% 7%;
-  }
-`;
-
 export const StyledTitle = styled.p`
   text-transform: uppercase;
   font-size: 9pt;

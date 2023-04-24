@@ -5,7 +5,9 @@ import NavBar from '../components/NavBar';
 import ItemList from '../components/ItemList';
 import Item from '@/db/models/Item';
 import dbConnect from '@/db/connect';
-import { ContentWrapper, StyledHeader } from '../components/styled';
+import { StyledHeader } from '../components/styled';
+import { ContentWrapper } from '../components/common/ContentWrapper.styles';
+
 // import NavBar from '@/src/components/NavBar';
 // import Item from '@/db/models/Item';
 

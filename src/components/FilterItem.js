@@ -9,9 +9,9 @@ import {
   StyledImage,
   StyledText,
   TextWrapper,
-} from './StyledCard';
+} from './common/StyledCard';
 import { categoryArray, difficultyArray } from '../utils';
-import { Text } from './Text.styles';
+import { Text } from './common/Text.styles';
 
 export default function FilterItem({ items }) {
   const router = useRouter();
