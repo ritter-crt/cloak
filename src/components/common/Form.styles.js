@@ -1,14 +1,18 @@
 import { device } from '@/src/styles';
 import styled from 'styled-components';
 
-export const EntryForm = styled.form`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 10%;
   border-radius: 20px;
-  border: 2px solid black;
-  box-shadow: black 0px 1px 3px;
+  border: 1px solid black;
+`;
+
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const StyledLabel = styled.label`
@@ -17,30 +21,23 @@ export const StyledLabel = styled.label`
   font-family: 'Bodoni Moda', serif;
   text-transform: uppercase;
   font-size: 10pt;
-  @media ${device.mobileL} {
-    font-size: 11pt;
-    letter-spacing: 0.2 rem;
-    line-height: 2rem;
-    padding: 0px;
-    padding-top: 0px;
-    padding-bottom: 2px;
-  }
 `;
 
 export const StyledInput = styled.input`
   border: none;
   border-bottom: 2px solid black;
-  border-start-end-radius: 4px;
-  border-start-start-radius: 4px;
+  border-start-end-radius: ${(props) =>
+    props.radiusRight ? '0.5rem' : 'none'};
+  border-start-start-radius: ${(props) =>
+    props.radiusLeft ? '0.5rem' : 'none'};
   padding: 10px 10px;
   outline: none;
 
   background-color: rgba(0, 0, 0, 0.05);
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     border: 2px solid var(--first-color);
-  }
-  @media ${device.mobileL} {
-    padding-top: 1px;
   }
 `;
 
@@ -50,7 +47,9 @@ export const StyledSelect = styled.select`
   padding: 5px 10px;
   background-color: rgba(0, 0, 0, 0.05);
   outline: none;
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     border: 2px solid var(--first-color);
   }
 `;
@@ -62,7 +61,9 @@ export const StyledTextarea = styled.textarea`
   background-color: rgba(0, 0, 0, 0.05);
   font-family: inherit;
   outline: none;
-  &:hover {
+  &:hover,
+  &:active,
+  &:focus {
     border: 2px solid var(--first-color);
   }
 `;

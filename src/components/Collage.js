@@ -1,15 +1,14 @@
-import { device, changeOpacity } from '@/src/styles';
 import styled from 'styled-components';
 
 import Image from 'next/image';
 
+import { StyledImage } from './common/Card.styles';
+import { device, changeOpacity } from '@/src/styles';
+
 import HandWorking from '@/src/assets/hand-working.jpg';
 import TailorWorking from '@/src/assets/tailor-with-sewing-machine.jpg';
-import Dressmaker from '@/src/assets/male-dressmaker-with-computer.jpg';
-import SewingMachine from '@/src/assets/sewing_machine.avif';
 import Fabric from '@/src/assets/fabrics.jpg';
 import PileOfClothes from '@/src/assets/pile-of-clothes.jpeg';
-import { StyledHeader, StyledImage } from './styled';
 
 export default function Collage() {
   return (
@@ -119,7 +118,7 @@ const ImageWrapperFour = styled.div`
   }
 `;
 
-export const StyledText = styled.div`
+export const StyledText = styled.p`
   width: 40%;
   position: absolute;
   bottom: -3%;
@@ -158,12 +157,12 @@ const StyledParagraph = styled.p`
     padding-top: 4rem;
   }
 `;
-const Text = styled.p`
-  text-transform: uppercase;
-  line-height: 1.2rem;
-  font-weight: 100;
-  font-size: 9pt;
-  letter-spacing: 2pt;
-  width: 50%;
-  padding: 0% 4% 10% 10%;
-`;
+// const Text = styled.p`
+//   text-transform: uppercase;
+//   line-height: 1.2rem;
+//   font-weight: 100;
+//   font-size: 9pt;
+//   letter-spacing: 2pt;
+//   width: 50%;
+//   padding: 0% 4% 10% 10%;
+// `;

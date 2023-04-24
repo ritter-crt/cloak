@@ -1,4 +1,4 @@
-import { StyledButton, StyledLink } from '@/src/components/Button';
+import { Button, StyledLink } from '@/src/components/common/Button.styles';
 
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
@@ -8,12 +8,12 @@ import {
   StyledText,
   StyledTitle,
   TextWrapper,
-} from '@/src/components/StyledCard';
+} from '@/src/components/common/Card.styles';
 import styled from 'styled-components';
-import { StyledLabel } from '@/src/components/StyledForm';
+
 import Link from 'next/link';
 import useSWR from 'swr';
-import { StyledHeader } from '@/src/components/styled';
+import { StyledLabel } from '@/src/components/common/Form.styles';
 
 export default function User() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -53,7 +53,9 @@ export default function User() {
             ))}
         </ScrollingWrapper>
 
-        <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
+        <Button float onClick={() => signOut()}>
+          Sign out
+        </Button>
       </>
     );
   } else {
@@ -61,7 +63,7 @@ export default function User() {
       <>
         <ByeText>See you back soon!</ByeText>
         <StyledLink href="/login">
-          <StyledButton>Login</StyledButton>
+          <Button float>Login</Button>
         </StyledLink>
       </>
     );

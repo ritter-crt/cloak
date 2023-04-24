@@ -1,36 +1,12 @@
 import { device } from '@/src/styles';
 import styled from 'styled-components';
 
-export default function Footer() {
-  return (
-    <Wrapper>
-      <ScrollContainer>
-        <ScrollText>fashion + exchange + sell + design </ScrollText>
-      </ScrollContainer>
-      <Container>
-        <Contact>
-          <SayHi>Get in Touch!</SayHi>
-          <Email>hello.something@spesomething.com</Email>
-        </Contact>
-        <Ul>
-          <li>About</li>
-          <li>News</li>
-          <li>Contact</li>
-        </Ul>
-      </Container>
-      <Copyright>
-        <p>@2023 my capstone project</p>
-      </Copyright>
-    </Wrapper>
-  );
-}
-
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   height: 30vh;
   background-color: black;
 `;
 
-const ScrollContainer = styled.div`
+export const ScrollContainer = styled.div`
   overflow: hidden;
   background-color: black;
   bottom: 0;
@@ -42,7 +18,7 @@ const ScrollContainer = styled.div`
   }
 `;
 
-const ScrollText = styled.div`
+export const ScrollText = styled.div`
   font-family: 'Golos Text', sans-serif;
   margin-top: 20px;
   color: white;
@@ -85,7 +61,7 @@ const ScrollText = styled.div`
   }
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   display: flex;
   padding: 8%;
   width: 100%;
@@ -98,7 +74,7 @@ const Container = styled.div`
   }
 `;
 
-const Ul = styled.ul`
+export const Ul = styled.ul`
   list-style: none;
   float: right;
 
@@ -114,9 +90,9 @@ const Ul = styled.ul`
   }
 `;
 
-const Contact = styled.div``;
+export const Contact = styled.div``;
 
-const SayHi = styled.div`
+export const SayHi = styled.div`
   color: white;
   margin-bottom: 8px;
   text-transform: uppercase;
@@ -128,7 +104,7 @@ const SayHi = styled.div`
   }
 `;
 
-const Email = styled.div`
+export const Email = styled.div`
   color: white;
   text-transform: uppercase;
   font-size: 7pt;
@@ -138,7 +114,7 @@ const Email = styled.div`
   }
 `;
 
-const Copyright = styled.div`
+export const Copyright = styled.div`
   width: 100%;
   height: 50px;
   background-color: black;

@@ -1,8 +1,9 @@
-import NavBar from '@/src/components/NavBar';
+import NavBar from '@/src/components/common/NavBar/NavBar';
 import { device } from '@/src/styles';
 import { getSession } from 'next-auth/react';
 import styled from 'styled-components';
 import User from './users/[id]';
+import { ContentWrapper } from '../components/common/ContentWrapper.styles';
 
 export default function Profile() {
   return (
@@ -15,13 +16,3 @@ export default function Profile() {
     </>
   );
 }
-const ContentWrapper = styled.div`
-  margin-top: 100px;
-  margin-left: 7%;
-  margin-right: 7%;
-  margin-bottom: 20%;
-  @media ${device.mobileL} {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-`;

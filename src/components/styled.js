@@ -7,17 +7,6 @@ export const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
-export const ContentWrapper = styled.div`
-  margin-top: 44%;
-  margin-left: 7%;
-  margin-right: 7%;
-  margin-bottom: 20%;
-  @media ${device.mobileL} {
-    margin-left: 10%;
-    margin-right: 10%;
-  }
-`;
-
 export const StyledTitle = styled.p`
   text-transform: uppercase;
   font-size: 9pt;

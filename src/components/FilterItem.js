@@ -1,16 +1,20 @@
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import styled from 'styled-components';
 
-import { StyledHeader, StyledTitle, Text } from './styled';
+import { categoryArray, difficultyArray } from '../utils';
+
+import { StyledTitle } from './styled';
 import {
   CardWrapper,
   StyledCard,
   StyledImage,
   StyledText,
   TextWrapper,
-} from './StyledCard';
-import { categoryArray, difficultyArray } from '../utils';
+} from './common/Card.styles';
+import { Text } from './common/Text.styles';
+import { Wrapper } from './common/ContentWrapper.styles';
+import { StyledSelect } from './common/Form.styles';
+import { SearchBar } from './common/SearchBar.styles';
 
 export default function FilterItem({ items }) {
   const router = useRouter();
@@ -53,56 +57,52 @@ export default function FilterItem({ items }) {
 
   return (
     <>
-      <StyledBox>
-        <StyledInput
+      <>
+        <SearchBar
           type="search"
           placeholder="Search for..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <StyledI></StyledI>
-      </StyledBox>
+      </>
 
-      <FilterWrapper>
-        <DropdownWrapper>
-          <Text>sort by category</Text>
-          <Select
-            defaultValue="category"
-            onChange={(e) => {
-              setFilterParam(e.target.value);
-            }}
-          >
-            <option defaultValue="All">all</option>
-            {categoryArray &&
-              categoryArray.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-          </Select>
-        </DropdownWrapper>
-        <DropdownWrapper>
-          <Text>sort by difficulty level</Text>
-          <Select
-            defaultValue="difficulty"
-            onChange={(e) => {
-              setFilterParam(e.target.value);
-            }}
-          >
-            <option value="All">all</option>
-            {difficultyArray &&
-              difficultyArray.map((difficulty) => (
-                <option key={difficulty} value={difficulty}>
-                  {difficulty}
-                </option>
-              ))}
-          </Select>
-        </DropdownWrapper>
-      </FilterWrapper>
+      <Wrapper>
+        <Text letterSpacing="2pt">sort by category</Text>
+        <StyledSelect
+          defaultValue="category"
+          onChange={(e) => {
+            setFilterParam(e.target.value);
+          }}
+        >
+          <option defaultValue="All">all</option>
+          {categoryArray &&
+            categoryArray.map((category) => (
+              <option key={category} value={category}>
+                {category}
+              </option>
+            ))}
+        </StyledSelect>
+
+        <Text letterSpacing="2pt">sort by difficulty level</Text>
+        <StyledSelect
+          defaultValue="difficulty"
+          onChange={(e) => {
+            setFilterParam(e.target.value);
+          }}
+        >
+          <option value="All">all</option>
+          {difficultyArray &&
+            difficultyArray.map((difficulty) => (
+              <option key={difficulty} value={difficulty}>
+                {difficulty}
+              </option>
+            ))}
+        </StyledSelect>
+      </Wrapper>
 
       <CardWrapper>
         {filteredItems.length <= 0 ? (
-          <TextNoItem>No items found</TextNoItem>
+          <Text letterSpacing="3pt">No items found</Text>
         ) : (
           filteredItems.map((item) => (
             <StyledCard key={item._id}>
@@ -125,62 +125,3 @@ export default function FilterItem({ items }) {
     </>
   );
 }
-
-const FilterWrapper = styled.div`
-  display: flex;
-  padding-bottom: 10%;
-  flex-direction: column;
-  justify-content: space-between;
-`;
-
-const DropdownWrapper = styled.div`
-  width: 100%;
-`;
-const StyledBox = styled.div``;
-
-const StyledInput = styled.input`
-  width: 50%;
-  padding: 8px;
-  background-color: #ffd52d;
-  height: 40px;
-  background: none;
-  border: 1px solid black;
-  border-radius: 10px;
-  box-sizing: border-box;
-  outline: none;
-  transition: 0.5s;
-  &:hover {
-    width: 100%;
-    border: 2px solid var(--first-color);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
-`;
-
-const StyledI = styled.i`
-  position: absolute;
-  transform: translate(-50%, -50%);
-  font-size: 11pt;
-  color: #ffd52d;
-  transition: 0.2s;
-  &:hover {
-    opacity: 0;
-    z-index: -1;
-  }
-`;
-
-const Select = styled.select`
-  width: 100%;
-  border: none;
-  border-bottom: 2px solid black;
-  padding: 5px 10px;
-  background-color: rgba(0, 0, 0, 0.05);
-`;
-
-const TextNoItem = styled.div`
-  margin-top: 5%;
-  margin-bottom: 5%;
-  text-transform: uppercase;
-  font-weight: 100;
-  font-size: 12pt;
-  letter-spacing: 2pt;
-`;

@@ -1,9 +1,3 @@
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-import Link from 'next/link';
-import { StyledButton, StyledLink } from '@/src/components/Button';
-
 import {
   RiDeleteBin7Line,
   RiEditBoxLine,
@@ -12,22 +6,29 @@ import {
 import { MdOutlineCancelPresentation } from 'react-icons/md';
 
 import Slider, { Slide } from '@/src/components/Slider';
-
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
+
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+
+import { categoryArray, difficultyArray } from '../utils';
+
 import {
   EntryForm,
   StyledInput,
   StyledLabel,
   StyledSelect,
   StyledTextarea,
-} from './StyledForm';
+} from './common/Form.styles';
+import { Button, StyledLink } from '@/src/components/common/Button.styles';
 
 import Modal from './Modal';
-import { categoryArray, difficultyArray } from '../utils';
+
+import styled from 'styled-components';
 
 export default function Item({
   title,
@@ -135,7 +136,7 @@ export default function Item({
             defaultValue={price}
             onChange={handleChange}
           ></StyledInput>
-          <StyledButton>safe changes</StyledButton>
+          <Button width>safe changes</Button>
           <CancelButton
             onClick={() => {
               router.back();
@@ -188,11 +189,11 @@ export default function Item({
             />
           )}
           {pattern ? (
-            <StyledButton>
+            <Button width>
               <StyledLink target="_blank" href={pattern}>
                 Download
               </StyledLink>
-            </StyledButton>
+            </Button>
           ) : null}
         </>
       )}

@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router';
-import { getSession } from 'next-auth/react';
 import { useEffect, useState } from 'react';
-import AuthForm from '@/src/components/AuthForm';
+import { getSession } from 'next-auth/react';
+
 import { ThreeDots, Triangle } from 'react-loader-spinner';
+
 import styled from 'styled-components';
 import { Text } from '@/src/components/styled';
+import AuthForm from '../components/AuthForm';
 
 export default function Auth() {
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +25,7 @@ export default function Auth() {
   if (isLoading) {
     return (
       <>
-        <title>Your Profile</title>
+        <title>Login</title>
         <LoadingWrapper>
           <Text>Loading</Text>
           <ThreeDots color="#2874FC" visible={true}>
