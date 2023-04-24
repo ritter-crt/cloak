@@ -8,12 +8,12 @@ import {
   StyledText,
   StyledTitle,
   TextWrapper,
-} from '@/src/components/common/StyledCard';
+} from '@/src/components/common/Card.styles';
 import styled from 'styled-components';
-import { StyledLabel } from '@/src/components/StyledForm';
+
 import Link from 'next/link';
 import useSWR from 'swr';
-import { StyledHeader } from '@/src/components/styled';
+import { StyledLabel } from '@/src/components/common/Form.styles';
 
 export default function User() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());

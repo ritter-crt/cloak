@@ -22,13 +22,13 @@ export const HeaderWrapper = styled.div`
   width: 100%;
   position: absolute;
   top: 15%;
-  /* border-bottom: solid 0.1px; */
 `;
-export const StyledHeader = styled.h1`
-  font-size: 18pt;
-  font-family: 'Bodoni Moda', serif;
+export const Header = styled.h1`
+  font-size: ${(props) => props.fontSize || '18pt'};
+  font-family: ${(props) =>
+    props.fontFamily ? 'sans-serif' : 'Bodoni Moda, serif'};
   font-weight: 100;
   text-transform: uppercase;
-  text-align: left;
-  margin-bottom: 0%;
+  text-align: ${(props) => (props.align ? 'center' : 'left')};
+  margin-bottom: ${(props) => props.bottom || '0%'};
 `;

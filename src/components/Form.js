@@ -160,30 +160,6 @@ export default function Form({}) {
   );
 }
 
-const UploadButton = styled.button`
-  width: fit-content;
-  //_____________________
-  display: flex;
-  flex-direction: row;
-  color: white;
-  margin: 2px;
-  align-items: flex-end;
-  justify-content: center;
-  margin-top: 20px;
-  margin-left: auto;
-  padding: 10px;
-  background-color: black;
-  border-radius: 40px;
-  border: none;
-  transition-delay: 0.3s;
-  font-size: 10pt;
-  &:hover {
-    background-color: white;
-    color: black;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  }
-`;
-
 const TriangleContainer = styled.div`
   display: flex;
   justify-content: flex-end;

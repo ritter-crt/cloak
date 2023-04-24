@@ -23,7 +23,7 @@ import {
   StyledLabel,
   StyledSelect,
   StyledTextarea,
-} from './StyledForm';
+} from './common/Form.styles';
 import { Button, StyledLink } from '@/src/components/common/Button.styles';
 
 import Modal from './Modal';

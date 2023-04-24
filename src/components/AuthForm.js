@@ -1,15 +1,20 @@
-import { ThreeDots, Triangle } from 'react-loader-spinner';
-
 import { useState, useRef } from 'react';
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
-import { StyledLabel } from './StyledForm';
+import { signIn } from 'next-auth/react';
 
-import styled from 'styled-components';
-import { StyledForm, StyledInput, Wrapper } from './common/Form.styles';
-import { ContentWrapper } from './common/Text.styles';
+import { ThreeDots, Triangle } from 'react-loader-spinner';
+
+import {
+  StyledForm,
+  StyledInput,
+  StyledLabel,
+  Wrapper,
+} from './common/Form.styles';
+
 import { ButtonWrapper, LoginButton } from './common/Button.styles';
+import { ContentWrapper } from './common/ContentWrapper.styles';
+import { Header } from './common/Text.styles';
 
 async function createUser(name, email, password) {
   const response = await fetch('api/auth/signin', {
@@ -77,7 +82,9 @@ export default function AuthForm() {
   return (
     <ContentWrapper margin>
       <Wrapper>
-        <StyledHeader>{isLogin ? 'Login' : 'Sign Up'}</StyledHeader>
+        <Header fontSize="14pt" bottom="2rem" fontFamily align>
+          Login
+        </Header>
         <StyledForm onSubmit={submitHandler}>
           <StyledLabel htmlFor="name" name="name" id="name">
             Your name
@@ -144,11 +151,3 @@ export default function AuthForm() {
     </ContentWrapper>
   );
 }
-
-const StyledHeader = styled.h2`
-  font-size: 14pt;
-  padding-top: 30px;
-  text-align: center;
-  text-transform: uppercase;
-  font-weight: 100;
-`;

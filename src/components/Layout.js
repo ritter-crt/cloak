@@ -1,10 +1,9 @@
 import Footer from './Footer';
-import { ContentWrapper } from './common/ContentWrapper.styles';
 
 export default function Layout({ children }) {
   return (
     <>
-      <ContentWrapper>{children}</ContentWrapper>
+      <main>{children}</main>
       <Footer></Footer>
     </>
   );
