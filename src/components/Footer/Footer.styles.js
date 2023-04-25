@@ -7,12 +7,12 @@ export const Wrapper = styled.div`
 `;
 
 export const ScrollContainer = styled.div`
+  margin-top: 20%;
   overflow: hidden;
   background-color: black;
   bottom: 0;
   height: 50px;
   width: 100%;
-
   @media ${device.mobileL} {
     height: 80px;
   }

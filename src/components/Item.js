@@ -1,11 +1,3 @@
-import {
-  RiDeleteBin7Line,
-  RiEditBoxLine,
-  RiArrowGoBackFill,
-} from 'react-icons/ri';
-import { MdOutlineCancelPresentation } from 'react-icons/md';
-
-import Slider, { Slide } from '@/src/components/Slider';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
@@ -15,46 +7,56 @@ import 'swiper/css/effect-fade';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { categoryArray, difficultyArray } from '../utils';
-
+import Slider, { Slide } from './Slider';
 import {
-  EntryForm,
-  StyledInput,
-  StyledLabel,
-  StyledSelect,
-  StyledTextarea,
-} from './common/Form.styles';
-import { Button, StyledLink } from '@/src/components/common/Button.styles';
+  BackIcon,
+  Button,
+  ButtonWrapper,
+  DeleteIcon,
+  EditIcon,
+  IconWrapper,
+  StyledLink,
+} from '@/src/components/common/Button.styles';
 
+import EditForm from './EditForm';
 import Modal from './Modal';
-
-import styled from 'styled-components';
+import {
+  Description,
+  Instruction,
+  Difficulty,
+  Price,
+  Title,
+} from './common/Text.styles';
+import { ContentWrapper, HeaderWrapper } from './common/Wrapper';
 
 export default function Item({
-  title,
-  instructions,
-  pattern,
-  images,
-  category,
-  description,
-  difficulty,
-  price,
-  id,
+  itemDetail,
   onDeleteCard,
   onUpdateCard,
-  userId,
   session,
 }) {
-  // console.log(images);
+  const {
+    title,
+    description,
+    instructions,
+    difficulty,
+    images,
+    price,
+    pattern,
+    userId,
+    id,
+  } = itemDetail;
+
   const router = useRouter();
   const [openModal, setOpenModal] = useState(false);
-
   const [isEditing, setIsEditing] = useState(false);
   const [, setInputField] = useState();
+
   const handleChange = (event) => {
     const value = event.target.value;
     setInputField(value);
   };
+
   function handleSubmit(event) {
     event.preventDefault();
     const formElements = event.target.elements;
@@ -72,92 +74,29 @@ export default function Item({
   }
 
   return (
-    <ItemWrapper>
+    <ContentWrapper margin>
       {isEditing && (
-        <EntryForm onSubmit={handleSubmit}>
-          <StyledLabel htmlFor="title"> edit title</StyledLabel>
-          <StyledInput
-            id="title"
-            name="title"
-            type="text"
-            defaultValue={title}
-            onChange={handleChange}
-          ></StyledInput>
-          <StyledLabel htmlFor="description"> edit description</StyledLabel>
-          <StyledInput
-            id="description"
-            name="description"
-            placeholder="e.g occasion, season"
-            defaultValue={description}
-            onChange={handleChange}
-          ></StyledInput>
-          <StyledLabel htmlFor="category">edit category</StyledLabel>
-          <StyledSelect
-            name="category"
-            id="category"
-            defaultValue={category}
-            onSelect={handleChange}
-          >
-            {categoryArray &&
-              categoryArray.map((category) => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
-          </StyledSelect>
-          <StyledLabel htmlFor="difficulty">Edit difficulty level</StyledLabel>
-          <StyledSelect
-            name="difficulty"
-            id="difficulty"
-            defaultValue={difficulty}
-            onSelect={handleChange}
-          >
-            {difficultyArray &&
-              difficultyArray.map((difficulty) => (
-                <option key={difficulty} value={difficulty}>
-                  {difficulty}
-                </option>
-              ))}
-          </StyledSelect>
-          <StyledLabel htmlFor="instructions">Edit Instructions</StyledLabel>
-          <StyledTextarea
-            id="instructions"
-            name="instructions"
-            rows="5"
-            placeholder="e.g preferred fabric, what you need"
-            defaultValue={instructions}
-            onChange={handleChange}
-          ></StyledTextarea>
-          <StyledLabel htmlFor="price">edit price</StyledLabel>
-          <StyledInput
-            id="price"
-            name="price"
-            type="number"
-            defaultValue={price}
-            onChange={handleChange}
-          ></StyledInput>
-          <Button width>safe changes</Button>
-          <CancelButton
-            onClick={() => {
-              router.back();
-            }}
-          ></CancelButton>
-        </EntryForm>
+        <EditForm
+          onSubmit={handleSubmit}
+          onSelect={handleChange}
+          onChange={handleChange}
+          itemDetail={itemDetail}
+        ></EditForm>
       )}
       {!isEditing && (
         <>
           <HeaderWrapper>
             <ButtonWrapper>
-              <StyledTitel>{title}</StyledTitel>
+              <Title fontSize="16pt">{title}</Title>
               <BackIcon
                 onClick={() => {
                   router.back();
                 }}
               ></BackIcon>
             </ButtonWrapper>
-            <StyledText>{description}</StyledText>
+            <Description>{description}</Description>
           </HeaderWrapper>
-          <StyledLevel>{difficulty}</StyledLevel>
+          <Difficulty>{difficulty}</Difficulty>
           <Slider
             settings={{
               navigation: true,
@@ -169,8 +108,8 @@ export default function Item({
               </Slide>
             ))}
           </Slider>
-          <StyledDescription> {instructions}</StyledDescription>
-          <StyledPrice>{price}€</StyledPrice>
+          <Instruction> {instructions}</Instruction>
+          <Price>{price}€</Price>
           {session?.user.email === userId ? (
             <IconWrapper>
               <DeleteIcon
@@ -189,7 +128,7 @@ export default function Item({
             />
           )}
           {pattern ? (
-            <Button width>
+            <Button>
               <StyledLink target="_blank" href={pattern}>
                 Download
               </StyledLink>
@@ -197,93 +136,6 @@ export default function Item({
           ) : null}
         </>
       )}
-    </ItemWrapper>
+    </ContentWrapper>
   );
 }
-const ItemWrapper = styled.div`
-  margin-top: 50px;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 20%;
-`;
-const HeaderWrapper = styled.div`
-  width: 100%;
-  border-bottom: solid 0.1px;
-`;
-
-const StyledText = styled.p`
-  font-size: 12pt;
-  font-family: 'Bodoni Moda', serif;
-  font-weight: 100;
-`;
-const StyledLevel = styled.p`
-  font-size: 10pt;
-  font-weight: 100;
-  text-align: right;
-`;
-const StyledDescription = styled.p`
-  line-height: 1.5rem;
-  font-size: 10pt;
-  padding: 20px;
-`;
-const StyledPrice = styled.p`
-  padding: 5%;
-  align-items: flex-end;
-`;
-const StyledTitel = styled.p`
-  font-size: 16pt;
-  font-family: 'Bodoni Moda', serif;
-  font-weight: 100;
-  text-transform: uppercase;
-  text-align: left;
-  margin-bottom: 20px;
-`;
-const IconWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: 40px;
-  justify-content: flex-end;
-`;
-const ButtonWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: fit-content;
-  justify-content: space-between;
-`;
-const DeleteIcon = styled(RiDeleteBin7Line)`
-  width: 20px;
-  height: 20px;
-  color: black;
-  margin: 10px;
-  &:hover {
-    color: var(--first-color);
-  }
-`;
-const EditIcon = styled(RiEditBoxLine)`
-  width: 20px;
-  height: 20px;
-  color: black;
-  margin: 10px;
-  &:hover {
-    color: var(--first-color);
-  }
-`;
-
-const CancelButton = styled(MdOutlineCancelPresentation)`
-  width: 30px;
-  height: 30px;
-  color: black;
-  margin: 10px;
-  &:hover {
-    color: var(--first-color);
-  }
-`;
-const BackIcon = styled(RiArrowGoBackFill)`
-  width: 20px;
-  height: 20px;
-  color: black;
-  margin: 10px;
-  &:hover {
-    color: var(--first-color);
-  }
-`;

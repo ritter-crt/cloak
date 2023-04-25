@@ -12,7 +12,7 @@ import {
   TextWrapper,
 } from './common/Card.styles';
 import { Text } from './common/Text.styles';
-import { Wrapper } from './common/ContentWrapper.styles';
+import { Wrapper } from './common/Wrapper';
 import { StyledSelect } from './common/Form.styles';
 import { SearchBar } from './common/SearchBar.styles';
 

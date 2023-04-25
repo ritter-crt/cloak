@@ -3,7 +3,7 @@ import ItemList from '../components/ItemList';
 import Item from '@/db/models/Item';
 import dbConnect from '@/db/connect';
 import { StyledHeader } from '../components/styled';
-import { ContentWrapper } from '../components/common/ContentWrapper.styles';
+import { ContentWrapper } from '../components/common/Wrapper';
 
 export default function Home({ items }) {
   return (

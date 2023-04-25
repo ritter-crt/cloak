@@ -13,7 +13,7 @@ import {
 } from './common/Form.styles';
 
 import { ButtonWrapper, LoginButton } from './common/Button.styles';
-import { ContentWrapper } from './common/ContentWrapper.styles';
+import { ContentWrapper } from './common/Wrapper';
 import { Header } from './common/Text.styles';
 
 async function createUser(name, email, password) {

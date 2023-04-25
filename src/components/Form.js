@@ -144,7 +144,7 @@ export default function Form({}) {
         ></StyledInput>
         <TriangleContainer>
           {!isButtonLoading ? (
-            <Button width>upload your pattern</Button>
+            <Button>upload your pattern</Button>
           ) : (
             <Oval
               height="50"

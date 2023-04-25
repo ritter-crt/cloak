@@ -1,6 +1,12 @@
-import Image from "next/image";
-import styled from "styled-components";
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
+import {
+  Card,
+  CardWrapper,
+  StyledImage,
+  Text,
+  TextWrapper,
+  Title,
+} from './common/Card.styles';
 
 export default function ItemList({ items }) {
   const router = useRouter();
@@ -11,7 +17,7 @@ export default function ItemList({ items }) {
         .sort((a, b) => b.createdAt - a.createdAt)
         .slice(0, 10)
         .map((item) => (
-          <StyledCard key={item._id}>
+          <Card key={item._id}>
             <StyledImage
               onClick={() => router.push(`/item-page/${item._id}`)}
               src={item.images[0]}
@@ -19,51 +25,13 @@ export default function ItemList({ items }) {
               width="150"
               alt={item.description}
             />
-            <StyledTitle>{item.title}</StyledTitle>
+            <Title>{item.title}</Title>
             <TextWrapper>
-              <StyledText>{item.difficulty}</StyledText>
-              <StyledText>{item.price} €</StyledText>
+              <Text>{item.difficulty}</Text>
+              <Text>{item.price} €</Text>
             </TextWrapper>
-          </StyledCard>
+          </Card>
         ))}
     </CardWrapper>
   );
 }
-
-export const CardWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-export const StyledCard = styled.div`
-  width: 150px;
-  height: 250px;
-`;
-
-export const StyledImage = styled(Image)`
-  object-fit: cover;
-`;
-
-const StyledTitle = styled.p`
-  text-transform: uppercase;
-  height: 12%;
-  font-size: 9pt;
-  font-weight: 250;
-  margin-top: 6px;
-  margin-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-`;
-
-const TextWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  padding-left: 5px;
-  padding-right: 5px;
-`;
-const StyledText = styled.p`
-  font-size: 10pt;
-  margin: 0;
-`;
