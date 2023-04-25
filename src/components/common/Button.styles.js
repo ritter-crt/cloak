@@ -1,8 +1,17 @@
+import styled, { css } from 'styled-components';
+
 import Link from 'next/link';
+
+import {
+  RiDeleteBin7Line,
+  RiEditBoxLine,
+  RiArrowGoBackFill,
+} from 'react-icons/ri';
+
+import { MdOutlineCancelPresentation } from 'react-icons/md';
 
 import { device } from '@/src/styles';
 
-import styled from 'styled-components';
 /* GENERATED CONTENT */
 /* POSITION AND LAYOUT */
 /* DISPLAY AND VISIBILITY*/
@@ -14,9 +23,12 @@ import styled from 'styled-components';
 /* PSEUDO-CLASSES */
 
 export const ButtonWrapper = styled.div`
-  margin-top: 30px;
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: fit-content;
+  justify-content: space-between;
 `;
 
 export const Button = styled.button`
@@ -57,4 +69,30 @@ export const LoginButton = styled.button`
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
+`;
+
+const stylesIcon = css`
+  width: 30px;
+  height: 30px;
+  color: black;
+  margin: 10px;
+  &:hover {
+    color: var(--first-color);
+  }
+`;
+
+export const CancelButton = styled(MdOutlineCancelPresentation)`
+  ${stylesIcon}
+`;
+
+export const DeleteIcon = styled(RiDeleteBin7Line)`
+  ${stylesIcon}
+`;
+
+export const EditIcon = styled(RiEditBoxLine)`
+  ${stylesIcon}
+`;
+
+export const BackIcon = styled(RiArrowGoBackFill)`
+  ${stylesIcon}
 `;

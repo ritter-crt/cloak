@@ -6,7 +6,7 @@ export const StyledTitle = styled.p`
   font-size: 9pt;
   font-weight: 250;
   margin-top: 6px;
-  margin-bottom: 4px;
+  margin-bottom: ${(props) => props.bottom || '1rem'};
 `;
 
 export const Text = styled.p`
