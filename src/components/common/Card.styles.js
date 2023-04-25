@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import Image from "next/image";
+import styled from 'styled-components';
+import Image from 'next/image';
 
 export const CardWrapper = styled.div`
   display: flex;
@@ -8,28 +8,30 @@ export const CardWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledCard = styled.div`
+export const Card = styled.div`
   width: 150px;
   height: 250px;
+  margin-bottom: 1rem;
 `;
 
 export const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
-export const StyledTitle = styled.p`
+export const Title = styled.p`
   text-transform: uppercase;
+  height: 12%;
   font-size: 9pt;
   font-weight: 250;
-  margin-top: 6px;
-  margin-bottom: 4px;
+  margin: 0.5rem;
 `;
 
 export const TextWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  margin: 0rem 0.5rem;
 `;
-export const StyledText = styled.p`
+export const Text = styled.p`
   font-size: 10pt;
-  margin: 0;
+  font-weight: 350;
 `;

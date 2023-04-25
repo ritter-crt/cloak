@@ -1,7 +1,7 @@
 import Form from '@/src/components/Form';
 import NavBar from '@/src/components/common/NavBar/NavBar';
 import { StyledHeader } from '@/src/components/styled';
-import { ContentWrapper } from '../components/common/ContentWrapper.styles';
+import { ContentWrapper } from '../components/common/Wrapper';
 
 export default function Add() {
   return (

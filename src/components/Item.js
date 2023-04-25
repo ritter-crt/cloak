@@ -1,5 +1,3 @@
-import styled from 'styled-components';
-
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
@@ -9,19 +7,27 @@ import 'swiper/css/effect-fade';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
+import Slider, { Slide } from './Slider';
 import {
   BackIcon,
   Button,
   ButtonWrapper,
   DeleteIcon,
   EditIcon,
+  IconWrapper,
   StyledLink,
 } from '@/src/components/common/Button.styles';
 
-import EditForm from '../EditForm';
-import Modal from '../Modal';
-import Slider, { Slide } from '../Slider';
-import { StyledTitle } from '../common/Text.styles';
+import EditForm from './EditForm';
+import Modal from './Modal';
+import {
+  Description,
+  Instruction,
+  Difficulty,
+  Price,
+  Title,
+} from './common/Text.styles';
+import { ContentWrapper, HeaderWrapper } from './common/Wrapper';
 
 export default function Item({
   itemDetail,
@@ -68,7 +74,7 @@ export default function Item({
   }
 
   return (
-    <Wrapper>
+    <ContentWrapper margin>
       {isEditing && (
         <EditForm
           onSubmit={handleSubmit}
@@ -81,16 +87,16 @@ export default function Item({
         <>
           <HeaderWrapper>
             <ButtonWrapper>
-              <StyledTitle>{title}</StyledTitle>
+              <Title fontSize="16pt">{title}</Title>
               <BackIcon
                 onClick={() => {
                   router.back();
                 }}
               ></BackIcon>
             </ButtonWrapper>
-            <StyledText>{description}</StyledText>
+            <Description>{description}</Description>
           </HeaderWrapper>
-          <StyledLevel>{difficulty}</StyledLevel>
+          <Difficulty>{difficulty}</Difficulty>
           <Slider
             settings={{
               navigation: true,
@@ -102,8 +108,8 @@ export default function Item({
               </Slide>
             ))}
           </Slider>
-          <StyledDescription> {instructions}</StyledDescription>
-          <StyledPrice>{price}€</StyledPrice>
+          <Instruction> {instructions}</Instruction>
+          <Price>{price}€</Price>
           {session?.user.email === userId ? (
             <IconWrapper>
               <DeleteIcon
@@ -122,7 +128,7 @@ export default function Item({
             />
           )}
           {pattern ? (
-            <Button width>
+            <Button>
               <StyledLink target="_blank" href={pattern}>
                 Download
               </StyledLink>
@@ -130,41 +136,6 @@ export default function Item({
           ) : null}
         </>
       )}
-    </Wrapper>
+    </ContentWrapper>
   );
 }
-
-const Wrapper = styled.div`
-  margin: 3rem 2rem 7rem 2rem;
-`;
-const HeaderWrapper = styled.div`
-  width: 100%;
-  border-bottom: solid 0.1px;
-`;
-
-const StyledText = styled.p`
-  font-size: 12pt;
-  font-family: 'Bodoni Moda', serif;
-  font-weight: 100;
-`;
-const StyledLevel = styled.p`
-  font-size: 10pt;
-  font-weight: 100;
-  text-align: right;
-`;
-const StyledDescription = styled.p`
-  line-height: 1.5rem;
-  font-size: 10pt;
-  padding: 20px;
-`;
-const StyledPrice = styled.p`
-  padding: 5%;
-  align-items: flex-end;
-`;
-
-const IconWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: 40px;
-  justify-content: flex-end;
-`;

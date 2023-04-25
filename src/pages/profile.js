@@ -3,7 +3,7 @@ import { device } from '@/src/styles';
 import { getSession } from 'next-auth/react';
 import styled from 'styled-components';
 import User from './users/[id]';
-import { ContentWrapper } from '../components/common/ContentWrapper.styles';
+import { ContentWrapper } from '../components/common/Wrapper';
 
 export default function Profile() {
   return (

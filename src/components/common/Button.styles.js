@@ -42,7 +42,7 @@ export const Button = styled.button`
   border-radius: 10rem;
   border: none;
   padding: 0.6rem 1rem;
-  width: ${(props) => (props.width ? 'fit-content' : '40%')};
+  width: ${(props) => (props.width ? 'fit-content' : '100%')};
   //_______BACKGROUND
   background-color: black;
   //_______TYPOGRAPHY
@@ -69,6 +69,13 @@ export const LoginButton = styled.button`
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
+`;
+
+export const IconWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  height: 40px;
+  justify-content: flex-end;
 `;
 
 const stylesIcon = css`

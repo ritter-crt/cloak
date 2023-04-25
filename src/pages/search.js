@@ -5,7 +5,7 @@ import { StyledHeader } from '@/src/components/styled';
 import FilterItem from '@/src/components/FilterItem';
 import NavBar from '@/src/components/common/NavBar/NavBar';
 import Item from '@/db/models/Item';
-import { ContentWrapper } from '../components/common/ContentWrapper.styles';
+import { ContentWrapper } from '../components/common/Wrapper';
 
 export default function Search({ items }) {
   return (

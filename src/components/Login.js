@@ -1,7 +1,7 @@
 import { useSession, signIn, signOut, getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { StyledButton } from './common/Button.styles';
+import { Button } from './common/Button.styles';
 
 export default function Login() {
   const { data: session } = useSession();
@@ -22,14 +22,14 @@ export default function Login() {
     return (
       <>
         <p>Welcome, {session.user.name}</p>
-        <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
+        <Button onClick={() => signOut()}>Sign out</Button>
       </>
     );
   } else {
     return (
       <>
         <p>See you soon!</p>
-        <StyledButton onClick={() => signOut()}>Login</StyledButton>
+        <Button onClick={() => signOut()}>Login</Button>
       </>
     );
   }
