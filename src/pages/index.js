@@ -2,7 +2,7 @@
 // import Hero from '@/src/components/Hero';
 
 import Collage from '../components/Collage';
-import Footer from '../components/Footer';
+import Footer from '../components/common/Footer';
 import Hero from '../components/Hero';
 
 export default function Start() {

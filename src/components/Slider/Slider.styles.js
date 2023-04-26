@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from 'styled-components';
 
 export const SliderWrap = styled.div`
   position: relative;
@@ -34,13 +34,12 @@ export const SliderWrap = styled.div`
           visibility: hidden;
           text-align: center;
           transform: translateY(-50%);
-          color: #000000;
           transition: all 0.4s ease 0s;
           border-radius: 50%;
           background-color: #ffffff;
           box-shadow: 0 3px 25.5px 4.5px var(--first-color 0.06);
           &:hover {
-            color: #212121;
+            color: white;
             background-color: var(--first-color);
           }
           &:after {
@@ -86,24 +85,11 @@ export const SliderWrap = styled.div`
     dots &&
     css`
       .swiper-pagination {
-        &-bullet {
-          cursor: pointer;
-          width: 10px;
-          height: 10px;
-          display: inline-block;
+         {
           border-radius: 50%;
-          background: #1f18c0;
-          opacity: 0.2;
-          border: 1px solid var(--first-color);
-          margin: 0 5px;
-          box-shadow: none;
           transition: all 0.4s ease 0s;
-          transform: scale(0.8);
-          &-hover,
           &:active {
             background-color: var(--first-color);
-            border-color: var(--first-color);
-            transform: scale(1);
             opacity: 1;
           }
         }

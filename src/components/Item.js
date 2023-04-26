@@ -19,7 +19,7 @@ import {
 } from '@/src/components/common/Button.styles';
 
 import EditForm from './EditForm';
-import Modal from './Modal';
+
 import {
   Description,
   Instruction,
@@ -27,7 +27,8 @@ import {
   Price,
   Title,
 } from './common/Text.styles';
-import { ContentWrapper, HeaderWrapper } from './common/Wrapper';
+import { ContentWrapper, HeaderWrapper } from './common/Wrapper.styles';
+import Modal from './common/Modal';
 
 export default function Item({
   itemDetail,

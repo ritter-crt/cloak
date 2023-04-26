@@ -3,21 +3,21 @@ import styled from 'styled-components';
 
 export const Title = styled.p`
   text-transform: uppercase;
-  font-size: ${(props) => props.fontSize || '10pt'};
-  font-family: ${(props) =>
-    props.fontFamily ? 'sans-serif' : 'Bodoni Moda, serif'};
-  font-weight: 2500;
+  font-size: ${({ fontSize }) => fontSize || '10pt'};
+  font-family: ${({ fontFamily }) =>
+    fontFamily ? 'sans-serif' : 'Bodoni Moda, serif'};
+  font-weight: 250;
   margin-top: 0.5rem;
-  margin-bottom: ${(props) => props.bottom || '1rem'};
+  margin-bottom: ${({ bottom }) => bottom || '1rem'};
 `;
 
 export const Text = styled.p`
   margin-top: 10%;
   margin-bottom: 5%;
   text-transform: uppercase;
-  font-weight: ${(props) => (props.fontWeight ? '100' : '250')};
-  font-size: ${(props) => (props.fontSize ? '12pt' : '12pt')};
-  letter-spacing: ${(props) => props.letterSpacing || 'none'};
+  font-weight: ${({ fontWeight }) => (fontWeight ? '100' : '250')};
+  font-size: ${({ fontSize }) => fontSize || '12pt'};
+  letter-spacing: ${({ letterSpacing }) => letterSpacing || 'none'};
   flex-wrap: wrap;
 `;
 
@@ -47,11 +47,16 @@ export const HeaderWrapper = styled.div`
   top: 15%;
 `;
 export const Header = styled.h1`
-  font-size: ${(props) => props.fontSize || '18pt'};
-  font-family: ${(props) =>
-    props.fontFamily ? 'sans-serif' : 'Bodoni Moda, serif'};
+  font-size: ${({ fontSize }) => fontSize || '18pt'};
+  font-family: ${({ fontFamily }) =>
+    fontFamily ? 'sans-serif' : 'Bodoni Moda, serif'};
   font-weight: 100;
   text-transform: uppercase;
-  text-align: ${(props) => (props.align ? 'center' : 'left')};
-  margin-bottom: ${(props) => props.bottom || '0%'};
+  text-align: ${(align) => (align ? 'left' : 'center')};
+  margin-bottom: ${({ bottom }) => bottom || '6vh'};
+
+  @media ${device.mobileL} {
+    font-size: 24pt;
+    letter-spacing: 0.3rem;
+  }
 `;

@@ -1,29 +1,32 @@
+import { useRouter } from 'next/router';
+
+import { useSession, signOut, getSession } from 'next-auth/react';
+
+import useSWR from 'swr';
+
+import {
+  Card,
+  ScrollingWrapper,
+  StyledImage,
+  CardText,
+  CardTextWrapper,
+  CardTitle,
+} from '@/src/components/common/Card.styles';
+
 import { Button, StyledLink } from '@/src/components/common/Button.styles';
 
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { useSession, signIn, signOut, getSession } from 'next-auth/react';
-import {
-  StyledImage,
-  StyledText,
-  StyledTitle,
-  TextWrapper,
-} from '@/src/components/common/Card.styles';
-import styled from 'styled-components';
-
-import Link from 'next/link';
-import useSWR from 'swr';
 import { StyledLabel } from '@/src/components/common/Form.styles';
+import { Title } from '@/src/components/common/Text.styles';
 
 export default function User() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
   const { data: session, status } = useSession();
   const id = session?.user?.email;
-  // console.log("___________ididididididid", session);
+  // console.log("___________id", session);
 
   const { data: itemList } = useSWR(`api/users/${id}`, fetcher);
-  // console.log("HELOOOOOOOOOOOO ITEM", itemList);
+  // console.log("___________ITEMLIST", itemList);
 
   const router = useRouter();
 
@@ -31,12 +34,12 @@ export default function User() {
     return (
       <>
         <StyledLabel>Welcome, {session.user.name}.</StyledLabel>
-        <Text>My patterns</Text>
+        <Title>Your patterns</Title>
         <ScrollingWrapper>
           {itemList
             .sort((a, b) => b.createdAt - a.createdAt)
             .map((item) => (
-              <Card key={item._id}>
+              <Card margin="0.5rem" key={item._id}>
                 <StyledImage
                   onClick={() => router.push(`/item-page/${item._id}`)}
                   src={item.images[0]}
@@ -44,16 +47,16 @@ export default function User() {
                   width="150"
                   alt={item.description}
                 />
-                <StyledTitle>{item.title}</StyledTitle>
-                <TextWrapper>
-                  <StyledText>{item.difficulty}</StyledText>
-                  <StyledText>{item.price} €</StyledText>
-                </TextWrapper>
+                <CardTitle>{item.title}</CardTitle>
+                <CardTextWrapper>
+                  <CardText>{item.difficulty}</CardText>
+                  <CardText>{item.price} €</CardText>
+                </CardTextWrapper>
               </Card>
             ))}
         </ScrollingWrapper>
 
-        <Button float onClick={() => signOut()}>
+        <Button width onClick={() => signOut()}>
           Sign out
         </Button>
       </>
@@ -61,7 +64,7 @@ export default function User() {
   } else {
     return (
       <>
-        <ByeText>See you back soon!</ByeText>
+        <CardTitle>See you back soon!</CardTitle>
         <StyledLink href="/login">
           <Button float>Login</Button>
         </StyledLink>
@@ -84,32 +87,3 @@ export async function getServerSideProps(context) {
     props: { session },
   };
 }
-
-const ScrollingWrapper = styled.div`
-  margin-bottom: 40%;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-`;
-const Card = styled.div`
-  display: inline-block;
-  margin: 20px;
-`;
-
-const Text = styled.p`
-  margin-top: 10%;
-  margin-bottom: 10%;
-  text-transform: uppercase;
-  font-weight: 100;
-  font-size: 9pt;
-  letter-spacing: 2pt;
-`;
-
-const ByeText = styled.p`
-  margin-top: 10%;
-  margin-bottom: 50%;
-  text-transform: uppercase;
-  font-weight: 100;
-  font-size: 13pt;
-  letter-spacing: 2pt;
-`;

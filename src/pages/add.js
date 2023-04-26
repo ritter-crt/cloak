@@ -1,7 +1,8 @@
 import Form from '@/src/components/Form';
 import NavBar from '@/src/components/common/NavBar/NavBar';
-import { StyledHeader } from '@/src/components/styled';
-import { ContentWrapper } from '../components/common/Wrapper';
+
+import { ContentWrapper } from '../components/common/Wrapper.styles';
+import { Header } from '../components/common/Text.styles';
 
 export default function Add() {
   return (
@@ -9,7 +10,7 @@ export default function Add() {
       <title>upload your sewing pattern</title>
       <NavBar></NavBar>
       <ContentWrapper>
-        <StyledHeader>upload</StyledHeader>
+        <Header>upload</Header>
         <Form />
       </ContentWrapper>
     </>

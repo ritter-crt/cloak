@@ -33,7 +33,7 @@ export const ButtonWrapper = styled.div`
 
 export const Button = styled.button`
   //_______POSITION AND LAYOUT
-  float: ${(props) => (props.float ? 'right' : 'none')};
+  float: ${({ float }) => (float ? 'right' : 'none')};
   //_______ANIMATION
   transition-delay: 0.1s;
   font-size: 10pt;
@@ -42,11 +42,11 @@ export const Button = styled.button`
   border-radius: 10rem;
   border: none;
   padding: 0.6rem 1rem;
-  width: ${(props) => (props.width ? 'fit-content' : '100%')};
+  width: ${({ width }) => (width ? 'fit-content' : '100%')};
   //_______BACKGROUND
   background-color: black;
   //_______TYPOGRAPHY
-  color: ${(props) => (props.color ? 'white' : 'white')};
+  color: ${({ color }) => (color ? 'white' : 'white')};
   &:hover,
   &:active,
   &:focus {

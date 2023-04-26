@@ -11,7 +11,7 @@ export const ScrollContainer = styled.div`
   overflow: hidden;
   background-color: black;
   bottom: 0;
-  height: 50px;
+  height: 10vh;
   width: 100%;
   @media ${device.mobileL} {
     height: 80px;
@@ -20,7 +20,7 @@ export const ScrollContainer = styled.div`
 
 export const ScrollText = styled.div`
   font-family: 'Golos Text', sans-serif;
-  margin-top: 20px;
+  margin-top: 1rem;
   color: white;
   font-size: 12pt;
   text-transform: uppercase;
@@ -65,12 +65,12 @@ export const Container = styled.div`
   display: flex;
   padding: 8%;
   width: 100%;
-  height: 150px;
+  height: 20vh;
   background-color: black;
   display: flex;
   justify-content: space-between;
   @media ${device.mobileL} {
-    height: 270px;
+    height: 28vh;
   }
 `;
 
