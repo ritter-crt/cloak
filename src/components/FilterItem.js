@@ -7,9 +7,9 @@ import {
   Card,
   CardWrapper,
   StyledImage,
-  Text,
-  TextWrapper,
-  Title,
+  CardText,
+  CardTextWrapper,
+  CardTitle,
 } from './common/Card.styles';
 import { Wrapper } from './common/Wrapper.styles';
 import { StyledSelect } from './common/Form.styles';
@@ -66,7 +66,7 @@ export default function FilterItem({ items }) {
       </>
 
       <Wrapper>
-        <Text letterSpacing="2pt">sort by category</Text>
+        <CardText letterSpacing="2pt">sort by category</CardText>
         <StyledSelect
           defaultValue="category"
           onChange={(e) => {
@@ -82,7 +82,7 @@ export default function FilterItem({ items }) {
             ))}
         </StyledSelect>
 
-        <Text letterSpacing="2pt">sort by difficulty level</Text>
+        <CardText letterSpacing="2pt">sort by difficulty level</CardText>
         <StyledSelect
           defaultValue="difficulty"
           onChange={(e) => {
@@ -101,7 +101,7 @@ export default function FilterItem({ items }) {
 
       <CardWrapper>
         {filteredItems.length <= 0 ? (
-          <Text letterSpacing="3pt">No items found</Text>
+          <CardText letterSpacing="3pt">No items found</CardText>
         ) : (
           filteredItems.map((item) => (
             <Card key={item._id}>
@@ -112,11 +112,11 @@ export default function FilterItem({ items }) {
                 width="150"
                 alt={item.description}
               />
-              <Title>{item.title}</Title>
-              <TextWrapper>
-                <Text>{item.difficulty}</Text>
-                <Text>{item.price} €</Text>
-              </TextWrapper>
+              <CardTitle>{item.title}</CardTitle>
+              <CardTextWrapper>
+                <CardText>{item.difficulty}</CardText>
+                <CardText>{item.price} €</CardText>
+              </CardTextWrapper>
             </Card>
           ))
         )}
