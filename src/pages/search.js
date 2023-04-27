@@ -1,11 +1,10 @@
 import dbConnect from '@/db/connect';
 
-import { StyledHeader } from '@/src/components/styled';
-
 import FilterItem from '@/src/components/FilterItem';
 import NavBar from '@/src/components/common/NavBar/NavBar';
 import Item from '@/db/models/Item';
-import { ContentWrapper } from '../components/common/Wrapper';
+import { ContentWrapper } from '../components/common/Wrapper.styles';
+import { Header } from '../components/common/Text.styles';
 
 export default function Search({ items }) {
   return (
@@ -13,7 +12,7 @@ export default function Search({ items }) {
       <title>Your Next Sewing Project</title>
       <NavBar></NavBar>
       <ContentWrapper>
-        <StyledHeader>Get Inspired</StyledHeader>
+        <Header>Get Inspired</Header>
         <FilterItem items={items}></FilterItem>
       </ContentWrapper>
     </>

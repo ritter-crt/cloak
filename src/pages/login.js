@@ -5,8 +5,9 @@ import { getSession } from 'next-auth/react';
 import { ThreeDots, Triangle } from 'react-loader-spinner';
 
 import styled from 'styled-components';
-import { Text } from '@/src/components/styled';
+
 import AuthForm from '../components/AuthForm';
+import { Text } from '../components/common/Text.styles';
 
 export default function Auth() {
   const [isLoading, setIsLoading] = useState(true);

@@ -18,8 +18,9 @@ import ImageUpload from './UploadImage';
 import DocumentUpload from './UploadPattern';
 import { categoryArray, difficultyArray } from '../utils';
 import { useSession } from 'next-auth/react';
-import { Text } from './styled';
+
 import { Button } from './common/Button.styles';
+import { Text } from './common/Text.styles';
 
 export default function Form({}) {
   const { data: session } = useSession();

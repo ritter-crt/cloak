@@ -1,8 +1,9 @@
-import Image from "next/image";
-import { useState } from "react";
-import styled from "styled-components";
-import { ThreeDots, Triangle } from "react-loader-spinner";
-import { Text } from "./styled";
+import styled from 'styled-components';
+
+import { useState } from 'react';
+
+import Image from 'next/image';
+import { Text } from './common/Text.styles';
 
 export default function UploadImage({ imageSrc, setImageSrc }) {
   // console.log(imageSrc);
@@ -24,19 +25,19 @@ export default function UploadImage({ imageSrc, setImageSrc }) {
 
   async function handleImageSubmit(event) {
     event.preventDefault();
-    const fileInput = document.querySelector("[type=file]").files;
+    const fileInput = document.querySelector('[type=file]').files;
     const formData = new FormData();
 
     const imageArray = [];
     for (let i = 0; i < fileInput.length; i++) {
       let file = fileInput[i];
-      formData.append("file", file);
-      formData.append("upload_preset", "zez0acdp");
+      formData.append('file', file);
+      formData.append('upload_preset', 'zez0acdp');
 
       const data = await fetch(
-        "https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload",
+        'https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload',
         {
-          method: "POST",
+          method: 'POST',
           body: formData,
         }
       ).then((r) => r.json());
@@ -86,7 +87,7 @@ export default function UploadImage({ imageSrc, setImageSrc }) {
 }
 
 const Input = styled.input.attrs({
-  type: "file",
+  type: 'file',
 })`
   border: none;
   border-bottom: 2px solid black;

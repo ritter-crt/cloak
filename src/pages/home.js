@@ -2,8 +2,9 @@ import NavBar from '../components/common/NavBar/NavBar';
 import ItemList from '../components/ItemList';
 import Item from '@/db/models/Item';
 import dbConnect from '@/db/connect';
-import { StyledHeader } from '../components/styled';
-import { ContentWrapper } from '../components/common/Wrapper';
+import { Header } from '../components/common/Text.styles';
+
+import { ContentWrapper } from '../components/common/Wrapper.styles';
 
 export default function Home({ items }) {
   return (
@@ -11,7 +12,7 @@ export default function Home({ items }) {
       <title>newly added</title>
       <NavBar></NavBar>
       <ContentWrapper>
-        <StyledHeader>newly added</StyledHeader>
+        <Header>newly added</Header>
         <ItemList items={items}></ItemList>
       </ContentWrapper>
     </>

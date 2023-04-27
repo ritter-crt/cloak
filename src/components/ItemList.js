@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
+
 import {
   Card,
   CardWrapper,
   StyledImage,
-  Text,
-  TextWrapper,
-  Title,
+  CardText,
+  CardTextWrapper,
+  CardTitle,
 } from './common/Card.styles';
 
 export default function ItemList({ items }) {
@@ -25,11 +26,13 @@ export default function ItemList({ items }) {
               width="150"
               alt={item.description}
             />
-            <Title>{item.title}</Title>
-            <TextWrapper>
-              <Text>{item.difficulty}</Text>
-              <Text>{item.price} €</Text>
-            </TextWrapper>
+            <CardTitle height="10%" fontFamily>
+              {item.title}
+            </CardTitle>
+            <CardTextWrapper>
+              <CardText>{item.difficulty}</CardText>
+              <CardText>{item.price} €</CardText>
+            </CardTextWrapper>
           </Card>
         ))}
     </CardWrapper>

@@ -3,16 +3,15 @@ import { useState } from 'react';
 
 import { categoryArray, difficultyArray } from '../utils';
 
-import { StyledTitle } from './styled';
 import {
+  Card,
   CardWrapper,
-  StyledCard,
   StyledImage,
-  StyledText,
+  Text,
   TextWrapper,
+  Title,
 } from './common/Card.styles';
-import { Text } from './common/Text.styles';
-import { Wrapper } from './common/Wrapper';
+import { Wrapper } from './common/Wrapper.styles';
 import { StyledSelect } from './common/Form.styles';
 import { SearchBar } from './common/SearchBar.styles';
 
@@ -105,7 +104,7 @@ export default function FilterItem({ items }) {
           <Text letterSpacing="3pt">No items found</Text>
         ) : (
           filteredItems.map((item) => (
-            <StyledCard key={item._id}>
+            <Card key={item._id}>
               <StyledImage
                 onClick={() => router.push(`/item-page/${item._id}`)}
                 src={item.images[0]}
@@ -113,12 +112,12 @@ export default function FilterItem({ items }) {
                 width="150"
                 alt={item.description}
               />
-              <StyledTitle>{item.title}</StyledTitle>
+              <Title>{item.title}</Title>
               <TextWrapper>
-                <StyledText>{item.difficulty}</StyledText>
-                <StyledText>{item.price} €</StyledText>
+                <Text>{item.difficulty}</Text>
+                <Text>{item.price} €</Text>
               </TextWrapper>
-            </StyledCard>
+            </Card>
           ))
         )}
       </CardWrapper>

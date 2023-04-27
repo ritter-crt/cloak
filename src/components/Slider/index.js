@@ -5,12 +5,13 @@ import SwiperCore, {
   EffectFade,
   Autoplay,
 } from 'swiper';
-import { SliderWrap } from './SliderWrap';
-import { small_id } from '../utils';
+
+import { small_id } from '../../utils';
+import { SliderWrap } from './Slider.styles';
 
 SwiperCore.use([Navigation, Pagination, EffectFade, Autoplay]);
 
-const Slider = ({ children, settings }) => {
+export default function Slider({ children, settings }) {
   const sliderOptions = {
     slidesPerView: 1,
     pagination: true,
@@ -28,7 +29,6 @@ const Slider = ({ children, settings }) => {
       <Swiper {...sliderOptions}>{children}</Swiper>
     </SliderWrap>
   );
-};
+}
 
 export { SwiperSlide as Slide };
-export default Slider;

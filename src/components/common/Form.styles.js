@@ -26,10 +26,10 @@ export const StyledLabel = styled.label`
 export const StyledInput = styled.input`
   border: none;
   border-bottom: 2px solid black;
-  border-start-end-radius: ${(props) =>
-    props.radiusRight ? '0.5rem' : 'none'};
-  border-start-start-radius: ${(props) =>
-    props.radiusLeft ? '0.5rem' : 'none'};
+  border-start-end-radius: ${({ radiusRight }) =>
+    radiusRight ? '0.5rem' : 'none'};
+  border-start-start-radius: ${({ radiusLeft }) =>
+    radiusLeft ? '0.5rem' : 'none'};
   padding: 10px 10px;
   outline: none;
 
