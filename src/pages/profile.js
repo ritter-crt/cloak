@@ -1,9 +1,7 @@
-import NavBar from '@/src/components/common/NavBar/NavBar';
-import { device } from '@/src/styles';
-import { getSession } from 'next-auth/react';
-import styled from 'styled-components';
 import User from './users/[id]';
-import { ContentWrapper } from '../components/common/Wrapper.styles';
+
+import NavBar from '@/src/components/ui/NavBar/Navbar';
+import { ContentWrapper } from '../components/ui/Wrapper.styles';
 
 export default function Profile() {
   return (

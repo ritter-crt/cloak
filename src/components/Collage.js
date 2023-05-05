@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 import Image from 'next/image';
 
-import { StyledImage } from './common/Card.styles';
-import { device, changeOpacity } from '@/src/styles';
+import { StyledImage } from './Card/Card.styles';
 
 import HandWorking from '@/src/assets/hand-working.jpg';
 import TailorWorking from '@/src/assets/tailor-with-sewing-machine.jpg';
 import Fabric from '@/src/assets/fabrics.jpg';
 import PileOfClothes from '@/src/assets/pile-of-clothes.jpeg';
+import { changeOpacity, device } from '../styles';
 
 export default function Collage() {
   return (

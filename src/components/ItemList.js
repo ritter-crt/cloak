@@ -1,8 +1,6 @@
-import { useRouter } from 'next/router';
+import { Cards } from './Card/Card.styles';
 
-import { Cards } from './common/Card.styles';
-
-import Card from './Card';
+import Card from './Card/Card';
 
 export default function ItemList({ items }) {
   return (

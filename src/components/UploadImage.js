@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { useState } from 'react';
 
 import Image from 'next/image';
-import { Text } from './common/Text.styles';
+import { Text } from './ui/Text.styles';
 
 export default function UploadImage({ imageSrc, setImageSrc }) {
   // console.log(imageSrc);

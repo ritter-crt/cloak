@@ -1,23 +1,16 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { categoryArray, difficultyArray } from '../utils';
+import { categoryArray, difficultyArray } from '../data';
 
-import {
-  CardWrapper,
-  StyledImage,
-  CardText,
-  CardTextWrapper,
-  CardTitle,
-  Cards,
-} from './common/Card.styles';
-import { Wrapper } from './common/Wrapper.styles';
-import { StyledSelect } from './common/Form.styles';
-import { SearchBar } from './common/SearchBar.styles';
-import Card from './Card';
+import Card from './Card/Card';
+
+import { Cards } from './Card/Card.styles';
+import { Wrapper } from './ui/Wrapper.styles';
+import { StyledSelect } from './ui/Form.styles';
+import { SearchBar } from './ui/SearchBar.styles';
+import { Text } from './ui/Text.styles';
 
 export default function FilterItem({ items }) {
-  const router = useRouter();
   const [query, setQuery] = useState('');
   const [filterParam, setFilterParam] = useState(['All']);
   const [searchParam] = useState([
@@ -67,7 +60,9 @@ export default function FilterItem({ items }) {
       </>
 
       <Wrapper>
-        <CardText letterSpacing="2pt">sort by category</CardText>
+        <Text fontSize="10pt" letterSpacing="2pt">
+          sort by category
+        </Text>
         <StyledSelect
           defaultValue="category"
           onChange={(e) => {
@@ -83,7 +78,9 @@ export default function FilterItem({ items }) {
             ))}
         </StyledSelect>
 
-        <CardText letterSpacing="2pt">sort by difficulty level</CardText>
+        <Text fontSize="10pt" letterSpacing="2pt">
+          sort by difficulty level
+        </Text>
         <StyledSelect
           defaultValue="difficulty"
           onChange={(e) => {
@@ -102,7 +99,7 @@ export default function FilterItem({ items }) {
 
       <Cards>
         {filteredItems.length <= 0 ? (
-          <CardText letterSpacing="3pt">No items found</CardText>
+          <Text fontSize="10pt">No items found</Text>
         ) : (
           filteredItems.map((item) => <Card key={item._id} item={item}></Card>)
         )}

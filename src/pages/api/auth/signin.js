@@ -1,9 +1,9 @@
-import dbConnect from "@/db/connect";
-import User from "@/db/models/User";
-import { hashPassword } from "@/db/models/utils";
+import dbConnect from '@/db/connect';
+import User from '@/db/models/User';
+import { hashPassword } from '@/db/models/utils';
 
 async function handler(req, res) {
-  if (req.method !== "POST") {
+  if (req.method !== 'POST') {
     return;
   }
 
@@ -13,13 +13,13 @@ async function handler(req, res) {
 
   if (
     !email ||
-    !email.includes("@") ||
+    !email.includes('@') ||
     !password ||
     password.trim().length < 7
   ) {
     res.status(422).json({
       message:
-        "Invalid input - password should also be at least 7 characters long.",
+        'Invalid input - password should also be at least 7 characters long.',
     });
     return;
   }
@@ -29,7 +29,7 @@ async function handler(req, res) {
   const existingUser = await User.findOne({ email: email });
 
   if (existingUser) {
-    res.status(422).json({ message: "User exists already!" });
+    res.status(422).json({ message: 'User exists already!' });
     client.close();
     return;
   }

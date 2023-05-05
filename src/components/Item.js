@@ -7,7 +7,10 @@ import 'swiper/css/effect-fade';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
+import EditForm from './EditForm';
 import Slider, { Slide } from './Slider';
+import Modal from './ui/Modal/Modal';
+
 import {
   BackIcon,
   Button,
@@ -16,9 +19,7 @@ import {
   EditIcon,
   IconWrapper,
   StyledLink,
-} from '@/src/components/common/Button.styles';
-
-import EditForm from './EditForm';
+} from '@/src/components/ui/Button.styles';
 
 import {
   Description,
@@ -26,9 +27,8 @@ import {
   Difficulty,
   Price,
   Title,
-} from './common/Text.styles';
-import { ContentWrapper, HeaderWrapper } from './common/Wrapper.styles';
-import Modal from './common/Modal';
+} from './ui/Text.styles';
+import { ContentWrapper, HeaderWrapper } from './ui/Wrapper.styles';
 
 export default function Item({
   itemDetail,

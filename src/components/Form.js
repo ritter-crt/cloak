@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import useSWR from 'swr';
 import styled from 'styled-components';
-import { ThreeDots, Triangle, Oval } from 'react-loader-spinner';
+import { Oval } from 'react-loader-spinner';
 
 import {
   Wrapper,
@@ -11,16 +11,16 @@ import {
   StyledLabel,
   StyledSelect,
   StyledTextarea,
-} from './common/Form.styles';
+} from './ui/Form.styles';
 
 import ImageUpload from './UploadImage';
 
 import DocumentUpload from './UploadPattern';
-import { categoryArray, difficultyArray } from '../utils';
+import { categoryArray, difficultyArray } from '../data';
 import { useSession } from 'next-auth/react';
 
-import { Button } from './common/Button.styles';
-import { Text } from './common/Text.styles';
+import { Button } from './ui/Button.styles';
+import { Text } from './ui/Text.styles';
 
 export default function Form({}) {
   const { data: session } = useSession();

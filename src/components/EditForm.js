@@ -1,15 +1,15 @@
 import { useRouter } from 'next/router';
 
-import { categoryArray, difficultyArray } from '../utils';
+import { categoryArray, difficultyArray } from '../data';
 
-import { Button, CancelButton } from './common/Button.styles';
+import { Button, CancelButton } from './ui/Button.styles';
 import {
   StyledForm,
   StyledLabel,
   StyledInput,
   StyledSelect,
   StyledTextarea,
-} from './common/Form.styles';
+} from './ui/Form.styles';
 
 export default function EditForm({ onSubmit, onChange, onSelect, itemDetail }) {
   const router = useRouter();

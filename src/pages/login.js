@@ -1,13 +1,13 @@
+import styled from 'styled-components';
+
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { getSession } from 'next-auth/react';
 
-import { ThreeDots, Triangle } from 'react-loader-spinner';
-
-import styled from 'styled-components';
+import { ThreeDots } from 'react-loader-spinner';
 
 import AuthForm from '../components/AuthForm';
-import { Text } from '../components/common/Text.styles';
+import { Text } from '../components/ui/Text.styles';
 
 export default function Auth() {
   const [isLoading, setIsLoading] = useState(true);

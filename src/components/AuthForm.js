@@ -10,11 +10,11 @@ import {
   StyledInput,
   StyledLabel,
   Wrapper,
-} from './common/Form.styles';
+} from './ui/Form.styles';
 
-import { ButtonWrapper, LoginButton } from './common/Button.styles';
-import { ContentWrapper } from './common/Wrapper.styles';
-import { Header } from './common/Text.styles';
+import { ButtonWrapper, LoginButton } from './ui/Button.styles';
+import { ContentWrapper } from './ui/Wrapper.styles';
+import { Header } from './ui/Text.styles';
 
 async function createUser(name, email, password) {
   const response = await fetch('api/auth/signin', {

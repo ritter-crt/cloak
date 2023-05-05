@@ -13,12 +13,14 @@ export const Title = styled.p`
 
 export const Text = styled.p`
   margin-top: 10%;
-  margin-bottom: 5%;
   text-transform: uppercase;
   font-weight: ${({ fontWeight }) => (fontWeight ? '100' : '250')};
   font-size: ${({ fontSize }) => fontSize || '12pt'};
   letter-spacing: ${({ letterSpacing }) => letterSpacing || 'none'};
   flex-wrap: wrap;
+  @media ${device.tablet} {
+    margin-top: 5%;
+  }
 `;
 
 export const Description = styled.p`
