@@ -1,5 +1,6 @@
 import { SWRConfig } from 'swr';
 import { SessionProvider } from 'next-auth/react';
+
 import Layout from '../components/Layout';
 import { GlobalStyle } from '../styles';
 

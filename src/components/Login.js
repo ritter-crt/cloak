@@ -1,7 +1,8 @@
-import { useSession, signIn, signOut, getSession } from 'next-auth/react';
+import { useSession, signOut, getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Button } from './common/Button.styles';
+
+import { Button } from './ui/Button.styles';
 
 export default function Login() {
   const { data: session } = useSession();

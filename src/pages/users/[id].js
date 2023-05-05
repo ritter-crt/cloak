@@ -1,25 +1,17 @@
 import { useRouter } from 'next/router';
-
 import { useSession, signOut, getSession } from 'next-auth/react';
-
 import useSWR from 'swr';
 
+import Card from '@/src/components/Card/Card';
+
+import { CardTitle } from '@/src/components/Card/Card.styles';
+import { Button, StyledLink } from '@/src/components/ui/Button.styles';
+import { StyledLabel } from '@/src/components/ui/Form.styles';
+import { Title } from '@/src/components/ui/Text.styles';
 import {
-  StyledImage,
-  CardTitle,
-  ScrollingWrapper,
   ScrollingCard,
-  CardContent,
-  CardImage,
-  CardWrapper,
-} from '@/src/components/common/Card.styles';
-
-import { Button, StyledLink } from '@/src/components/common/Button.styles';
-
-import { StyledLabel } from '@/src/components/common/Form.styles';
-import { Title } from '@/src/components/common/Text.styles';
-import styled from 'styled-components';
-import Card from '@/src/components/Card';
+  ScrollingWrapper,
+} from '@/src/components/ui/ScrollingCard.styles';
 
 export default function User() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());

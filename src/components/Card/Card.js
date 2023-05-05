@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import { useRouter } from 'next/router';
+
 import {
   CardContent,
   CardImage,
   CardTitle,
   CardWrapper,
   StyledImage,
-} from './common/Card.styles';
-import { useRouter } from 'next/router';
+} from './Card.styles';
 
 export default function Card({ item }) {
   const router = useRouter();

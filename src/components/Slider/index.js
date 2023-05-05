@@ -6,7 +6,7 @@ import SwiperCore, {
   Autoplay,
 } from 'swiper';
 
-import { small_id } from '../../utils';
+import { small_id } from '../../data';
 import { SliderWrap } from './Slider.styles';
 
 SwiperCore.use([Navigation, Pagination, EffectFade, Autoplay]);

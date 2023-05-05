@@ -1,10 +1,11 @@
-import NavBar from '../components/common/NavBar/NavBar';
-import ItemList from '../components/ItemList';
-import Item from '@/db/models/Item';
 import dbConnect from '@/db/connect';
-import { Header } from '../components/common/Text.styles';
+import Item from '@/db/models/Item';
 
-import { ContentWrapper } from '../components/common/Wrapper.styles';
+import ItemList from '../components/ItemList';
+import NavBar from '../components/ui/NavBar/Navbar';
+
+import { Header } from '../components/ui/Text.styles';
+import { ContentWrapper } from '../components/ui/Wrapper.styles';
 
 export default function Home({ items }) {
   return (

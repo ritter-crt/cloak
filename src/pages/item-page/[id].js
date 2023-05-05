@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import Item from '@/src/components/Item';
 
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSession } from 'next-auth/react';
-
-import Item from '@/src/components/Item';
 
 export default function PatternDetailsPage() {
   const [itemDetail, setItemDetail] = useState();

@@ -1,9 +1,10 @@
 import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 
-import { verifyPassword } from '@/db/models/utils';
-import User from '@/db/models/User';
 import dbConnect from '@/db/connect';
+import User from '@/db/models/User';
+
+import { verifyPassword } from '@/db/models/utils';
 
 export const authOptions = {
   session: {

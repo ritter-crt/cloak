@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import BackgroundImage from '@/src/assets/sewer-with-mannequin.jpg';
-// import TailorWorking from "../assets/tailor-with-sewing-machine.jpg";
-// import { changeOpacity, device } from '@/src/styles';
 import styled from 'styled-components';
 
 import Link from 'next/link';
+import Image from 'next/image';
+
 import { changeOpacity, device } from '../styles';
+
+import BackgroundImage from '@/src/assets/sewer-with-mannequin.jpg';
 
 export default function Hero() {
   return (
