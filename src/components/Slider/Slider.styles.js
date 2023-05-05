@@ -86,10 +86,8 @@ export const SliderWrap = styled.div`
     css`
       .swiper-pagination {
          {
-          border-radius: 50%;
           transition: all 0.4s ease 0s;
           &:active {
-            background-color: var(--first-color);
             opacity: 1;
           }
         }

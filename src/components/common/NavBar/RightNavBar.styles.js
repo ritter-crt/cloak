@@ -4,11 +4,12 @@ import styled from 'styled-components';
 
 export const NavMenu = styled.ul`
   display: flex;
+  justify-content: flex-end;
   list-style: none;
   flex-flow: row nowrap;
-
+  margin: 0;
   li {
-    padding: 10px 10px;
+    padding: 10px;
   }
   @media (max-width: 768px) {
     /* display: none; */
@@ -18,8 +19,6 @@ export const NavMenu = styled.ul`
     position: fixed;
     transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
     top: 5%;
-    right: 0;
-    margin: 5px 0px;
     padding: 10px;
     height: fit-content;
     width: fit-content;

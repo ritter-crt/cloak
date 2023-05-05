@@ -15,8 +15,7 @@ export const Nav = styled.nav`
   width: 100%;
   height: 60px;
   border-bottom: 0.5px solid black;
-  padding-left: 10%;
-  padding-right: 5%;
+  padding-inline: 3%;
   display: flex;
   justify-content: space-between;
   align-items: center;

@@ -4,16 +4,17 @@ import { useState } from 'react';
 import { categoryArray, difficultyArray } from '../utils';
 
 import {
-  Card,
   CardWrapper,
   StyledImage,
-  Text,
-  TextWrapper,
-  Title,
+  CardText,
+  CardTextWrapper,
+  CardTitle,
+  Cards,
 } from './common/Card.styles';
 import { Wrapper } from './common/Wrapper.styles';
 import { StyledSelect } from './common/Form.styles';
 import { SearchBar } from './common/SearchBar.styles';
+import Card from './Card';
 
 export default function FilterItem({ items }) {
   const router = useRouter();
@@ -66,7 +67,7 @@ export default function FilterItem({ items }) {
       </>
 
       <Wrapper>
-        <Text letterSpacing="2pt">sort by category</Text>
+        <CardText letterSpacing="2pt">sort by category</CardText>
         <StyledSelect
           defaultValue="category"
           onChange={(e) => {
@@ -82,7 +83,7 @@ export default function FilterItem({ items }) {
             ))}
         </StyledSelect>
 
-        <Text letterSpacing="2pt">sort by difficulty level</Text>
+        <CardText letterSpacing="2pt">sort by difficulty level</CardText>
         <StyledSelect
           defaultValue="difficulty"
           onChange={(e) => {
@@ -99,28 +100,13 @@ export default function FilterItem({ items }) {
         </StyledSelect>
       </Wrapper>
 
-      <CardWrapper>
+      <Cards>
         {filteredItems.length <= 0 ? (
-          <Text letterSpacing="3pt">No items found</Text>
+          <CardText letterSpacing="3pt">No items found</CardText>
         ) : (
-          filteredItems.map((item) => (
-            <Card key={item._id}>
-              <StyledImage
-                onClick={() => router.push(`/item-page/${item._id}`)}
-                src={item.images[0]}
-                height="150"
-                width="150"
-                alt={item.description}
-              />
-              <Title>{item.title}</Title>
-              <TextWrapper>
-                <Text>{item.difficulty}</Text>
-                <Text>{item.price} €</Text>
-              </TextWrapper>
-            </Card>
-          ))
+          filteredItems.map((item) => <Card key={item._id} item={item}></Card>)
         )}
-      </CardWrapper>
+      </Cards>
     </>
   );
 }
