@@ -1,75 +1,27 @@
 import styled from 'styled-components';
+import {
+  CardContent,
+  CardImage,
+  CardTitle,
+  StyledImage,
+} from './common/Card.styles';
 
-export default function CardTest() {
+export default function Card() {
   return (
-    <Cards>
-      <Card>
-        <CardImage>This is an image</CardImage>
-        <CardTitle>This is the title</CardTitle>
-        <CardContent>This is the price and level</CardContent>
-      </Card>
-      <Card>
-        <CardImage>This is an image</CardImage>
-        <CardTitle>This is the title</CardTitle>
-        <CardContent>This is the price and level</CardContent>
-      </Card>
-      <Card>
-        <CardImage>This is an image</CardImage>
-        <CardTitle>This is the title</CardTitle>
-        <CardContent>This is the price and level</CardContent>
-      </Card>
-      <Card>
-        <CardImage>This is an image</CardImage>
-        <CardTitle>This is the title</CardTitle>
-        <CardContent>This is the price and level</CardContent>
-      </Card>
-      <Card>
-        <CardImage>This is an image</CardImage>
-        <CardTitle>This is the title</CardTitle>
-        <CardContent>This is the price and level</CardContent>
-      </Card>
-      <Card>
-        <CardImage>This is an image</CardImage>
-        <CardTitle>This is the title</CardTitle>
-        <CardContent>This is the price and level</CardContent>
-      </Card>
-      <Card>
-        <CardImage>This is an image</CardImage>
-        <CardTitle>This is the title</CardTitle>
-        <CardContent>This is the price and level</CardContent>
-      </Card>
-      <Card>
-        <CardImage>This is an image</CardImage>
-        <CardTitle>This is the title</CardTitle>
-        <CardContent>This is the price and level</CardContent>
-      </Card>
-    </Cards>
+    <Card key={item._id}>
+      <CardImage>
+        <StyledImage
+          onClick={() => router.push(`/item-page/${item._id}`)}
+          src={item.images[0]}
+          fill={true}
+          alt={item.description}
+        />
+      </CardImage>
+      <CardTitle>{item.title}</CardTitle>
+      <CardContent>
+        <p>{item.difficulty}</p>
+        <p>{item.price} €</p>
+      </CardContent>
+    </Card>
   );
 }
-
-const Cards = styled.div`
-  margin: 10% auto;
-  max-width: 1000px;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
-`;
-const Card = styled.div`
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
-`;
-const CardImage = styled.div`
-  width: 100%;
-  display: block;
-`;
-const CardTitle = styled.div`
-  line-height: 1.5;
-
-  padding: 15px;
-`;
-
-const CardContent = styled.div`
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;

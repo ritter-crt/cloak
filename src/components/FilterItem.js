@@ -10,6 +10,9 @@ import {
   CardText,
   CardTextWrapper,
   CardTitle,
+  Cards,
+  CardImage,
+  CardContent,
 } from './common/Card.styles';
 import { Wrapper } from './common/Wrapper.styles';
 import { StyledSelect } from './common/Form.styles';
@@ -99,28 +102,29 @@ export default function FilterItem({ items }) {
         </StyledSelect>
       </Wrapper>
 
-      <CardWrapper>
+      <Cards>
         {filteredItems.length <= 0 ? (
           <CardText letterSpacing="3pt">No items found</CardText>
         ) : (
           filteredItems.map((item) => (
             <Card key={item._id}>
-              <StyledImage
-                onClick={() => router.push(`/item-page/${item._id}`)}
-                src={item.images[0]}
-                height="150"
-                width="150"
-                alt={item.description}
-              />
+              <CardImage>
+                <StyledImage
+                  onClick={() => router.push(`/item-page/${item._id}`)}
+                  src={item.images[0]}
+                  fill={true}
+                  alt={item.description}
+                />
+              </CardImage>
               <CardTitle>{item.title}</CardTitle>
-              <CardTextWrapper>
-                <CardText>{item.difficulty}</CardText>
-                <CardText>{item.price} €</CardText>
-              </CardTextWrapper>
+              <CardContent>
+                <p>{item.difficulty}</p>
+                <p>{item.price} €</p>
+              </CardContent>
             </Card>
           ))
         )}
-      </CardWrapper>
+      </Cards>
     </>
   );
 }

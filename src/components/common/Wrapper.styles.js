@@ -4,9 +4,9 @@ import { device } from '@/src/styles';
 
 export const ContentWrapper = styled.div`
   margin: ${({ margin }) =>
-    margin ? '3rem 2rem 8rem 2rem' : '6rem 2rem 5rem 2rem'};
+    margin ? '3rem 2rem 8rem 2rem ' : '6rem 2rem 5rem 2rem '};
   @media ${device.mobileL} {
-    margin: 7rem 5rem 10rem 5rem;
+    margin: 7rem 5rem 10rem 5rem auto;
   }
 `;
 
