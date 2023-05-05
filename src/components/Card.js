@@ -3,12 +3,15 @@ import {
   CardContent,
   CardImage,
   CardTitle,
+  CardWrapper,
   StyledImage,
 } from './common/Card.styles';
+import { useRouter } from 'next/router';
 
-export default function Card() {
+export default function Card({ item }) {
+  const router = useRouter();
   return (
-    <Card key={item._id}>
+    <CardWrapper>
       <CardImage>
         <StyledImage
           onClick={() => router.push(`/item-page/${item._id}`)}
@@ -22,6 +25,6 @@ export default function Card() {
         <p>{item.difficulty}</p>
         <p>{item.price} €</p>
       </CardContent>
-    </Card>
+    </CardWrapper>
   );
 }

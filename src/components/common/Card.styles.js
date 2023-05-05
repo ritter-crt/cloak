@@ -2,18 +2,27 @@ import styled from 'styled-components';
 import Image from 'next/image';
 import { device } from '@/src/styles';
 
-export const CardWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
 export const ScrollingWrapper = styled.div`
   margin-bottom: 40%;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
+  @media ${device.tablet} {
+    width: 250px;
+    height: 350px;
+  }
+`;
+
+export const ScrollingCard = styled.div`
+  width: 150px;
+  height: 250px;
+  margin-bottom: 1rem;
+  margin: ${({ margin }) => margin || 'none'};
+  display: ${({ display }) => display || 'inline-block'};
+  @media ${device.tablet} {
+    width: 250px;
+    height: 350px;
+  }
 `;
 
 export const StyledImage = styled(Image)`
@@ -47,7 +56,7 @@ export const Cards = styled.div`
   } */
 `;
 
-export const Card = styled.div`
+export const CardWrapper = styled.div`
   width: 100%;
   height: 250px;
   @media ${device.tablet} {
@@ -100,6 +109,6 @@ export const CardContent = styled.div`
   font-size: 8pt;
   font-weight: 350;
   @media ${device.tablet} {
-    font-size: 10pt;
+    font-size: 12pt;
   }
 `;

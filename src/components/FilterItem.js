@@ -4,19 +4,17 @@ import { useState } from 'react';
 import { categoryArray, difficultyArray } from '../utils';
 
 import {
-  Card,
   CardWrapper,
   StyledImage,
   CardText,
   CardTextWrapper,
   CardTitle,
   Cards,
-  CardImage,
-  CardContent,
 } from './common/Card.styles';
 import { Wrapper } from './common/Wrapper.styles';
 import { StyledSelect } from './common/Form.styles';
 import { SearchBar } from './common/SearchBar.styles';
+import Card from './Card';
 
 export default function FilterItem({ items }) {
   const router = useRouter();
@@ -106,23 +104,7 @@ export default function FilterItem({ items }) {
         {filteredItems.length <= 0 ? (
           <CardText letterSpacing="3pt">No items found</CardText>
         ) : (
-          filteredItems.map((item) => (
-            <Card key={item._id}>
-              <CardImage>
-                <StyledImage
-                  onClick={() => router.push(`/item-page/${item._id}`)}
-                  src={item.images[0]}
-                  fill={true}
-                  alt={item.description}
-                />
-              </CardImage>
-              <CardTitle>{item.title}</CardTitle>
-              <CardContent>
-                <p>{item.difficulty}</p>
-                <p>{item.price} €</p>
-              </CardContent>
-            </Card>
-          ))
+          filteredItems.map((item) => <Card key={item._id} item={item}></Card>)
         )}
       </Cards>
     </>

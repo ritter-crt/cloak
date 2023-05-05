@@ -5,18 +5,21 @@ import { useSession, signOut, getSession } from 'next-auth/react';
 import useSWR from 'swr';
 
 import {
-  Card,
-  ScrollingWrapper,
   StyledImage,
-  CardText,
-  CardTextWrapper,
   CardTitle,
+  ScrollingWrapper,
+  ScrollingCard,
+  CardContent,
+  CardImage,
+  CardWrapper,
 } from '@/src/components/common/Card.styles';
 
 import { Button, StyledLink } from '@/src/components/common/Button.styles';
 
 import { StyledLabel } from '@/src/components/common/Form.styles';
 import { Title } from '@/src/components/common/Text.styles';
+import styled from 'styled-components';
+import Card from '@/src/components/Card';
 
 export default function User() {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
@@ -39,20 +42,9 @@ export default function User() {
           {itemList
             .sort((a, b) => b.createdAt - a.createdAt)
             .map((item) => (
-              <Card margin="0.5rem" key={item._id}>
-                <StyledImage
-                  onClick={() => router.push(`/item-page/${item._id}`)}
-                  src={item.images[0]}
-                  height="150"
-                  width="150"
-                  alt={item.description}
-                />
-                <CardTitle>{item.title}</CardTitle>
-                <CardTextWrapper>
-                  <CardText>{item.difficulty}</CardText>
-                  <CardText>{item.price} €</CardText>
-                </CardTextWrapper>
-              </Card>
+              <ScrollingCard margin="0.5rem" key={item._id}>
+                <Card item={item}></Card>
+              </ScrollingCard>
             ))}
         </ScrollingWrapper>
 
