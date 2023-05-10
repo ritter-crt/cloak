@@ -70,11 +70,11 @@ const GetStarted = styled(Link)`
   margin: 2px;
   align-items: flex-end;
   text-align: center;
-  padding: 5px 10px 5px 10px;
+  padding: 5px 20px 5px 20px;
   border-radius: 40px;
   border: none;
   transition-delay: 0.1s;
-  font-size: 8pt;
+  font-size: 6pt;
   &:hover {
     background-color: white;
     color: black;

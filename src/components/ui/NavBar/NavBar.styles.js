@@ -1,3 +1,4 @@
+import { device } from '@/src/styles';
 import Link from 'next/link';
 
 import styled from 'styled-components';
@@ -15,18 +16,20 @@ export const Nav = styled.nav`
   width: 100%;
   height: 60px;
   border-bottom: 0.5px solid black;
-  padding-inline: 3%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.2 rem;
+  font-size: 1.2rem;
   position: fixed;
   top: 0;
   z-index: 20;
-  margin-bottom: 20px;
+  margin-bottom: 1.2rem;
 `;
 
 export const NavLogo = styled(Link)`
+  padding: 0.6rem;
+  position: relative;
+  left: 7%;
   width: fit-content;
   text-decoration: none;
   font-family: 'Golos Text', sans-serif;
@@ -34,4 +37,7 @@ export const NavLogo = styled(Link)`
   text-decoration: none;
   color: black;
   flex-grow: 1;
+  @media ${device.tablet} {
+    left: 3%;
+  }
 `;

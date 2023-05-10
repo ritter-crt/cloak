@@ -46,4 +46,5 @@ export const LoadingWrapper = styled.div`
   justify-content: center;
   align-items: center;
   padding: 50px;
+  height: 70vh;
 `;

@@ -6,7 +6,7 @@ export const SearchBar = styled.input`
   background-color: #ffd52d;
   height: 40px;
   background: none;
-  border: 1px solid black;
+  border: 1.5px solid black;
   border-radius: 10px;
   box-sizing: border-box;
   outline: none;

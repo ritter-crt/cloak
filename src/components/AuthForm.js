@@ -15,6 +15,7 @@ import {
 import { ButtonWrapper, LoginButton } from './ui/Button.styles';
 import { ContentWrapper } from './ui/Wrapper.styles';
 import { Header } from './ui/Text.styles';
+import styled from 'styled-components';
 
 async function createUser(name, email, password) {
   const response = await fetch('api/auth/signin', {
@@ -126,25 +127,12 @@ export default function AuthForm() {
           />
 
           <ButtonWrapper>
-            {!isButtonLoading ? (
-              <>
-                <LoginButton>
-                  {isLogin ? 'Login' : 'Create Account'}
-                </LoginButton>
-                <LoginButton type="button" onClick={switchAuthModeHandler}>
-                  {isLogin
-                    ? 'Create new account'
-                    : 'Login with existing account'}
-                </LoginButton>
-              </>
-            ) : (
-              <ThreeDots
-                height="50"
-                width="50"
-                color="#2874FC"
-                visible={true}
-              />
-            )}
+            <>
+              <LoginButton>{isLogin ? 'Login' : 'Create Account'}</LoginButton>
+              <LoginButton type="button" onClick={switchAuthModeHandler}>
+                {isLogin ? 'Create new account' : 'Login with existing account'}
+              </LoginButton>
+            </>
           </ButtonWrapper>
         </StyledForm>
       </Wrapper>

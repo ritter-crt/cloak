@@ -49,7 +49,7 @@ export const CardTitle = styled.div`
   margin-inline: 5px;
   height: 25px;
   @media ${device.tablet} {
-    font-size: 10pt;
+    font-size: 11pt;
     height: 25px;
   }
 `;
@@ -62,6 +62,6 @@ export const CardContent = styled.div`
   font-size: 8pt;
   font-weight: 350;
   @media ${device.tablet} {
-    font-size: 12pt;
+    font-size: 10pt;
   }
 `;

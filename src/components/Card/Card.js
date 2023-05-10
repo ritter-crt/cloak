@@ -17,6 +17,8 @@ export default function Card({ item }) {
           onClick={() => router.push(`/item-page/${item._id}`)}
           src={item.images[0]}
           fill={true}
+          sizes="100%"
+          priority={true}
           alt={item.description}
         />
       </CardImage>
