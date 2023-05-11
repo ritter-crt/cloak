@@ -1,6 +1,6 @@
 ## Cloak
 
-Platform for exchange, sell and buy sewing patterns 
+Platform to exchange, sell and buy sewing patterns 
 
 ---
 
@@ -22,6 +22,7 @@ Platform for exchange, sell and buy sewing patterns
 - NextAuth
 - Styled Components
 - Swiper.js
+- Cloudinary
 
 #### Work in Progress
 as I am currently actively working on this project, following features are soon to be implemented
