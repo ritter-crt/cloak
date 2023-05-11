@@ -1,6 +1,6 @@
 import { Cards } from './Card/Card.styles';
 
-import Card from './Card/Card';
+import Card from './Card';
 
 export default function ItemList({ items }) {
   return (

@@ -49,7 +49,7 @@ export default function PatternDetailsPage() {
         const response = await fetch(`/api/items/${id}`);
         const specificItem = await response.json();
         setItemDetail(specificItem);
-        console.log(specificItem.title);
+        // console.log(specificItem.title);
       };
       fetchSpecificItem();
     }

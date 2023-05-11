@@ -1,6 +1,6 @@
 import User from './users/[id]';
 
-import NavBar from '@/src/components/ui/NavBar/Navbar';
+import NavBar from '@/src/components/ui/NavBar';
 import { ContentWrapper } from '../components/ui/Wrapper.styles';
 
 export default function Profile() {
