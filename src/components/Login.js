@@ -1,4 +1,4 @@
-import { useSession, signOut, getSession } from 'next-auth/react';
+import { useSession, signOut, signIn, getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -12,7 +12,7 @@ export default function Login() {
   useEffect(() => {
     getSession().then((session) => {
       if (session) {
-        router.push('/');
+        router.push('/home');
       } else {
         setIsLoading(false);
       }
@@ -30,7 +30,7 @@ export default function Login() {
     return (
       <>
         <p>See you soon!</p>
-        <Button onClick={() => signOut()}>Login</Button>
+        <Button onClick={() => signIn()}>Login</Button>
       </>
     );
   }

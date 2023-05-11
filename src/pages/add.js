@@ -1,10 +1,11 @@
-import Form from '@/src/components/Form';
-import NavBar from '@/src/components/ui/NavBar/Navbar';
+import NavBar from '@/src/components/ui/NavBar';
 
 import { ContentWrapper } from '../components/ui/Wrapper.styles';
-import { Header } from '../components/ui/Text.styles';
+import Header from '../components/ui/Header';
+import Form from '../components/Form';
+// import Form from '../components/Form';
 
-export default function Add() {
+export default function Add({ children }) {
   return (
     <>
       <title>upload your sewing pattern</title>

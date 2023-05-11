@@ -1,7 +1,7 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
 
-export default function DocumentUpload({ patternSrc, setPatternSrc }) {
+export default function UploadPattern({ patternSrc, setPatternSrc }) {
   const [uploadDocData, setUploadDocData] = useState();
 
   function handleDocChange(changeEvent) {
@@ -20,21 +20,21 @@ export default function DocumentUpload({ patternSrc, setPatternSrc }) {
 
     const form = event.currentTarget;
     const fileInput = Array.from(form.elements).find(
-      ({ name }) => name === "file"
+      ({ name }) => name === 'file'
     );
 
     const formData = new FormData();
 
     for (const file of fileInput.files) {
-      formData.append("file", file);
+      formData.append('file', file);
     }
 
-    formData.append("upload_preset", "ypfhsjva");
+    formData.append('upload_preset', 'ypfhsjva');
 
     const data = await fetch(
-      "https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload",
+      'https://api.cloudinary.com/v1_1/dk5lhzhul/image/upload',
       {
-        method: "POST",
+        method: 'POST',
         body: formData,
       }
     ).then((r) => r.json());

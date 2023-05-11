@@ -1,26 +1,6 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import Link from 'next/link';
-
-import {
-  RiDeleteBin7Line,
-  RiEditBoxLine,
-  RiArrowGoBackFill,
-} from 'react-icons/ri';
-
-import { MdOutlineCancelPresentation } from 'react-icons/md';
-
-import { device } from '@/src/styles';
-
-/* GENERATED CONTENT */
-/* POSITION AND LAYOUT */
-/* DISPLAY AND VISIBILITY*/
-/* CLIPPING */
-/* ANIMATION */
-/* BOX MODEL */
-/* BACKGROUND */
-/* TYPOGRAPHY */
-/* PSEUDO-CLASSES */
 
 export const ButtonWrapper = styled.div`
   margin-top: 2rem;
@@ -32,20 +12,14 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const Button = styled.button`
-  //_______POSITION AND LAYOUT
-  float: ${({ float }) => (float ? 'right' : 'none')};
-  //_______ANIMATION
   transition-delay: 0.1s;
   font-size: 10pt;
-  //_______BOX MODEL (FROM OUTSIDE IN)
   margin-top: 1.5rem;
   border-radius: 10rem;
   border: none;
   padding: 0.6rem 1rem;
-  width: ${({ width }) => (width ? 'fit-content' : '100%')};
-  //_______BACKGROUND
+  width: ${({ width }) => width || '100%'};
   background-color: black;
-  //_______TYPOGRAPHY
   color: ${({ color }) => (color ? 'white' : 'white')};
   &:hover,
   &:active,
@@ -69,37 +43,4 @@ export const LoginButton = styled.button`
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: white;
-`;
-
-export const IconWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  height: 40px;
-  justify-content: flex-end;
-`;
-
-const stylesIcon = css`
-  width: 30px;
-  height: 30px;
-  color: black;
-  margin: 10px;
-  &:hover {
-    color: var(--first-color);
-  }
-`;
-
-export const CancelButton = styled(MdOutlineCancelPresentation)`
-  ${stylesIcon}
-`;
-
-export const DeleteIcon = styled(RiDeleteBin7Line)`
-  ${stylesIcon}
-`;
-
-export const EditIcon = styled(RiEditBoxLine)`
-  ${stylesIcon}
-`;
-
-export const BackIcon = styled(RiArrowGoBackFill)`
-  ${stylesIcon}
 `;

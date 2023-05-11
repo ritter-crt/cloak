@@ -2,10 +2,10 @@ import dbConnect from '@/db/connect';
 import Item from '@/db/models/Item';
 
 import ItemList from '../components/ItemList';
-import NavBar from '../components/ui/NavBar/Navbar';
+import NavBar from '../components/ui/NavBar';
 
-import { Header } from '../components/ui/Text.styles';
 import { ContentWrapper } from '../components/ui/Wrapper.styles';
+import Header from '../components/ui/Header';
 
 export default function Home({ items }) {
   return (

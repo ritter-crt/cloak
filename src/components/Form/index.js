@@ -1,26 +1,18 @@
 import { useRouter } from 'next/router';
+import { useSession } from 'next-auth/react';
 import { useState } from 'react';
+
 import useSWR from 'swr';
-import styled from 'styled-components';
+
 import { Oval } from 'react-loader-spinner';
 
-import {
-  Wrapper,
-  StyledForm,
-  StyledInput,
-  StyledLabel,
-  StyledSelect,
-  StyledTextarea,
-} from './ui/Form.styles';
+import UploadImage from '../UploadImage';
+import UploadPattern from '../UploadPattern';
+import { Text } from '../ui/Text.styles';
+import { Button } from '../ui/Button.styles';
 
-import ImageUpload from './UploadImage';
-
-import DocumentUpload from './UploadPattern';
-import { categoryArray, difficultyArray } from '../data';
-import { useSession } from 'next-auth/react';
-
-import { Button } from './ui/Button.styles';
-import { Text } from './ui/Text.styles';
+import { categoryArray, difficultyArray } from '@/src/data';
+import { StyledForm, TriangleContainer, FormWrapper } from './Form.styles';
 
 export default function Form({}) {
   const { data: session } = useSession();
@@ -72,56 +64,50 @@ export default function Form({}) {
   }
 
   return (
-    <Wrapper>
-      <ImageUpload imageSrc={imageSrc} setImageSrc={setImageSrc}></ImageUpload>
-      <DocumentUpload
+    <FormWrapper>
+      <UploadImage imageSrc={imageSrc} setImageSrc={setImageSrc}></UploadImage>
+      <UploadPattern
         patternSrc={patternSrc}
         setPatternSrc={setPatternSrc}
-      ></DocumentUpload>
+      ></UploadPattern>
       <StyledForm onSubmit={handleSubmit}>
-        <StyledLabel htmlFor="title">title</StyledLabel>
-        <StyledInput
+        <label htmlFor="title">title</label>
+        <input
           id="title"
           name="title"
           placeholder="e.g long trouses"
           maxLength="25"
           // required
-        ></StyledInput>
-        <StyledLabel htmlFor="description">description</StyledLabel>
-        <StyledInput
+        ></input>
+        <label htmlFor="description">description</label>
+        <input
           id="description"
           name="description"
           placeholder="e.g occasion, season"
           maxLength="50"
           // required
-        ></StyledInput>
-        <StyledLabel htmlFor="category">select a category</StyledLabel>
-        <StyledSelect name="category" id="category">
+        ></input>
+        <label htmlFor="category">select a category</label>
+        <select name="category" id="category">
           {categoryArray &&
             categoryArray.map((category) => (
               <option key={category} value={category}>
                 {category}
               </option>
             ))}
-        </StyledSelect>
+        </select>
 
-        <StyledLabel htmlFor="difficulty">
-          select a difficulty level
-        </StyledLabel>
-        <StyledSelect name="difficulty" id="difficulty">
+        <label htmlFor="difficulty">select a difficulty level</label>
+        <select name="difficulty" id="difficulty">
           {difficultyArray &&
             difficultyArray.map((difficulty) => (
               <option key={difficulty} value={difficulty}>
                 {difficulty}
               </option>
             ))}
-        </StyledSelect>
-
-        <StyledLabel htmlFor="instructions">
-          provide some instructions
-        </StyledLabel>
-
-        <StyledTextarea
+        </select>
+        <label htmlFor="instructions">provide some instructions</label>
+        <textarea
           id="instructions"
           name="instructions"
           rows="5"
@@ -130,19 +116,19 @@ export default function Form({}) {
           onChange={handleChange}
           isInvalid={inputText.length > characterLimit}
           // required
-        ></StyledTextarea>
+        ></textarea>
         <Text>
           {inputText.length}/{characterLimit}
         </Text>
-        <StyledLabel htmlFor="price">price</StyledLabel>
-        <StyledInput
+        <label htmlFor="price">price</label>
+        <input
           id="price"
           name="price"
           type="number"
           defaultValue="€"
           min="1"
           max="99"
-        ></StyledInput>
+        ></input>
         <TriangleContainer>
           {!isButtonLoading ? (
             <Button>upload your pattern</Button>
@@ -157,11 +143,6 @@ export default function Form({}) {
           )}
         </TriangleContainer>
       </StyledForm>
-    </Wrapper>
+    </FormWrapper>
   );
 }
-
-const TriangleContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-`;
