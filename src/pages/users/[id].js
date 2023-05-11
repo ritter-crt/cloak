@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useSession, signOut, getSession } from 'next-auth/react';
 import useSWR from 'swr';
 
-import Card from '@/src/components/Card/Card';
+import Card from '@/src/components/Card';
 
 import { CardTitle } from '@/src/components/Card/Card.styles';
 import { Button, StyledLink } from '@/src/components/ui/Button.styles';
@@ -40,7 +40,7 @@ export default function User() {
             ))}
         </ScrollingWrapper>
 
-        <Button width onClick={() => signOut()}>
+        <Button width="fit-content" onClick={() => signOut()}>
           Sign out
         </Button>
       </>
@@ -49,9 +49,14 @@ export default function User() {
     return (
       <>
         <CardTitle>See you back soon!</CardTitle>
-        <StyledLink href="/login">
-          <Button float>Login</Button>
-        </StyledLink>
+        <Button
+          width="fit-content"
+          onClick={() => {
+            router.push('/login');
+          }}
+        >
+          Login
+        </Button>
       </>
     );
   }

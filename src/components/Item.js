@@ -9,16 +9,11 @@ import { useState } from 'react';
 
 import EditForm from './EditForm';
 import Slider, { Slide } from './Slider';
-import Modal from './ui/Modal/Modal';
 
 import {
-  BackIcon,
   Button,
-  ButtonWrapper,
-  DeleteIcon,
-  EditIcon,
-  IconWrapper,
   StyledLink,
+  ButtonWrapper,
 } from '@/src/components/ui/Button.styles';
 
 import {
@@ -29,6 +24,9 @@ import {
   Title,
 } from './ui/Text.styles';
 import { ContentWrapper, HeaderWrapper } from './ui/Wrapper.styles';
+
+import { BackIcon, DeleteIcon, EditIcon, IconWrapper } from './ui/Icon.styles';
+import Modal from './Modal';
 
 export default function Item({
   itemDetail,
@@ -86,7 +84,7 @@ export default function Item({
       )}
       {!isEditing && (
         <>
-          <HeaderWrapper>
+          <div>
             <ButtonWrapper>
               <Title fontSize="16pt">{title}</Title>
               <BackIcon
@@ -96,7 +94,7 @@ export default function Item({
               ></BackIcon>
             </ButtonWrapper>
             <Description>{description}</Description>
-          </HeaderWrapper>
+          </div>
           <Difficulty>{difficulty}</Difficulty>
           <Slider
             settings={{
@@ -110,7 +108,7 @@ export default function Item({
             ))}
           </Slider>
           <Instruction> {instructions}</Instruction>
-          <Price>{price}€</Price>
+          <p>{price}€</p>
           {session?.user.email === userId ? (
             <IconWrapper>
               <DeleteIcon

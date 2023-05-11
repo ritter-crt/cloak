@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { categoryArray, difficultyArray } from '../data';
 
-import Card from './Card/Card';
+import Card from './Card';
 
 import { Cards } from './Card/Card.styles';
 import { Wrapper } from './ui/Wrapper.styles';

@@ -3,19 +3,10 @@ import { useRouter } from 'next/router';
 
 import { signIn } from 'next-auth/react';
 
-import { ThreeDots, Triangle } from 'react-loader-spinner';
-
-import {
-  StyledForm,
-  StyledInput,
-  StyledLabel,
-  Wrapper,
-} from './ui/Form.styles';
-
+import { StyledForm } from './Form/Form.styles';
 import { ButtonWrapper, LoginButton } from './ui/Button.styles';
 import { ContentWrapper } from './ui/Wrapper.styles';
-import { Header } from './ui/Text.styles';
-import styled from 'styled-components';
+import { HeaderText } from './ui/Header/Header.styles';
 
 async function createUser(name, email, password) {
   const response = await fetch('api/auth/signin', {
@@ -82,15 +73,20 @@ export default function AuthForm() {
 
   return (
     <ContentWrapper margin>
-      <Wrapper>
-        <Header fontSize="14pt" bottom="2rem" fontFamily align>
+      <div>
+        <HeaderText
+          fontSize="14pt"
+          bottom="2rem"
+          fontFamily="true"
+          align="true"
+        >
           Login
-        </Header>
+        </HeaderText>
         <StyledForm onSubmit={submitHandler}>
-          <StyledLabel htmlFor="name" name="name" id="name">
+          <label htmlFor="name" name="name" id="name">
             Your name
-          </StyledLabel>
-          <StyledInput
+          </label>
+          <input
             radiusRight
             radiusLeft
             type="name"
@@ -101,10 +97,10 @@ export default function AuthForm() {
             required
             ref={nameInputRef}
           />
-          <StyledLabel htmlFor="email" name="email" id="email">
+          <label htmlFor="email" name="email" id="email">
             Your Email
-          </StyledLabel>
-          <StyledInput
+          </label>
+          <input
             radiusRight
             radiusLeft
             type="email"
@@ -112,10 +108,10 @@ export default function AuthForm() {
             required
             ref={emailInputRef}
           />
-          <StyledLabel htmlFor="password" name="password" id="password">
+          <label htmlFor="password" name="password" id="password">
             Your Password
-          </StyledLabel>
-          <StyledInput
+          </label>
+          <input
             radiusRight
             radiusLeft
             type="password"
@@ -135,7 +131,7 @@ export default function AuthForm() {
             </>
           </ButtonWrapper>
         </StyledForm>
-      </Wrapper>
+      </div>
     </ContentWrapper>
   );
 }

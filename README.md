@@ -1,6 +1,6 @@
 ## Cloak
 
-Platform to exchange, sell and buy sewing patterns 
+Platform to exchange, sell and buy sewing patterns
 
 ---
 
@@ -13,10 +13,10 @@ Platform to exchange, sell and buy sewing patterns
 :thread: search with searchbar \
 :sewing_needle: **login** with Credentials \
 :sewing_needle: once logged in, upload sewing pattern with image, pdf, title, description, category, difficulty level & instructions \
-:sewing_needle: own uploaded sewing patterns on profile page with **edit & delete** functionality 
+:sewing_needle: own uploaded sewing patterns on profile page with **edit & delete** functionality
 
- ---
- 
+---
+
 ### Libraries & Frameworks
 
 - NextAuth
@@ -25,17 +25,18 @@ Platform to exchange, sell and buy sewing patterns
 - Cloudinary
 
 #### Work in Progress
+
 as I am currently actively working on this project, following features are soon to be implemented
+
 - Payment options using **Stripe**
 - Landing page with animated Text and Images using **Framer Motion**
 - Private messages with **Socket.IO**
 
 ---
 
-To use locally, following items in your .env.local file are required 
+To use locally, following items in your .env.local file are required
 
 MONGODB_URI \
 JWT_SECRET
 
 ---
-

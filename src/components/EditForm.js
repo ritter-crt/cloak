@@ -2,14 +2,9 @@ import { useRouter } from 'next/router';
 
 import { categoryArray, difficultyArray } from '../data';
 
-import { Button, CancelButton } from './ui/Button.styles';
-import {
-  StyledForm,
-  StyledLabel,
-  StyledInput,
-  StyledSelect,
-  StyledTextarea,
-} from './ui/Form.styles';
+import { Button } from './ui/Button.styles';
+import { CancelButton } from './ui/Icon.styles';
+import { FormWrapper, StyledForm } from './Form/Form.styles';
 
 export default function EditForm({ onSubmit, onChange, onSelect, itemDetail }) {
   const router = useRouter();
@@ -18,26 +13,26 @@ export default function EditForm({ onSubmit, onChange, onSelect, itemDetail }) {
     itemDetail;
 
   return (
-    <>
+    <FormWrapper>
       <StyledForm onSubmit={onSubmit}>
-        <StyledLabel htmlFor="title"> edit title</StyledLabel>
-        <StyledInput
+        <label htmlFor="title"> edit title</label>
+        <input
           id="title"
           name="title"
           type="text"
           defaultValue={title}
           onChange={onChange}
-        ></StyledInput>
-        <StyledLabel htmlFor="description"> edit description</StyledLabel>
-        <StyledInput
+        ></input>
+        <label htmlFor="description"> edit description</label>
+        <input
           id="description"
           name="description"
           placeholder="e.g occasion, season"
           defaultValue={description}
           onChange={onChange}
-        ></StyledInput>
-        <StyledLabel htmlFor="category">edit category</StyledLabel>
-        <StyledSelect
+        ></input>
+        <label htmlFor="category">edit category</label>
+        <select
           name="category"
           id="category"
           defaultValue={category}
@@ -49,9 +44,9 @@ export default function EditForm({ onSubmit, onChange, onSelect, itemDetail }) {
                 {category}
               </option>
             ))}
-        </StyledSelect>
-        <StyledLabel htmlFor="difficulty">Edit difficulty level</StyledLabel>
-        <StyledSelect
+        </select>
+        <label htmlFor="difficulty">Edit difficulty level</label>
+        <select
           name="difficulty"
           id="difficulty"
           defaultValue={difficulty}
@@ -63,24 +58,24 @@ export default function EditForm({ onSubmit, onChange, onSelect, itemDetail }) {
                 {difficulty}
               </option>
             ))}
-        </StyledSelect>
-        <StyledLabel htmlFor="instructions">Edit Instructions</StyledLabel>
-        <StyledTextarea
+        </select>
+        <label htmlFor="instructions">Edit Instructions</label>
+        <textarea
           id="instructions"
           name="instructions"
           rows="5"
           placeholder="e.g preferred fabric, what you need"
           defaultValue={instructions}
           onChange={onChange}
-        ></StyledTextarea>
-        <StyledLabel htmlFor="price">edit price</StyledLabel>
-        <StyledInput
+        ></textarea>
+        <label htmlFor="price">edit price</label>
+        <input
           id="price"
           name="price"
           type="number"
           defaultValue={price}
           onChange={onChange}
-        ></StyledInput>
+        ></input>
         <Button width>safe changes</Button>
         <CancelButton
           onClick={() => {
@@ -88,6 +83,6 @@ export default function EditForm({ onSubmit, onChange, onSelect, itemDetail }) {
           }}
         ></CancelButton>
       </StyledForm>
-    </>
+    </FormWrapper>
   );
 }
