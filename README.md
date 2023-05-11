@@ -32,7 +32,7 @@ as I am currently actively working on this project, following features are soon 
 
 ---
 
-To use locally, following items in your .env.local file are required \
+To use locally, following items in your .env.local file are required 
 
 MONGODB_URI \
 JWT_SECRET
