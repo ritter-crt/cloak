@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Image from 'next/image';
-import { device } from '@/src/styles';
+import { changeOpacity, device } from '@/src/styles';
 
 export const StyledImage = styled(Image)`
   object-fit: cover;
