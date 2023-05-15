@@ -13,7 +13,7 @@ export default function PatternDetailsPage() {
 
   const { data: session, status } = useSession();
 
-  async function updateCards(id, body) {
+  async function handleUpdateCard(id, body) {
     const response = await fetch(`/api/items/${id}`, {
       method: 'PUT',
       body: JSON.stringify(body),
@@ -64,7 +64,7 @@ export default function PatternDetailsPage() {
           itemDetail={itemDetail}
           key={_id}
           onDeleteCard={handleDeleteCard}
-          onUpdateCard={updateCards}
+          onUpdateCard={handleUpdateCard}
           session={session}
         />
       </>

@@ -5,10 +5,10 @@ import { categoryArray, difficultyArray } from '../data';
 import Card from './Card';
 
 import { Cards } from './Card/Card.styles';
-import { Wrapper } from './ui/Wrapper.styles';
-import { StyledSelect } from './ui/Form.styles';
+
 import { SearchBar } from './ui/SearchBar.styles';
 import { Text } from './ui/Text.styles';
+import { FormWrapper, StyledSelect } from './Form/Form.styles';
 
 export default function FilterItem({ items }) {
   const [query, setQuery] = useState('');
@@ -59,7 +59,7 @@ export default function FilterItem({ items }) {
         />
       </>
 
-      <Wrapper>
+      <div>
         <Text fontSize="10pt" letterSpacing="2pt">
           sort by category
         </Text>
@@ -82,6 +82,7 @@ export default function FilterItem({ items }) {
           sort by difficulty level
         </Text>
         <StyledSelect
+          marginBottom="3rem"
           defaultValue="difficulty"
           onChange={(e) => {
             setFilterParam(e.target.value);
@@ -95,7 +96,7 @@ export default function FilterItem({ items }) {
               </option>
             ))}
         </StyledSelect>
-      </Wrapper>
+      </div>
 
       <Cards>
         {filteredItems.length <= 0 ? (

@@ -63,6 +63,20 @@ export const StyledForm = styled.form`
   }
 `;
 
+export const StyledSelect = styled.select`
+  width: 100%;
+  outline: none;
+  padding: 5px 10px;
+  margin-bottom: ${({ marginBottom }) => marginBottom || '0'};
+  border: 1.5px solid black;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.05);
+  &:hover,
+  &:active,
+  &:focus {
+    border: 2px solid var(--first-color);
+  }
+`;
 export const TriangleContainer = styled.div`
   display: flex;
   justify-content: flex-end;
