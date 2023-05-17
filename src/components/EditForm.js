@@ -6,21 +6,10 @@ import { Button } from './ui/Button.styles';
 import { CancelButton } from './ui/Icon.styles';
 import { FormWrapper, StyledForm } from './Form/Form.styles';
 
-export default function EditForm({
-  onSubmit,
-  onChange,
-  onSelect,
-  title,
-  description,
-  instructions,
-  difficulty,
-  images,
-  price,
-  pattern,
-  userId,
-  id,
-}) {
+export default function EditForm({ onSubmit, onChange, onSelect, itemDetail }) {
   const router = useRouter();
+
+  const { title, description, instructions, difficulty, price } = itemDetail;
 
   return (
     <FormWrapper>
