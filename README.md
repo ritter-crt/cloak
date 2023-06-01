@@ -1,4 +1,4 @@
-## Cloak
+# CLOAK
 
 Platform to exchange, sell and buy sewing patterns
 
