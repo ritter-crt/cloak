@@ -1,6 +1,6 @@
 import dbConnect from '@/db/connect';
 import User from '@/db/models/User';
-import { hashPassword } from '@/db/models/utils';
+import { hashPassword } from '@/db/utils';
 
 async function handler(req, res) {
   if (req.method !== 'POST') {

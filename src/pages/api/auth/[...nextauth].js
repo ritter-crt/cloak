@@ -4,7 +4,7 @@ import Credentials from 'next-auth/providers/credentials';
 import dbConnect from '@/db/connect';
 import User from '@/db/models/User';
 
-import { verifyPassword } from '@/db/models/utils';
+import { verifyPassword } from '@/db/utils';
 
 export const authOptions = {
   session: {
