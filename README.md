@@ -31,13 +31,13 @@ Platform to exchange, sell and buy sewing patterns
 
 A little preview can be seen here 
 
-https://github.com/ritter-crt/cloak/assets/122219067/6411bd2e-6350-4708-9f04-b741fd84b286
+https://github.com/ritter-crt/cloak/assets/122219067/56cd4b81-5c1a-4d62-b894-c7d0dc6430d1
+
 
 as I am **currently actively working on this project**, following features are soon to be implemented
 
 - Payment options using **Stripe**
 - Landing page with animated Text and Images using **Framer Motion**
-- Private messages with **Socket.IO**
 
 To use locally, following items in your .env.local file are required
 
