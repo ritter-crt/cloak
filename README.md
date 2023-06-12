@@ -31,8 +31,7 @@ Platform to exchange, sell and buy sewing patterns
 
 A little preview can be seen here 
 
-https://github.com/ritter-crt/cloak/assets/122219067/56cd4b81-5c1a-4d62-b894-c7d0dc6430d1
-
+https://github.com/ritter-crt/cloak/assets/122219067/7599154e-76cf-40eb-8762-677d7ebc3dc3
 
 as I am **currently actively working on this project**, following features are soon to be implemented
 
