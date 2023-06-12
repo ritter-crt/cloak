@@ -35,7 +35,13 @@ export const Instruction = styled.p`
   padding: 1rem;
 `;
 
-export const Price = styled.p``;
+export const Price = styled.p`
+  font-size: 14pt;
+  font-weight: 400;
+  text-align: right;
+  margin: 0;
+  padding: 2% 2% 10% 0%;
+`;
 
 export const Difficulty = styled.p`
   font-size: 10pt;
