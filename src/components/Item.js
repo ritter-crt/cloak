@@ -27,6 +27,7 @@ import { ContentWrapper, HeaderWrapper } from './ui/Wrapper.styles';
 
 import { BackIcon, DeleteIcon, EditIcon, IconWrapper } from './ui/Icon.styles';
 import Modal from './Modal';
+import Image from 'next/image';
 
 export default function Item({
   itemDetail,
@@ -93,7 +94,6 @@ export default function Item({
                 }}
               ></BackIcon>
             </ButtonWrapper>
-            <Description>{description}</Description>
           </div>
           <Difficulty>{difficulty}</Difficulty>
           <Slider
@@ -103,12 +103,20 @@ export default function Item({
           >
             {images.map((image, small_id) => (
               <Slide key={small_id}>
-                <img key={small_id} src={image} alt={image} />
+                <Image
+                  layout="responsive"
+                  width={500}
+                  height={500}
+                  key={small_id}
+                  src={image}
+                  alt={image}
+                />
               </Slide>
             ))}
           </Slider>
+          <Description>{description}</Description>
           <Instruction> {instructions}</Instruction>
-          <p>{price}€</p>
+          <Price>{price}€</Price>
           {session?.user.email === userId ? (
             <IconWrapper>
               <DeleteIcon

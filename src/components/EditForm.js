@@ -9,7 +9,8 @@ import { FormWrapper, StyledForm } from './Form/Form.styles';
 export default function EditForm({ onSubmit, onChange, onSelect, itemDetail }) {
   const router = useRouter();
 
-  const { title, description, instructions, difficulty, price } = itemDetail;
+  const { title, description, instructions, difficulty, price, category } =
+    itemDetail;
 
   return (
     <FormWrapper>
