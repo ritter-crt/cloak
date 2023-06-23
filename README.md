@@ -42,5 +42,9 @@ To use locally, following items in your .env.local file are required
 
 - MONGODB_URI 
 - JWT_SECRET
+- GOOGLE_CLIENT_ID
+- GOOGLE_CLIENT_SECRET
+- NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+
 
 ---
