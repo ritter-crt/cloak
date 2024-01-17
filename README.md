@@ -33,7 +33,7 @@ A little preview can be seen here
 
 https://github.com/ritter-crt/cloak/assets/122219067/7599154e-76cf-40eb-8762-677d7ebc3dc3
 
-as I am **currently actively working on this project**, following features are soon to be implemented
+Following features are soon to be implemented
 
 - Payment options using **Stripe**
 - Landing page with animated Text and Images using **Framer Motion**
